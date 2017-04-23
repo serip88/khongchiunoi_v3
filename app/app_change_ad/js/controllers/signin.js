@@ -9,13 +9,13 @@ var loginApi = {
 
 /* Controllers */
   // signin controller
-app.controller('SigninFormController', ['$scope', '$http', '$state', 'loginService', 'commonService', function($scope, $http, $state, loginService, commonService) {
+app.controller('SigninFormController', ['$scope', '$http', '$state', 'initData','commonService', function($scope, $http, $state ,initData , commonService) {
       $scope.user = {};
       $scope.authError = null;
       $scope.login = function() {
         $scope.authError = null;
         // Try to login
-        loginService.httpPost(loginApi.userLogin, {email: $scope.user.email, password: $scope.user.password})
+        commonService.httpPost(loginApi.userLogin, {email: $scope.user.email, password: $scope.user.password})
         .then(function(response) {
           if ( !response.status ) {
             $scope.authError = response.msg ? response.msg : 'Email or Password not is wrong!';

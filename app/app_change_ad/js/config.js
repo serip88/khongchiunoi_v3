@@ -1,10 +1,10 @@
 // config
-var baseUrl = '/app/';
-var adBaseUrl = '/app/tpl/admin/';
+var app_name = 'app_change_ad'
+var app_name_api = 'app_change'
 var baseConfig = {};
-    baseConfig.apiUrl = '/api';
-    baseConfig.adminTpl = '/app/tpl/admin';
-    baseConfig.app = '/app';
+    baseConfig.apiUrl = '/index.php/'+app_name_api+'/api';
+    baseConfig.tplUrl = '/app/'+app_name+'/tpl';
+    baseConfig.app = '/app/'+app_name;
     baseConfig.home = '/';
 var app =  angular.module('app')
   .config(

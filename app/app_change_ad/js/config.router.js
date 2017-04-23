@@ -22,23 +22,12 @@ angular.module('app')
               .state('app', {
                   abstract: true,
                   url: '/app',
-                  templateUrl: baseConfig.adminTpl+'/app.html',
-                  controller: 'AppCtrl',
-                  resolve: {
-                    initData:  ['$http', 'loginService', function($http,loginService){
-                      // $http returns a promise for the url data
-                        return $http({method: 'GET', url: [baseConfig.apiUrl, 'user/user_ss'].join('/')})
-                        .success(function (data) {
-                          if(typeof(data.user_data)){
-                            angular.copy(data.user_data, loginService.syn.user_data);
-                          }
-                      });
-                    }]
-                  }
+                  templateUrl: baseConfig.tplUrl+'/app.html',
+                  
               })
               .state('app.dashboard', {
                   url: '/dashboard',
-                  templateUrl: baseConfig.adminTpl+'/app_dashboard_v1.html',
+                  templateUrl: baseConfig.tplUrl+'/app_dashboard_v1.html',
                   resolve: {
                     deps: ['$ocLazyLoad',
                       function( $ocLazyLoad ){
@@ -78,7 +67,7 @@ angular.module('app')
               })          
               .state('app.ui.bootstrap', {
                   url: '/bootstrap',
-                  templateUrl: baseConfig.adminTpl+'/ui_bootstrap.html'
+                  templateUrl: baseConfig.tplUrl+'/ui_bootstrap.html'
               })
               .state('app.ui.sortable', {
                   url: '/sortable',
@@ -94,7 +83,7 @@ angular.module('app')
               })
               .state('app.ui.tree', {
                   url: '/tree',
-                  templateUrl: baseConfig.adminTpl+'/ui_tree.html',
+                  templateUrl: baseConfig.tplUrl+'/ui_tree.html',
                   resolve: {
                       deps: ['$ocLazyLoad',
                         function( $ocLazyLoad ){
@@ -206,7 +195,7 @@ angular.module('app')
               })
               .state('app.form.validation', {
                   url: '/validation',
-                  templateUrl: baseConfig.adminTpl+'/form_validation.html'
+                  templateUrl: baseConfig.tplUrl+'/form_validation.html'
               })
               .state('app.form.wizard', {
                   url: '/wizard',
@@ -292,11 +281,11 @@ angular.module('app')
               })
               .state('app.page.profile', {
                   url: '/profile',
-                  templateUrl: baseConfig.adminTpl+'/page_profile.html'
+                  templateUrl: baseConfig.tplUrl+'/page_profile.html'
               })
               .state('app.page.post', {
                   url: '/post',
-                  templateUrl: baseConfig.adminTpl+'/page_post.html'
+                  templateUrl: baseConfig.tplUrl+'/page_post.html'
               })
               .state('app.page.search', {
                   url: '/search',
@@ -321,7 +310,7 @@ angular.module('app')
               })
               .state('app.post.list', {
                   url: '/list',
-                  templateUrl: baseConfig.adminTpl+'/post/list.html',
+                  templateUrl: baseConfig.tplUrl+'/post/list.html',
                   resolve: {
                       deps: ['uiLoad',
                         function( uiLoad ){
@@ -351,15 +340,15 @@ angular.module('app')
               })
               .state('app.system.members', {
                   url: '/members',
-                  templateUrl: baseConfig.adminTpl+'/system/users/system_members.html'
+                  templateUrl: baseConfig.tplUrl+'/system/users/system_members.html'
               })
               .state('app.system.users', {
                   url: '/users',
-                  templateUrl: baseConfig.adminTpl+'/system/users/system_users.html'
+                  templateUrl: baseConfig.tplUrl+'/system/users/system_users.html'
               })
               .state('app.system.user_groups', {
                   url: '/user_groups',
-                  templateUrl: baseConfig.adminTpl+'/system/user_groups/system_user_groups.html'
+                  templateUrl: baseConfig.tplUrl+'/system/user_groups/system_user_groups.html'
               })
               //category
               .state('app.catalog', {
@@ -368,7 +357,7 @@ angular.module('app')
               })
               .state('app.catalog.category', {
                   url: '/category',
-                  templateUrl: baseConfig.adminTpl+'/catalog/category/catalog_category.html',
+                  templateUrl: baseConfig.tplUrl+'/catalog/category/catalog_category.html',
                   resolve: {
                       deps: ['uiLoad',
                         function( uiLoad ){
@@ -378,7 +367,7 @@ angular.module('app')
               })
               .state('app.catalog.product', {
                   url: '/product',
-                  templateUrl: baseConfig.adminTpl+'/catalog/product/catalog_product.html',
+                  templateUrl: baseConfig.tplUrl+'/catalog/product/catalog_product.html',
                   resolve: {
                       deps: ['$ocLazyLoad',
                         function( $ocLazyLoad ){
@@ -408,7 +397,7 @@ angular.module('app')
               })
               .state('app.area.province', {
                   url: '/province',
-                  templateUrl: baseConfig.adminTpl+'/area/province_list.html',
+                  templateUrl: baseConfig.tplUrl+'/area/province_list.html',
                   resolve: {
                       deps: ['uiLoad',
                         function( uiLoad ){
@@ -418,7 +407,7 @@ angular.module('app')
               })
               .state('app.area.district', {
                   url: '/district',
-                  templateUrl: baseConfig.adminTpl+'/area/district_list.html',
+                  templateUrl: baseConfig.tplUrl+'/area/district_list.html',
                   resolve: {
                       deps: ['uiLoad',
                         function( uiLoad ){
@@ -433,28 +422,28 @@ angular.module('app')
               })
               .state('access', {
                   url: '/access',
-                  template: '<div ui-view class="fade-in-right-big smooth"></div>',
-                  controller: 'AppCtrl',
-                  resolve: {
-                    initData:  ['$http', 'loginService', function($http,loginService){
-                      // $http returns a promise for the url data
-                      return $http({method: 'GET', url: [baseConfig.apiUrl, 'user/user_ss'].join('/')})
-                        .success(function (data) {
-                          if(typeof(data.user_data)){
-                            angular.copy(data.user_data, loginService.syn.user_data);
-                          }
-                      });
-                    }]
-                  }                  
+                  template: '<div ui-view class="fade-in-right-big smooth"></div>'
               })
               .state('access.signin', {
                   url: '/signin',
-                  templateUrl: baseConfig.adminTpl+'/page_signin.html',
+                  templateUrl: baseConfig.tplUrl+'/page_signin.html',
+                  controller: 'SigninFormController',
                   resolve: {
                       deps: ['uiLoad',
                         function( uiLoad ){
                           return uiLoad.load( [baseConfig.app+'/js/controllers/signin.js'] );
-                      }]
+                      }],
+                      initData:  ['$http', function($http){
+                        return $http({method: 'GET', url: [baseConfig.apiUrl, 'user/user_ss'].join('/')})
+                        .success(function (data) {
+                          if(typeof(data.user_data)){
+                            //angular.copy(data.user_data, loginService.syn.user_data);
+                            return data.user_data;
+                          }else{
+                            return false;
+                          }
+                      });
+                    }]
                   }
               })
               .state('access.signup', {
@@ -473,13 +462,13 @@ angular.module('app')
               })
               .state('access.404', {
                   url: '/404',
-                  templateUrl: baseConfig.adminTpl+'/page_404.html'
+                  templateUrl: baseConfig.tplUrl+'/page_404.html'
               })
 
               // fullCalendar
               .state('app.calendar', {
                   url: '/calendar',
-                  templateUrl: baseConfig.adminTpl+'/app_calendar.html',
+                  templateUrl: baseConfig.tplUrl+'/app_calendar.html',
                   // use resolve to load other dependences
                   resolve: {
                       deps: ['$ocLazyLoad', 'uiLoad',
@@ -504,7 +493,7 @@ angular.module('app')
               .state('app.mail', {
                   abstract: true,
                   url: '/mail',
-                  templateUrl: baseConfig.adminTpl+'/mail.html',
+                  templateUrl: baseConfig.tplUrl+'/mail.html',
                   // use resolve to load other dependences
                   resolve: {
                       deps: ['uiLoad',
@@ -517,11 +506,11 @@ angular.module('app')
               })
               .state('app.mail.list', {
                   url: '/inbox/{fold}',
-                  templateUrl: baseConfig.adminTpl+'/mail.list.html'
+                  templateUrl: baseConfig.tplUrl+'/mail.list.html'
               })
               .state('app.mail.detail', {
                   url: '/{mailId:[0-9]{1,4}}',
-                  templateUrl: baseConfig.adminTpl+'/mail.detail.html'
+                  templateUrl: baseConfig.tplUrl+'/mail.detail.html'
               })
               .state('app.mail.compose', {
                   url: '/compose',
