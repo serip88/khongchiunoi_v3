@@ -1,0 +1,120 @@
+<style type="text/css">
+.page-header {
+    margin: 10px 0 0;
+}
+
+.page-header h1 {
+    margin-top: 0px;
+    font-size: 20pt;
+}
+
+.breadcrumb {
+    margin-bottom: 5px;
+}
+</style>
+
+<div ng-controller="ProductCtrl">
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="pull-right"><a  data-ng-click="openAddProduct('lg')"  data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Add New"><i class="fa fa-plus"></i></a>
+                <button type="button" data-toggle="tooltip" title="" class="btn btn-default" onclick="$('#form-product').attr('action', 'http://dm-opencart.localhost/admin/index.php?route=catalog/product/copy&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4').submit()" data-original-title="Copy"><i class="fa fa-copy"></i></button>
+                <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" data-ng-click="deleteProduct()" data-original-title="Delete"><i class="fa fa-trash-o"></i></button>
+            </div>
+            <h1>Products</h1>
+            <ul class="breadcrumb">
+                <li><a href="http://dm-opencart.localhost/admin/index.php?route=common/dashboard&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4">Home</a></li>
+                <li><a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4">Products</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-list"></i> Product List</h3>
+            </div>
+            <div class="panel-body">
+                <div class="well">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="control-label" for="input-name">Product Name</label>
+                                <input type="text" name="filter_name" value="" placeholder="Product Name" id="input-name" class="form-control" autocomplete="off">
+                                <ul class="dropdown-menu"></ul>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="control-label" for="input-price">Price</label>
+                                <input type="text" name="filter_price" value="" placeholder="Price" id="input-price" class="form-control">
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="control-label" for="input-status">Status</label>
+                                <select name="filter_status" id="input-status" class="form-control">
+                  <option value="*"></option>
+                    <option value="1">Enabled</option>
+                     <option value="0">Disabled</option>
+                  </select>
+                            </div>
+                            <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> Filter</button>
+                        </div>
+
+                    </div>
+                </div>
+                <form action="http://dm-opencart.localhost/admin/index.php?route=catalog/product/delete&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4" method="post" enctype="multipart/form-data" id="form-product">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <td style="width: 1px;" class="text-center">
+                                        <label class="i-checks m-b-none">
+                                        <input type="checkbox" onClick="$('input[name*=\'selected\']').prop('checked', this.checked);" data-ng-click="isCheckAll();">
+                                        <i></i></label>
+                                    </td>
+                                    <td class="text-center"> <span class="hide"> {{products.selected}} </span>  Image</td>
+                                    <td class="text-left"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=pd.name&amp;order=DESC" class="asc">Product Name</a>
+                                    </td>
+                                    <td class="text-left"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=p.model&amp;order=DESC">Model</a>
+                                    </td>
+                                    <td class="text-right"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=p.price&amp;order=DESC">Price</a>
+                                    </td>
+                                    <td class="text-right"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=p.quantity&amp;order=DESC">Quantity</a>
+                                    </td>
+                                    <td class="text-left"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=p.status&amp;order=DESC">Status</a>
+                                    </td>
+                                    <td class="text-right">Action</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <tr ng-repeat="(key, value) in productList">
+                                    <td class="text-center"> 
+                                        <label class="i-checks m-b-none" data-ng-click="myform.selected.click()">
+                                        <input type="checkbox" checklist-model="products.selected" name="selected[]"  checklist-value="value.product_id">
+                                        <i></i></label>
+                                    </td>
+                                    <td class="text-center"> <img ng-src="{{value.image_path}}" alt="{{value.image_name}}" class="img-thumbnail">
+                                    </td>
+                                    <td class="text-left">{{value.name}}</td>
+                                    <td class="text-left">Product 19</td>
+                                    <td class="text-right"> {{value.price}} </td>
+                                    <td class="text-right"> <span class="label label-success">1000</span>
+                                    </td>
+                                    <td class="text-left">{{value.status}}</td>
+                                    <td class="text-right"><a data-ng-click="productEdit(value)" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-sm-6 text-left"></div>
+                    <div class="col-sm-6 text-right">Showing 1 to 20 of 20 (1 Pages)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
