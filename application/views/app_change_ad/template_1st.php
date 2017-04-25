@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="<?php echo $this->config->item('base_url');?>app/app_change_ad/css/style.css" type="text/css" />
   <!--<link rel="stylesheet" href="http://www.guriddo.net/demo/css/trirand/ui.jqgrid.css" type="text/css" />-->
 </head>
-<body ng-controller="AppCtrl">
+<body >
 <div class="app" id="app" ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}"  ui-view>
 </div>
 

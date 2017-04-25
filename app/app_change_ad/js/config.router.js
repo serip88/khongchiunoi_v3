@@ -23,6 +23,18 @@ angular.module('app')
                   abstract: true,
                   url: '/app',
                   templateUrl: baseConfig.tplUrl+'/app.html',
+                  controller: 'AppCtrl',
+                  resolve: {
+                    initData:  ['$http', 'commonService', function($http,commonService){
+                        //$http returns a promise for the url data
+                        return $http({method: 'GET', url: [baseConfig.apiUrl, 'user/user_ss'].join('/')})
+                        .success(function (data) {
+                          if(typeof(data.user_data)){
+                            angular.copy(data.user_data, commonService.sync.user_data);
+                          }
+                      });
+                    }]
+                  }
                   
               })
               .state('app.dashboard', {
@@ -31,7 +43,8 @@ angular.module('app')
                   resolve: {
                     deps: ['$ocLazyLoad',
                       function( $ocLazyLoad ){
-                        return $ocLazyLoad.load([baseConfig.app+'/js/controllers/chart.js']);
+                        return $ocLazyLoad.load([baseConfig.app+'/js/controllers/chart.js',
+                          baseConfig.app+'/js/controllers/dashboard.js']);
                     }]
                   }
               })

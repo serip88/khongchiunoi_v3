@@ -92,7 +92,6 @@ class User extends Base_controller {
     {
         $status = false;
         $data_user = $this->user_lib->get_user_session();
-        var_dump($data_user);die;
         if($data_user){
             $status = true;
         }

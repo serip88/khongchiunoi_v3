@@ -12,7 +12,7 @@ var isDefined = angular.isDefined,
     sessionStorageEnabled = ("sessionStorage" in window) ? true : false,
     localStorageEnabled = ("localStorage" in window) ? true : false;
 
-app.factory("commonService", ["$http", "$q", 'SweetAlert', function ($http, $q, SweetAlert) {
+/*app.factory("commonService", ["$http", "$q", 'SweetAlert', function ($http, $q, SweetAlert) {
     var commonObject = {};
     commonObject.sync = {user_data:{},is_requested:0};
     commonObject.httpGet = function (path, params, block) {
@@ -68,4 +68,4 @@ app.factory("commonService", ["$http", "$q", 'SweetAlert', function ($http, $q, 
         return stt;
     }
     return commonObject;
-}]);
+}]);*/

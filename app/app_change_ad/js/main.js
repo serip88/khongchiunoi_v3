@@ -1,10 +1,65 @@
 'use strict';
 
-/* Controllers */
+  /* Controllers */
+  app.factory("commonService", ["$http", "$q", 'SweetAlert', function ($http, $q, SweetAlert) {
+    var commonObject = {};
+    commonObject.sync = {user_data:{},is_requested:0};
+    commonObject.httpGet = function (path, params, block) {
+        if(typeof block == 'undefined'){
+            block = true;
+        }
+        var deferred = $q.defer();
+        $http.get([baseConfig.apiUrl, path].join('/'), {block: block, params: params})
+            .success(function (data) {
+                deferred.resolve(data);
+            }).error(function (data) {
+                deferred.resolve(data);
+                SweetAlert.swal({
+                    title: "Warning",
+                    text: data.msg,
+                    type: "warning",
+                    confirmButtonText: "Ok"
+                });
+            });
+        return deferred.promise;
+    }
 
-angular.module('app')
-  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 
-    function(              $scope,   $translate,   $localStorage,   $window ) {
+    commonObject.httpPost = function (path, params, block) {
+        var deferred = $q.defer();
+        if(typeof block == 'undefined'){
+            block = httpBlockConfig;
+        }
+        $http.post([baseConfig.apiUrl, path].join('/'), params, block)
+            .success(function (data) {
+                deferred.resolve(data);
+            }).error(function (data) {
+                deferred.resolve(data);
+                SweetAlert.swal({
+                    title: "Warning",
+                    text: data.msg,
+                    type: "warning",
+                    confirmButtonText: "Ok"
+                });
+            });
+        return deferred.promise;
+    }
+
+    commonObject.sup_check_file_info = function (file) {
+        var stt = false;
+        var valid_ext = ['jpg','jpeg','png'];
+        if(file){
+            var type = false; var ext = false;
+            var mine = file.type.split('/');
+            if(mine[0]=='image' && valid_ext.indexOf(mine[1]) != -1 ){
+                stt = true;
+            }
+        }
+        return stt;
+    }
+    return commonObject;
+  }])
+  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'commonService', '$state' , 
+    function(              $scope,   $translate,   $localStorage,   $window ,  commonService,   $state) {
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');
@@ -38,7 +93,8 @@ angular.module('app')
         },
         baseConfig: baseConfig
       }
-
+      $scope.options = {};
+      $scope.options.user_data = commonService.sync.user_data;
       // save settings to local storage
       if ( angular.isDefined($localStorage.settings) ) {
         $scope.app.settings = $localStorage.settings;
@@ -73,5 +129,50 @@ angular.module('app')
           // Checks for iOs, Android, Blackberry, Opera Mini, and Windows mobile devices
           return (/iPhone|iPod|iPad|Silk|Android|BlackBerry|Opera Mini|IEMobile/).test(ua);
       }
+      /** Begin */
+      init();
+      function init(){
+        if(isEmpty($scope.options.user_data)){
+          $state.go('access.signin');
+        }else{
+          if($state.current.name == 'access.signin'){
+            $state.go('app.dashboard');
+          }
+        }
+      }
+      function stateChange(){
+        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options){
+          if(fromState.name  != toState.name){
+            if(isEmpty($scope.options.user_data)){
+              if(toState.name != 'access.signin'){
+                event.preventDefault();
+                //$state.go('access.signin');
+              }
+            }else{
+              if(toState.name == 'access.signin'){
+                event.preventDefault();
+              }
+            }
+          }
+        })
+      }
+      function isEmpty(obj) {
 
+          // null and undefined are "empty"
+          if (obj == null) return true;
+
+          // Assume if it has a length property with a non-zero value
+          // that that property is correct.
+          if (obj.length > 0)    return false;
+          if (obj.length === 0)  return true;
+
+          // Otherwise, does it have any properties of its own?
+          // Note that this doesn't handle
+          // toString and valueOf enumeration bugs in IE < 9
+          for (var key in obj) {
+              if (hasOwnProperty.call(obj, key)) return false;
+          }
+
+          return true;
+      }
   }]);
