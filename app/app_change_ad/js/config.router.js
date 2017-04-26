@@ -449,12 +449,13 @@ angular.module('app')
                         function( uiLoad ){
                           return uiLoad.load( [baseConfig.app+'/js/controllers/signin.js'] );
                       }],
-                      initData:  ['$http', function($http){
+                      initData:  ['$http','commonService','$state', function($http,commonService,$state){
                         return $http({method: 'GET', url: [baseConfig.apiUrl, 'user/user_ss'].join('/')})
                         .success(function (data) {
                           if(typeof(data.user_data)){
-                            //angular.copy(data.user_data, loginService.syn.user_data);
-                            return data.user_data;
+                            angular.copy(data.user_data, commonService.sync.user_data);
+                            $state.go('app.dashboard');
+                            //return data.user_data;
                           }else{
                             return false;
                           }
