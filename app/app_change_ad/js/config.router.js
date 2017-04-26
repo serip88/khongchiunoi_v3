@@ -25,12 +25,15 @@ angular.module('app')
                   templateUrl: baseConfig.tplUrl+'/app.html',
                   controller: 'AppCtrl',
                   resolve: {
-                    initData:  ['$http', 'commonService', function($http,commonService){
+                    initData:  ['$http', 'commonService','$state', function($http,commonService,$state){
                         //$http returns a promise for the url data
                         return $http({method: 'GET', url: [baseConfig.apiUrl, 'user/user_ss'].join('/')})
                         .success(function (data) {
                           if(typeof(data.user_data)){
                             angular.copy(data.user_data, commonService.sync.user_data);
+                            if(!data.user_data){
+                              $state.go('access.signin');
+                            }
                           }
                       });
                     }]
