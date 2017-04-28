@@ -19,7 +19,8 @@ app.controller('SigninFormController', ['$scope', '$http', '$state', 'initData',
         .then(function(response) {
           if ( !response.status ) {
             $scope.authError = response.msg ? response.msg : 'Email or Password not is wrong!';
-          }else{          
+          }else{
+            angular.copy(response.user_data, commonService.sync.user_data);    
             $state.go('app.dashboard');
           }
         }/*, function(x) {

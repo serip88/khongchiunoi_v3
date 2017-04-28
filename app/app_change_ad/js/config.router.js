@@ -29,11 +29,10 @@ angular.module('app')
                         //$http returns a promise for the url data
                         return $http({method: 'GET', url: [baseConfig.apiUrl, 'user/user_ss'].join('/')})
                         .success(function (data) {
-                          if(typeof(data.user_data)){
+                          if(data.user_data){
                             angular.copy(data.user_data, commonService.sync.user_data);
-                            if(!data.user_data){
-                              $state.go('access.signin');
-                            }
+                          }else{
+                            $state.go('access.signin');
                           }
                       });
                     }]
@@ -452,12 +451,10 @@ angular.module('app')
                       initData:  ['$http','commonService','$state', function($http,commonService,$state){
                         return $http({method: 'GET', url: [baseConfig.apiUrl, 'user/user_ss'].join('/')})
                         .success(function (data) {
-                          if(typeof(data.user_data)){
+                          if(data.user_data){
                             angular.copy(data.user_data, commonService.sync.user_data);
                             $state.go('app.dashboard');
                             //return data.user_data;
-                          }else{
-                            return false;
                           }
                       });
                     }]
