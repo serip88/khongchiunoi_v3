@@ -17,9 +17,9 @@
 	}]);
 	
 
-	app.controller('FlotChartDemoCtrl', ['$scope', '$stateParams', function($scope, $stateParams) {
+	/*app.controller('FlotChartDemoCtrl', ['$scope', '$stateParams', function($scope, $stateParams) {
     		alert(2);
-	}]);
+	}]);*/
 
 
 })(window, window.angular, window.jQuery);
