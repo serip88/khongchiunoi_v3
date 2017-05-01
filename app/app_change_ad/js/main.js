@@ -3,7 +3,7 @@
   /* Controllers */
   app.factory("commonService", ["$http", "$q", 'SweetAlert', function ($http, $q, SweetAlert) {
     var commonObject = {};
-    commonObject.sync = {user_data:"",is_requested:0};
+    commonObject.sync = {user_data:{},is_requested:0};
     commonObject.httpGet = function (path, params, block) {
         if(typeof block == 'undefined'){
             block = true;
@@ -156,6 +156,16 @@
           }
         })
       }
+      $scope.logout = function() {
+        commonService.httpPost('login/logout')
+          .then(function(response) {
+            if (response.status) {
+              angular.copy({}, commonService.sync.user_data);  
+              $state.go('access.signin');
+            }
+          }
+        );  
+      };
       function isEmpty(obj) {
 
           // null and undefined are "empty"
