@@ -61,6 +61,7 @@
   <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/lib/Validation-Engine/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>-->
   <link rel="stylesheet" href="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/lib/sweetalert/dist/sweetalert.css">
   <!-- App -->
+  <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/helper.js"></script>
   <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/app.js"></script>
   <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/config.js"></script>
   <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/config.lazyload.js"></script>

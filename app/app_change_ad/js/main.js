@@ -132,7 +132,7 @@
       /** Begin */
       init();
       function init(){
-        if(isEmpty($scope.options.user_data)){
+        if(helper.isEmpty($scope.options.user_data)){
           $state.go('access.signin');
         }else{
           if($state.current.name == 'access.signin'){
@@ -143,7 +143,7 @@
       function stateChange(){
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options){
           if(fromState.name  != toState.name){
-            if(isEmpty($scope.options.user_data)){
+            if(helper.isEmpty($scope.options.user_data)){
               if(toState.name != 'access.signin'){
                 event.preventDefault();
                 //$state.go('access.signin');
@@ -166,23 +166,4 @@
           }
         );  
       };
-      function isEmpty(obj) {
-
-          // null and undefined are "empty"
-          if (obj == null) return true;
-
-          // Assume if it has a length property with a non-zero value
-          // that that property is correct.
-          if (obj.length > 0)    return false;
-          if (obj.length === 0)  return true;
-
-          // Otherwise, does it have any properties of its own?
-          // Note that this doesn't handle
-          // toString and valueOf enumeration bugs in IE < 9
-          for (var key in obj) {
-              if (hasOwnProperty.call(obj, key)) return false;
-          }
-
-          return true;
-      }
   }]);
