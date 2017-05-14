@@ -1,0 +1,80 @@
+<style type="text/css">
+.page-header {
+    margin:10px 0 0;
+}
+.page-header h1 {
+    margin-top: 0px;
+    font-size: 20pt;
+}
+.breadcrumb {
+    margin-bottom: 5px;
+}
+</style>
+
+<div ng-controller="districtCtrl">
+  <div >
+      <div class="page-header">
+        <div class="container-fluid">
+          <div class="pull-right"  >
+              <a ng-click="openAddArea('lg')" data-toggle="tooltip" title="Add District" class="btn btn-primary" data-original-title="Add New"><i class="fa fa-plus"></i></a>
+              <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" data-ng-click="deleteProvince()" data-original-title="Delete"><i class="fa fa-trash-o"></i></button> 
+              <!-- onClick="confirm('Are you sure?') ? $('#myform').submit() : false;"  -->
+          </div>
+          <h1 class="pull-left">Area</h1>
+          <ul class="breadcrumb pull-left">
+            <li><a >Home</a></li>
+            <li><a >Area</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-list"></i> District List</h3>
+          </div>
+          <div class="panel-body">
+            <form  method="post" enctype="multipart/form-data" id="form-user">
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <td style="width: 1px;" class="text-center"> 
+                        <a data-ng-click="checkAll()"><i class="fa fa-check text-success hide"></i></a>
+                        <a data-ng-click="uncheckAll()"><i class="fa fa-times text-danger hide"></i></a>
+                        <label class="i-checks m-b-none">
+                        <input type="checkbox" onClick="$('input[name*=\'selected\']').prop('checked', this.checked);" data-ng-click="isCheckAll();">
+                        <i></i></label>
+                      </td>
+                      <td class="text-left"> 
+                        <a class="asc"> <span class="hide"> {{category.selected}} </span>  District Name</a></td>
+                      <td class="text-left"><a>Sort Order</a></td>
+                      
+                      <td class="text-right">Action</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="(key, value) in list">
+                      <td class="text-center">
+                        <label class="i-checks m-b-none" data-ng-click="myform.selected.click()">
+                        <input type="checkbox" checklist-model="category.selected" name="selected[]"  checklist-value="value.id">
+                        <i></i></label>
+                      </td>
+                      <td class="text-left">{{value.path_parent_name}}</td>
+                      <td class="text-left">{{value.id}}</td>
+                      <td class="text-right">
+                        <a data-ng-click="areaEdit(value)" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </form>
+            <div class="row">
+              <div class="col-sm-6 text-left"></div>
+              <div class="col-sm-6 text-right">Showing 1 to 2 of 2 (1 Pages)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

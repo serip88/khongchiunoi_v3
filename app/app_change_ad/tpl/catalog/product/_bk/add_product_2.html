@@ -1,0 +1,116 @@
+<style type="text/css">
+.error .form-control {
+    border-color: #a94442;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+</style>
+<div class="modal-header">
+    <h3 class="modal-title">Add Product</h3>
+</div>
+ <form   method="post" enctype="multipart/form-data" id="form-user" class="form-horizontal form-validation" name="myform" >
+<div class="modal-body" novalidate>
+        
+        <div class="form-group" >
+            <label class="col-sm-2 control-label" for="input-category">Product name (vn)</label>
+            <div class="col-sm-10">
+                <input type="text"  ng-pattern="/^.{2,20}$/" placeholder="product" class="form-control" data-ng-model="product.name_vn" required>
+                <div class="help-block">Product must be 3-20 characters.</div>
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="col-sm-2 control-label" for="input-category">Product name (en)</label>
+            <div class="col-sm-10">
+                <input type="text" ng-pattern="/^.{2,20}$/" placeholder="product" class="form-control" data-ng-model="product.name_en" required>
+                <div class="help-block">Product must be 3-20 characters.</div>
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="col-sm-2 control-label" for="input-user-group">Category</label>
+            <div class="col-sm-10">
+                <!--<select  class="form-control" ng-model="category.parent_id" required>
+                    <option value="">Please choose</option>
+                    <option ng-repeat="item in categoryList" value="{{item.id}}">{{item.name_vn}}</option>
+                </select>-->
+                <select  class="form-control" ng-model="product.parent_selected" ng-options="option as option.path_parent_name_vn for option in categoryList track by option.id">
+                </select>
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="col-sm-2 control-label" for="input-category">Price</label>
+            <div class="col-sm-10">
+                <input type="text" placeholder="0" class="form-control" ng-pattern="/^[0-9.,]+$/" data-ng-model="product.price" >
+            </div>
+        </div>
+        <div class="form-group" ng-controller="FileUploadCtrl" nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
+            <label class="col-sm-2 control-label" for="input-image">Image</label>
+            <!-- popover-placement="right" uib-popover-template="dynamicPopover.templateUrl" -->
+            <!--<div class="col-sm-10">
+                <a href="" id="thumb-image" data-toggle="image" class="img-thumbnail" title="{{popover.title}}" data-placement="right" data-animation="am-flip-x" data-auto-close="1" data-content="{{popover.content}}" data-template-url="{{popover.templateUrl}}" bs-popover><img src="http://dm-opencart.localhost/image/cache/no_image-100x100.png" alt="" title="" data-placeholder="http://dm-opencart.localhost/image/cache/no_image-100x100.png"></a>
+                <input type="hidden" name="image" value="" id="input-image" ng-model="product.image">
+            </div> -->
+            <div class="col-sm-10" >
+                <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s" data-ng-model="product.img" name="image" nv-file-select="" uploader="uploader">
+
+                <table class="table bg-white-only b-a">
+                  <thead>
+                      <tr>
+                          <th width="50%">Name</th>
+                          <th ng-show="uploader.isHTML5">Size</th>
+                          <th ng-show="uploader.isHTML5">Progress</th>
+                          <th>Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr ng-repeat="item in uploader.queue">
+                          <td><strong>{{ item.file.name }}</strong></td>
+                          <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                          <td ng-show="uploader.isHTML5">
+                              <div class="progress progress-sm m-b-none m-t-xs">
+                                  <div class="progress-bar bg-info" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                              </div>
+                          </td>
+                          <td nowrap>
+                              <button type="button" class="btn btn-default btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                  Upload
+                              </button>
+                              <button type="button" class="btn btn-default btn-xs" ng-click="item.remove();product.img=null">
+                                  Remove
+                              </button>
+                          </td>
+                      </tr>
+                  </tbody>
+                </table>
+            </div>
+            
+        </div>
+        <div class="form-group" >
+            <label class="col-sm-2 control-label" for="input-firstname">Description (vn)</label>
+            <div class="col-sm-10">
+                <textarea data-ng-model="product.description_vn" rows="5" placeholder="Description" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="col-sm-2 control-label" for="input-firstname">Description (en)</label>
+            <div class="col-sm-10">
+                <textarea data-ng-model="product.description_en" rows="5" placeholder="Description" class="form-control"></textarea>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-status">Status (*)</label>
+            <div class="col-sm-10">
+                <select name="status" id="input-status" class="form-control" ng-model="product.status"  required>
+                    <option value="">None</option>
+                    <option value="0" >Disabled</option>
+                    <option value="1">Enabled</option>
+                </select>
+            </div>
+        </div>
+    
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-primary" ng-click="ok(myform.$invalid)" >OK</button>
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+</div>
+</form>

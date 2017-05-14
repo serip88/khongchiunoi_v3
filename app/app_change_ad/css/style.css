@@ -1,0 +1,7 @@
+.txt-o-flow{
+	text-overflow: ellipsis;	
+	overflow: hidden;
+}
+tbody img.img-thumbnail{
+	width: 50px;
+}
