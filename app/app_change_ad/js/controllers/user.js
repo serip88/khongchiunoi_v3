@@ -153,7 +153,7 @@ var userApi = {
                 return;
               }
                 file.upload = Upload.upload({
-                    url: baseConfig.home+'api/upload/upload_img_user',
+                    url: baseConfig.apiUrl+'/upload/upload_img_user',
                     method: 'POST',
                     headers: {
                         'Content-Type': file.type
@@ -344,7 +344,7 @@ var userApi = {
                   return;
                 }
                   file.upload = Upload.upload({
-                      url: baseConfig.home+'api/upload/upload_img_user',
+                      url: baseConfig.apiUrl+'/upload/upload_img_user',
                       method: 'POST',
                       headers: {
                           'Content-Type': file.type
