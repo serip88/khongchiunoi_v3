@@ -102,7 +102,7 @@ var userApi = {
     };*/
   function modalAddUser(size,group_user) {
     var modalObj = {
-      templateUrl: baseConfig.adminTpl +'/system/users/add_user.html',
+      templateUrl: baseConfig.tplUrl +'/system/users/add_user.html',
       size: size,
       controller: ['$scope','commonService', '$uibModalInstance','Upload','$timeout','dataInit', function(scope, commonService, $uibModalInstance,Upload, $timeout, dataInit){
         scope.newuser = {};
@@ -295,7 +295,7 @@ var userApi = {
   }
   function modalEditUser(size,group_user,item) {
     var modalObj = {
-      templateUrl: baseConfig.adminTpl +'/system/users/edit_user.html',
+      templateUrl: baseConfig.tplUrl +'/system/users/edit_user.html',
       size: size,
       controller: ['$scope','commonService', '$uibModalInstance','Upload','$timeout','dataInit', function(scope, commonService, $uibModalInstance,Upload, $timeout, dataInit){
         scope.newuser = item;

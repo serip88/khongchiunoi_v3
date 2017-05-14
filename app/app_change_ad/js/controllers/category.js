@@ -85,7 +85,7 @@
 	    };
 	    function modalAddCategory(size,category_list) {
 	        var modalObj = {
-		        templateUrl: baseConfig.adminTpl +'/catalog/category/add_category.html',
+		        templateUrl: baseConfig.tplUrl +'/catalog/category/add_category.html',
 		        size: size,
 		        controller: ['$scope', '$uibModalInstance', 'dataInit', function(scope, $uibModalInstance, dataInit){
 		          	scope.category = {};
