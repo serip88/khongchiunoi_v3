@@ -39,7 +39,7 @@
             <div class="col-sm-10">
                 <button class="drop-box ng-pristine ng-untouched ng-valid ng-empty"  type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*"  ngf-max-size="4MB" >
                    <img ngf-src="!f.$error && f" style="width:100%" >
-                   <img ng-src="{{newuser.image_path}}" class="img-responsive" ng-if="!f">
+                   <img ng-src="/{{newuser.image_path}}" class="img-responsive" ng-if="!f">
                 </button>
             </div>
         </div> 

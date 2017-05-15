@@ -48,8 +48,8 @@ class User_lib extends Common_lib {
       $date = date("Y-m-d H:i", time());
       $data[$key]['ui_date_added'] = $date;
       $data[$key]['ui_status'] =  $value['status']?$this->_lang['user_status_enabled']:$this->_lang['user_status_disabled'];
-      $data[$key]['image_path'] = implode("/", array($value['media_path'],'large',$value['media_name']));  
-      if(!file_exists($data[$key]['image_path'])){
+      $data[$key]['image_path'] = implode("/", array($value['media_path'],'large',$value['media_name']));
+      if(!file_exists(FCPATH.$data[$key]['image_path'])){
         $data[$key]['image_path'] = '';
       }
     }

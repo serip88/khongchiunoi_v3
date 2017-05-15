@@ -15,7 +15,9 @@ user_guide_src/cilexer/build/*
 user_guide_src/cilexer/dist/*
 user_guide_src/cilexer/pycilexer.egg-info/*
 /vendor/
-
+app/images/post/*
+app/images/user/*
+app/images/tmp/*
 # IDE Files
 #-------------------------
 /nbproject/
