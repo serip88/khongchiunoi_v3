@@ -24,6 +24,8 @@ var userApi = {
 
   app.factory("userService", ["$http", "$q", function ($http, $q) {
     var userObject = {};
+    userObject.sync = {};
+    userObject.sync.options = {type:'member'};
     userObject.httpGet = function (path, params, block) {
         if(typeof block == 'undefined'){
             block = true;
@@ -100,7 +102,7 @@ var userApi = {
         $log.info('Modal dismissed at: ' + new Date());
       });
     };*/
-  function modalAddUser(size,group_user) {
+  function modalAddUser(size,group_user,type) {
     var modalObj = {
       templateUrl: baseConfig.tplUrl +'/system/users/add_user.html',
       size: size,
@@ -117,9 +119,14 @@ var userApi = {
 
           userService.httpPost(userApi.userSave,scope.newuser).then(function(responseData) {
               if (responseData.status) {
-               SweetAlert.swal("Add success!", "", "success");
-               dataInit.getUserList();
-               $uibModalInstance.close();
+                SweetAlert.swal("Add success!", "", "success");
+                if(dataInit.type=='admin'){
+                  dataInit.getUserList();
+                }else{
+                  dataInit.memberList();
+                }
+                
+                $uibModalInstance.close();
               }else{
                 SweetAlert.swal({
                   title: responseData.msg,
@@ -189,7 +196,7 @@ var userApi = {
     };
     modalObj.resolve = {
         dataInit: function(){
-            return {group_user:group_user,getUserList:$scope.getUserList};
+            return {group_user:group_user,getUserList:$scope.getUserList,memberList:$scope.memberList,type:type};
         }
     };
     openModal.custom(modalObj);
@@ -197,8 +204,13 @@ var userApi = {
   function deleteUserAction(){
     userService.httpPost(userApi.userDelete,{'user_delete':$scope.user.selected} ).then(function(responseData) {
         if (responseData.status) {
-         SweetAlert.swal("Delete success!", "", "success");
-         scope.getUserList();
+          SweetAlert.swal("Delete success!", "", "success");
+          if(userService.sync.options.type == 'admin'){
+            $scope.getUserList();
+          }else{
+            $scope.memberList();
+          }
+          
         }else{
           SweetAlert.swal({
             title: "Have problem when delete user!",
@@ -210,7 +222,8 @@ var userApi = {
     });
   }
 
-  $scope.deleteUser = function () {
+  $scope.deleteUser = function (type) {
+    userService.sync.options.type = type;
     var modalObj = {
         title: 'Delete User',
         body: 'Do you want delete selected user(s) ?',
@@ -219,12 +232,16 @@ var userApi = {
             fn: function () {
               if($scope.user.selected.length){
                 userService.httpPost(userApi.userDelete,{'user_delete':$scope.user.selected} ).then(function(responseData) {
-                    if (responseData.status) {
-                     SweetAlert.swal("Delete success!", "", "success");
-                     scope.getUserList();
+                  if (responseData.status) {
+                    SweetAlert.swal("Delete success!", "", "success");
+                    if(type == 'admin'){
+                      $scope.getUserList();
                     }else{
-
+                      $scope.memberList();
                     }
+                  }else{
+
+                  }
                 });
               }else{
                 openModal.alert('Chú ý', 'Vui lòng chọn user');
@@ -259,7 +276,7 @@ var userApi = {
   $scope.openAddMember = function (size) {
     userService.httpGet(userApi.memberGroup).then(function(responseData) {
         if (responseData.status) {
-          modalAddUser(size,responseData.rows);
+          modalAddUser(size,responseData.rows,'member');
         }
     });
     
@@ -267,7 +284,7 @@ var userApi = {
   $scope.openAddUser = function (size) {
     userService.httpGet(userApi.adminGroup).then(function(responseData) {
         if (responseData.status) {
-          modalAddUser(size,responseData.rows);
+          modalAddUser(size,responseData.rows,'admin');
         }
     });
     
@@ -282,18 +299,18 @@ var userApi = {
   $scope.memberEdit = function (item) {
      userService.httpGet(userApi.memberGroup).then(function(responseData) {
         if (responseData.status) {
-          modalEditUser('lg',responseData.rows,item);
+          modalEditUser('lg',responseData.rows,item,'member');
         }
     });
   }
   $scope.userEdit = function (item) {
      userService.httpGet(userApi.adminGroup).then(function(responseData) {
         if (responseData.status) {
-          modalEditUser('lg',responseData.rows,item);
+          modalEditUser('lg',responseData.rows,item,'admin');
         }
     });
   }
-  function modalEditUser(size,group_user,item) {
+  function modalEditUser(size,group_user,item,type) {
     var modalObj = {
       templateUrl: baseConfig.tplUrl +'/system/users/edit_user.html',
       size: size,
@@ -309,7 +326,12 @@ var userApi = {
           userService.httpPost(userApi.userEdit,scope.newuser).then(function(responseData) {
               if (responseData.status) {
                SweetAlert.swal("Edit user success!", "", "success");
-               dataInit.getUserList();
+              if(dataInit.type == 'admin'){
+                dataInit.getUserList();
+              }else{
+                dataInit.memberList();
+              }
+               
                $uibModalInstance.close();
               }else{
                 SweetAlert.swal({
@@ -370,7 +392,7 @@ var userApi = {
     };
     modalObj.resolve = {
         dataInit: function(){
-            return {group_user:group_user,getUserList:$scope.getUserList};
+            return {group_user:group_user,getUserList:$scope.getUserList,memberList:$scope.memberList,type:type};
         }
     };
     openModal.custom(modalObj);
