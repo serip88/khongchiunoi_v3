@@ -187,7 +187,7 @@ class Base_controller extends REST_Controller {
         return $option_format;
     }
     public function init_user_category($user_id,$option){
-        $this->load->library('model_option_user_lib','option_lib');
+        $this->load->library(config_item('app_path').'/'.'model_option_user_lib',config_item('app_path').'/'.'option_lib');
         $msg = '';
         $stt = true;
         $stt_user_group = false;
