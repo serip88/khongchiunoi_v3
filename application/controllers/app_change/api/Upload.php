@@ -14,7 +14,7 @@ class Upload extends Base_controller {
         parent::__construct();
         $this->dir_path='./app/images';
         $this->dir_tmp= $this->dir_path . '/tmp';
-        $this->load->library('upload_lib');
+        $this->load->library(config_item('app_path').'/'.'upload_lib');
     }
 
     /*public function upload_img_user_post(){

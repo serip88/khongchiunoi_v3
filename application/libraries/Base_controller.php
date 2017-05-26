@@ -27,7 +27,7 @@ class Base_controller extends REST_Controller {
         // Construct the parent class
         parent::__construct();
         $this->CI =& get_instance();
-        $this->load->library('user_lib');
+        $this->load->library(config_item('app_path').'/'.'user_lib');
         $this->is_login();
         $this->htaccess_emulator();
     }
@@ -492,7 +492,7 @@ class Base_controller extends REST_Controller {
     }
     //return file to new location
     public function move_file_to_post_folder($file_name, $file_path){
-        $this->load->library('upload_lib');
+        $this->load->library(config_item('app_path').'/'.'upload_lib');
         $option = $this->handle_get_option_post_folder();
         //Importance check folder before upload
         $this->handle_check_option_folder_is_created($this->dir_path_post,$option);

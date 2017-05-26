@@ -25,7 +25,11 @@ class User extends Base_controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->load->library(['user_lib','model_option_user_lib','media_lib']);
+        $this->load->library( array(
+            config_item('app_path').'/'.'user_lib',
+            config_item('app_path').'/'.'model_option_user_lib',
+            config_item('app_path').'/'.'media_lib'
+        ));
         // Configure limits on our controller methods
         // Ensure you have created the 'limits' table and enabled 'limits' within application/config/rest.php
         $this->methods['user_get']['limit'] = 500; // 500 requests per hour per user/key
@@ -241,7 +245,7 @@ class User extends Base_controller {
     }
 
     public function move_file_to_user_folder($file_name, $file_path, $user_id){
-        $this->load->library('upload_lib');
+        $this->load->library(config_item('app_path').'/'.'upload_lib');
         $option = $this->model_option_user_lib->get_option_user($user_id);
         //Importance check folder before upload
         $this->handle_check_user_folder_is_created($this->dir_path_user,$option,$user_id);

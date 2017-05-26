@@ -11,7 +11,7 @@ class Login extends Base_controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->load->library('user_lib');
+        $this->load->library(config_item('app_path').'/'.'User_lib');
         // Configure limits on our controller methods
         // Ensure you have created the 'limits' table and enabled 'limits' within application/config/rest.php
         $this->methods['user_get']['limit'] = 500; // 500 requests per hour per user/key
