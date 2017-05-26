@@ -6,3 +6,4 @@ $config['site_name'] = 'Ungdungnho';
 $config['site_version'] = '1.0';
 $config['app_path'] = 'app_change';
 $config['app_admin_path'] = 'app_change_ad';
+$config['app_name'] = 'Name app';
