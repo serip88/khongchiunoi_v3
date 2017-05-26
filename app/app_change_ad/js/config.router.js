@@ -17,7 +17,7 @@ angular.module('app')
       function ($stateProvider,   $urlRouterProvider) {
           
           $urlRouterProvider
-              .otherwise('/');
+              .otherwise('access/signin');
           $stateProvider
               .state('app', {
                   abstract: true,
