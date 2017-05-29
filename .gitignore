@@ -5,6 +5,7 @@ application/cache/*
 !application/cache/.htaccess
 
 application/logs/*
+application/views/templates_c/*
 !application/logs/index.html
 !application/logs/.htaccess
 

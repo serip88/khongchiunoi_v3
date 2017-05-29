@@ -11,7 +11,7 @@ class Client extends BaseUI_controller{
     parent::__construct();
     //$this->load->database();
     $this->load->model('post/post_model');
-    $this->load->library(array('ui/page_lib','CI_Smarty'));
+    $this->load->library(array(config_item('app_path').'/page_lib','common/CI_Smarty'));
     
   }
   public function index()
@@ -20,7 +20,9 @@ class Client extends BaseUI_controller{
   	$this->page_info['main_menu']=$this->page_lib->get_main_menu();
     //$this->load->view('index');
   	$this->ci_smarty->assign('page_info', $this->page_info);
-    $this->ci_smarty->display( APPPATH.'views\client\index.tpl' );
+    $tpl_path = sprintf(APPPATH.'views\%s\index.tpl',config_item('app_path'));
+    $this->ci_smarty->display($tpl_path);
+    echo 3;die;
   }
   public function change()
   { 
