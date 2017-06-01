@@ -22,7 +22,6 @@ class Client extends BaseUI_controller{
   	$this->ci_smarty->assign('page_info', $this->page_info);
     $tpl_path = sprintf(APPPATH.'views\%s\index.tpl',config_item('app_path'));
     $this->ci_smarty->display($tpl_path);
-    echo 3;die;
   }
   public function change()
   { 
