@@ -1,5 +1,5 @@
+(function (window, angular, $, undefined) {
 'use strict';
-
   /* Controllers */
   app.factory("commonService", ["$http", "$q", 'SweetAlert', function ($http, $q, SweetAlert) {
     var commonObject = {};
@@ -178,4 +178,87 @@
         return [baseConfig.tplUrl,'/','common/sidebar.html'].join('');
       }
       //E custom
+  }])
+  .controller('headerCtrl', ['$scope', '$translate', '$localStorage', '$window', 'commonService', '$state' , 
+    function(              $scope,   $translate,   $localStorage,   $window ,  commonService,   $state) {
+      /****************
+      **  DETECT WIDOW RESIZE
+      *****************/
+      angular.element(document).ready(function () {
+        $(window).resize(function() {
+
+            if (this.resizeTO)
+                clearTimeout(this.resizeTO);
+
+            this.resizeTO = setTimeout(function() {
+
+                $(this).trigger('resizeEnd');
+
+            }, 75);
+
+        });
+
+        if ($('body.fixed-header').length) {
+
+            var top = $('#site-header').offset().top;
+
+            if ($('body').hasClass('admin-bar')) {
+                top -= 32;
+            }
+            $('#site-header').affix({
+                top: top,
+                offset: {
+                    top: function() {
+                        if ($('#site-header').hasClass('affix')) {
+                            return top + 30;
+                        } else {
+                            return top + 150;
+                        }
+                    }
+                }
+            });
+
+            $('#site-header').on('affix.bs.affix', function() {
+
+                $('#site-header').css('width', $('#site').width());
+                $('#site-body').css('padding-top', $('#site-header').outerHeight(true));
+                $('body').addClass('fixed-header-fixed');
+
+            });
+
+            $('#site-header').on('affixed.bs.affix', function() {
+
+                setTimeout(function() {
+
+                    $('#site-header').addClass('affix-display');
+
+                }, 200);
+
+            });
+
+            $('#site-header').on('affixed-top.bs.affix', function() {
+
+                $('#site-header').css('width', $('#site').width());
+                $('#site-body').css('padding-top', '');
+                $('body').removeClass('fixed-header-fixed');
+                $('#site-header').removeClass('affix-display');
+
+            });
+
+            if ($('#site-header').hasClass('affix')) {
+
+                $('#site-header').css('width', $('#site').width());
+                $('#site-body').css('padding-top', $('#site-header').outerHeight(true));
+                $('#site-header').addClass('affix-display');
+            }
+
+            $(window).on('resize', function() {
+
+                $('#site-header').css('width', $('#site').width());
+
+            });
+
+        }
+      });
   }]);
+})(window, window.angular, window.jQuery);

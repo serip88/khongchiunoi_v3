@@ -21,7 +21,7 @@
         }
     </style>
     <link rel='stylesheet' id='wsl-widget-css' href="{$config['app_url']}/css/style.css" type='text/css' media='all' />
-    <link rel='stylesheet' id='blt-bootstrap-css' href="{$config['app_common_url']}/css/bootstrap.css" type='text/css' media='all' />
+    <link rel='stylesheet' id='blt-bootstrap-css' href="{$config['app_common_url']}/vendor/bootstrap/css/bootstrap.css" type='text/css' media='all' />
     <link rel='stylesheet' id='blt-style-css' href="{$config['app_url']}/themes/first/css/style.css" type='text/css' media='all' />
     <link rel='stylesheet' id='blt-fontawesome-css' href="{$config['app_url']}/css/font-awesome.min.css?ver=2.31" type='text/css' media='all' />
     <link rel='stylesheet' id='acfgfs-enqueue-fonts-css' href='http://fonts.googleapis.com/css?family=Open+Sans%3A400%2Citalic%2C600%2C700%2C800%7COpen+Sans%3A400%2Citalic%2C600%2C700%2C800&#038;subset&#038;ver=4.5.2' type='text/css' media='all' />
@@ -50,6 +50,7 @@
     <script src="{$config['app_common_url']}/js/directives/SweetAlert.min.js"></script>
     <!-- B translate -->
     <!-- <script src="{$config['app_common_url']}/vendor/angular/angular-bootstrap/ui-bootstrap-tpls-1.3.3.js"></script> -->
+    <script src="{$config['app_common_url']}/vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <script src="{$config['app_common_url']}/js/helper.js"></script>
     <script src="{$config['app_url']}/js/app.js"></script>
