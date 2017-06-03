@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tôi giải trí</title>
+    <base href="/">
     <style type="text/css">
         img.wp-smiley,
         img.emoji {

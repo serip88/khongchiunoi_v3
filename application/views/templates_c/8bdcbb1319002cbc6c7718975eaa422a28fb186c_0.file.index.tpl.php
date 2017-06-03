@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-01 17:07:34
+/* Smarty version 3.1.29, created on 2017-06-03 04:24:31
   from "C:\xampp\htdocs\toigiaitri_v3\application\views\app_change\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59302db65865a2_87558609',
+  'unifunc' => 'content_59321ddfeddfd8_99448842',
   'file_dependency' => 
   array (
     '8bdcbb1319002cbc6c7718975eaa422a28fb186c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\toigiaitri_v3\\application\\views\\app_change\\index.tpl',
-      1 => 1496329644,
+      1 => 1496456666,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59302db65865a2_87558609 ($_smarty_tpl) {
+function content_59321ddfeddfd8_99448842 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="vi" data-ng-app="app">
@@ -28,6 +28,7 @@ function content_59302db65865a2_87558609 ($_smarty_tpl) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tôi giải trí</title>
+    <base href="/">
     <style type="text/css">
         img.wp-smiley,
         img.emoji {

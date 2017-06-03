@@ -5,7 +5,7 @@
  */
 angular.module('app')
   .run(
-    [          '$rootScope', '$state', '$stateParams',
+    ['$rootScope', '$state', '$stateParams',
       function ($rootScope,   $state,   $stateParams) {
           $rootScope.$state = $state;
           $rootScope.$stateParams = $stateParams;        
@@ -13,9 +13,9 @@ angular.module('app')
     ]
   )
   .config(
-    [          '$stateProvider', '$urlRouterProvider',
-      function ($stateProvider,   $urlRouterProvider) {
-          
+    [          '$stateProvider', '$urlRouterProvider', '$locationProvider',
+      function ($stateProvider,   $urlRouterProvider, $locationProvider) {
+          $locationProvider.html5Mode(true);
           $urlRouterProvider
               .otherwise('/');
           $stateProvider
