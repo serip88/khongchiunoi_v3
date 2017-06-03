@@ -157,6 +157,7 @@
           }
         })
       }
+      //B custom
       $scope.logout = function() {
         commonService.httpPost('login/logout')
           .then(function(response) {
@@ -167,4 +168,14 @@
           }
         );  
       };
+      $scope.getHeader = function() {
+        return [baseConfig.tplUrl,'/','common/header.html'].join('');
+      }
+      $scope.getFooter = function() {
+        return [baseConfig.tplUrl,'/','common/footer.html'].join('');
+      }
+      $scope.getSidebar = function() {
+        return [baseConfig.tplUrl,'/','common/sidebar.html'].join('');
+      }
+      //E custom
   }]);

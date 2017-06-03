@@ -15,24 +15,23 @@ angular.module('app')
   .config(
     ['$stateProvider', '$urlRouterProvider', '$locationProvider',
       function ($stateProvider, $urlRouterProvider, $locationProvider) {
-          //$locationProvider.html5Mode(true);
+          $locationProvider.html5Mode(true);
           $urlRouterProvider
-            .otherwise('app');
+            .otherwise('/app');
           $stateProvider
             .state('app', {
                   url: '/',
-                  templateUrl: baseConfig.tplUrl+'/home/content.html',
+                  templateUrl: baseConfig.tplUrl+'/common/app.html',
                   controller: 'AppCtrl',
                   resolve: {
                       initData:  ['$http', 'commonService','$state', function($http,commonService,$state){
                         //$http returns a promise for the url data
-                        alert('welcome');
                         return $http({method: 'GET', url: [baseConfig.apiUrl, 'user/user_ss'].join('/')})
                         .success(function (data) {
                           if(data.user_data){
                             angular.copy(data.user_data, commonService.sync.user_data);
                           }else{ 
-                            alert('not members');
+                            alert('you are not members');
                             //$state.go('access.signin');
                           }
                       });
