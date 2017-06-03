@@ -9,7 +9,7 @@ var baseConfig = {};
     baseConfig.home = '/';
 var app =  angular.module('app')
   .config(
-    [        '$controllerProvider', '$compileProvider', '$filterProvider', '$provide',
+    ['$controllerProvider', '$compileProvider', '$filterProvider', '$provide',
     function ($controllerProvider,   $compileProvider,   $filterProvider,   $provide) {
         
         // lazy controller, directive and service

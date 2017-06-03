@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-03 04:24:31
+/* Smarty version 3.1.29, created on 2017-06-03 06:54:08
   from "C:\xampp\htdocs\toigiaitri_v3\application\views\app_change\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59321ddfeddfd8_99448842',
+  'unifunc' => 'content_593240f0bec9f9_88116480',
   'file_dependency' => 
   array (
     '8bdcbb1319002cbc6c7718975eaa422a28fb186c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\toigiaitri_v3\\application\\views\\app_change\\index.tpl',
-      1 => 1496456666,
+      1 => 1496465644,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59321ddfeddfd8_99448842 ($_smarty_tpl) {
+function content_593240f0bec9f9_88116480 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="vi" data-ng-app="app">
@@ -28,7 +28,7 @@ function content_59321ddfeddfd8_99448842 ($_smarty_tpl) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tôi giải trí</title>
-    <base href="/">
+    <!-- <base href="/"> -->
     <style type="text/css">
         img.wp-smiley,
         img.emoji {
@@ -88,7 +88,11 @@ function content_59321ddfeddfd8_99448842 ($_smarty_tpl) {
     <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['config']->value['app_common_url'];?>
 /vendor/angular/angular-ui-router/angular-ui-router.js"><?php echo '</script'; ?>
-> 
+>
+    <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['config']->value['app_common_url'];?>
+/vendor/angular/ngstorage/ngStorage.js"><?php echo '</script'; ?>
+>
     <!-- Lazyload -->
     <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['config']->value['app_common_url'];?>
@@ -110,6 +114,16 @@ function content_59321ddfeddfd8_99448842 ($_smarty_tpl) {
     <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['config']->value['app_common_url'];?>
 /vendor/angular/angular-translate/storage-local.js"><?php echo '</script'; ?>
+>
+    <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['config']->value['app_common_url'];?>
+/vendor/sweetalert/dist/sweetalert.css">
+    <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['config']->value['app_common_url'];?>
+/js/directives/sweet-alert.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['config']->value['app_common_url'];?>
+/js/directives/SweetAlert.min.js"><?php echo '</script'; ?>
 >
     <!-- B translate -->
     <!-- <?php echo '<script'; ?>
@@ -141,6 +155,11 @@ function content_59321ddfeddfd8_99448842 ($_smarty_tpl) {
  src="<?php echo $_smarty_tpl->tpl_vars['config']->value['app_url'];?>
 /js/main.js"><?php echo '</script'; ?>
 >
+
+    <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['config']->value['app_common_url'];?>
+/js/services/common-service.js"><?php echo '</script'; ?>
+>    
 
     <meta name="generator" content="Renza.CMS" />
     

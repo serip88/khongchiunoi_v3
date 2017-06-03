@@ -60,6 +60,7 @@
   }])
   .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'commonService', '$state' , 
     function(              $scope,   $translate,   $localStorage,   $window ,  commonService,   $state) {
+      alert('main page');
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');

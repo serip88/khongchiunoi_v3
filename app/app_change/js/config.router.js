@@ -8,36 +8,36 @@ angular.module('app')
     ['$rootScope', '$state', '$stateParams',
       function ($rootScope,   $state,   $stateParams) {
           $rootScope.$state = $state;
-          $rootScope.$stateParams = $stateParams;        
+          $rootScope.$stateParams = $stateParams;
       }
     ]
   )
   .config(
-    [          '$stateProvider', '$urlRouterProvider', '$locationProvider',
-      function ($stateProvider,   $urlRouterProvider, $locationProvider) {
-          $locationProvider.html5Mode(true);
+    ['$stateProvider', '$urlRouterProvider', '$locationProvider',
+      function ($stateProvider, $urlRouterProvider, $locationProvider) {
+          //$locationProvider.html5Mode(true);
           $urlRouterProvider
-              .otherwise('/');
+            .otherwise('app');
           $stateProvider
-              .state('app', {
-                  abstract: true,
-                  url: '/app',
-                  templateUrl: baseConfig.tplUrl+'/app.html',
+            .state('app', {
+                  url: '/',
+                  templateUrl: baseConfig.tplUrl+'/home/content.html',
                   controller: 'AppCtrl',
                   resolve: {
-                    initData:  ['$http', 'commonService','$state', function($http,commonService,$state){
+                      initData:  ['$http', 'commonService','$state', function($http,commonService,$state){
                         //$http returns a promise for the url data
+                        alert('welcome');
                         return $http({method: 'GET', url: [baseConfig.apiUrl, 'user/user_ss'].join('/')})
                         .success(function (data) {
                           if(data.user_data){
                             angular.copy(data.user_data, commonService.sync.user_data);
-                          }else{
-                            $state.go('access.signin');
+                          }else{ 
+                            alert('not members');
+                            //$state.go('access.signin');
                           }
                       });
                     }]
-                  }
-                  
+                  }  
               })
               .state('app.dashboard', {
                   url: '/dashboard',

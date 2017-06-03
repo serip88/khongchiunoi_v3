@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="vi" data-ng-app="app">
+<html lang="en" data-ng-app="app">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tôi giải trí</title>
-    <!-- <base href="/"> -->
+    <base href="/">
     <style type="text/css">
         img.wp-smiley,
         img.emoji {
@@ -36,8 +36,7 @@
     <!-- Cookies -->
     <script src="{$config['app_common_url']}/vendor/angular/angular-cookies/angular-cookies-1.5.7.js"></script>
     <!-- Router -->
-    <script src="{$config['app_common_url']}/vendor/angular/angular-ui-router/angular-ui-router.js"></script>
-    <script src="{$config['app_common_url']}/vendor/angular/ngstorage/ngStorage.js"></script>
+    <script src="{$config['app_common_url']}/vendor/angular/angular-ui-router/angular-ui-router.js"></script> 
     <!-- Lazyload -->
     <script src="{$config['app_common_url']}/vendor/angular/oclazyload/ocLazyLoad.js"></script>
     <!-- B translate -->
@@ -45,9 +44,6 @@
     <script src="{$config['app_common_url']}/vendor/angular/angular-translate/loader-static-files.js"></script>
     <script src="{$config['app_common_url']}/vendor/angular/angular-translate/storage-cookie.js"></script>
     <script src="{$config['app_common_url']}/vendor/angular/angular-translate/storage-local.js"></script>
-    <link rel="stylesheet" href="{$config['app_common_url']}/vendor/sweetalert/dist/sweetalert.css">
-    <script src="{$config['app_common_url']}/js/directives/sweet-alert.min.js"></script>
-    <script src="{$config['app_common_url']}/js/directives/SweetAlert.min.js"></script>
     <!-- B translate -->
     <!-- <script src="{$config['app_common_url']}/vendor/angular/angular-bootstrap/ui-bootstrap-tpls-1.3.3.js"></script> -->
 
@@ -57,8 +53,6 @@
     <script src="{$config['app_url']}/js/config.lazyload.js"></script>
     <script src="{$config['app_url']}/js/config.router.js"></script>
     <script src="{$config['app_url']}/js/main.js"></script>
-
-    <script src="{$config['app_common_url']}/js/services/common-service.js"></script>    
 
     <meta name="generator" content="Renza.CMS" />
     {literal}

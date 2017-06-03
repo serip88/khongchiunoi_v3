@@ -8,4 +8,5 @@ $config['app_path'] = 'app_change';
 $config['app_admin_path'] = 'app_change_ad';
 $config['app_name'] = 'Name app';
 $config['app_url'] = $config['base_url'].'app/'.$config['app_path'];
+$config['app_url_admin'] = $config['base_url'].'app/app_change_ad';
 $config['app_common_url'] = $config['base_url'].'app/app_common';
