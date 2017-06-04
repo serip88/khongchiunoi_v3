@@ -1,0 +1,46 @@
+<div class="modal am-fade" id="blt-user-modal" role="dialog">
+<div class="modal-dialog">  
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" data-ng-click="$hide()">&times;</button>
+      <h4 class="modal-title">Đăng ký tài khoản mới</h4>
+    </div>
+    <div class="modal-body">
+      <form method="post">
+          <div class="wp-social-login-widget">
+            <div class="wp-social-login-connect-with"></div>
+            <div class="wp-social-login-provider-list">
+                <a rel="nofollow" href="http://www.bluthemes.com/themes-special/katla/wp-login.php?action=wordpress_social_authenticate&#038;mode=login&#038;provider=Facebook&#038;redirect_to=http%3A%2F%2Fwww.bluthemes.com%2Fthemes-special%2Fkatla%2F" data-provider="Facebook" class="btn btn-lg wp-social-login-provider wp-social-login-provider-facebook">
+                  <span>
+                     <i class="fa fa-facebook"></i>
+                     Facebook          </span>
+               </a> <a rel="nofollow" href="http://www.bluthemes.com/themes-special/katla/wp-login.php?action=wordpress_social_authenticate&#038;mode=login&#038;provider=Twitter&#038;redirect_to=http%3A%2F%2Fwww.bluthemes.com%2Fthemes-special%2Fkatla%2F" data-provider="Twitter" class="btn btn-lg wp-social-login-provider wp-social-login-provider-twitter">
+                  <span>
+                     <i class="fa fa-twitter"></i>
+                     Twitter          </span>
+               </a>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Username</label>
+            <input class="form-control input-lg required" name="blt_user_login" type="text" />
+        </div>
+        <div class="form-group">
+            <label for="blt_user_email">Email</label>
+            <input class="form-control input-lg required" name="blt_user_email" id="blt_user_email" type="email" />
+        </div>
+        <div class="form-group">
+            <input type="hidden" name="action" value="blt_register_member" />
+            <button class="btn btn-theme btn-lg" data-loading-text="Loading..." type="submit">Sign up</button>
+        </div>
+
+      </form>
+    </div>
+    <div class="modal-footer">
+      <span class="blt-login-footer" style="display: block;">Already have an account? <a href="#blt-login">Login</a></span>
+      <button type="button" class="btn btn-default hide" data-dismiss="modal" data-ng-click="$hide()">Close</button>
+    </div>
+  </div>
+  
+</div>
+</div>

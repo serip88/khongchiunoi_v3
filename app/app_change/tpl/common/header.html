@@ -14,7 +14,8 @@
 
                         <div class="navbar-right hidden-xs">
                             <div class="header-actions"> <a href="#blt-login" class="btn btn-theme navbar-btn"><i class="fa fa-cloud-upload"></i> Add post</a>
-                                <a href="#blt-login" class="btn btn-default navbar-btn">Login / Register</a>
+                                <a href="#" data-ng-click="showLogin()" class="btn btn-default navbar-btn">Login</a>
+                                <a href="#" data-ng-click="showRegister()" class="btn btn-default navbar-btn">Register</a>
                                 <form action="http://www.bluthemes.com/themes-special/katla/" class="navbar-form navbar-left" role="search">
                                     <input type="text" class="form-control" name="s" placeholder="Search..." value="">
                                     <button type="submit" class="btn"><i class="fa fa-search"></i></button>
@@ -35,7 +36,8 @@
                                 </form>
                             </li>
                             <li><a href="#blt-login"><i class="fa fa-cloud-upload"></i> Add post</a></li>
-                            <li><a href="#blt-login">Login / Register</a></li>
+                            <li><a href="#blt-login" data-ng-click="showLogin()">Login</a></li>
+                            <li><a href="#blt-login" data-ng-click="showRegister()">Register</a></li>
                         </ul>
                         <ul id="menu-main-menu" class="nav navbar-nav">
                             <li id="menu-item-144" class=" menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-144 active"><a title="New" href="http://www.bluthemes.com/themes-special/katla/"><i class="fa fa-star-o"></i>&nbsp;&nbsp;New</a></li>

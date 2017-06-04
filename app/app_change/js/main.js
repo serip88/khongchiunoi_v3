@@ -179,8 +179,67 @@
       }
       //E custom
   }])
-  .controller('headerCtrl', ['$scope', '$translate', '$localStorage', '$window', 'commonService', '$state' , 
-    function(              $scope,   $translate,   $localStorage,   $window ,  commonService,   $state) {
+  .controller('headerCtrl', ['$scope', '$translate', '$modal', '$window', 'commonService', '$state', 'SweetAlert', 
+    function(              $scope, $translate, $modal, $window , commonService, $state, SweetAlert) {
+
+      $scope.showLogin = function() {
+        var myModal = $modal({
+          templateUrl: baseConfig.tplUrl +'/common/blocks/login.html',
+          show: false,
+          controller: ['$scope', 'initData', function ($scope, initData) {
+            $scope.ok = function () {
+              initData.doLogin();
+            };
+          }],
+          //size: 'lg',
+          resolve: {
+            initData: function () {
+              return {doLogin:$scope.doLogin};
+            }
+          }
+        });
+        myModal.$promise.then(myModal.show);
+      }
+
+      $scope.doLogin = function() {
+        alert('login');
+        // commonService.httpPost(userApi.userSave,scope.newuser).then(function(responseData) {
+        //     if (responseData.status) {
+        //      SweetAlert.swal("Add success!", "", "success");
+        //      dataInit.getUserList();
+        //      $uibModalInstance.close();
+        //     }else{
+        //       SweetAlert.swal({
+        //         title: responseData.msg,
+        //         text: "",
+        //         type: "warning",
+        //         confirmButtonText: "Ok"
+        //       });
+        //     }
+        // });
+      }
+
+      $scope.showRegister = function() {
+        var myModal = $modal({
+          templateUrl: baseConfig.tplUrl +'/common/blocks/register.html',
+          show: false,
+          controller: ['$scope', 'initData', function ($scope, initData) {
+            $scope.ok = function () {
+              initData.doRegister();
+            };
+          }],
+          //size: 'lg',
+          resolve: {
+            initData: function () {
+              return {doLogin:$scope.doRegister};
+            }
+          }
+        });
+        myModal.$promise.then(myModal.show);
+      }
+      $scope.doRegister = function() {
+        alert('Register');
+      }
       /****************
       **  DETECT WIDOW RESIZE
       *****************/
