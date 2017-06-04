@@ -31,6 +31,6 @@
   },
   "sidebar" : {
     "trending_post" : "Có thể bạn muốn xem",
-    "login" : "Đăng nhập"
+    "new_post" : "Bài mới"
   }
 }
