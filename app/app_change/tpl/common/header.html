@@ -13,11 +13,15 @@
                     <div class="collapse navbar-collapse" id="katla-pri-navbar">
 
                         <div class="navbar-right hidden-xs">
-                            <div class="header-actions"> <a href="#blt-login" class="btn btn-theme navbar-btn"><i class="fa fa-cloud-upload"></i> Add post</a>
-                                <a href="#" data-ng-click="showLogin()" class="btn btn-default navbar-btn">Login</a>
-                                <a href="#" data-ng-click="showRegister()" class="btn btn-default navbar-btn">Register</a>
+                            <div class="header-actions"> 
+                                <a href="#blt-login" class="btn btn-theme navbar-btn">
+                                    <i class="fa fa-cloud-upload"></i>
+                                    <span translate="header.navbar.add_post">Add post</span>
+                                </a>
+                                <a href="#" data-ng-click="showLogin()" class="btn btn-default navbar-btn" translate="header.navbar.login">Login</a>
+                                <a href="#" data-ng-click="showRegister()" class="btn btn-default navbar-btn" translate="header.navbar.sign_up">Register</a>
                                 <form action="http://www.bluthemes.com/themes-special/katla/" class="navbar-form navbar-left" role="search">
-                                    <input type="text" class="form-control" name="s" placeholder="Search..." value="">
+                                    <input type="text" class="form-control" name="s" placeholder="{{ 'header.navbar.search_3_dot' | translate }}" value="">
                                     <button type="submit" class="btn"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
@@ -31,18 +35,27 @@
 
                             <li>
                                 <form action="http://www.bluthemes.com/themes-special/katla/" class="navbar-form navbar-left" role="search">
-                                    <input type="text" class="form-control" name="s" placeholder="Search..." value="">
+                                    <input type="text" class="form-control" name="s" placeholder="{{ 'header.navbar.search_3_dot' | translate }}" value="">
                                     <button type="submit" class="btn"><i class="fa fa-search"></i></button>
                                 </form>
                             </li>
-                            <li><a href="#blt-login"><i class="fa fa-cloud-upload"></i> Add post</a></li>
-                            <li><a href="#blt-login" data-ng-click="showLogin()">Login</a></li>
-                            <li><a href="#blt-login" data-ng-click="showRegister()">Register</a></li>
+                            <li><a href="#blt-login"><i class="fa fa-cloud-upload"></i> 
+                                <span translate="header.navbar.add_post">Add post</span>
+                                </a>
+                            </li>
+                            <li><a href="#blt-login" data-ng-click="showLogin()" translate="header.navbar.login">Login</a></li>
+                            <li><a href="#blt-login" data-ng-click="showRegister()" translate="header.navbar.sign_up">Register</a></li>
                         </ul>
                         <ul id="menu-main-menu" class="nav navbar-nav">
-                            <li id="menu-item-144" class=" menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-144 active"><a title="New" href="http://www.bluthemes.com/themes-special/katla/"><i class="fa fa-star-o"></i>&nbsp;&nbsp;New</a></li>
-                            <li id="menu-item-142" class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-142"><a title="Trending" href="http://www.bluthemes.com/themes-special/katla/?page_id=12"><i class="fa fa-bolt"></i>&nbsp;&nbsp;Trending</a></li>
-                            <li id="menu-item-143" class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-143"><a title="Top 10" href="http://www.bluthemes.com/themes-special/katla/?page_id=10"><i class="fa fa-signal"></i>&nbsp;&nbsp;Top 10</a></li>
+                            <li id="menu-item-144" class=" menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-144 active"><a title="New" href="http://www.bluthemes.com/themes-special/katla/"><i class="fa fa-star-o"></i>&nbsp;&nbsp;
+                                <span translate="header.navbar.new">New</span></a>
+                            </li>
+                            <li id="menu-item-142" class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-142"><a title="Trending" href="#"><i class="fa fa-bolt"></i>&nbsp;&nbsp;
+                                <span translate="header.navbar.trending">Trending </span></a>
+                            </li>
+                            <li id="menu-item-143" class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-143"><a title="Top 10" href="http://www.bluthemes.com/themes-special/katla/?page_id=10"><i class="fa fa-signal"></i>&nbsp;&nbsp;
+                                <span translate="header.navbar.top">Top</span> 10</a>
+                            </li>
                         </ul>
                         <ul id="menu-secondary" class="nav navbar-nav visible-xs-block">
                             <li id="menu-item-147" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-147"><a title="Funny" href="http://www.bluthemes.com/themes-special/katla/?cat=4">Funny</a></li>

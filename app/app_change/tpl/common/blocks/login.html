@@ -3,7 +3,7 @@
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" data-ng-click="$hide()">&times;</button>
-      <h4 class="modal-title">Login</h4>
+      <h4 class="modal-title" translate="header.navbar.login">Login</h4>
     </div>
     <div class="modal-body">
       <form method="post">
@@ -22,24 +22,26 @@
             </div>
         </div>
         <div class="form-group">
-            <label>Username</label>
+            <label translate="header.navbar.username">Username</label>
             <input class="form-control input-lg required" name="blt_user_login" type="text" />
         </div>
         <div class="form-group">
-            <label for="blt_user_pass">Password <a class="pull-right" href="#blt-reset-password"> (Lost Password?)</a></label>
+            <label for="blt_user_pass"><span translate="header.navbar.password">Password</span><a class="pull-right" href="#blt-reset-password" translate="header.navbar.q_lost_password"> Lost Password?</a></label>
             <input class="form-control input-lg required" name="blt_user_pass" id="blt_user_pass" type="password" />
         </div>
         <div class="form-group">
             <input type="hidden" name="action" value="blt_login_member" />
-            <button class="btn btn-theme btn-lg" data-loading-text="Loading..." type="submit">Login</button>
+            <button class="btn btn-theme btn-lg" data-loading-text="Loading..." type="submit" translate="header.navbar.login">Login</button>
         </div>
 
       </form>
     </div>
     <div class="modal-footer">
-      <!-- <span>Nếu bạn chưa có tài khoản? vui lòng <a href="#blt-register">Đăng Ký</a></span> -->
-      <span class="blt-register-footer" style="display: block;">Don't have an account? <a href="#blt-register">Sign Up</a></span>
-      <button type="button" class="btn btn-default hide" data-dismiss="modal" data-ng-click="$hide()">Close</button>
+      <span class="blt-register-footer" style="display: block;">
+        <span translate="header.navbar.q_dont_have_account">Don't have an account? </span>
+      <a href="#blt-register" translate="header.navbar.sign_up">Sign Up</a>
+      </span>
+      <button type="button" class="btn btn-default hide" data-dismiss="modal" data-ng-click="$hide()" translate="common.close">Close</button>
     </div>
   </div>
   
