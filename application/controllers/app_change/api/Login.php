@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // This can be removed if you use __autoload() in config.php OR use Modular Extensions
 require APPPATH . '/libraries/Base_controller.php';
 
-class Login extends Base_controller {
+class User extends Base_controller {
 
     function __construct()
     {

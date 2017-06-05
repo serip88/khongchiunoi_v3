@@ -46,8 +46,8 @@
     <script src="{$config['app_common_url']}/vendor/angular/angular-translate/storage-cookie.js"></script>
     <script src="{$config['app_common_url']}/vendor/angular/angular-translate/storage-local.js"></script>
     <link rel="stylesheet" href="{$config['app_common_url']}/vendor/sweetalert/dist/sweetalert.css">
-    <script src="{$config['app_common_url']}/js/directives/sweet-alert.min.js"></script>
-    <script src="{$config['app_common_url']}/js/directives/SweetAlert.min.js"></script>
+    <script src="{$config['app_common_url']}/vendor/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="{$config['app_common_url']}/js/directives/SweetAlert/SweetAlert.min.js"></script>
     <!-- B translate -->
     <!-- <script src="{$config['app_common_url']}/vendor/angular/angular-bootstrap/ui-bootstrap-tpls-1.3.3.js"></script> -->
     <script src="{$config['app_common_url']}/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -57,9 +57,8 @@
     <script src="{$config['app_url']}/js/config.js"></script>
     <script src="{$config['app_url']}/js/config.lazyload.js"></script>
     <script src="{$config['app_url']}/js/config.router.js"></script>
+    <script src="{$config['app_common_url']}/js/services/common-service.js"></script>
     <script src="{$config['app_url']}/js/main.js"></script>
-
-    <script src="{$config['app_common_url']}/js/services/common-service.js"></script>    
 
     <meta name="generator" content="Renza.CMS" />
     {literal}

@@ -26,8 +26,26 @@
     }
   },
   "common" : {
+    "success" : "Hoàn thành",
     "close" : "Đóng",
-    "login" : "Đăng nhập"
+    "login" : "Đăng nhập",
+    "LOGIN" : {
+      "login_fail" : "Tên đăng nhập hoặc mật khẩu không đúng",
+      "PROJECT" : "Projects"
+    },
+    "WARNING" : {
+      "warning" : "Cảnh báo",
+      "server_res_fail" : "Có lỗi xảy ra",
+      "PROJECT" : "Projects"
+    },
+    "ERROR" : {
+      "error" : "Lỗi",
+      "PROJECT" : "Projects"
+    },
+    "CONFIRM" : {
+      "ok" : "Đồng ý",
+      "PROJECT" : "Projects"
+    }
   },
   "sidebar" : {
     "trending_post" : "Có thể bạn muốn xem",

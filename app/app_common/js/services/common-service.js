@@ -12,9 +12,34 @@ var isDefined = angular.isDefined,
     sessionStorageEnabled = ("sessionStorage" in window) ? true : false,
     localStorageEnabled = ("localStorage" in window) ? true : false;
 
-/*app.factory("commonService", ["$http", "$q", 'SweetAlert', function ($http, $q, SweetAlert) {
+app.factory("commonService", ["$http", "$q", 'SweetAlert', '$translate', function ($http, $q, SweetAlert, $translate) {
     var commonObject = {};
     commonObject.sync = {user_data:{},is_requested:0};
+    commonObject.options = {is_alert:false};
+    commonObject.api = {
+      member_login: 'user/login',
+    };
+    commonObject.alert = function (msg, type) {
+        var title = $translate.instant('common.WARNING.warning');
+        switch(type) {
+            case 's':
+                title = $translate.instant('common.success');
+                type = "success";
+                break;
+            case 'e':
+                title = $translate.instant('common.ERROR.error');
+                type = "error";
+                break;
+            default:
+                type = 'warning';
+        }
+        SweetAlert.swal({
+            title: title,
+            text: msg,
+            type: type,
+            confirmButtonText: $translate.instant('common.CONFIRM.ok')
+        });
+    }
     commonObject.httpGet = function (path, params, block) {
         if(typeof block == 'undefined'){
             block = true;
@@ -25,12 +50,9 @@ var isDefined = angular.isDefined,
                 deferred.resolve(data);
             }).error(function (data) {
                 deferred.resolve(data);
-                SweetAlert.swal({
-                    title: "Warning",
-                    text: data.msg,
-                    type: "warning",
-                    confirmButtonText: "Ok"
-                });
+                if(commonObject.options.is_alert){
+                    commonObject.alert(data.msg,'w');
+                }
             });
         return deferred.promise;
     }
@@ -45,12 +67,9 @@ var isDefined = angular.isDefined,
                 deferred.resolve(data);
             }).error(function (data) {
                 deferred.resolve(data);
-                SweetAlert.swal({
-                    title: "Warning",
-                    text: data.msg,
-                    type: "warning",
-                    confirmButtonText: "Ok"
-                });
+                if(commonObject.options.is_alert){
+                    commonObject.alert(data.msg,'w');
+                }  
             });
         return deferred.promise;
     }
@@ -68,4 +87,4 @@ var isDefined = angular.isDefined,
         return stt;
     }
     return commonObject;
-}]);*/
+  }]);

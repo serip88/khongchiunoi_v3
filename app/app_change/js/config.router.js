@@ -31,7 +31,7 @@ angular.module('app')
                           if(data.user_data){
                             angular.copy(data.user_data, commonService.sync.user_data);
                           }else{ 
-                            alert('you are not members');
+                            console.log('you are not members');
                             //$state.go('access.signin');
                           }
                       });

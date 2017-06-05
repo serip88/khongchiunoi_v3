@@ -23,18 +23,25 @@
         </div>
         <div class="form-group">
             <label translate="header.navbar.username">Username</label>
-            <input class="form-control input-lg required" name="blt_user_login" type="text" />
+            <input class="form-control input-lg required" name="blt_user_login" type="text" data-ng-model="frm_login.username" />
         </div>
         <div class="form-group">
             <label for="blt_user_pass"><span translate="header.navbar.password">Password</span><a class="pull-right" href="#blt-reset-password" translate="header.navbar.q_lost_password"> Lost Password?</a></label>
-            <input class="form-control input-lg required" name="blt_user_pass" id="blt_user_pass" type="password" />
+            <input class="form-control input-lg required" name="blt_user_pass" id="blt_user_pass" type="password" data-ng-model="frm_login.password" />
         </div>
         <div class="form-group">
             <input type="hidden" name="action" value="blt_login_member" />
-            <button class="btn btn-theme btn-lg" data-loading-text="Loading..." type="submit" translate="header.navbar.login">Login</button>
+            <button class="btn btn-theme btn-lg" data-loading-text="Loading..." type="submit" data-ng-click="ok()" translate="header.navbar.login">Login</button>
         </div>
 
       </form>
+      <div class="blt-errors">
+        <div class="alert alert-danger">
+          <strong translate="common.ERROR.error">ERROR</strong>
+          : The password you entered for the username <strong>demo1</strong> is incorrect. 
+          <a href="#" translate="header.navbar.q_lost_password">Lost your password?</a>
+        </div>
+      </div>
     </div>
     <div class="modal-footer">
       <span class="blt-register-footer" style="display: block;">
