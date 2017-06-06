@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // This can be removed if you use __autoload() in config.php OR use Modular Extensions
 require APPPATH . '/libraries/Base_controller.php';
 
-class User extends Base_controller {
+class Access extends Base_controller {
 
     function __construct()
     {
@@ -29,10 +29,11 @@ class User extends Base_controller {
     }
     public function login_post(){
         $status = 0;
-        $msg = 'Email not available';
+        $msg = '';
         $param = $this->post();
         $email = isset($param['email']) && $param['email'] ? $param['email'] : '';
         $password = isset($param['password']) && $param['password'] ? $param['password'] : '';
+        $user_data = array();
         if ($email) {
             $user_data = $this->user_lib->get_user_by_email($email);
             if($user_data){
@@ -50,6 +51,8 @@ class User extends Base_controller {
                 }else{
                     $msg = 'This email/user deactived';
                 }
+            }else{
+                $msg = 'Email is wrong';
             }
         }
         $response = array('status' => $status,'msg'=> $msg,'user_data'=>$user_data);

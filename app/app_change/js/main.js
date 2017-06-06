@@ -131,16 +131,17 @@
           show: false,
           controller: ['$scope', 'initData', function ($scope, initData) {
             $scope.ok = function () {
-              var params = {username: $scope.frm_login.username, password: $scope.frm_login.password,t:'m'};
+              var params = {email: $scope.frm_login.email, password: $scope.frm_login.password,t:'m'};
               //commonService.options.is_alert = true;
               commonService.httpPost(commonService.api.member_login, params)
               .then(function(response) {
                 if ( response.status ) {
                   var msg =  response.msg ? response.msg : $translate.instant('common.LOGIN.login_fail');
-                  //alert(msg);
-                }else{          
-                  var msg = response.msg ? response.msg : $translate.instant('common.WARNING.server_res_fail');
                   commonService.alert(msg,'s');
+                  this.$hide();
+                }else{
+                  var msg = response.msg ? response.msg : $translate.instant('common.WARNING.server_res_fail');
+                  commonService.alert(msg,'w');
                 }
               });
             };
