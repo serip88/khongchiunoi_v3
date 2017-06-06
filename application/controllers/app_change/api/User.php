@@ -16,8 +16,7 @@ require APPPATH . '/libraries/Base_controller.php';
  * @license         MIT
  * @link            https://github.com/chriskacerguis/codeigniter-restserver
  */
-define('MEMBER_TYPE', 'member');
-define('ADMIN_TYPE', 'admin');
+
 class User extends Base_controller {
 
     private $_user_type = '' ;

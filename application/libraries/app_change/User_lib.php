@@ -69,7 +69,7 @@ class User_lib extends Common_lib {
     }
   }
   function get_user_by_email($user_email){
-    $select="A.user_id,A.user_group_id,A.username,A.salt,A.firstname,A.lastname,A.email,A.image_path,A.date_added,A.status,B.name";
+    $select="A.user_id,A.user_group_id,A.username,A.salt,A.firstname,A.lastname,A.email,A.image_path,A.date_added,A.status,B.name,B.type";
     $tb_join = array();
     $tb_join[] = array('table_name'=>'rz_user_group as B','condition'=>"A.user_group_id =B.user_group_id", 'type'=>'left');
     $where = array("A.email"=>$user_email);

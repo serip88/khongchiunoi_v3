@@ -56,8 +56,8 @@
 
       // angular translate
       $scope.lang = { isopen: false };
-      $scope.langs = {en:'English', vi:'Vietnam'};
-      $translate.use('vi');
+      $scope.langs = {en:'English', vi:'Tiếng Việt'};
+      //$translate.use('vi');
       $scope.setLang = function(langKey, $event) {
         // set the current lang
         $scope.selectLang = $scope.langs[langKey];
@@ -138,7 +138,7 @@
                 if ( response.status ) {
                   var msg =  response.msg ? response.msg : $translate.instant('common.LOGIN.login_fail');
                   commonService.alert(msg,'s');
-                  this.$hide();
+                  myModal.$promise.then(myModal.hide);
                 }else{
                   var msg = response.msg ? response.msg : $translate.instant('common.WARNING.server_res_fail');
                   commonService.alert(msg,'w');
@@ -149,7 +149,7 @@
           //size: 'lg',
           resolve: {
             initData: function () {
-              return {doLogin:$scope.doLogin};
+              return true;
             }
           }
         });

@@ -32,24 +32,35 @@ class Access extends Base_controller {
         $msg = '';
         $param = $this->post();
         $email = isset($param['email']) && $param['email'] ? $param['email'] : '';
+        $_user_type = isset($param['t']) && $param['t'] ? $param['t'] : '';
         $password = isset($param['password']) && $param['password'] ? $param['password'] : '';
         $user_data = array();
+        if($_user_type=='m'){
+            $_user_type = MEMBER_TYPE;
+        }else{
+            $_user_type = ADMIN_TYPE;
+        }
+        $id_type = $this->type_model->get_id_type($_user_type);
         if ($email) {
-            $user_data = $this->user_lib->get_user_by_email($email);
+            $user_data = $this->user_lib->get_user_by_email($email);            
             if($user_data){
-                if($user_data['status']==1){
-                    $where = array();
-                    $where['email'] = $email;
-                    $where['password'] = md5($user_data['salt'].$password);
-                    $status = $this->user_lib->check_user($where);
-                    if($status){
-                        $msg = 'Login success';
-                        $this->user_lib->set_user_session($user_data);
+                if($user_data['type'] == $id_type){
+                    if($user_data['status']==1){
+                        $where = array();
+                        $where['email'] = $email;
+                        $where['password'] = md5($user_data['salt'].$password);
+                        $status = $this->user_lib->check_user($where);
+                        if($status){
+                            $msg = 'Login success';
+                            $this->user_lib->set_user_session($user_data);
+                        }else{
+                            $msg = 'Password Incorrect';   
+                        }
                     }else{
-                        $msg = 'Password Incorrect';   
-                    }
-                }else{
-                    $msg = 'This email/user deactived';
+                        $msg = 'This email/user deactived';
+                    }    
+                }else{//type not valid to login admin cannot login in client
+                    $msg = 'User or Email not valid';
                 }
             }else{
                 $msg = 'Email is wrong';

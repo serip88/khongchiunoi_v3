@@ -14,6 +14,9 @@ define('IMAGE_BIG_SIZE', 1600);
 define('TMP_CHILD', 'Y/m');
 define('MEDIA_USER_TYPE', 1);
 
+define('MEMBER_TYPE', 'member');
+define('ADMIN_TYPE', 'admin');
+
 class Base_controller extends REST_Controller {
     
     protected $_is_login = false;
