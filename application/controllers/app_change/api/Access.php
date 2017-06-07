@@ -52,7 +52,11 @@ class Access extends Base_controller {
                         $status = $this->user_lib->check_user($where);
                         if($status){
                             $msg = 'Login success';
-                            $this->user_lib->set_user_session($user_data);
+                            if($_user_type == MEMBER_TYPE){
+                                $this->user_lib->set_member_session($user_data);
+                            }else{
+                                $this->user_lib->set_user_session($user_data);
+                            }
                         }else{
                             $msg = 'Password Incorrect';   
                         }

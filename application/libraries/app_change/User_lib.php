@@ -228,7 +228,19 @@ class User_lib extends Common_lib {
     }else
       return false;
   }
-  
+  function set_member_session($member_data){      
+      $_SESSION['member_data'] = $member_data;
+  }
+  function get_member_session(){  
+      if(isset($_SESSION['member_data']) && $_SESSION['member_data']){
+        return $_SESSION['member_data'];
+      }else{
+        return '';
+      }   
+  }
+  function unset_member_session(){
+    $_SESSION['member_data'] = '';
+  }
   function set_user_session($user_data){      
       $_SESSION['user_data'] = $user_data;
   }
