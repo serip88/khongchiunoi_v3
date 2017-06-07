@@ -75,10 +75,18 @@ class Access extends Base_controller {
         
     }
     public function logout_post(){
-        $this->user_lib->unset_user_session();
+        $_user_type = isset($param['t']) && $param['t'] ? $param['t'] : '';
         $status = false;
-        if(!$_SESSION['user_data']){
-            $status = true;
+        if($_user_type=='a'){
+            $this->user_lib->unset_user_session();
+            if(!$_SESSION['user_data']){
+                $status = true;
+            }
+        }else{
+            $this->user_lib->unset_member_session();
+                if(!$_SESSION['member_data']){
+                $status = true;
+            }
         }
         $response = array('status' => $status);
         $this->custom_response($response);

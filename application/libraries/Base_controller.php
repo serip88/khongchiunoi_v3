@@ -124,7 +124,7 @@ class Base_controller extends REST_Controller {
             'user/user_ss'          =>['api'=>'user/user_ss','deny_guest'=>0,'deny_user'=>0],
             
             'access/login'           =>['api'=>'access/login','deny_guest'=>0,'deny_user'=>1],
-            'access/logout'          =>['api'=>'access/logout','deny_guest'=>1,'deny_user'=>0],
+            'access/logout'          =>['api'=>'access/logout','deny_guest'=>0,'deny_user'=>0],
 
             'user/member_list'      =>['api'=>'user/member_list','deny_guest'=>1,'deny_user'=>0],
             'user/member_group'     =>['api'=>'user/member_group','deny_guest'=>1,'deny_user'=>0],

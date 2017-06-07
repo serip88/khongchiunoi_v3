@@ -168,7 +168,6 @@
               angular.copy({}, commonService.sync.user_data);
               var msg =  $translate.instant('common.LOGOUT.logout_success');
               commonService.alert(msg,'s');
-              myModal.$promise.then(myModal.hide);
             }else{
               var msg = response.msg ? response.msg : $translate.instant('common.WARNING.server_res_fail');
               commonService.alert(msg,'w');
