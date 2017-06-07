@@ -13,13 +13,28 @@
                     <div class="collapse navbar-collapse" id="katla-pri-navbar">
 
                         <div class="navbar-right hidden-xs">
-                            <div class="header-actions"> 
+                            <div class="header-actions">
+                                <div data-ng-if="options.user_data" class="user-dropdown dropdown navbar-btn pull-right">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                        <img alt="" src="http://1.gravatar.com/avatar/a0c6c73163766a7192a8764ea7e34202?s=30&amp;d=mm&amp;r=g" srcset="http://1.gravatar.com/avatar/a0c6c73163766a7192a8764ea7e34202?s=60&amp;d=mm&amp;r=g 2x" class="avatar avatar-30 photo" height="30" width="30">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <div class="dropdown-backdrop"></div>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                        <li class="dropdown-header">admin</li>
+                                        <li><a href="http://katla.localhost/?page_id=5"><i class="fa fa-user"></i> Profile</a></li>
+                                        <li><a href="http://katla.localhost/?page_id=4"><i class="fa fa-cloud-upload"></i> Add post</a></li>
+                                        <li class="divider"></li>
+
+                                        <li><a role="menuitem" tabindex="-1" href="http://katla.localhost/wp-login.php?action=logout&amp;redirect_to=http%3A%2F%2Fkatla.localhost&amp;_wpnonce=e546d09e1c"><i class="fa fa-sign-out"></i> Logout</a></li>
+                                    </ul>
+                                </div>
                                 <a href="#blt-login" class="btn btn-theme navbar-btn">
                                     <i class="fa fa-cloud-upload"></i>
                                     <span translate="header.navbar.add_post">Add post</span>
                                 </a>
-                                <a href="#" data-ng-click="showLogin()" class="btn btn-default navbar-btn" translate="header.navbar.login">Login</a>
-                                <a href="#" data-ng-click="showRegister()" class="btn btn-default navbar-btn" translate="header.navbar.sign_up">Register</a>
+                                <a data-ng-if="!options.user_data" href="#" data-ng-click="showLogin()" class="btn btn-default navbar-btn" translate="header.navbar.login">Login</a>
+                                <a data-ng-if="!options.user_data" href="#" data-ng-click="showRegister()" class="btn btn-default navbar-btn" translate="header.navbar.sign_up">Register</a>
                                 <form action="http://www.bluthemes.com/themes-special/katla/" class="navbar-form navbar-left" role="search">
                                     <input type="text" class="form-control" name="s" placeholder="{{ 'header.navbar.search_3_dot' | translate }}" value="">
                                     <button type="submit" class="btn"><i class="fa fa-search"></i></button>

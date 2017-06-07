@@ -38,7 +38,7 @@
         baseConfig: baseConfig
       }
       $scope.options = {};
-      $scope.options.user_data = commonService.sync.user_data;
+      $scope.options.user_data = helper.isEmpty(commonService.sync.user_data)? false: true;
       // save settings to local storage
       if ( angular.isDefined($localStorage.settings) ) {
         $scope.app.settings = $localStorage.settings;
@@ -57,7 +57,7 @@
       // angular translate
       $scope.lang = { isopen: false };
       $scope.langs = {en:'English', vi:'Tiếng Việt'};
-      //$translate.use('vi');
+      $translate.use('vi');
       $scope.setLang = function(langKey, $event) {
         // set the current lang
         $scope.selectLang = $scope.langs[langKey];

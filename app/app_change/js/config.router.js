@@ -29,6 +29,7 @@ angular.module('app')
                         return $http({method: 'GET', url: [baseConfig.apiUrl, 'user/user_ss'].join('/')})
                         .success(function (data) {
                           if(data.user_data){
+                            console.log('you are members');
                             angular.copy(data.user_data, commonService.sync.user_data);
                           }else{ 
                             console.log('you are not members');
