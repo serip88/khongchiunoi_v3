@@ -21,17 +21,30 @@
                                     </button>
                                     <div class="dropdown-backdrop"></div>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                        <li class="dropdown-header">admin</li>
-                                        <li><a href="http://katla.localhost/?page_id=5"><i class="fa fa-user"></i> Profile</a></li>
-                                        <li><a href="http://katla.localhost/?page_id=4"><i class="fa fa-cloud-upload"></i> Add post</a></li>
+                                        <li class="dropdown-header">{{options.user_data.username}}</li>
+                                        <li><a href="http://katla.localhost/?page_id=5">
+                                                <i class="fa fa-user"></i> 
+                                                <span translate="member.profile">Profile</span>
+                                            </a>
+                                        </li>
+                                        <li><a href="#" data-ng-click="showAddPost()">
+                                                <i class="fa fa-cloud-upload"></i> 
+                                                <span translate="header.navbar.add_post">Add post</span>
+                                            </a>
+                                        </li>
                                         <li class="divider"></li>
 
-                                        <li><a role="menuitem" tabindex="-1" href="http://katla.localhost/wp-login.php?action=logout&amp;redirect_to=http%3A%2F%2Fkatla.localhost&amp;_wpnonce=e546d09e1c"><i class="fa fa-sign-out"></i> Logout</a></li>
+                                        <li>
+                                            <a role="menuitem" tabindex="-1" data-ng-click="doLogout()">
+                                            <i class="fa fa-sign-out"></i> 
+                                            <span translate="common.logout">Logout</span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <a href="#blt-login" class="btn btn-theme navbar-btn">
                                     <i class="fa fa-cloud-upload"></i>
-                                    <span translate="header.navbar.add_post">Add post</span>
+                                    <span translate="header.navbar.add_post" data-ng-click="showAddPost()">Add post</span>
                                 </a>
                                 <a data-ng-if="!options.user_data" href="#" data-ng-click="showLogin()" class="btn btn-default navbar-btn" translate="header.navbar.login">Login</a>
                                 <a data-ng-if="!options.user_data" href="#" data-ng-click="showRegister()" class="btn btn-default navbar-btn" translate="header.navbar.sign_up">Register</a>

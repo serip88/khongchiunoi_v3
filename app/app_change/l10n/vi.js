@@ -29,6 +29,7 @@
     "success" : "Hoàn thành",
     "close" : "Đóng",
     "login" : "Đăng nhập",
+    "logout": "Đăng xuất",
     "LOGIN" : {
       "login_fail" : "Tên đăng nhập hoặc mật khẩu không đúng",
       "PROJECT" : "Projects"
@@ -49,6 +50,10 @@
   },
   "sidebar" : {
     "trending_post" : "Có thể bạn muốn xem",
+    "new_post" : "Bài mới"
+  },
+  "member" : {
+    "profile" : "Hồ sơ",
     "new_post" : "Bài mới"
   }
 }
