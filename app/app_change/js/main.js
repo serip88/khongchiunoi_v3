@@ -38,7 +38,7 @@
         baseConfig: baseConfig
       }
       $scope.options = {};
-      $scope.options.user_data = helper.isEmpty(commonService.sync.user_data)? false: true;
+      $scope.options.user_data = commonService.sync.user_data;
       // save settings to local storage
       if ( angular.isDefined($localStorage.settings) ) {
         $scope.app.settings = $localStorage.settings;
@@ -120,6 +120,9 @@
       $scope.getSidebar = function() {
         return [baseConfig.tplUrl,'/','common/sidebar.html'].join('');
       }
+      $scope.isMember = function() {
+        return !helper.isEmpty($scope.options.user_data);
+      }
       //E custom
   }])
   .controller('headerCtrl', ['$scope', '$translate', '$modal', '$window', 'commonService', '$state', 'SweetAlert', 
@@ -136,7 +139,8 @@
               commonService.httpPost(commonService.api.member_login, params)
               .then(function(response) {
                 if ( response.status ) {
-                  var msg =  response.msg ? response.msg : $translate.instant('common.LOGIN.login_fail');
+                  angular.copy(response.user_data, commonService.sync.user_data);
+                  var msg =  $translate.instant('common.LOGIN.login_success');
                   commonService.alert(msg,'s');
                   myModal.$promise.then(myModal.hide);
                 }else{
@@ -156,8 +160,20 @@
         myModal.$promise.then(myModal.show);
       }
 
-      $scope.doLogin = function(params) {
-        laert('login');
+      $scope.doLogout = function(params) {
+        var params = {t:'m'};
+        commonService.httpPost(commonService.api.member_logout, params)
+          .then(function(response) {
+            if ( response.status ) {
+              angular.copy({}, commonService.sync.user_data);
+              var msg =  $translate.instant('common.LOGOUT.logout_success');
+              commonService.alert(msg,'s');
+              myModal.$promise.then(myModal.hide);
+            }else{
+              var msg = response.msg ? response.msg : $translate.instant('common.WARNING.server_res_fail');
+              commonService.alert(msg,'w');
+            }
+        });
       }
 
       $scope.showRegister = function() {

@@ -18,6 +18,7 @@ app.factory("commonService", ["$http", "$q", 'SweetAlert', '$translate', functio
     commonObject.options = {is_alert:false};
     commonObject.api = {
       member_login: 'access/login',
+      member_logout: 'access/logout',
     };
     commonObject.alert = function (msg, type) {
         var title = $translate.instant('common.WARNING.warning');

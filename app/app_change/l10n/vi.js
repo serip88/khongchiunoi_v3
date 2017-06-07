@@ -32,7 +32,11 @@
     "logout": "Đăng xuất",
     "LOGIN" : {
       "login_fail" : "Tên đăng nhập hoặc mật khẩu không đúng",
+      "login_success" : "Đăng nhập thành công",
       "PROJECT" : "Projects"
+    },
+    "LOGOUT" : {
+      "logout_success" : "Đã đăng xuất"
     },
     "WARNING" : {
       "warning" : "Cảnh báo",
