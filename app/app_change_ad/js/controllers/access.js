@@ -2,8 +2,8 @@
 
 var loginApi = {
     baseUrl: baseConfig.apiUrl,
-    userLogin: 'login/login',
-    userLogout: 'user/logout',
+    userLogin: 'access/login',
+    userLogout: 'access/logout',
   };
 
 

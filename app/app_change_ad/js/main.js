@@ -113,7 +113,7 @@
       // angular translate
       $scope.lang = { isopen: false };
       $scope.langs = {en:'English', vi:'Tiếng Việt'};
-      //$translate.use('en');
+      $translate.use('en');
       $scope.selectLang = $scope.langs[$translate.proposedLanguage()] || "English";
       $scope.setLang = function(langKey, $event) {
         // set the current lang
@@ -158,7 +158,7 @@
         })
       }
       $scope.logout = function() {
-        commonService.httpPost('login/logout')
+        commonService.httpPost('access/logout')
           .then(function(response) {
             if (response.status) {
               angular.copy({}, commonService.sync.user_data);  

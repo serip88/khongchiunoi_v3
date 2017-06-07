@@ -445,7 +445,7 @@ angular.module('app')
                   resolve: {
                       deps: ['uiLoad',
                         function( uiLoad ){
-                          return uiLoad.load( [baseConfig.app+'/js/controllers/signin.js'] );
+                          return uiLoad.load( [baseConfig.app+'/js/controllers/access.js'] );
                       }],
                       initData:  ['$http','commonService','$state', function($http,commonService,$state){
                         return $http({method: 'GET', url: [baseConfig.apiUrl, 'user/user_ss'].join('/')})
