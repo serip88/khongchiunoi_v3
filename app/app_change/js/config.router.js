@@ -21,8 +21,16 @@ angular.module('app')
           $stateProvider
             .state('app', {
                   url: '/',
-                  templateUrl: baseConfig.tplUrl+'/common/app.html',
-                  controller: 'AppCtrl',
+                  views: {
+                    '': {
+                         templateUrl: baseConfig.tplUrl+'/common/app.html',
+                         controller: 'AppCtrl'
+                     },
+                     '@app': {
+                        templateUrl: baseConfig.tplUrl+'/home/content.html',
+                        //controller: 'IndexCtrl'
+                    }
+                  },
                   resolve: {
                       initData:  ['$http', 'commonService','$state', function($http,commonService,$state){
                         //$http returns a promise for the url data
@@ -37,16 +45,19 @@ angular.module('app')
                           }
                       });
                     }]
-                  }  
+                  }
               })
-              .state('app.dashboard', {
-                  url: '/dashboard',
-                  templateUrl: baseConfig.tplUrl+'/app_dashboard_v1.html',
+              .state('app.add-post', {
+                  url: 'add-post.html',
+                  templateUrl: baseConfig.tplUrl+'/page/add-post.html',
+                  //controller: 'AddPostCtrl',
+                 
                   resolve: {
                     deps: ['$ocLazyLoad',
                       function( $ocLazyLoad ){
-                        return $ocLazyLoad.load([baseConfig.app+'/js/controllers/chart.js',
-                          baseConfig.app+'/js/controllers/dashboard.js']);
+                        console.log('add post');
+                        // return $ocLazyLoad.load([baseConfig.app+'/js/controllers/chart.js',
+                        //   baseConfig.app+'/js/controllers/dashboard.js']);
                     }]
                   }
               })
