@@ -114,6 +114,9 @@
       $scope.getHeader = function() {
         return [baseConfig.tplUrl,'/','common/header.html'].join('');
       }
+      $scope.getContent = function() {
+        return [baseConfig.tplUrl,'/','home/content.html'].join('');
+      }
       $scope.getFooter = function() {
         return [baseConfig.tplUrl,'/','common/footer.html'].join('');
       }
@@ -187,7 +190,7 @@
           //size: 'lg',
           resolve: {
             initData: function () {
-              return {doLogin:$scope.doRegister};
+              return {doRegister:$scope.doRegister};
             }
           }
         });
@@ -199,6 +202,7 @@
       /****************
       **  DETECT WIDOW RESIZE
       *****************/
+      //Handle top menu float
       angular.element(document).ready(function () {
         $(window).resize(function() {
 
