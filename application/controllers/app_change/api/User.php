@@ -94,6 +94,7 @@ class User extends Base_controller {
     public function user_ss_get()
     {
         $status = false;
+        $param = $this->get();
         $_user_type = isset($param['t']) && $param['t'] ? $param['t'] : '';
         if($_user_type=='a'){
             $data_user = $this->user_lib->get_user_session();

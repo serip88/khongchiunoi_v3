@@ -27,7 +27,7 @@ angular.module('app')
                   resolve: {
                     initData:  ['$http', 'commonService','$state', function($http,commonService,$state){
                         //$http returns a promise for the url data
-                        return $http({method: 'GET', url: [baseConfig.apiUrl, 'user/user_ss'].join('/')})
+                        return $http({method: 'GET', url: [baseConfig.apiUrl, 'user/user_ss'].join('/'), params: params: {t:'a'} })
                         .success(function (data) {
                           if(data.user_data){
                             angular.copy(data.user_data, commonService.sync.user_data);
@@ -449,7 +449,7 @@ angular.module('app')
                           return uiLoad.load( [baseConfig.app+'/js/controllers/access.js'] );
                       }],
                       initData:  ['$http','commonService','$state', function($http,commonService,$state){
-                        return $http({method: 'GET', url: [baseConfig.apiUrl, 'user/user_ss'].join('/')})
+                        return $http({method: 'GET', url: [baseConfig.apiUrl, 'user/user_ss'].join('/'), params: {t:'a'} })
                         .success(function (data) {
                           if(data.user_data){
                             angular.copy(data.user_data, commonService.sync.user_data);

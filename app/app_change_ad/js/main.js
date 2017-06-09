@@ -161,7 +161,7 @@
         commonService.httpPost('access/logout')
           .then(function(response) {
             if (response.status) {
-              angular.copy({}, commonService.sync.user_data);  
+              angular.copy({}, commonService.sync.user_data);
               $state.go('access.signin');
             }
           }
