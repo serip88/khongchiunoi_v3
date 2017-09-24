@@ -27,7 +27,7 @@ angular.module('app')
                   resolve: {
                     initData:  ['$http', 'commonService','$state', function($http,commonService,$state){
                         //$http returns a promise for the url data
-                        return $http({method: 'GET', url: [baseConfig.apiUrl, 'user/user_ss'].join('/'), params: params: {t:'a'} })
+                        return $http({method: 'GET', url: [baseConfig.apiUrl, 'user/user_ss'].join('/'), params: {t:'a'} })
                         .success(function (data) {
                           if(data.user_data){
                             angular.copy(data.user_data, commonService.sync.user_data);
