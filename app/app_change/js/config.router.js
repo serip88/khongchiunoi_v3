@@ -49,15 +49,13 @@ angular.module('app')
               })
               .state('app.add-post', {
                   url: 'add-post.html',
-                  templateUrl: baseConfig.tplUrl+'/page/add-post.html',
-                  //controller: 'AddPostCtrl',
-                 
+                  templateUrl: baseConfig.tplUrl+'/post/add-post.html',
+                  controller: 'PostCtrl',
                   resolve: {
                     deps: ['$ocLazyLoad',
                       function( $ocLazyLoad ){
                         console.log('add post');
-                        // return $ocLazyLoad.load([baseConfig.app+'/js/controllers/chart.js',
-                        //   baseConfig.app+'/js/controllers/dashboard.js']);
+                        return $ocLazyLoad.load([baseConfig.app+'/js/controllers/post.js']);
                     }]
                   }
               })

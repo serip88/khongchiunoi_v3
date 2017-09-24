@@ -49,7 +49,7 @@
     <script src="{$config['app_common_url']}/vendor/sweetalert/dist/sweetalert.min.js"></script>
     <script src="{$config['app_common_url']}/js/directives/SweetAlert/SweetAlert.min.js"></script>
     <!-- B translate -->
-    <!-- <script src="{$config['app_common_url']}/vendor/angular/angular-bootstrap/ui-bootstrap-tpls-1.3.3.js"></script> -->
+    <script src="{$config['app_common_url']}/vendor/angular/angular-bootstrap/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="{$config['app_common_url']}/vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <script src="{$config['app_common_url']}/js/helper.js"></script>

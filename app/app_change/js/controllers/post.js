@@ -18,7 +18,7 @@ var postApi = {
     return postObject;
   }]);
 
-  app.controller('PostCtrl', ['$scope', '$uibModal', '$log', 'openModal', 'postService','commonService', 'SweetAlert', function($scope, $uibModal, $log, openModal, postService, commonService, SweetAlert) {
+  app.controller('PostCtrl', ['$scope', '$uibModal', '$log', 'postService','commonService', 'SweetAlert', function($scope, $uibModal, $log, postService, commonService, SweetAlert) {
     $scope.openAdd = function (size) {
       modalAdd(size,[]);
     };
@@ -68,6 +68,7 @@ var postApi = {
       };
       $uibModal.open(modalObj);
     }
+    alert('ádsadsada');
     function list() {
       commonService.httpGet(postApi.list).then(function(responseData) {
           if (responseData.status) {
