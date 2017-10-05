@@ -22,7 +22,7 @@ class Model_Option_User_lib extends Common_lib {
     $this->CI =& get_instance();
     $this->CI->load->database('default');
     $this->CI->load->model(array(
-        'user/Option_User_Model',
+        'user/Option_user_model',
     ));
       
   }
