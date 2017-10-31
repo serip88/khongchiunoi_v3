@@ -33,3 +33,5 @@ app/images/tmp/*
 
 ## Rz ignore
 _info/*
+_errorpages/
+index_1.html
