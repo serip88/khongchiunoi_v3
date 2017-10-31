@@ -35,3 +35,4 @@ app/images/tmp/*
 _info/*
 _errorpages/
 index_1.html
+/application/config/database.php
