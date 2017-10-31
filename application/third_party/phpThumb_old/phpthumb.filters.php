@@ -96,7 +96,7 @@ class phpthumb_filters {
 
 
 	public function Blur(&$gdimg, $radius=0.5) {
-		// Taken from Torstein HÃ¸nsi's phpUnsharpMask (see phpthumb.unsharp.php)
+		// Taken from Torstein Hønsi's phpUnsharpMask (see phpthumb.unsharp.php)
 
 		$radius = round(max(0, min($radius, 50)) * 2);
 		if (!$radius) {
@@ -603,7 +603,7 @@ class phpthumb_filters {
 
 		$range_scale = (($range_max == $range_min) ? 1 : (255 / ($range_max - $range_min)));
 		if (($range_min == 0) && ($range_max == 255)) {
-			// no adjustment necessary - don't waste CPU time!
+			// no adjustment neccesary - don't waste CPU time!
 			return true;
 		}
 
@@ -1271,7 +1271,7 @@ class phpthumb_filters {
 						case 'L':
 						case 'TL':
 						case 'BL':
-							// no change necessary
+							// no change neccesary
 							break;
 
 						case 'C':

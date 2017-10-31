@@ -14,7 +14,7 @@
 //                                                          //
 //////////////////////////////////////////////////////////////
 
-//die('For security reasons, this demo is disabled by default. Please comment out line '.__LINE__.' in '.basename(__FILE__));
+die('For security reasons, this demo is disabled by default. Please comment out line '.__LINE__.' in '.basename(__FILE__));
 
 $ServerInfo['gd_string']  = 'unknown';
 $ServerInfo['gd_numeric'] = 0;
@@ -379,7 +379,7 @@ if (!$server_software) {
 	echo 'darkgreen';
 }
 echo ';">'.$server_software.'</th>';
-echo '<td>Apache v1.x has the fewest compatibility problems. IIS has numerous annoyances. Apache v2.x is broken when lookup up <i>/~user/filename.jpg</i> style relative filenames using <i>apache_lookup_uri()</i>.</td></tr>';
+echo '<td>Apache v1.x has the fewest compatability problems. IIS has numerous annoyances. Apache v2.x is broken when lookup up <i>/~user/filename.jpg</i> style relative filenames using <i>apache_lookup_uri()</i>.</td></tr>';
 
 
 echo '<tr><th>curl_version:</th><th colspan="2" style="background-color: ';
