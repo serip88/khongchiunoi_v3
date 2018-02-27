@@ -19,9 +19,15 @@ var postApi = {
   }]);
 
   app.controller('PostCtrl', ['$scope', '$uibModal', '$log', 'postService','commonService', 'SweetAlert', function($scope, $uibModal, $log, postService, commonService, SweetAlert) {
+    $scope.form = [];
     $scope.openAdd = function (size) {
       modalAdd(size,[]);
     };
+    console.log(">>>>>>>>>>>>>>>>>>>>>>> PostCtrl",$scope.$id);
+    var appScope = commonService.getScope('AppCtrl_1');
+    console.log(">>>>>>>>>>>>>>>>>>>>>>> appScope",appScope);
+    appScope.app.tpl.page = 'page';
+    appScope.app.tpl.sidebar = 'sidebar-none';
     function modalAdd(size) {
         var modalObj = {
           templateUrl: baseConfig.tplUrl +'/post/modal/add.html',
@@ -68,7 +74,19 @@ var postApi = {
       };
       $uibModal.open(modalObj);
     }
-    alert('ádsadsada');
+    alert('333');
+    $scope.save = function(){
+        commonService.httpPost(postApi.save,$scope.form).then(function(responseData) {
+            if(responseData.status) {
+              SweetAlert.swal("Add success!", "", "success");
+              $uibModalInstance.close();
+              //list();
+            }
+        });
+    };
+    function check_save() {
+
+    }
     function list() {
       commonService.httpGet(postApi.list).then(function(responseData) {
           if (responseData.status) {

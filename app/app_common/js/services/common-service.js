@@ -20,6 +20,37 @@ app.factory("commonService", ["$http", "$q", 'SweetAlert', '$translate', functio
       member_login: 'access/login',
       member_logout: 'access/logout',
     };
+    commonObject.scope = [];
+    commonObject.setScope = function (scope) {
+        if(typeof(scope.customID) == 'undefined'){
+            return false;
+        }
+        if(commonObject.scope.length){
+            var index = -1;
+            forEach(commonObject.scope, function(value, index) {
+                if(scope.customID == index){
+                    if(value.$id != scope.$id){
+                        alert('duplicate customID');
+                    }else{
+                        index = scope.customID;
+                    }
+                }
+            });
+            if(index != -1){
+                commonObject.scope[scope.customID]= scope;
+            }
+        }else{
+            commonObject.scope[scope.customID]= scope;
+        }  
+    }
+    commonObject.getScope = function (customID) {
+        var stt = commonObject.scope[customID];
+        if(stt != 'undefined'){
+            return commonObject.scope[customID];
+        }else{
+            return false;
+        }
+    }
     commonObject.alert = function (msg, type) {
         var title = $translate.instant('common.WARNING.warning');
         switch(type) {

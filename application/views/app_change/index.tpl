@@ -160,7 +160,7 @@
     </style>
 </head>
 
-<body class="home blog infinite-scroll sidebar-right fixed-header post-layout-normal" ui-view>
+<body class="blog infinite-scroll fixed-header post-layout-normal" {literal} data-ng-class="[app.tpl.page,app.tpl.sidebar]" {/literal} ui-view ng-init="customID = 'AppCtrl_1'">
    
 </body>
 

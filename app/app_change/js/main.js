@@ -4,6 +4,7 @@
   app.controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'commonService', '$state' , 
     function(              $scope,   $translate,   $localStorage,   $window ,  commonService,   $state) {
       console.log('main');
+      console.log(">>>>>>>>>>>>>>>>>>>>>>> AppCtrl",$scope);
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');
@@ -35,8 +36,13 @@
           asideDock: false,
           container: false
         },
-        baseConfig: baseConfig
+        baseConfig: baseConfig,
+        tpl:{
+          page: 'home',
+          sidebar: 'sidebar-right'
+        }
       }
+      commonService.setScope($scope);
       $scope.options = {};
       $scope.options.user_data = commonService.sync.user_data;
       // save settings to local storage
@@ -121,7 +127,11 @@
         return [baseConfig.tplUrl,'/','common/footer.html'].join('');
       }
       $scope.getSidebar = function() {
-        return [baseConfig.tplUrl,'/','common/sidebar.html'].join('');
+        if($scope.app.tpl.sidebar == 'sidebar-right'){
+          return [baseConfig.tplUrl,'/','common/sidebar.html'].join('');
+        }else{
+          return false;
+        }
       }
       $scope.isMember = function() {
         return !helper.isEmpty($scope.options.user_data);
