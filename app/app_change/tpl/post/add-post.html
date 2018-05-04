@@ -8,10 +8,10 @@
 	</div>
 	<hr>
 	<div class="users-posts-wrap">
-	    <form id="blt_posts_form" action="http://katla.localhost/?page_id=4" method="POST" enctype="multipart/form-data">
+	    <form enctype="multipart/form-data">
 
 	        <div class="form-group">
-	            <label >Title1</label>
+	            <label >Title</label> 
 	            <input class="form-control" data-ng-model="form.title" type="text" value=" " />
 	        </div>
 
@@ -27,20 +27,24 @@
 
 	        <div class="form-group">
 	            <label for="blt_post_tags">Tags</label>
-	            <input class="form-control" name="blt_post_tags" id="blt_post_tags" type="text" value="" />
+	            <input class="form-control" name="blt_post_tags" id="blt_post_tags" type="text" value="" data-ng-model="form.tag" />
 	            <p class="help-block">Separate each tag by comma. (tag1, tag2, tag3)</p>
 	        </div>
 	        <div class="form-group">
-	            <label for="blt_post_category">Category</label><select name='blt_post_category' id='blt_post_category' class='form-control'>
-		<option class="level-0" value="35">Art</option>
-	</select>
+	            <label for="blt_post_category">Category</label>
+	            <select name='blt_post_category' id='blt_post_category' class='form-control' data-ng-model="form.category">
+					<option class="level-0" value="35">Art</option>
+				</select>
 	        </div>
 
 	        <div class="form-group">
 	            <label for="blt_post_content">Description</label>
 	            <div id="wp-blt_post_content-wrap" class="wp-core-ui wp-editor-wrap tmce-active">
 	                <link rel='stylesheet' id='editor-buttons-css' href='http://katla.localhost/wp-includes/css/editor.min.css?ver=4.3' type='text/css' media='all' />
-	                <div id="wp-blt_post_content-editor-container" class="wp-editor-container"><textarea class="wp-editor-area" rows="5" autocomplete="off" cols="40" name="blt_post_content" id="blt_post_content"></textarea></div>
+	                <div id="wp-blt_post_content-editor-container" class="wp-editor-container">
+	                	<textarea class="wp-editor-area" rows="5" autocomplete="off" cols="40" name="blt_post_content" id="blt_post_content" data-ng-model="form.description">
+	                	</textarea>
+	                </div>
 	            </div>
 
 	        </div>
@@ -120,7 +124,7 @@
 
 	        </div>
 
-	        <button class="btn btn-theme btn-lg" data-loading-text="Loading..." type="submit">Submit Post</button>
+	        <button class="btn btn-theme btn-lg" data-loading-text="Loading..." type="submit" data-ng-click="save()">Submit Post</button>
 
 	        <input type="hidden" id="blt_post_upload_form_submitted" name="blt_post_upload_form_submitted" value="57c4af4d0a" />
 	        <!-- <input type="hidden" name="_wp_http_referer" value="/?page_id=4" /><input type="hidden" id="blt_post_upload_form_submitted" name="blt_post_upload_form_submitted" value="57c4af4d0a" /><input type="hidden" name="_wp_http_referer" value="/?page_id=4" /> -->

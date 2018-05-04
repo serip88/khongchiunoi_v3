@@ -58,8 +58,8 @@
     }
     return commonObject;
   }])
-  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'commonService', '$state' , 
-    function(              $scope,   $translate,   $localStorage,   $window ,  commonService,   $state) {
+  .controller('AppCtrl', ['$rootScope','$scope', '$translate', '$localStorage', '$window', 'commonService', '$state' , 
+    function(              $rootScope, $scope,   $translate,   $localStorage,   $window ,  commonService,   $state) {
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');
@@ -141,6 +141,7 @@
           }
         }
       }
+      stateChange();
       function stateChange(){
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options){
           if(fromState.name  != toState.name){

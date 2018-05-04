@@ -83,7 +83,7 @@
 	    };
 	    function modalAddProduct(size,category_list) {
 	        var modalObj = {
-		        templateUrl: baseConfig.adminTpl +'/catalog/product/add_product.html',
+		        templateUrl: baseConfig.tplUrl +'/catalog/product/add_product.html',
 		        size: size,
 		        controller: ['$scope','commonService', '$uibModalInstance','Upload','$timeout','dataInit', function(scope, commonService, $uibModalInstance,Upload, $timeout, dataInit){
 		          	scope.product = {};

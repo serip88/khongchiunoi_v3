@@ -74,7 +74,6 @@ var postApi = {
       };
       $uibModal.open(modalObj);
     }
-    alert('333');
     $scope.save = function(){
         commonService.httpPost(postApi.save,$scope.form).then(function(responseData) {
             if(responseData.status) {

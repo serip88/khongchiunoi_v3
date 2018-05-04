@@ -105,6 +105,13 @@ if (!class_exists('Common_lib')){
         foreach ($arr as $val)
           $str = str_replace($val,$key,$str);
       return strtolower($str);
-    } 
+    }
+    function validate_input_text($field,$param = []){
+      $text = '';
+      if($param){
+        $text = isset($param[$field]) && $param[$field] ? $param[$field] : '';
+      }
+      return $text;
+    }
   }
 }
