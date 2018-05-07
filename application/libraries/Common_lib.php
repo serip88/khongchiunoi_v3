@@ -106,10 +106,10 @@ if (!class_exists('Common_lib')){
           $str = str_replace($val,$key,$str);
       return strtolower($str);
     }
-    function validate_input_text($field,$param = []){
+    function validate_input_text($param,$key){
       $text = '';
       if($param){
-        $text = isset($param[$field]) && $param[$field] ? $param[$field] : '';
+        $text = isset($param[$key]) && $param[$key] ? $param[$key] : '';
       }
       return $text;
     }

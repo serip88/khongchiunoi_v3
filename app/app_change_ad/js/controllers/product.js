@@ -176,7 +176,7 @@
 	    }
 	    function modalEditProduct(size,category_list,item) {
 		    var modalObj = {
-		      templateUrl: baseConfig.adminTpl +'/catalog/product/add_product.html',
+		      templateUrl: baseConfig.tplUrl +'/catalog/product/add_product.html',
 		      size: size,
 		      controller: ['$scope','commonService', '$uibModalInstance','Upload','$timeout','dataInit', function(scope, commonService, $uibModalInstance,Upload, $timeout, dataInit){
 				scope.popover = {title: 'Title', content: '', templateUrl: baseConfig.adminTpl +'/catalog/product/popover/edit_image.html'};
@@ -231,7 +231,7 @@
 			        		return;
 			        	}
 			            file.upload = Upload.upload({
-			                url: baseConfig.home+'api/upload/upload_img_user',
+			                url: baseConfig.apiUrl+'/upload/upload_img_user',
 			                method: 'POST',
 						    headers: {
 						        'Content-Type': file.type
