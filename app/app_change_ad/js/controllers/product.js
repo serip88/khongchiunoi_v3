@@ -312,6 +312,18 @@
 	          }
 	      });
 	    }
+	    $scope.total_cart = [];
+	    $scope.addToCart = function (item) {
+	    	var index = $scope.total_cart.indexOf(item);
+	    	if(index == -1){
+	    		$scope.total_cart.push(item);
+	    	}else{
+	    		$scope.total_cart.splice(index, 1);
+	    	}
+	    }
+	    $scope.makeInvoice = function () {
+
+	    }
 
 	}]);		
 })(window, window.angular, window.jQuery);
