@@ -37,29 +37,46 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label class="control-label" for="input-name">Product Name</label>
-                                <input type="text" name="filter_name" value="" placeholder="Product Name" id="input-name" class="form-control" autocomplete="off">
+                                <label class="control-label" for="input-name">Tên sản phẩm</label>
+                                <input type="text" name="filter_name" value="" id="input-name" class="form-control" autocomplete="off">
                                 <ul class="dropdown-menu"></ul>
                             </div>
 
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label class="control-label" for="input-price">Price</label>
-                                <input type="text" name="filter_price" value="" placeholder="Price" id="input-price" class="form-control">
+                                <label class="control-label" for="input-price">Giá</label>
+                                <input type="text" name="filter_price" value=""  id="input-price" class="form-control">
                             </div>
 
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label class="control-label" for="input-status">Status</label>
+                                <label class="control-label" for="input-status">Tình trạng</label>
                                 <select name="filter_status" id="input-status" class="form-control">
-                  <option value="*"></option>
-                    <option value="1">Enabled</option>
-                     <option value="0">Disabled</option>
-                  </select>
+                                  <option value="2">Tất Cả</option>
+                                    <option value="1">Có Hàng</option>
+                                     <option value="0">Chưa Về</option>
+                                </select>
                             </div>
-                            <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> Filter</button>
+                            <div>
+                                <a class="">
+                                    Giỏ hàng
+                                    <span class="text">
+                                        <i class="fa fa-shopping-cart text-success"></i> 0
+                                    </span>
+                                </a>
+                                <a class="btn btn-default">
+                                    <span class="text">
+                                        <i class="fa fa-save text-success"></i>
+                                    </span>
+                                    <span class="text">
+                                    Tạo đơn hàng
+                                    </span>
+                                </a>
+                                <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> Lọc</button>
+                            </div>
+                            
                         </div>
 
                     </div>
@@ -74,18 +91,19 @@
                                         <input type="checkbox" onClick="$('input[name*=\'selected\']').prop('checked', this.checked);" data-ng-click="isCheckAll();">
                                         <i></i></label>
                                     </td>
-                                    <td class="text-center"> <span class="hide"> {{products.selected}} </span>  Image</td>
-                                    <td class="text-left"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=pd.name&amp;order=DESC" class="asc">Product Name</a>
+                                    <td class="text-center"> <span class="hide"> {{products.selected}} </span>  Hình ảnh</td>
+                                    <td class="text-left"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=pd.name&amp;order=DESC" class="asc">Tên sản phẩm</a>
                                     </td>
-                                    <td class="text-left"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=p.model&amp;order=DESC">Model</a>
-                                    </td>
-                                    <td class="text-right"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=p.price&amp;order=DESC">Price</a>
+                                   
+                                    <td class="text-right"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=p.price&amp;order=DESC">Giá</a>
                                     </td>
                                     <td class="text-right"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=p.quantity&amp;order=DESC">Quantity</a>
                                     </td>
-                                    <td class="text-left"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=p.status&amp;order=DESC">Status</a>
+                                     <td class="text-left"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=p.model&amp;order=DESC">Số lượng</a>
                                     </td>
-                                    <td class="text-right">Action</td>
+                                    <td class="text-left"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=p.status&amp;order=DESC">Tình trạng</a>
+                                    </td>
+                                    <td class="text-right">Thao Tác</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -98,12 +116,23 @@
                                     </td>
                                     <td class="text-center"> <img data-ng-src="{{value.image_path}}" alt="{{value.name}}" class="img-thumbnail">
                                     </td>
-                                    <td class="text-left">{{value.name}}</td>
-                                    <td class="text-left">Product 19</td>
+                                    <td class="text-left">
+                                        <a class="btn btn-default" ui-toggle-class="button">
+                                          <i class="fa fa-shopping-cart text"></i>
+                                          <i class="fa fa-shopping-cart text-active text-danger"></i>
+                                        </a>
+                                        {{value.name}} 
+                                    </td>
+                                    
                                     <td class="text-right"> {{value.price}} </td>
                                     <td class="text-right"> <span class="label label-success">1000</span>
                                     </td>
-                                    <td class="text-left">{{value.status}}</td>
+                                    <td class="text-left">
+                                        <div>
+                                          <input ui-jq="TouchSpin" type="number" value="0" class="form-control" data-min='0' data-max="100" data-verticalbuttons="true" data-verticalupclass="fa fa-caret-up"  data-verticaldownclass="fa fa-caret-down">
+                                        </div>
+                                    </td>
+                                    <td class="text-left">{{value.status?'Có hàng':'Chưa về'}}</td>
                                     <td class="text-right"><a data-ng-click="productEdit(value)" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a></td>
                                 </tr>
                             </tbody>
