@@ -46,7 +46,7 @@
                                 </td> -->
                                 <td class="text-left">
                                     <div>
-                                      <input ui-jq="TouchSpin" type="number" ng-model="value.quantity" class="form-control" data-min='0' data-max="100" data-verticalbuttons="true" data-verticalupclass="fa fa-caret-up"  data-verticaldownclass="fa fa-caret-down">
+                                      <input data-ng-change="calc_price(value)"  type="number" ng-model="value.quantity" data-min="0"  step="0.1" class="form-control"  data-verticalbuttons="true" data-verticalupclass="fa fa-caret-up"  data-verticaldownclass="fa fa-caret-down">
                                     </div>
                                 </td>
                                 <td class="text-right"> {{value.last_price}} VNĐ</td>
@@ -60,8 +60,11 @@
                         </tbody>
                     </table>
                 </div>
+                <div><b> Tổng:</b>  {{total_price}} VNĐ</div>
             </div>
-            <div class="modal-footer"><button type="button" class="btn btn-default" ng-click="$hide()">Close</button> <button type="button" class="btn btn-primary" ng-click="$hide()">Save changes</button></div>
+            <div class="modal-footer"><button type="button" class="btn btn-default" ng-click="$hide()">Close</button> 
+            <button class="btn btn-info"><i class="icon-printer"></i> In</button>
+            <button type="button" class="btn btn-primary" ng-click="$hide()"><i class="fa fa-save"></i> Lưu đơn hàng</button></div>
         </div>
     </div>
 </div>

@@ -45,6 +45,7 @@
 	}]);
 
 	app.controller('ProductCtrl', ['$scope', '$log', 'openModal', 'SweetAlert', 'productService', 'commonService','$modal', function($scope, $log, openModal, SweetAlert, productService, commonService, $modal) {
+		$scope.total_price = 0;
 		$scope.checkAll = function() {
 	    	$scope.products.selected = $scope.products.roles.map(function(item) { return item.id; });
 	    };
@@ -330,6 +331,13 @@
 	    		show: false
 	    	});
 	    	myModal.$promise.then(myModal.show);
+	    }
+	    $scope.calc_price = function (item) {
+	    	item.last_price = item.price_pure * item.quantity;
+	    	$scope.total_price = 0;
+	    	angular.forEach( $scope.total_cart, function(value, key) {
+	            $scope.total_price += value.last_price;
+	        });
 	    }
 
 	}]);		
