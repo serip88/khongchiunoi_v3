@@ -1,0 +1,67 @@
+<div class="modal top am-fade-and-slide-top" tabindex="-1" role="dialog" >
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" ><button type="button" class="close" ng-click="$hide()">×</button>
+                <h4 class="modal-title" >Tạo đơn hàng</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <!-- <td style="width: 1px;" class="text-center">
+                                    <label class="i-checks m-b-none">
+                                    <input type="checkbox" onClick="$('input[name*=\'selected\']').prop('checked', this.checked);" data-ng-click="isCheckAll();">
+                                    <i></i></label>
+                                </td> -->
+                                <td class="text-center"> <span class="hide"> {{products.selected}} </span>  Hình ảnh</td>
+                                <td class="text-left"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=pd.name&amp;order=DESC" class="asc">Tên sản phẩm</a>
+                                </td>
+                               
+                                <td class="text-right"> <a >Đơn Giá</a></td>
+                                <!-- <td class="text-right"> <a>Quantity</a>
+                                </td> -->
+                                <td class="text-left"> <a >Số lượng</a></td>
+                                <td class="text-right"> <a >Thành Tiền</a></td>
+                               
+                                <td class="text-right">Thao Tác</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr ng-repeat="(key, value) in total_cart">
+                                <!-- <td class="text-center"> 
+                                    <label class="i-checks m-b-none" data-ng-click="myform.selected.click()">
+                                    <input type="checkbox" checklist-model="products.selected" name="selected[]"  checklist-value="value.product_id">
+                                    <i></i></label>
+                                </td> -->
+                                <td class="text-center"> <img data-ng-src="{{value.image_path}}" alt="{{value.name}}" class="img-thumbnail">
+                                </td>
+                                <td class="text-left">
+                                    {{value.name}}
+                                </td>
+                                
+                                <td class="text-right"> {{value.price}}/kg</td>
+                                <!-- <td class="text-right"> <span class="label label-success">1000</span>
+                                </td> -->
+                                <td class="text-left">
+                                    <div>
+                                      <input ui-jq="TouchSpin" type="number" ng-model="value.quantity" class="form-control" data-min='0' data-max="100" data-verticalbuttons="true" data-verticalupclass="fa fa-caret-up"  data-verticaldownclass="fa fa-caret-down">
+                                    </div>
+                                </td>
+                                <td class="text-right"> {{value.last_price}} VNĐ</td>
+                                <td class="text-right">
+                                	<a data-ng-click="productEdit(value)" data-toggle="tooltip" title="" class="btn btn-primary hide" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                                	<a class="btn btn-default" ui-toggle-class="button" data-ng-click="addToCart(value)">
+                                      <i class="glyphicon glyphicon-remove text text-danger"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer"><button type="button" class="btn btn-default" ng-click="$hide()">Close</button> <button type="button" class="btn btn-primary" ng-click="$hide()">Save changes</button></div>
+        </div>
+    </div>
+</div>

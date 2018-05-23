@@ -133,7 +133,7 @@ class Product_lib extends Common_lib {
       if($value['image_path']){
         $data[$key]['image_path'] = trim($value['image_path'],".");
       }
-      $data[$key]['client_amounts'] = 0;
+      $data[$key]['quantity'] = 0;
     }
     return $data;
   }

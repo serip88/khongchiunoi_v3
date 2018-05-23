@@ -117,14 +117,14 @@
                                     <td class="text-center"> <img data-ng-src="{{value.image_path}}" alt="{{value.name}}" class="img-thumbnail">
                                     </td>
                                     <td class="text-left">
-                                        <a class="btn btn-default" ui-toggle-class="button" data-ng-click="addToCart(value)">
-                                          <i class="fa fa-shopping-cart text"></i>
-                                          <i class="fa fa-shopping-cart text-active text-danger"></i>
+                                        <a class="btn btn-default" data-ng-click="addToCart(value)">
+                                          <i class="fa fa-shopping-cart text" ng-show="!value.in_cart"></i>
+                                          <i class="fa fa-shopping-cart text-danger" ng-show="value.in_cart"></i>
                                         </a>
-                                        {{value.name}} 
+                                        {{value.name}}
                                     </td>
                                     
-                                    <td class="text-right"> {{value.price}} </td>
+                                    <td class="text-right"> {{value.price}}/kg</td>
                                     <!-- <td class="text-right"> <span class="label label-success">1000</span>
                                     </td> -->
                                     <!-- <td class="text-left">
@@ -132,7 +132,7 @@
                                           <input ui-jq="TouchSpin" type="number" value="0" class="form-control" data-min='0' data-max="100" data-verticalbuttons="true" data-verticalupclass="fa fa-caret-up"  data-verticaldownclass="fa fa-caret-down">
                                         </div>
                                     </td> -->
-                                    <td class="text-left">{{value.status?'Có hàng':'Chưa về'}}</td>
+                                    <td class="text-left">{{value.status == '1'?'Có hàng':'Hàng chưa về'}}</td>
                                     <td class="text-right"><a data-ng-click="productEdit(value)" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a></td>
                                 </tr>
                             </tbody>

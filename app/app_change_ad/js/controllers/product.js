@@ -44,7 +44,7 @@
 	    return productObject;
 	}]);
 
-	app.controller('ProductCtrl', ['$scope', '$log', 'openModal', 'SweetAlert', 'productService', 'commonService', function($scope, $log, openModal, SweetAlert, productService, commonService) {
+	app.controller('ProductCtrl', ['$scope', '$log', 'openModal', 'SweetAlert', 'productService', 'commonService','$modal', function($scope, $log, openModal, SweetAlert, productService, commonService, $modal) {
 		$scope.checkAll = function() {
 	    	$scope.products.selected = $scope.products.roles.map(function(item) { return item.id; });
 	    };
@@ -316,13 +316,20 @@
 	    $scope.addToCart = function (item) {
 	    	var index = $scope.total_cart.indexOf(item);
 	    	if(index == -1){
+	    		item.in_cart = true;
 	    		$scope.total_cart.push(item);
 	    	}else{
+	    		item.in_cart = false;
 	    		$scope.total_cart.splice(index, 1);
 	    	}
 	    }
 	    $scope.makeInvoice = function () {
-
+	    	var myModal = $modal({
+	    		scope: $scope, 
+	    		template:  baseConfig.tplUrl +'/catalog/product/add_invoice.html',
+	    		show: false
+	    	});
+	    	myModal.$promise.then(myModal.show);
 	    }
 
 	}]);		
