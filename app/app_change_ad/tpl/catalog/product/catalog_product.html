@@ -16,9 +16,10 @@
 <div ng-controller="ProductCtrl">
     <div class="page-header">
         <div class="container-fluid">
-            <div class="pull-right"><a  data-ng-click="openAddProduct('lg')"  data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Add New"><i class="fa fa-plus"></i></a>
-                <button type="button" data-toggle="tooltip" title="" class="btn btn-default" onclick="$('#form-product').attr('action', 'http://dm-opencart.localhost/admin/index.php?route=catalog/product/copy&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4').submit()" data-original-title="Copy"><i class="fa fa-copy"></i></button>
-                <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" data-ng-click="deleteProduct()" data-original-title="Delete"><i class="fa fa-trash-o"></i></button>
+            <div class="pull-right">
+                <a  data-ng-click="openAddProduct('lg')"  data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Add New"><i class="fa fa-plus"></i></a>
+                <!-- <button type="button" data-toggle="tooltip" title="" class="btn btn-default" onclick="" data-original-title="Copy"><i class="fa fa-copy"></i></button> -->
+                <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" ng-disabled="!products.selected.length" data-ng-click="deleteProduct()" data-original-title="Delete"><i class="fa fa-trash-o"></i></button>
             </div>
             <h1>Products</h1>
             <ul class="breadcrumb">

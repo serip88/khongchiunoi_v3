@@ -9,6 +9,7 @@
     productDelete: 'product/delete',
     productList: 'product/product_list',
     invoiceList: 'product/invoice_list',
+    invoiceDelete: 'product/invoice_delete',
     categoryList: 'category/category_list',
 };
 (function(window, angular, $, undefined){
@@ -367,7 +368,6 @@
 			popupWin.document.write('<html><head><body onload="window.print()">' + printContents + '</body></html>');
 			popupWin.document.close();
 		} 
-
 	}]);	
 
 	app.controller('InvoiceCtrl', ['$scope', '$log', 'openModal', 'SweetAlert', 'productService', 'commonService','$modal', function($scope, $log, openModal, SweetAlert, productService, commonService, $modal) {
@@ -387,5 +387,58 @@
 	        });
 	    }
 	    invoiceList();
+	    $scope.deleteInvoice = function () {
+		    if($scope.invoices.selected.length){
+		      SweetAlert.swal({
+		         title: "Are you sure?",
+		         text: "Your will not be able to recover this product!",
+		         type: "warning",
+		         showCancelButton: true,
+		         confirmButtonColor: "#DD6B55",
+		         confirmButtonText: "Yes, delete it!",
+		         closeOnConfirm: false}, 
+		      function(isConfirm){ 
+		          if(isConfirm){
+		            deleteInvoiceAction();
+		          }
+		      });
+		    }else{
+		      SweetAlert.swal({
+		         title: "Please select group!",
+		         text: "",
+		         type: "warning",
+		         confirmButtonText: "Ok"
+		       });
+		    }
+		}
+		function deleteInvoiceAction(){
+	      productService.httpPost(productApi.invoiceDelete,{'invoice_delete':$scope.invoices.selected} ).then(function(responseData) {
+	          if (responseData.status) {
+	           	SweetAlert.swal("Delete success!", "", "success");
+	           	invoiceList();
+	          }else{
+	            SweetAlert.swal({
+	              title: "Have problem when delete invoice!",
+	              text: "",
+	              type: "warning",
+	              confirmButtonText: "Ok"
+	            });
+	          }
+	      });
+	    }
+	    $scope.checkAll = function() {
+	    	$scope.invoices.selected = $scope.invoices.roles.map(function(item) { return item.id; });
+	    };
+	    $scope.uncheckAll = function() {
+	      	$scope.invoices.selected = [];
+	    };
+	    $scope.isCheckAll = function() {
+	      	$scope.invoices.is_check_all = !$scope.invoices.is_check_all;
+	      	if($scope.invoices.is_check_all){
+	        	$scope.checkAll();
+	      	}else{
+	        	$scope.uncheckAll();
+	      	}
+	    }; 
 	}]);			
 })(window, window.angular, window.jQuery);

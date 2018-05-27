@@ -11,8 +11,14 @@ class Invoice_Detail_Model extends Starter_Model{
         $this->_tb_name="rz_product_invoice_detail";
     }
 
-	function check_delete($uid,$pid){
-		
-	}
+	function get_invoice($id){
+        $select="*";
+        $where = array('invoice_id'=>$id);
+        $data = $this->get_data($select,$where,1);      
+        if($data){
+            return $data[0];
+        }
+        return 0;
+    }
     
 }

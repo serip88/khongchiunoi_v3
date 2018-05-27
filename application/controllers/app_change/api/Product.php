@@ -211,4 +211,33 @@ class Product extends Base_controller {
             'rows' => $data
         ], REST_Controller::HTTP_OK);
     }
+    public function invoice_delete_post(){
+        $params = $this->post();
+        $invoice_ids = isset($params['invoice_delete']) && $params['invoice_delete']?$params['invoice_delete']:array();
+        $msg = '';
+        $status = false;
+        $count_false = 0;
+        if(count($invoice_ids)){
+            foreach ($invoice_ids as $key => $id) {
+                try {
+                    //$data = $this->product_invoice_model->get_product($id);
+                    $stt = $this->product_lib->invoice_delete($id);
+                    if(!$stt){
+                        $count_false = $count_false +1;
+                    }
+                } catch (Exception $e) {
+                    $count_false = $count_false +1;
+                    //echo 'Caught exception: ',  $e->getMessage(), "\n";
+                }
+            }
+        } 
+        if($count_false == 0){
+            $status = true;
+            $msg = 'delete success';
+        }else{
+            $msg = "invoice cannot delete";
+        }
+        $response = array('status' => $status,'msg' => $msg);
+        $this->custom_response($response);
+    }
 }

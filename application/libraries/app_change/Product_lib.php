@@ -221,4 +221,12 @@ class Product_lib extends Common_lib {
     }
     return $data;
   }
+  function invoice_delete($invoice_id){
+      if($invoice_id){
+        $where = array("invoice_id"=>$invoice_id);
+        $stt = $this->CI->product_invoice_model->delete_data($where);
+        return $stt;
+      }else
+        return false;
+  }
 }

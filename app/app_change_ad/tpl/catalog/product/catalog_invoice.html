@@ -17,7 +17,7 @@
     <div class="page-header">
         <div class="container-fluid">
             <div class="pull-right">
-                <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" data-ng-click="deleteInvoice()" data-original-title="Delete"><i class="fa fa-trash-o"></i></button>
+                <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" ng-disabled="!invoices.selected.length" data-ng-click="deleteInvoice()" data-original-title="Delete"><i class="fa fa-trash-o"></i></button>
             </div>
             <h1>Invoice</h1>
             <ul class="breadcrumb">
@@ -86,7 +86,7 @@
                                 <tr ng-repeat="(key, value) in invoiceList">
                                     <td class="text-center"> 
                                         <label class="i-checks m-b-none" data-ng-click="myform.selected.click()">
-                                        <input type="checkbox" checklist-model="products.selected" name="selected[]"  checklist-value="value.product_id">
+                                        <input type="checkbox" checklist-model="invoices.selected" name="selected[]"  checklist-value="value.invoice_id">
                                         <i></i></label>
                                     </td>
                                    
