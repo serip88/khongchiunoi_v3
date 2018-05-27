@@ -167,4 +167,37 @@ class Product extends Base_controller {
         $response = array('status' => $status,'msg' => $msg);
         $this->custom_response($response);
     }
+    public function invoice_post(){
+        $param = $this->post();
+        $stt = FALSE;
+        $msg ='';
+        $param = $this->product_lib->validate_save_product_invoice($param);
+        if($param){
+            $id = $stt = $this->product_lib->save_product_invoice($param);
+            if($id){
+                $this->handle_invoice_detail($id,$param);
+            }else{
+                $msg = 'Error! Cannot save invoice.';
+            }
+        }else{
+            $msg = 'Có lỗi: vui lòng kiểm tra lại thông số, số lượng, giá'; 
+        }
+        $response = array('status' => $stt,'msg'=> $msg);
+        $this->custom_response($response);
+    }
+    public function handle_invoice_detail($invoice_id,$products){
+        if($products){
+            foreach ($products as $key => $param) {
+                $param['invoice_id'] = $invoice_id;
+                $param = $this->product_lib->validate_save_invoice_detail($param);
+                if($param){
+                    $stt = $this->product_lib->save_invoice_detail($param);
+                }else{
+                    $msg = 'Error! Wrong data.';
+                }
+            }
+        }else{
+            return 0;
+        }
+    }
 }

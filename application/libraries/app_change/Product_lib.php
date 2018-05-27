@@ -23,6 +23,8 @@ class Product_lib extends Common_lib {
     $this->CI->load->database('default');
     $this->CI->load->model(array(
         'product/product_model',
+        'product/product_invoice_model',
+        'product/invoice_detail_model'
     ));
       
   }
@@ -154,5 +156,50 @@ class Product_lib extends Common_lib {
     }
   }
   
-
+  function validate_save_product_invoice($param){ 
+    if($param){
+      foreach ($param as $key => $value) {
+        $param[$key]['quantity'] = str_replace(",", ".", $value['quantity']);
+        if($param[$key]['quantity'] <= 0){
+          return 0;
+        }
+      }
+    }else{
+      return 0;
+    }
+    return $param;
+  }
+  function save_product_invoice($param){ 
+    $data = array();
+    $data['created_date'] = time();
+    $data['memo']  = ''; 
+    $id = $this->CI->product_invoice_model->insert_data($data);
+    return $id;
+  }
+  function validate_save_invoice_detail($param){
+      $requite = array('invoice_id','product_id','price','quantity','last_price');//description,status,parent_id
+      $param['invoice_id']   = isset($param['invoice_id']) && $param['invoice_id'] ? $param['invoice_id']: 0;
+      $param['product_id']   = isset($param['product_id']) && $param['product_id'] ? $param['product_id']: 0;
+      $param['price']   = isset($param['price_pure']) && $param['price_pure'] ? $param['price_pure']: 0;
+      $param['quantity']   = isset($param['quantity']) && $param['quantity'] ? $param['quantity']: 0;
+      $param['last_price']   = isset($param['last_price']) && $param['last_price'] ? $param['last_price']: 0;
+      $param['product_name']   = isset($param['name']) && $param['name'] ? $param['name']: '';
+      foreach ($requite as $key => $value) {
+        if(!$param[$value]){
+          return 0;
+        }
+      }
+      return $param;
+  }
+  function save_invoice_detail($param){ 
+    $data = array();
+    $expected = array('invoice_id','product_id','product_name','price','quantity','last_price');
+    foreach ($expected as $key => $value) {
+      if( isset($param[$value]) ){
+        $data[$value] = $param[$value];
+      }
+    }
+    $id = $this->CI->invoice_detail_model->insert_data($data);
+    return $id;
+  }
 }

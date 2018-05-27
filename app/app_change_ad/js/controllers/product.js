@@ -5,6 +5,7 @@
     baseUrl: baseConfig.apiUrl,
     productSave: 'product/save',
     productEdit: 'product/edit',
+    productInvoice: 'product/invoice',
     productDelete: 'product/delete',
     productList: 'product/product_list',
     categoryList: 'category/category_list',
@@ -328,7 +329,26 @@
 	    	var myModal = $modal({
 	    		scope: $scope, 
 	    		template:  baseConfig.tplUrl +'/catalog/product/add_invoice.html',
-	    		show: false
+	    		show: false,
+	    		controller: ['$scope','commonService','Upload','$timeout',function(scope, commonService,Upload, $timeout){
+			        scope.ok = function(hide){
+			          	productService.httpPost(productApi.productInvoice,$scope.total_cart).then(function(responseData) {
+				              if (responseData.status) {
+				               SweetAlert.swal("Thêm đơn hàng thành công!", "", "success");
+				               $scope.total_cart = [];
+				               productList();
+				               hide();
+				              }else{
+				                SweetAlert.swal({
+				                  title: "Thêm đơn hàng thất bại!",
+				                  text: responseData.msg,
+				                  type: "warning",
+				                  confirmButtonText: "Close"
+				                });
+				              }
+				        });
+			        };
+			    }]
 	    	});
 	    	myModal.$promise.then(myModal.show);
 	    }
