@@ -25,6 +25,12 @@ var app =  angular.module('app')
       html: true
     });
   })
+  .config(function($datepickerProvider) {
+    angular.extend($datepickerProvider.defaults, {
+      dateFormat: 'dd/MM/yyyy',
+      startWeek: 1
+    });
+  })
   .config(['$translateProvider', function($translateProvider){
     // Register a loader for the static files
     // So, the module will search missing translation tables under the specified urls.

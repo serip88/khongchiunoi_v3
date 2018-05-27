@@ -157,21 +157,25 @@ class Product_lib extends Common_lib {
   }
   
   function validate_save_product_invoice($param){ 
+    $amount = 0;
     if($param){
       foreach ($param as $key => $value) {
         $param[$key]['quantity'] = str_replace(",", ".", $value['quantity']);
         if($param[$key]['quantity'] <= 0){
           return 0;
+        }else{
+          $amount += $value['quantity'] * $value['price_pure'];
         }
       }
     }else{
       return 0;
     }
-    return $param;
+    return $amount;
   }
-  function save_product_invoice($param){ 
+  function save_product_invoice($amount){ 
     $data = array();
     $data['created_date'] = time();
+    $data['amount'] = $amount;
     $data['memo']  = ''; 
     $id = $this->CI->product_invoice_model->insert_data($data);
     return $id;
@@ -201,5 +205,20 @@ class Product_lib extends Common_lib {
     }
     $id = $this->CI->invoice_detail_model->insert_data($data);
     return $id;
+  }
+  function get_invoice_list(){
+      $select="*";
+      $where = array();
+      $data = $this->CI->product_invoice_model->get_data($select,$where,100,0,'invoice_id DESC');      
+      if($data){
+        $data = $this->format_invoice_list($data);
+      }
+      return $data;
+  }
+  function format_invoice_list($data){
+    foreach ($data as $key => $value) {
+      $data[$key]['created_date'] = date ( "d-m-Y H:i", $value['created_date'] );
+    }
+    return $data;
   }
 }

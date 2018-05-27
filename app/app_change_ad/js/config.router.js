@@ -405,6 +405,21 @@ angular.module('app')
                       }]
                   }
               })
+              .state('app.catalog.invoice', {
+                  url: '/invoice',
+                  templateUrl: baseConfig.tplUrl+'/catalog/product/catalog_invoice.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad ){
+                          return $ocLazyLoad.load(['ngFileUpload','angularFileUpload']).then(
+                            function(){
+                              return $ocLazyLoad.load( [baseConfig.app+'/js/controllers/product.js'
+                              ]);
+                            }
+                          )
+                      }]
+                  }
+              })
               //area
               .state('app.area', {
                   url: '/area',

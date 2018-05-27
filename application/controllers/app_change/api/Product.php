@@ -171,9 +171,9 @@ class Product extends Base_controller {
         $param = $this->post();
         $stt = FALSE;
         $msg ='';
-        $param = $this->product_lib->validate_save_product_invoice($param);
-        if($param){
-            $id = $stt = $this->product_lib->save_product_invoice($param);
+        $amount = $this->product_lib->validate_save_product_invoice($param);
+        if($amount){
+            $id = $stt = $this->product_lib->save_product_invoice($amount);
             if($id){
                 $this->handle_invoice_detail($id,$param);
             }else{
@@ -199,5 +199,16 @@ class Product extends Base_controller {
         }else{
             return 0;
         }
+    }
+    public function invoice_list_get(){
+        $stt=FALSE;
+        $data = $this->product_lib->get_invoice_list();
+        if($data)
+            $stt=TRUE;
+
+        $this->set_response([
+            'status' => $stt,
+            'rows' => $data
+        ], REST_Controller::HTTP_OK);
     }
 }
