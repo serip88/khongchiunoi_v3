@@ -201,14 +201,20 @@ class Product extends Base_controller {
         }
     }
     public function invoice_list_get(){
+        $params = $this->get();
         $stt=FALSE;
-        $data = $this->product_lib->get_invoice_list();
-        if($data)
+        $res = $this->product_lib->get_invoice_list($params);
+        $data = array();
+        $total = 0;
+        if($res){
+            $data = $res['data'];
+            $total = $res['total'];
             $stt=TRUE;
-
+        }
         $this->set_response([
             'status' => $stt,
-            'rows' => $data
+            'rows' => $data,
+            'total'=> $total
         ], REST_Controller::HTTP_OK);
     }
     public function invoice_delete_post(){

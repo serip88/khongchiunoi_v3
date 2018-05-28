@@ -373,18 +373,27 @@
 	app.controller('InvoiceCtrl', ['$scope', '$log', 'openModal', 'SweetAlert', 'productService', 'commonService','$modal', function($scope, $log, openModal, SweetAlert, productService, commonService, $modal) {
 		//$scope.fromDate = new Date();
   		//$scope.untilDate = new Date();
+  		$scope.total_invoice = 0;
   		function invoiceList() {
-	        productService.httpGet(productApi.invoiceList).then(function(responseData) {
+  			var params = {'start_date':$scope.start_date,'end_date':$scope.start_date};
+	        productService.httpGet(productApi.invoiceList,params).then(function(responseData) {
 	            if (responseData.status) {
-	              $scope.invoiceList = responseData.rows;
-	              $scope.invoices = {selected:[],roles:[],is_check_all:false};
-	              angular.forEach( $scope.invoiceList, function(value, key) {
+	              	$scope.invoiceList = responseData.rows;
+	              	$scope.total_invoice = responseData.total;
+	              	$scope.invoices = {selected:[],roles:[],is_check_all:false};
+	              	angular.forEach( $scope.invoiceList, function(value, key) {
 	                $scope.invoiceList[key]['invoice_id'] = parseInt(value.invoice_id) ;
 	                //$scope.user.roles[value.user_id]= value.username ;
 	                $scope.invoices.roles.push({id:value.invoice_id,name:value.created_date});
 	              });
+	            }else{
+	            	$scope.invoiceList = [];
+	            	$scope.total_invoice = 0;
 	            }
 	        });
+	    }
+	    $scope.reload = function () {
+	    	invoiceList();
 	    }
 	    invoiceList();
 	    $scope.deleteInvoice = function () {

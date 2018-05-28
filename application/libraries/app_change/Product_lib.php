@@ -206,9 +206,17 @@ class Product_lib extends Common_lib {
     $id = $this->CI->invoice_detail_model->insert_data($data);
     return $id;
   }
-  function get_invoice_list(){
+  function get_invoice_list($params){
       $select="*";
       $where = array();
+      if(isset($params['start_date']) && isset($params['end_date'])){
+        $params['start_date'] = $params['start_date']/1000;
+        $params['end_date'] = $params['end_date']/1000;
+        $end_date = date("Y-m-d", $params['end_date']);
+        $params['end_date'] = strtotime($end_date.' 23:59:59');
+        $where['created_date >='] = $params['start_date'];
+        $where['created_date <='] = $params['end_date'];
+      }
       $data = $this->CI->product_invoice_model->get_data($select,$where,100,0,'invoice_id DESC');      
       if($data){
         $data = $this->format_invoice_list($data);
@@ -216,10 +224,13 @@ class Product_lib extends Common_lib {
       return $data;
   }
   function format_invoice_list($data){
+    $total = 0;
     foreach ($data as $key => $value) {
       $data[$key]['created_date'] = date ( "d-m-Y H:i", $value['created_date'] );
+      $total += $value['amount'];
     }
-    return $data;
+    $total = number_format($total , 0, ',', '.');
+    return array('data'=>$data,'total'=>$total) ;
   }
   function invoice_delete($invoice_id){
       if($invoice_id){

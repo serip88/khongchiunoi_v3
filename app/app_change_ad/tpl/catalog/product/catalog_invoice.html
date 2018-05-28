@@ -17,6 +17,7 @@
     <div class="page-header">
         <div class="container-fluid">
             <div class="pull-right">
+                <button type="button" data-toggle="tooltip" title="" class="btn btn-default" ng-click="reload()"><i class="icon-refresh"></i></button>
                 <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" ng-disabled="!invoices.selected.length" data-ng-click="deleteInvoice()" data-original-title="Delete"><i class="fa fa-trash-o"></i></button>
             </div>
             <h1>Invoice</h1>
@@ -41,16 +42,16 @@
                             <div class="form-group">
                                 <!-- <label class="control-label"><i class="fa fa-calendar"></i> <i class="fa fa-arrows-h"></i> <i class="fa fa-calendar"></i> Date range <small>(dynamic)</small></label><br> -->
                                 <div class="form-group col-xs-6">
-                                  <input type="text" class="form-control" ng-model="fromDate"  data-max-date="{{untilDate}}" placeholder="Ngày bắt đầu" bs-datepicker>
+                                  <input type="text" class="form-control" ng-model="start_date"  data-max-date="{{end_date}}" placeholder="Ngày bắt đầu" data-date-type="number" bs-datepicker>
                                 </div>
                                 <div class="form-group col-xs-6">
-                                  <input type="text" class="form-control" ng-model="untilDate"  data-min-date="{{fromDate}}" placeholder="Ngày kết thúc" bs-datepicker>
+                                  <input type="text" class="form-control" ng-model="end_date"  data-min-date="{{start_date}}" placeholder="Ngày kết thúc" data-date-type="number" bs-datepicker>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-2">
                            
-                            <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> Lọc</button>
+                            <button type="button" id="button-filter" class="btn btn-primary pull-right" ng-click="reload()"><i class="fa fa-search"></i> Lọc</button>
                             
                         </div>
 
@@ -66,11 +67,9 @@
                                         <input type="checkbox" onClick="$('input[name*=\'selected\']').prop('checked', this.checked);" data-ng-click="isCheckAll();">
                                         <i></i></label>
                                     </td>
-                                   
-                                    <td class="text-left"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=pd.name&amp;order=DESC" class="asc">Hóa đơn ngày </a>
+                                    <td class="text-left"> <a href="" class="asc">Hóa đơn ngày </a>
                                     </td>
-                                   
-                                    <td class="text-right"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=p.price&amp;order=DESC">Tổng hóa đơn</a>
+                                    <td class="text-right" style="width: 20%;"> <a href="">Số tiền</a>
                                     </td>
                                     <!-- <td class="text-right"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=p.quantity&amp;order=DESC">Quantity</a>
                                     </td> -->
@@ -104,6 +103,10 @@
                                     </td> -->
                                     <!-- <td class="text-left">{{value.status == '1'?'Có hàng':'Hàng chưa về'}}</td>
                                     <td class="text-right"><a data-ng-click="productEdit(value)" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a></td> -->
+                                </tr>
+                                <tr>
+                                  <td colspan="2" class="text-right no-border"><strong>Tổng tiền</strong></td>
+                                  <td><strong>{{total_invoice}} VNĐ</strong></td>
                                 </tr>
                             </tbody>
                         </table>
