@@ -39,7 +39,7 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label class="control-label hide" for="input-name">Tên sản phẩm</label>
-                                <input type="text" name="filter_name" value="" id="input-name" placeholder="Tên sản phẩm" class="form-control" autocomplete="off">
+                                <input type="text" name="filter_name" value="" id="input-name" placeholder="Tên sản phẩm" class="form-control" autocomplete="off" ng-model="product_name">
                                 <ul class="dropdown-menu"></ul>
                             </div>
 
@@ -48,7 +48,7 @@
                             
                             <div class="form-group">
                                 <label class="control-label hide" for="input-status">Tình trạng</label>
-                                <select name="filter_status" id="input-status" class="form-control">
+                                <select name="filter_status" id="input-status" class="form-control" ng-model="product_status">
                                   <option value="2">Tất Cả</option>
                                     <option value="1">Có Hàng</option>
                                      <option value="0">Chưa Về</option>
@@ -109,7 +109,7 @@
                             </thead>
                             <tbody>
                                 
-                                <tr ng-repeat="(key, value) in productList">
+                                <tr ng-repeat="(key, value) in productList | filter : product_name" ng-show="product_status == 2 || product_status == value.status">
                                     <td class="text-center"> 
                                         <label class="i-checks m-b-none" data-ng-click="myform.selected.click()">
                                         <input type="checkbox" checklist-model="products.selected" name="selected[]"  checklist-value="value.product_id">
