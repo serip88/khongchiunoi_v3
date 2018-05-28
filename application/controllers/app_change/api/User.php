@@ -104,8 +104,64 @@ class User extends Base_controller {
         if($data_user){
             $status = true;
         }
-        $response = array('status' => $status, 'user_data'=> $data_user);
+        $response = array('status' => $status, 'user_data'=> $data_user, 'module'=> $this->init_module() );
         $this->custom_response($response);
+    }
+    public function init_module(){
+        $module = array('calendar'=>false,
+            'email'=>false,
+            'apps'=>false,
+            'layout'=>false,
+            'ui_kits'=>false,
+            'table'=>false,
+            'form'=>false,
+            'chart'=>false,
+            'pages'=>false,
+            'post'=>false,
+            'catalog'=>false,
+            'system'=>false,
+            'area'=>false
+        );
+        switch (config_item('app_name')) {
+            case 'bacrau':
+                $access = array('catalog','system');
+                break;
+            case 'ungdungnho':
+                $access = array('calendar',
+                    'email',
+                    'apps',
+                    'layout',
+                    'ui_kits',
+                    'table',
+                    'form',
+                    'chart',
+                    'pages',
+                    'post',
+                    'catalog',
+                    'system',
+                    'area'
+                );;
+                break;
+            default:
+                $access = array('calendar',
+                    'email',
+                    'apps',
+                    'layout',
+                    'ui_kits',
+                    'table',
+                    'form',
+                    'chart',
+                    'pages',
+                    'post',
+                    'catalog',
+                    'system',
+                    'area'
+                );;
+        }
+        foreach ($access as $key => $value) {
+            $module[$value]=true;
+        }
+        return $module;
     }
     public function member_group_get()
     {

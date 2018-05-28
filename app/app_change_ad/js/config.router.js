@@ -31,6 +31,7 @@ angular.module('app')
                         .success(function (data) {
                           if(data.user_data){
                             angular.copy(data.user_data, commonService.sync.user_data);
+                            angular.copy(data.module, commonService.sync.module);
                           }else{
                             $state.go('access.signin');
                           }

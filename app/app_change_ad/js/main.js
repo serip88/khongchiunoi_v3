@@ -3,7 +3,7 @@
   /* Controllers */
   app.factory("commonService", ["$http", "$q", 'SweetAlert', function ($http, $q, SweetAlert) {
     var commonObject = {};
-    commonObject.sync = {user_data:{},is_requested:0};
+    commonObject.sync = {user_data:{},is_requested:0,module:{}};
     commonObject.httpGet = function (path, params, block) {
         if(typeof block == 'undefined'){
             block = true;
@@ -95,6 +95,7 @@
       }
       $scope.options = {};
       $scope.options.user_data = commonService.sync.user_data;
+      $scope.options.module = commonService.sync.module;
       // save settings to local storage
       if ( angular.isDefined($localStorage.settings) ) {
         $scope.app.settings = $localStorage.settings;
@@ -159,7 +160,7 @@
         })
       }
       $scope.logout = function() {
-        commonService.httpPost('access/logout')
+        commonService.httpPost('access/logout',{t:'a'})
           .then(function(response) {
             if (response.status) {
               angular.copy({}, commonService.sync.user_data);

@@ -31,20 +31,20 @@
       </li>
     </ul>
   </li>
-  <li ui-sref-active="active">
+  <li ui-sref-active="active" ng-if="options.module.calendar">
     <a ui-sref="app.calendar">
       <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
       <span class="font-bold" translate="aside.nav.CALENDAR">Calendar</span>
     </a>
   </li>
-  <li ui-sref-active="active">
+  <li ui-sref-active="active" ng-if="options.module.email">
     <a ui-sref="app.mail.list">
       <b class="badge bg-info pull-right">9</b>
       <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
       <span class="font-bold" translate="aside.nav.EMAIL">Email</span>
     </a>
   </li>
-  <li>
+  <li ng-if="options.module.apps">
     <a href class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -82,7 +82,7 @@
   <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.components.COMPONENTS">Components</span>
   </li>
-  <li>
+  <li ng-if="options.module.layout">
     <a href class="auto">      
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -115,7 +115,7 @@
       </li>      
     </ul>
   </li>
-  <li ng-class="{active:$state.includes('app.ui')}">
+  <li ng-class="{active:$state.includes('app.ui')}" ng-if="options.module.ui_kits">
     <a href class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -195,7 +195,7 @@
       </li>
     </ul>
   </li>
-  <li ng-class="{active:$state.includes('app.table')}">
+  <li ng-class="{active:$state.includes('app.table')}" ng-if="options.module.table">
     <a href class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -233,7 +233,7 @@
       </li>
     </ul>
   </li>
-  <li ng-class="{active:$state.includes('app.form')}">
+  <li ng-class="{active:$state.includes('app.form')}" ng-if="options.module.form">
     <a href class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -290,13 +290,13 @@
       </li>
     </ul>
   </li>
-  <li ui-sref-active="active">
+  <li ui-sref-active="active" ng-if="options.module.chart">
     <a ui-sref="app.chart">
       <i class="glyphicon glyphicon-signal"></i>
       <span translate="aside.nav.components.CHART">Chart</span>
     </a>
   </li>
-  <li ng-class="{active:$state.includes('app.page')}">
+  <li ng-class="{active:$state.includes('app.page')}" ng-if="options.module.pages">
     <a href class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -363,7 +363,7 @@
       </li>
     </ul>
   </li>
-  <li ng-class="{active:$state.includes('app.post')}">
+  <li ng-class="{active:$state.includes('app.post')}" ng-if="options.module.post">
     <a href class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -390,7 +390,7 @@
       </li>
     </ul>
   </li>
-  <li ng-class="{active:$state.includes('app.catalog')}">
+  <li ng-class="{active:$state.includes('app.catalog')}" ng-if="options.module.catalog">
     <a href class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -422,7 +422,7 @@
       </li>
     </ul>
   </li>
-  <li ng-class="{active:$state.includes('app.system')}">
+  <li ng-class="{active:$state.includes('app.system')}" ng-if="options.module.system">
     <a href class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -454,7 +454,7 @@
       </li>
     </ul>
   </li>
-  <li ng-class="{active:$state.includes('app.area')}">
+  <li ng-class="{active:$state.includes('app.area')}" ng-if="options.module.area">
     <a href class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>

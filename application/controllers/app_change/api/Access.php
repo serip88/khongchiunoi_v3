@@ -75,6 +75,7 @@ class Access extends Base_controller {
         
     }
     public function logout_post(){
+        $param = $this->post();
         $_user_type = isset($param['t']) && $param['t'] ? $param['t'] : '';
         $status = false;
         if($_user_type=='a'){
