@@ -6,37 +6,12 @@
 }
 </style>
 <div class="modal-header">
-    <h3 class="modal-title">Add Product</h3>
+    <h3 class="modal-title">Thêm sản phẩm</h3>
 </div>
  <form   method="post" enctype="multipart/form-data" id="form-user" class="form-horizontal form-validation" name="myform" >
 <div class="modal-body" novalidate>
-        
         <div class="form-group" >
-            <label class="col-sm-2 control-label" for="input-category">Product name (vn)</label>
-            <div class="col-sm-10">
-                <input type="text"  ng-pattern="/^.{2,20}$/" placeholder="product" class="form-control" data-ng-model="product.name" required>
-                <div class="help-block">Product must be 3-20 characters.</div>
-            </div>
-        </div>
-        <div class="form-group" >
-            <label class="col-sm-2 control-label" for="input-user-group">Category</label>
-            <div class="col-sm-10">
-                <!--<select  class="form-control" ng-model="category.parent_id" required>
-                    <option value="">Please choose</option>
-                    <option ng-repeat="item in categoryList" value="{{item.id}}">{{item.name}}</option>
-                </select>-->
-                <select  class="form-control" ng-model="product.parent_selected" ng-options="option as option.path_parent_name for option in categoryList track by option.id">
-                </select>
-            </div>
-        </div>
-        <div class="form-group" >
-            <label class="col-sm-2 control-label" for="input-category">Price</label>
-            <div class="col-sm-10">
-                <input type="text" placeholder="0" class="form-control" ng-pattern="/^[0-9.,]+$/" data-ng-model="product.price" >
-            </div>
-        </div>
-        <div class="form-group" >
-            <label class="col-sm-2 control-label" for="input-image">Image</label>
+            <label class="col-sm-2 control-label" for="input-image">Hình ảnh</label>
             <div class="col-sm-10">
                 <button class="drop-box ng-pristine ng-untouched ng-valid ng-empty"  type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*"  ngf-max-size="1MB" >
                    <img ngf-src="!f.$error && f" style="width:100%" >
@@ -76,19 +51,43 @@
             
         </div>
         <div class="form-group" >
-            <label class="col-sm-2 control-label" for="input-firstname">Description (vn)</label>
+            <label class="col-sm-2 control-label" for="input-category">Tên sản phẩm</label>
+            <div class="col-sm-10">
+                <input type="text"  ng-pattern="/^.{2,20}$/" placeholder="product" class="form-control" data-ng-model="product.name" required>
+                <div class="help-block">Product must be 3-20 characters.</div>
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="col-sm-2 control-label" for="input-user-group">Danh mục</label>
+            <div class="col-sm-10">
+                <!--<select  class="form-control" ng-model="category.parent_id" required>
+                    <option value="">Please choose</option>
+                    <option ng-repeat="item in categoryList" value="{{item.id}}">{{item.name}}</option>
+                </select>-->
+                <select  class="form-control" ng-model="product.parent_selected" ng-options="option as option.path_parent_name for option in categoryList track by option.id">
+                </select>
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="col-sm-2 control-label" for="input-category">Giá</label>
+            <div class="col-sm-10">
+                <input type="number" placeholder="0" class="form-control" ng-pattern="/^[0-9.,]+$/" data-ng-model="product.price" >
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="col-sm-2 control-label" for="input-firstname">Mô tả</label>
             <div class="col-sm-10">
                 <textarea data-ng-model="product.description" rows="5" placeholder="Description" class="form-control"></textarea>
             </div>
         </div>
         
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="input-status">Status (*)</label>
+            <label class="col-sm-2 control-label" for="input-status">Tình Trạng (*)</label>
             <div class="col-sm-10">
                 <select name="status" id="input-status" class="form-control" ng-model="product.status"  required>
-                    <option value="">None</option>
-                    <option value="0" >Disabled</option>
-                    <option value="1">Enabled</option>
+                   <option value="1">Còn Hàng</option>
+                    <option value="0" >Hàng sắp về</option>
+                    
                 </select>
             </div>
         </div>
