@@ -253,7 +253,7 @@ class Base_controller extends REST_Controller {
     }
     //current_store_user, max_in_a_group
     function update_option_folder($stt,$option){
-        $this->load->library('option_lib');
+        $this->load->library(config_item('app_path').'/'.'option_lib');
         if($stt){
             $data = array('value'=>$option['current_store_user']);
             $this->option_lib->update_option_folder('current_store_user',$data);
