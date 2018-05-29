@@ -131,7 +131,7 @@ class Product_lib extends Common_lib {
     foreach ($data as $key => $value) {
       if($value['price']){
         $data[$key]['price'] = number_format($value['price'] , 0, ',', '.');
-        $data[$key]['price_pure'] = $value['price'];
+        $data[$key]['price_pure'] = (int)$value['price'];
       }
       if($value['image_path']){
         $data[$key]['image_path'] = trim($value['image_path'],".");
