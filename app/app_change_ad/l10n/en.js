@@ -68,7 +68,9 @@
         "SYSTEM" : "System",
         "MEMBERS" : "Members",
         "USERS" : "Users",
-        "USER_GROUPS" : "User Groups"
+        "ADMINISTRATOR" : "Administrator",
+        "USER_GROUPS" : "User Groups",
+        "ADMIN_GROUPS" : "Admin Groups"
       },
       "rz_category" : {
         "CATALOG" : "Catalog",

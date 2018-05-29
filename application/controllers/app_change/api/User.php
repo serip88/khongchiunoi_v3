@@ -120,7 +120,8 @@ class User extends Base_controller {
             'post'=>false,
             'catalog'=>false,
             'system'=>false,
-            'area'=>false
+            'area'=>false,
+            'attribute'=>false
         );
         switch (config_item('app_name')) {
             case 'bacrau':

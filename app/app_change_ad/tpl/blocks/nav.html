@@ -415,7 +415,7 @@
           <span >Hóa Đơn</span>
         </a>
       </li>
-      <li ui-sref-active="active">
+      <li ui-sref-active="active" ng-if="options.module.attribute">
         <a ui-sref="app.catalog.attribute">
           <span translate="aside.nav.components.rz_category.ATTRIBUTE">Attribute</span>
         </a>
@@ -444,12 +444,12 @@
       </li>
       <li ui-sref-active="active">
         <a ui-sref="app.system.users">
-          <span translate="aside.nav.components.rz_system.USERS">Users</span>
+          <span translate="aside.nav.components.rz_system.ADMINISTRATOR">Administrator</span>
         </a>
       </li>
       <li ui-sref-active="active">
         <a ui-sref="app.system.user_groups">
-          <span translate="aside.nav.components.rz_system.USER_GROUPS">User Groups</span>
+          <span translate="aside.nav.components.rz_system.ADMIN_GROUPS">Admin Groups</span>
         </a>
       </li>
     </ul>
