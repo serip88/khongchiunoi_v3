@@ -1,0 +1,150 @@
+<style type="text/css">
+.page-header {
+    margin: 10px 0 0;
+}
+
+.page-header h1 {
+    margin-top: 0px;
+    font-size: 20pt;
+}
+
+.breadcrumb {
+    margin-bottom: 5px;
+}
+</style>
+
+<div ng-controller="ProductCtrl">
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a  data-ng-click="openAddProduct('lg')"  data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Add New"><i class="fa fa-plus"></i></a>
+                <!-- <button type="button" data-toggle="tooltip" title="" class="btn btn-default" onclick="" data-original-title="Copy"><i class="fa fa-copy"></i></button> -->
+                <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" ng-disabled="!products.selected.length" data-ng-click="deleteProduct()" data-original-title="Delete"><i class="fa fa-trash-o"></i></button>
+            </div>
+            <h1>Products</h1>
+            <ul class="breadcrumb">
+                <li><a href="http://dm-opencart.localhost/admin/index.php?route=common/dashboard&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4">Home</a></li>
+                <li><a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4">Products</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-list"></i> Product List</h3>
+            </div>
+            <div class="panel-body">
+                <div class="well">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="control-label hide" for="input-name">Tên sản phẩm</label>
+                                <input type="text" name="filter_name" value="" id="input-name" placeholder="Tên sản phẩm" class="form-control" autocomplete="off" ng-model="product_name">
+                                <ul class="dropdown-menu"></ul>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4">
+                            
+                            <div class="form-group">
+                                <label class="control-label hide" for="input-status">Tình trạng</label>
+                                <select name="filter_status" id="input-status" class="form-control" ng-model="product_status">
+                                  <option value="2">Tất Cả</option>
+                                    <option value="1">Có Hàng</option>
+                                     <option value="0">Chưa Về</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group hide">
+                                <label class="control-label hide" for="input-price">Giá</label>
+                                <input type="text" name="filter_price" value=""  id="input-price" placeholder="Giá" class="form-control">
+                            </div>
+                            <div>
+                                <a class="">
+                                    Giỏ hàng
+                                    <span class="text">
+                                        <i class="fa fa-shopping-cart text-success"></i> {{total_cart.length}}
+                                    </span>
+                                </a>
+                                <a class="btn btn-default" data-ng-click="makeInvoice()" ng-disabled="!total_cart.length">
+                                    <span class="text">
+                                        <i class="fa fa-save text-success"></i>
+                                    </span>
+                                    <span class="text">
+                                        Tạo đơn hàng
+                                    </span>
+                                </a>
+                                <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> Lọc</button>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+                <form action="http://dm-opencart.localhost/admin/index.php?route=catalog/product/delete&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4" method="post" enctype="multipart/form-data" id="form-product">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <td style="width: 1px;" class="text-center">
+                                        <label class="i-checks m-b-none">
+                                        <input type="checkbox" onClick="$('input[name*=\'selected\']').prop('checked', this.checked);" data-ng-click="isCheckAll();">
+                                        <i></i></label>
+                                    </td>
+                                    <td class="text-center"> <span class="hide"> {{products.selected}} </span>  Hình ảnh</td>
+                                    <td class="text-left"> <a  class="asc">Tên sản phẩm</a>
+                                    </td>
+                                   
+                                    <td class="text-right"> <a >Giá</a>
+                                    </td>
+                                    <!-- <td class="text-right"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=p.quantity&amp;order=DESC">Quantity</a>
+                                    </td> -->
+                                     <!-- <td class="text-left"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=p.model&amp;order=DESC">Số lượng</a>
+                                    </td> -->
+                                    <td class="text-left"> <a >Tình trạng</a>
+                                    </td>
+                                    <td class="text-right">Thao Tác</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <tr ng-repeat="(key, value) in productList | filter : product_name" ng-show="product_status == 2 || product_status == value.status">
+                                    <td class="text-center"> 
+                                        <label class="i-checks m-b-none" data-ng-click="myform.selected.click()">
+                                        <input type="checkbox" checklist-model="products.selected" name="selected[]"  checklist-value="value.product_id">
+                                        <i></i></label>
+                                    </td>
+                                    <td class="text-center"> <img data-ng-src="{{value.image_path}}" alt="{{value.name}}" class="img-thumbnail">
+                                    </td>
+                                    <td class="text-left">
+                                        <a class="btn btn-default" data-ng-click="addToCart(value)">
+                                          <i class="fa fa-shopping-cart text" ng-show="!value.in_cart"></i>
+                                          <i class="fa fa-shopping-cart text-danger" ng-show="value.in_cart"></i>
+                                        </a>
+                                        {{value.name}}
+                                    </td>
+                                    
+                                    <td class="text-right"> {{value.price}}/kg</td>
+                                    <!-- <td class="text-right"> <span class="label label-success">1000</span>
+                                    </td> -->
+                                    <!-- <td class="text-left">
+                                        <div>
+                                          <input ui-jq="TouchSpin" type="number" value="0" class="form-control" data-min='0' data-max="100" data-verticalbuttons="true" data-verticalupclass="fa fa-caret-up"  data-verticaldownclass="fa fa-caret-down">
+                                        </div>
+                                    </td> -->
+                                    <td class="text-left">{{value.status == '1'?'Có hàng':'Hàng chưa về'}}</td>
+                                    <td class="text-right"><a data-ng-click="productEdit(value)" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-sm-6 text-left"></div>
+                    <div class="col-sm-6 text-right">Showing 1 to 20 of 20 (1 Pages)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

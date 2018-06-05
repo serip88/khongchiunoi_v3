@@ -1,0 +1,122 @@
+﻿<style type="text/css">
+.page-header {
+    margin: 10px 0 0;
+}
+
+.page-header h1 {
+    margin-top: 0px;
+    font-size: 20pt;
+}
+
+.breadcrumb {
+    margin-bottom: 5px;
+}
+</style>
+
+<div ng-controller="InvoiceCtrl">
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="pull-right">
+                <button type="button" data-toggle="tooltip" title="" class="btn btn-default" ng-click="reload()"><i class="icon-refresh"></i></button>
+                <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" ng-disabled="!invoices.selected.length" data-ng-click="deleteInvoice()" data-original-title="Delete"><i class="fa fa-trash-o"></i></button>
+            </div>
+            <h1>Invoice</h1>
+            <ul class="breadcrumb">
+                <li><a href="">Home</a></li>
+                <li><a href="">Invoice</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-list"></i> Invoice List</h3>
+            </div>
+            <div class="panel-body">
+                <div class="well">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label class="control-label"><i class="fa fa-calendar"></i> <i class="fa fa-arrows-h"></i> <i class="fa fa-calendar"></i> Thống kê </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <!-- <label class="control-label"><i class="fa fa-calendar"></i> <i class="fa fa-arrows-h"></i> <i class="fa fa-calendar"></i> Date range <small>(dynamic)</small></label><br> -->
+                                <div class="form-group col-xs-6">
+                                  <input type="text" class="form-control" ng-model="start_date"  data-max-date="{{end_date}}" placeholder="Ngày bắt đầu" data-date-type="number" bs-datepicker>
+                                </div>
+                                <div class="form-group col-xs-6">
+                                  <input type="text" class="form-control" ng-model="end_date"  data-min-date="{{start_date}}" placeholder="Ngày kết thúc" data-date-type="number" bs-datepicker>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                           
+                            <button type="button" id="button-filter" class="btn btn-primary pull-right" ng-click="reload()"><i class="fa fa-search"></i> Lọc</button>
+                            
+                        </div>
+
+                    </div>
+                </div>
+                <form  method="post" enctype="multipart/form-data" id="form-product">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <td style="width: 1px;" class="text-center">
+                                        <label class="i-checks m-b-none">
+                                        <input type="checkbox" onClick="$('input[name*=\'selected\']').prop('checked', this.checked);" data-ng-click="isCheckAll();">
+                                        <i></i></label>
+                                    </td>
+                                    <td class="text-left"> <a class="asc">Hóa đơn ngày </a>
+                                    </td>
+                                    <td class="text-right" style="width: 20%;"> <a >Số tiền</a>
+                                    </td>
+                                    <!-- <td class="text-right"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=p.quantity&amp;order=DESC">Quantity</a>
+                                    </td> -->
+                                     <!-- <td class="text-left"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=p.model&amp;order=DESC">Số lượng</a>
+                                    </td> -->
+                                    <!-- <td class="text-left"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=p.status&amp;order=DESC">Tình trạng</a>
+                                    </td>
+                                    <td class="text-right">Thao Tác</td> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <tr ng-repeat="(key, value) in invoiceList">
+                                    <td class="text-center"> 
+                                        <label class="i-checks m-b-none" data-ng-click="myform.selected.click()">
+                                        <input type="checkbox" checklist-model="invoices.selected" name="selected[]"  checklist-value="value.invoice_id">
+                                        <i></i></label>
+                                    </td>
+                                   
+                                    <td class="text-left">
+                                        {{value.created_date}}
+                                    </td>
+                                    
+                                    <td class="text-right"> {{value.amount}} VNĐ</td>
+                                    <!-- <td class="text-right"> <span class="label label-success">1000</span>
+                                    </td> -->
+                                    <!-- <td class="text-left">
+                                        <div>
+                                          <input ui-jq="TouchSpin" type="number" value="0" class="form-control" data-min='0' data-max="100" data-verticalbuttons="true" data-verticalupclass="fa fa-caret-up"  data-verticaldownclass="fa fa-caret-down">
+                                        </div>
+                                    </td> -->
+                                    <!-- <td class="text-left">{{value.status == '1'?'Có hàng':'Hàng chưa về'}}</td>
+                                    <td class="text-right"><a data-ng-click="productEdit(value)" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a></td> -->
+                                </tr>
+                                <tr>
+                                  <td colspan="2" class="text-right no-border"><strong>Tổng tiền</strong></td>
+                                  <td><strong>{{total_invoice}} VNĐ</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-sm-6 text-left"></div>
+                    <div class="col-sm-6 text-right">Showing 1 to 20 of 20 (1 Pages)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,87 @@
+<style type="text/css">
+.error .form-control {
+    border-color: #a94442;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+</style>
+<div class="modal-header">
+    <h3 class="modal-title">Add User</h3>
+</div>
+ <form   method="post" enctype="multipart/form-data" id="form-user" class="form-horizontal form-validation" name="myform" >
+<div class="modal-body" novalidate>
+        
+        <div class="form-group" >
+            <label class="col-sm-2 control-label" for="input-username">Username (*)</label>
+            <div class="col-sm-10">
+                <input type="text" name="username" ng-pattern="/^[a-zA-Z0-9+_]{3,20}$/" placeholder="Username" id="input-username" class="form-control" data-ng-model="newuser.username" required>
+                <div class="help-block">Username must be 3-20 characters.</div>
+                <!--<div class="help-block"> Form: {{myform.username.$error|json}} </div>-->
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="col-sm-2 control-label" for="input-user-group">User Group</label>
+            <div class="col-sm-10">
+                <select name="user_group_id" id="input-user-group" class="form-control" ng-model="newuser.user_group_id" required>
+                    <option value="">Please choose</option>
+                    <option ng-repeat="item in newuser.group_user" value="{{item.id}}">{{item.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="col-sm-2 control-label" for="input-firstname">First Name (*)</label>
+            <div class="col-sm-10">
+                <input type="text" name="firstname" value="" placeholder="First Name" id="input-firstname" class="form-control" ng-model="newuser.firstname" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-lastname">Last Name</label>
+            <div class="col-sm-10">
+                <input type="text" name="lastname" value="" placeholder="Last Name" id="input-lastname" class="form-control" ng-model="newuser.lastname">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-email">E-Mail (*)</label>
+            <div class="col-sm-10">
+                <input type="email" name="email" value="" placeholder="E-Mail" id="input-email" class="form-control" ng-model="newuser.email" required="">
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="col-sm-2 control-label" for="input-image">Image</label>
+            <div class="col-sm-10">
+                <button class="drop-box ng-pristine ng-untouched ng-valid ng-empty"  type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*"  ngf-max-size="1MB" >
+                   <img ngf-src="!f.$error && f" style="width:100%" >
+                   <img ng-src="{{newuser.image_path}}" class="img-responsive" ng-if="!f">
+                </button>
+            </div>
+        </div> 
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-password">Password (*)</label>
+            <div class="col-sm-10">
+                <input type="password"  name="password" value="" placeholder="Password" id="input-password" class="form-control"  ng-model="newuser.password" required ng-minlength="6" ng-maxlength="20" >
+                <div class="help-block">Password must be 6-20 characters</div>
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="col-sm-2 control-label" for="input-confirm">Confirm (*)</label>
+            <div class="col-sm-10">
+                <input type="password" name="confirm" value="" placeholder="Confirm" id="input-confirm" class="form-control" ng-model="newuser.confirm" required ui-validate=" '$value==newuser.password' " ui-validate-watch=" 'newuser.password' ">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-status">Status (*)</label>
+            <div class="col-sm-10">
+                <select name="status" id="input-status" class="form-control" ng-model="newuser.status"  required>
+                    <option value="">None</option>
+                    <option value="0" selected="selected">Disabled</option>
+                	<option value="1">Enabled</option>
+                </select>
+            </div>
+        </div>
+    
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-primary" ng-click="ok(myform.$invalid)" >OK</button>
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+</div>
+</form>
