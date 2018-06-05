@@ -114,8 +114,8 @@
       // angular translate
       $scope.lang = { isopen: false };
       $scope.langs = {en:'English', vi:'Tiếng Việt'};
-      $translate.use('vi');
-      $scope.selectLang = $scope.langs[$translate.proposedLanguage()] || "Tiếng Việt";
+      $translate.use('en');
+      $scope.selectLang = $scope.langs[$translate.proposedLanguage()] || "English";
       $scope.setLang = function(langKey, $event) {
         // set the current lang
         $scope.selectLang = $scope.langs[langKey];
