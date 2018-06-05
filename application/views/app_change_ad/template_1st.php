@@ -71,20 +71,20 @@
   <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/services/common-service.js"></script>
   <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/services/open-modal.js"></script>
   <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/filters/fromNow.js"></script>
-  <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/directives/setnganimate.js"></script>
-  <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/directives/ui-butterbar.js"></script>
-  <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/directives/ui-focus.js"></script>
-  <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/directives/ui-fullscreen.js"></script>
-  <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/directives/ui-jq.js"></script>
-  <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/directives/ui-module.js"></script>
-  <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/directives/ui-nav.js"></script>
-  <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/directives/ui-scroll.js"></script>
-  <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/directives/ui-shift.js"></script>
-  <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/directives/ui-toggleclass.js"></script>
-  <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/directives/ui-validate.js"></script>
-  <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/directives/sweet-alert.min.js"></script>
-  <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/directives/SweetAlert.min.js"></script>
-  <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/directives/checklist-model.js"></script>
+  <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/directives/setnganimate.js"></script>
+  <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/directives/ui-butterbar.js"></script>
+  <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/directives/ui-focus.js"></script>
+  <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/directives/ui-fullscreen.js"></script>
+  <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/directives/ui-jq.js"></script>
+  <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/directives/ui-module.js"></script>
+  <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/directives/ui-nav.js"></script>
+  <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/directives/ui-scroll.js"></script>
+  <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/directives/ui-shift.js"></script>
+  <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/directives/ui-toggleclass.js"></script>
+  <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/directives/ui-validate.js"></script>
+  <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/directives/sweet-alert.min.js"></script>
+  <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/directives/SweetAlert.min.js"></script>
+  <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/directives/checklist-model.js"></script>
   <script src="<?php echo $this->config->item('base_url');?>app/app_change_ad/js/controllers/bootstrap.js"></script>
   <!-- Lazy loading -->  
 </body>
