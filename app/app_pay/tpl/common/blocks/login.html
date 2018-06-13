@@ -1,0 +1,49 @@
+<div class="modal am-fade" id="blt-user-modal" role="dialog">
+<div class="modal-dialog">  
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" data-ng-click="$hide()">&times;</button>
+      <h4 class="modal-title" translate="header.navbar.login">Login</h4>
+    </div>
+    <div class="modal-body">
+      <form method="post">
+          <div class="wp-social-login-widget">
+            <div class="wp-social-login-connect-with"></div>
+            <div class="wp-social-login-provider-list">
+                <a rel="nofollow" href="http://www.bluthemes.com/themes-special/katla/wp-login.php?action=wordpress_social_authenticate&#038;mode=login&#038;provider=Facebook&#038;redirect_to=http%3A%2F%2Fwww.bluthemes.com%2Fthemes-special%2Fkatla%2F" data-provider="Facebook" class="btn btn-lg wp-social-login-provider wp-social-login-provider-facebook">
+                  <span>
+                     <i class="fa fa-facebook"></i>
+                     Facebook          </span>
+               </a> <a rel="nofollow" href="http://www.bluthemes.com/themes-special/katla/wp-login.php?action=wordpress_social_authenticate&#038;mode=login&#038;provider=Twitter&#038;redirect_to=http%3A%2F%2Fwww.bluthemes.com%2Fthemes-special%2Fkatla%2F" data-provider="Twitter" class="btn btn-lg wp-social-login-provider wp-social-login-provider-twitter">
+                  <span>
+                     <i class="fa fa-twitter"></i>
+                     Twitter          </span>
+               </a>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input class="form-control input-lg required" name="blt_user_login" type="text" data-ng-model="frm_login.email" />
+        </div>
+        <div class="form-group">
+            <label for="blt_user_pass"><span translate="header.navbar.password">Password</span><a class="pull-right" href="#blt-reset-password" translate="header.navbar.q_lost_password"> Lost Password?</a></label>
+            <input class="form-control input-lg required" name="blt_user_pass" id="blt_user_pass" type="password" data-ng-model="frm_login.password" />
+        </div>
+        <div class="form-group">
+            <input type="hidden" name="action" value="blt_login_member" />
+            <button class="btn btn-theme btn-lg" data-loading-text="Loading..." type="submit" data-ng-click="ok()" translate="header.navbar.login">Login</button>
+        </div>
+
+      </form>
+    </div>
+    <div class="modal-footer">
+      <span class="blt-register-footer" style="display: block;">
+        <span translate="header.navbar.q_dont_have_account">Don't have an account? </span>
+      <a href="#blt-register" translate="header.navbar.sign_up">Sign Up</a>
+      </span>
+      <button type="button" class="btn btn-default hide" data-dismiss="modal" data-ng-click="$hide()" translate="common.close">Close</button>
+    </div>
+  </div>
+  
+</div>
+</div>

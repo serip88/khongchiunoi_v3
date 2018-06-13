@@ -1,0 +1,123 @@
+
+		<div class="post-thumbnail-area">
+		</div>					<div class="page-body">
+						<h1 class="page-title">Submit a Post</h1>
+						<div class="page-text">
+													</div>
+					</div>			<hr>				<div class="users-posts-wrap">					<form id="blt_posts_form" action="http://katla.localhost/?page_id=4" method="POST" enctype="multipart/form-data">
+
+						<div class="form-group">
+							<label for="blt_post_title">Title</label>
+							<input class="form-control" name="blt_post_title" id="blt_post_title" type="text" value=" "/>
+						</div>
+
+						<div class="form-group">
+							<label for="blt_post_info_url">Source URL (optional)</label>
+							<input class="form-control" name="blt_post_info_url" id="blt_post_info_url" type="text" value=""/>
+						</div>
+
+						<div class="form-group">
+							<label for="blt_post_info_name">Source Name (optional)</label>
+							<input class="form-control" name="blt_post_info_name" id="blt_post_info_name" type="text" value=""/>
+						</div>
+
+						<div class="form-group">
+							<label for="blt_post_tags">Tags</label>
+							<input class="form-control" name="blt_post_tags" id="blt_post_tags" type="text" value="" />
+							<p class="help-block">Separate each tag by comma. (tag1, tag2, tag3)</p>
+						</div>						<div class="form-group">
+							<label for="blt_post_category">Category</label><select name='blt_post_category' id='blt_post_category' class='form-control' >
+	<option class="level-0" value="35">Art</option>
+</select>
+						</div>
+
+						<div class="form-group">
+							<label for="blt_post_content">Description</label>
+							<div id="wp-blt_post_content-wrap" class="wp-core-ui wp-editor-wrap tmce-active"><link rel='stylesheet' id='editor-buttons-css'  href='http://katla.localhost/wp-includes/css/editor.min.css?ver=4.3' type='text/css' media='all' />
+<div id="wp-blt_post_content-editor-container" class="wp-editor-container"><textarea class="wp-editor-area" rows="5" autocomplete="off" cols="40" name="blt_post_content" id="blt_post_content"></textarea></div>
+</div>
+
+						</div>
+
+						<div role="tabpanel">
+
+						  	<ul class="nav nav-arrows" role="tablist">
+						    	<li role="presentation" class="active"><a href="#image-post" aria-controls="image-post" role="tab" data-toggle="tab">Images</a></li>
+						    	<li role="presentation"><a href="#video-post" aria-controls="video-post" role="tab" data-toggle="tab">Video</a></li>
+						  	</ul>
+
+  							<div class="tab-content">
+
+								<div role="tabpanel" id="image-post" class="tab-pane active form-group new-post-list blt_post_files">
+									<div class="list-group">
+				  						<div class="list-group-item clearfix image-item">
+											<div class="fileinput fileinput-new" data-provides="fileinput">
+
+											<div class="row">
+												<div class="col-md-5">
+													<label>Image</label>
+													<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="display: block; width: 100%; min-height: 150px;"></div>
+													<div class="form-group" style="display: block; float: left; width: 100%; margin-top: 15px; padding-top: 15px; border-top: 1px solid #EEEEEE;">
+														<input type="radio" class="blt_make_featured_image" name="blt_make_featured_image" value="0">
+														<label for="blt_make_featured_image">Make Featured Image</label>
+													</div>
+												</div>
+												<div class="col-md-7">
+													<div class="form-group">
+														<label for="blt_post_files">Image Title (optional)</label>
+														<input type="text" class="blt_post_files_title form-control" name="blt_post_files_title[]">
+													</div>
+													<div class="form-group">
+														<label for="blt_post_files">Image Source Name (optional)</label>
+														<input type="text" class="form-control" name="blt_post_files_source_name[]">
+													</div>
+													<div class="form-group">
+														<label for="blt_post_files">Image Source URL (optional)</label>
+														<input type="text" class="form-control" name="blt_post_files_source_url[]">
+													</div>
+													<div>
+														<span class="btn btn-default btn-file">
+															<span class="fileinput-new"><i class="fa fa-cloud-upload"></i> Select image</span>
+															<span class="fileinput-exists"><i class="fa fa-cloud-upload"></i> Change</span>
+															<input type="file" name="blt_post_files[]">
+														</span>
+														<a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+													</div>
+												</div>
+											</div>
+
+
+											</div>
+				  						</div>
+										<a href="#new-image" class="list-group-item blt-add-new-image"><i class="fa fa-plus"></i> Add another image</a>
+				  					</div>	
+								</div>
+							
+								<div role="tabpanel" id="video-post" class="tab-pane form-group new-post-list">
+									<ul class="list-group">
+				  						<li class="list-group-item clearfix image-item">
+											<div class="row">
+												<div class="col-md-12">
+													<div class="form-group">
+														<label for="video_url">Video URL</label>
+														<input type="text" class="video_url form-control" name="video_url">
+														<hr>
+														<p class="text-muted">Note: You must also provide at least one image from the image tab to use with the post. You can use a service like <a href="http://www.youtube-image.com" target="_blank">youtube-image.com</a> to find an image for youtube videos.</p>
+													</div>
+												</div>
+											</div>
+				  						</li>
+				  					</ul>	
+								</div>
+
+							</div>
+						
+						</div>
+
+						<button class="btn btn-theme btn-lg" data-loading-text="Loading..." type="submit">Submit Post</button>
+
+						<input type="hidden" id="blt_post_upload_form_submitted" name="blt_post_upload_form_submitted" value="57c4af4d0a" /><input type="hidden" name="_wp_http_referer" value="/?page_id=4" />
+						<!-- <input type="hidden" id="blt_post_upload_form_submitted" name="blt_post_upload_form_submitted" value="57c4af4d0a" /><input type="hidden" name="_wp_http_referer" value="/?page_id=4" /> -->
+					</form>
+
+				</div>

@@ -1,0 +1,395 @@
+
+<div class="what-size"></div>
+<main id="site">
+    <div data-ng-include="getHeader()"></div>
+    <div id="site-body">
+
+        <div id="site-content" class="clearfix">
+
+            <div id="site-content-column" ui-view>
+               
+
+            </div>
+            <div data-ng-include="getSidebar()"></div>
+
+        </div>
+
+    </div>
+    <div data-ng-include="getFooter()"></div>
+</main>
+
+
+<style type="text/css">
+    .absolute {
+        position: absolute;
+    }
+
+    .blu-customizer {
+
+        font-family: 'open sans';
+        position: fixed;
+        top: 0;
+        left: -300px;
+        bottom: 0;
+        width: 300px;
+        background-color: #222;
+        color: #FFFFFF;
+        z-index: 9999;
+        padding: 50px 0;
+
+        -webkit-transition: left 0.4s ease;
+        -moz-transition: left 0.4s ease;
+        -o-transition: left 0.4s ease;
+        transition: left 0.4s ease;
+    }
+
+    .blu-customizer.active {
+        left: 0;
+    }
+
+    .blu-customizer .blu-customizer-open {
+        top: 150px;
+        padding: 5px;
+        background-color: #222;
+        color: #FFFFFF;
+        position: absolute;
+        right: -50px;
+        width: 50px;
+        height: 50px;
+        font-size: 30px;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+    }
+
+    .blu-customizer .blu-customizer-open i {
+        vertical-align: top;
+        margin-top: 5px;
+    }
+
+    .blu-customizer p {
+        font-size: 12px;
+        color: #CCC;
+    }
+
+    .blu-customizer label {
+        margin: 2px 0;
+    }
+
+    .blu-customizer select {
+        border: none;
+        padding: 1px 3px;
+        background: #111111;
+        max-width: 100%;
+    }
+
+    .blu-customizer select option {
+        border: none;
+    }
+
+    .blu-customizer #background-color {
+        opacity: 0;
+    }
+
+    .blu-customizer .customizer-control {
+        padding: 10px 25px;
+        border-top: 1px solid #000000;
+    }
+
+    .blu-customizer .customizer-control:hover {
+        background-color: #000000;
+    }
+
+    .blu-customizer .customizer-control:last-child {
+        border-bottom: 1px solid #000000;
+    }
+
+    .blu-customizer .intro-message {
+        padding: 10px 25px;
+    }
+
+    .blu-customizer .customizer-control.background-image label {
+        margin-bottom: 5px;
+    }
+
+    .blu-customizer .customizer-control.background-image a {
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        display: inline-block;
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    .blu-customizer .customizer-control.background-image a img {
+        height: 50px;
+        max-width: none;
+    }
+</style>
+
+<section class="blu-customizer">
+
+    <a class="blu-customizer-open" href="#"><i class="fa fa-cog"></i></a>
+
+    <div class="intro-message">
+
+        <h4>Hi, I'm the customizer</h4>
+        <p>You can check out what's available in the theme here, there are many many many other options in the Theme Options within the admin panel, but here's a taste of what you can achieve.</p>
+
+    </div>
+
+    <div class="customizer-controls">
+
+        <!-- <div class="customizer-control">
+
+                <div class="row">
+                
+                    <label class="col-md-6" for="container-style">Container Style</label>
+                    
+                    <div class="col-md-6">
+                        
+                        <select name="container-style" id="container-style" autocomplete="off">
+                            
+                            <option value="" selected="selected">- Select -</option>
+                            <option value="boxed">Boxed</option>
+                            <option value="full_width">Full Width</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div> -->
+
+        <div class="customizer-control">
+
+            <div class="row">
+
+                <label class="col-md-6" for="sidebar-style">Sidebar Style</label>
+
+                <div class="col-md-6">
+
+                    <select name="sidebar-style" id="sidebar-style" autocomplete="off">
+                            
+                            <option value="" selected="selected">- Select -</option>
+                            <option value="sidebar-none">No Sidebar</option>
+                            <option value="sidebar-left">Sidebar Left</option>
+                            <option value="sidebar-right">Sidebar Right</option>
+
+                        </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="customizer-control">
+
+            <div class="row">
+
+                <label class="col-md-8" for="show-adspots">Show All AdSpots</label>
+                <div class="col-md-4"><input autocomplete="off" type="checkbox" name="show-adspots" id="show-adspots"></div>
+
+            </div>
+
+        </div>
+
+        <div class="customizer-control">
+
+            <div class="row">
+
+                <label class="col-md-8" for="background-color">Background Color</label>
+                <div class="col-md-4"><input type="text" class="background-color" id="background-color" name="background-color"></div>
+
+            </div>
+
+        </div>
+
+        <div class="customizer-control background-image">
+
+            <div class="row">
+
+                <label class="col-md-12">Background Image</label>
+                <p class="col-md-12">Works best with Boxed Container Style</p>
+                <div class="col-md-12">
+
+                    <a href="#"><img data-lg="http://www.bluthemes.com/themes-special/katla/wp-content/themes/blt-katla/_demo/assets/img/01.jpg" src="http://www.bluthemes.com/themes-special/katla/wp-content/themes/blt-katla/_demo/assets/img/01-sm.jpg"></a>
+                    <a href="#"><img data-lg="http://www.bluthemes.com/themes-special/katla/wp-content/themes/blt-katla/_demo/assets/img/02.jpg" src="http://www.bluthemes.com/themes-special/katla/wp-content/themes/blt-katla/_demo/assets/img/02-sm.jpg"></a>
+                    <a href="#"><img data-lg="http://www.bluthemes.com/themes-special/katla/wp-content/themes/blt-katla/_demo/assets/img/03.jpg" src="http://www.bluthemes.com/themes-special/katla/wp-content/themes/blt-katla/_demo/assets/img/03-sm.jpg"></a>
+                    <a href="#"><img data-lg="http://www.bluthemes.com/themes-special/katla/wp-content/themes/blt-katla/_demo/assets/img/04.jpg" src="http://www.bluthemes.com/themes-special/katla/wp-content/themes/blt-katla/_demo/assets/img/04-sm.jpg"></a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<div class="modal fade modal-narrow" id="blt-user-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" data-active-tab="">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                <!-- Register form -->
+                <div class="blt-register">
+
+                    <h3>Register New Account</h3>
+                    <hr>
+
+                    <form id="blt_registration_form" action="http://www.bluthemes.com/themes-special/katla/" method="POST">
+                        <style type="text/css">
+                            .wp-social-login-connect-with {}
+
+                            .wp-social-login-provider-list {}
+
+                            .wp-social-login-provider-list a {}
+
+                            .wp-social-login-provider-list img {}
+
+                            .wsl_connect_with_provider {}
+                        </style>
+
+                        <div class="wp-social-login-widget">
+
+                            <div class="wp-social-login-connect-with"></div>
+
+                            <div class="wp-social-login-provider-list">
+                                <a rel="nofollow" href="http://www.bluthemes.com/themes-special/katla/wp-login.php?action=wordpress_social_authenticate&#038;mode=login&#038;provider=Facebook&#038;redirect_to=http%3A%2F%2Fwww.bluthemes.com%2Fthemes-special%2Fkatla%2F" data-provider="Facebook" class="btn btn-lg wp-social-login-provider wp-social-login-provider-facebook">
+          <span>
+             <i class="fa fa-facebook"></i>
+             Facebook          </span>
+       </a> <a rel="nofollow" href="http://www.bluthemes.com/themes-special/katla/wp-login.php?action=wordpress_social_authenticate&#038;mode=login&#038;provider=Twitter&#038;redirect_to=http%3A%2F%2Fwww.bluthemes.com%2Fthemes-special%2Fkatla%2F" data-provider="Twitter" class="btn btn-lg wp-social-login-provider wp-social-login-provider-twitter">
+          <span>
+             <i class="fa fa-twitter"></i>
+             Twitter          </span>
+       </a>
+                            </div>
+
+                            <div class="wp-social-login-widget-clearing"></div>
+
+                        </div>
+
+                        <!-- wsl_render_auth_widget -->
+
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input class="form-control input-lg required" name="blt_user_login" type="text" />
+                        </div>
+                        <div class="form-group">
+                            <label for="blt_user_email">Email</label>
+                            <input class="form-control input-lg required" name="blt_user_email" id="blt_user_email" type="email" />
+                        </div>
+                        <div class="form-group">
+                            <div class="g-recaptcha" data-sitekey="6Lc_geYSAAAAALiHyCBoYsIuUqUaURxJk3_L7Q4c"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label><input name="blt_terms" type="checkbox"> I accept the <a target="_blank" href="http://www.bluthemes.com/themes-special/katla/?page_id=415">Terms & Conditions</a></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="action" value="blt_register_member" />
+                            <button class="btn btn-theme btn-lg" data-loading-text="Loading..." type="submit">Sign up</button>
+                        </div>
+                        <input type="hidden" id="register-security" name="register-security" value="10ecfa0468" /><input type="hidden" name="_wp_http_referer" value="/themes-special/katla/" /> </form>
+                    <div class="blt-errors"></div>
+                </div>
+
+                <!-- Login form -->
+                <div class="blt-login">
+
+                    <h3>Login</h3>
+                    <hr>
+
+                    <form id="blt_login_form" action="http://www.bluthemes.com/themes-special/katla/" method="post">
+
+                        <style type="text/css">
+                            .wp-social-login-connect-with {}
+
+                            .wp-social-login-provider-list {}
+
+                            .wp-social-login-provider-list a {}
+
+                            .wp-social-login-provider-list img {}
+
+                            .wsl_connect_with_provider {}
+                        </style>
+
+                        <div class="wp-social-login-widget">
+
+                            <div class="wp-social-login-connect-with"></div>
+
+                            <div class="wp-social-login-provider-list">
+                                <a rel="nofollow" href="http://www.bluthemes.com/themes-special/katla/wp-login.php?action=wordpress_social_authenticate&#038;mode=login&#038;provider=Facebook&#038;redirect_to=http%3A%2F%2Fwww.bluthemes.com%2Fthemes-special%2Fkatla%2F" data-provider="Facebook" class="btn btn-lg wp-social-login-provider wp-social-login-provider-facebook">
+          <span>
+             <i class="fa fa-facebook"></i>
+             Facebook          </span>
+       </a> <a rel="nofollow" href="http://www.bluthemes.com/themes-special/katla/wp-login.php?action=wordpress_social_authenticate&#038;mode=login&#038;provider=Twitter&#038;redirect_to=http%3A%2F%2Fwww.bluthemes.com%2Fthemes-special%2Fkatla%2F" data-provider="Twitter" class="btn btn-lg wp-social-login-provider wp-social-login-provider-twitter">
+          <span>
+             <i class="fa fa-twitter"></i>
+             Twitter          </span>
+       </a>
+                            </div>
+
+                            <div class="wp-social-login-widget-clearing"></div>
+
+                        </div>
+
+                        <!-- wsl_render_auth_widget -->
+
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input class="form-control input-lg required" name="blt_user_login" type="text" />
+                        </div>
+                        <div class="form-group">
+                            <label for="blt_user_pass">Password <a class="pull-right" href="#blt-reset-password">Lost Password?</a></label>
+                            <input class="form-control input-lg required" name="blt_user_pass" id="blt_user_pass" type="password" />
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="action" value="blt_login_member" />
+                            <button class="btn btn-theme btn-lg" data-loading-text="Loading..." type="submit">Login</button>
+                        </div>
+                        <input type="hidden" id="login-security" name="login-security" value="10ecfa0468" /><input type="hidden" name="_wp_http_referer" value="/themes-special/katla/" /> </form>
+                    <div class="blt-errors"></div>
+                </div>
+
+                <!-- Lost Password form -->
+                <div class="blt-reset-password">
+
+                    <h3>Reset Password</h3>
+                    <hr>
+
+                    <form id="blt_reset_password_form" action="http://www.bluthemes.com/themes-special/katla/" method="post">
+                        <div class="form-group">
+                            <label for="blt_user_or_email">Username or E-mail</label>
+                            <input class="form-control input-lg required" name="blt_user_or_email" id="blt_user_or_email" type="text" />
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="action" value="blt_reset_password" />
+                            <button class="btn btn-theme btn-lg" data-loading-text="Loading..." type="submit">Get new password</button>
+                        </div>
+                        <input type="hidden" id="password-security" name="password-security" value="10ecfa0468" /><input type="hidden" name="_wp_http_referer" value="/themes-special/katla/" /> </form>
+                    <div class="blt-errors"></div>
+                </div>
+
+                <div class="blt-loading">
+                    <p><i class="fa fa-refresh fa-spin"></i><br>Loading...</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span class="blt-register-footer">Don't have an account? <a href="#blt-register">Sign Up</a></span>
+                <span class="blt-login-footer">Already have an account? <a href="#blt-login">Login</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <link rel='stylesheet' href='/../app/app_change/themes/first/assets/_demo/css/plugins.css?ver=4.5.2' type='text/css' media='all' />
+    <script type='text/javascript' src='/../app/app_change/themes/first/assets/js/bootstrap.min.js?ver=2.31'></script> -->
+<script type='text/javascript' src="/../app/app_change/themes/first/assets/_demo/js/script.js?ver=2.31"></script>
+<script type='text/javascript' src='/../app/app_change/themes/first/assets/_demo/js/plugins.js?ver=4.5.2'></script>

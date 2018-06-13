@@ -1,0 +1,122 @@
+<header id="site-header" class="navbar" data-ng-controller="headerCtrl">
+    <div class="primary-menu">
+        <div class="container">
+            <div class="navbar-inner row">
+                <div class="col-md-12">
+
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#katla-pri-navbar"><i class="fa fa-bars"></i></button> <a class="brand brand-logo" href="http://www.bluthemes.com/themes-special/katla/" title="Katla" rel="home">
+                        <img class="img-responsive" src="http://www.bluthemes.com/themes-special/katla/wp-content/uploads/2015/04/LOGO_NEW-e1427017275543.png" alt="Katla">
+                    </a> </div>
+
+
+                    <div class="collapse navbar-collapse" id="katla-pri-navbar">
+
+                        <div class="navbar-right hidden-xs">
+                            <div class="header-actions">
+                                <div data-ng-if="isMember()" class="user-dropdown dropdown navbar-btn pull-right">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                        <img alt="" src="http://1.gravatar.com/avatar/a0c6c73163766a7192a8764ea7e34202?s=30&amp;d=mm&amp;r=g" srcset="http://1.gravatar.com/avatar/a0c6c73163766a7192a8764ea7e34202?s=60&amp;d=mm&amp;r=g 2x" class="avatar avatar-30 photo" height="30" width="30">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <!-- <div class="dropdown-backdrop"></div> -->
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                        <li class="dropdown-header">{{options.user_data.username}}</li>
+                                        <li><a href="http://katla.localhost/?page_id=5">
+                                                <i class="fa fa-user"></i> 
+                                                <span translate="member.profile">Profile</span>
+                                            </a>
+                                        </li>
+                                        <li><a href="#" ui-sref="app.add-post">
+                                                <i class="fa fa-cloud-upload"></i> 
+                                                <span translate="header.navbar.add_post">Add post</span>
+                                            </a>
+                                        </li>
+                                        <li class="divider"></li>
+
+                                        <li>
+                                            <a role="menuitem" tabindex="-1" href="#" data-ng-click="doLogout()">
+                                            <i class="fa fa-sign-out"></i> 
+                                            <span translate="common.logout">Logout</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <a class="btn btn-theme navbar-btn" data-ng-click="handleState('app.add-post',showLogin)">
+                                    <i class="fa fa-cloud-upload"></i>
+                                    <span translate="header.navbar.add_post">Add post</span>
+                                </a>
+                                <a data-ng-if="!isMember()" href="#" data-ng-click="showLogin()" class="btn btn-default navbar-btn" translate="header.navbar.login">Login</a>
+                                <a data-ng-if="!isMember()" href="#" data-ng-click="showRegister()" class="btn btn-default navbar-btn" translate="header.navbar.sign_up">Register</a>
+                                <form action="http://www.bluthemes.com/themes-special/katla/" class="navbar-form navbar-left" role="search">
+                                    <input type="text" class="form-control" name="s" placeholder="{{ 'header.navbar.search_3_dot' | translate }}" value="">
+                                    <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!--                  -->
+                        <!-- RESPONSIVE MENUS -->
+                        <!--                  -->
+
+                        <ul class="user-nav nav navbar-nav visible-xs-block">
+
+                            <li>
+                                <form action="http://www.bluthemes.com/themes-special/katla/" class="navbar-form navbar-left" role="search">
+                                    <input type="text" class="form-control" name="s" placeholder="{{ 'header.navbar.search_3_dot' | translate }}" value="">
+                                    <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+                                </form>
+                            </li>
+                            <li><a href="#blt-login"><i class="fa fa-cloud-upload"></i> 
+                                <span translate="header.navbar.add_post">Add post</span>
+                                </a>
+                            </li>
+                            <li><a href="#blt-login" data-ng-click="showLogin()" translate="header.navbar.login">Login</a></li>
+                            <li><a href="#blt-login" data-ng-click="showRegister()" translate="header.navbar.sign_up">Register</a></li>
+                        </ul>
+                        <ul id="menu-main-menu" class="nav navbar-nav">
+                            <li id="menu-item-144" class=" menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-144 active"><a title="New" href="http://www.bluthemes.com/themes-special/katla/"><i class="fa fa-star-o"></i>&nbsp;&nbsp;
+                                <span translate="header.navbar.new">New</span></a>
+                            </li>
+                            <li id="menu-item-142" class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-142"><a title="Trending" href="#"><i class="fa fa-bolt"></i>&nbsp;&nbsp;
+                                <span translate="header.navbar.trending">Trending </span></a>
+                            </li>
+                            <li id="menu-item-143" class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-143"><a title="Top 10" href="http://www.bluthemes.com/themes-special/katla/?page_id=10"><i class="fa fa-signal"></i>&nbsp;&nbsp;
+                                <span translate="header.navbar.top">Top</span> 10</a>
+                            </li>
+                        </ul>
+                        <ul id="menu-secondary" class="nav navbar-nav visible-xs-block">
+                            <li id="menu-item-147" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-147"><a title="Funny" href="http://www.bluthemes.com/themes-special/katla/?cat=4">Funny</a></li>
+                            <li id="menu-item-152" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-152"><a title="Videos" href="http://www.bluthemes.com/themes-special/katla/?cat=9">Videos</a></li>
+                            <li id="menu-item-151" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-151"><a title="Pics" href="http://www.bluthemes.com/themes-special/katla/?cat=8">Pics</a></li>
+                            <li id="menu-item-148" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-148"><a title="Inspiration" href="http://www.bluthemes.com/themes-special/katla/?cat=5">Inspiration</a></li>
+                            <li id="menu-item-149" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-149"><a title="Music" href="http://www.bluthemes.com/themes-special/katla/?cat=6">Music</a></li>
+                            <li id="menu-item-145" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-145"><a title="Art" href="http://www.bluthemes.com/themes-special/katla/?cat=2">Art</a></li>
+                            <li id="menu-item-146" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-146"><a title="Design" href="http://www.bluthemes.com/themes-special/katla/?cat=3">Design</a></li>
+                            <li id="menu-item-150" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-150"><a title="Nature" href="http://www.bluthemes.com/themes-special/katla/?cat=7">Nature</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="secondary-menu hidden-xs">
+        <div class="container">
+            <div class="row">
+
+                <div class="collapse navbar-collapse" id="katla-sec-navbar">
+                    <ul id="menu-secondary-1" class="nav navbar-nav">
+                        <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-147"><a title="Funny" href="http://www.bluthemes.com/themes-special/katla/?cat=4">Funny</a></li>
+                        <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-152"><a title="Videos" href="http://www.bluthemes.com/themes-special/katla/?cat=9">Videos</a></li>
+                        <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-151"><a title="Pics" href="http://www.bluthemes.com/themes-special/katla/?cat=8">Pics</a></li>
+                        <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-148"><a title="Inspiration" href="http://www.bluthemes.com/themes-special/katla/?cat=5">Inspiration</a></li>
+                        <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-149"><a title="Music" href="http://www.bluthemes.com/themes-special/katla/?cat=6">Music</a></li>
+                        <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-145"><a title="Art" href="http://www.bluthemes.com/themes-special/katla/?cat=2">Art</a></li>
+                        <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-146"><a title="Design" href="http://www.bluthemes.com/themes-special/katla/?cat=3">Design</a></li>
+                        <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-150"><a title="Nature" href="http://www.bluthemes.com/themes-special/katla/?cat=7">Nature</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
