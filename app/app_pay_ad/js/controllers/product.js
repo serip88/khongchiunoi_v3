@@ -91,7 +91,7 @@
 		        templateUrl: baseConfig.tplUrl +'/catalog/product/add_product.html',
 		        size: size,
 		        controller: ['$scope','commonService', '$uibModalInstance','Upload','$timeout','dataInit', function(scope, commonService, $uibModalInstance,Upload, $timeout, dataInit){
-		          	scope.product = {};
+		          	scope.product = {status:"1"};
 		          	scope.categoryList = dataInit;
 		          	scope.categoryList.push({id:0,path_parent_name:'[Không danh mục]'});
 		           	scope.cancel = function(){

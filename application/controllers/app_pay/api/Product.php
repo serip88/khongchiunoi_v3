@@ -37,6 +37,7 @@ class Product extends Base_controller {
         $upload_image = false;
         $stt=FALSE;
         $msg='';
+        $param['price'] = isset($param['price_pure'])? $param['price_pure'] : 0;
         $param = $this->product_lib->validate_save_product($param);
         if($param){
             $param = $this->product_lib->handle_save_product($param);
@@ -89,6 +90,7 @@ class Product extends Base_controller {
         $stt=FALSE;
         $msg='';
         $param = $this->post();
+        $param['price'] = isset($param['price_pure'])? $param['price_pure'] : 0;
         $param = $this->product_lib->validate_edit_product($param);
         if($param){
             $data = $this->product_model->get_product($param['product_id']);

@@ -121,7 +121,8 @@ class User extends Base_controller {
             'catalog'=>false,
             'system'=>false,
             'area'=>false,
-            'attribute'=>false
+            'attribute'=>false,
+            'dash2'=>false
         );
         switch (config_item('app_name')) {
             case 'bacrau':
@@ -142,6 +143,9 @@ class User extends Base_controller {
                     'system',
                     'area'
                 );;
+                break;
+            case 'pay':
+                $access = array('catalog','system');
                 break;
             default:
                 $access = array('calendar',

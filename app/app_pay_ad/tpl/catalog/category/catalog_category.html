@@ -45,10 +45,9 @@
                         <input type="checkbox" onClick="$('input[name*=\'selected\']').prop('checked', this.checked);" data-ng-click="isCheckAll();">
                         <i></i></label>
                       </td>
+                      <td class="text-left"><a>ID</a></td>
                       <td class="text-left"> 
                         <a class="asc"> <span class="hide"> {{category.selected}} </span>  Category Name</a></td>
-                      <td class="text-left"><a>Sort Order</a></td>
-                      
                       <td class="text-right">Action</td>
                     </tr>
                   </thead>
@@ -59,8 +58,8 @@
                         <input type="checkbox" checklist-model="category.selected" name="selected[]"  checklist-value="value.id">
                         <i></i></label>
                       </td>
-                      <td class="text-left">{{value.path_parent_name}}</td>
                       <td class="text-left">{{value.id}}</td>
+                      <td class="text-left">{{value.path_parent_name}}</td>
                       <td class="text-right">
                         <a data-ng-click="categoryEdit(value)" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
                       </td>

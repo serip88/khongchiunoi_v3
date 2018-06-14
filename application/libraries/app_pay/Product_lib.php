@@ -29,7 +29,7 @@ class Product_lib extends Common_lib {
       
   }
   function validate_save_product($param){
-      $requite = array('name','parent_id');//description,status,parent_id
+      $requite = array('name');//description,status,parent_id
       $param['name']   = isset($param['name']) && $param['name'] ?$param['name']: '';
       $param['name']   = str_replace('/', '-', $param['name']);
       $param['price']     = isset($param['price']) && $param['price'] ? str_replace('.','',$param['price']): 0;

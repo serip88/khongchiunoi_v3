@@ -50,8 +50,8 @@
                                 <label class="control-label hide" for="input-status">Tình trạng</label>
                                 <select name="filter_status" id="input-status" class="form-control" ng-model="product_status">
                                   <option value="2">Tất Cả</option>
-                                    <option value="1">Có Hàng</option>
-                                     <option value="0">Chưa Về</option>
+                                    <option value="1">Enable</option>
+                                     <option value="0">Disable</option>
                                 </select>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                                 <input type="text" name="filter_price" value=""  id="input-price" placeholder="Giá" class="form-control">
                             </div>
                             <div>
-                                <a class="">
+                               <!--  <a class="">
                                     Giỏ hàng
                                     <span class="text">
                                         <i class="fa fa-shopping-cart text-success"></i> {{total_cart.length}}
@@ -74,8 +74,9 @@
                                     <span class="text">
                                         Tạo đơn hàng
                                     </span>
-                                </a>
-                                <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> Lọc</button>
+                                </a> -->
+                                <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> Lọc
+                                </button>
                             </div>
                             
                         </div>
@@ -118,14 +119,14 @@
                                     <td class="text-center"> <img data-ng-src="{{value.image_path}}" alt="{{value.name}}" class="img-thumbnail">
                                     </td>
                                     <td class="text-left">
-                                        <a class="btn btn-default" data-ng-click="addToCart(value)">
+                                       <!--  <a class="btn btn-default" data-ng-click="addToCart(value)">
                                           <i class="fa fa-shopping-cart text" ng-show="!value.in_cart"></i>
                                           <i class="fa fa-shopping-cart text-danger" ng-show="value.in_cart"></i>
-                                        </a>
+                                        </a> -->
                                         {{value.name}}
                                     </td>
                                     
-                                    <td class="text-right"> {{value.price}}/kg</td>
+                                    <td class="text-right"> {{value.price}}</td>
                                     <!-- <td class="text-right"> <span class="label label-success">1000</span>
                                     </td> -->
                                     <!-- <td class="text-left">
@@ -133,7 +134,7 @@
                                           <input ui-jq="TouchSpin" type="number" value="0" class="form-control" data-min='0' data-max="100" data-verticalbuttons="true" data-verticalupclass="fa fa-caret-up"  data-verticaldownclass="fa fa-caret-down">
                                         </div>
                                     </td> -->
-                                    <td class="text-left">{{value.status == '1'?'Có hàng':'Hàng chưa về'}}</td>
+                                    <td class="text-left">{{value.status == '1'?'Enable':'Disable'}}</td>
                                     <td class="text-right"><a data-ng-click="productEdit(value)" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a></td>
                                 </tr>
                             </tbody>
