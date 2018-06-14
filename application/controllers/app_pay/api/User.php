@@ -122,7 +122,8 @@ class User extends Base_controller {
             'system'=>false,
             'area'=>false,
             'attribute'=>false,
-            'dash2'=>false
+            'dash2'=>false,
+            'invoice'=>false
         );
         switch (config_item('app_name')) {
             case 'bacrau':
