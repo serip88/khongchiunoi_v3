@@ -34,25 +34,82 @@ class Starter_Model extends CI_Model
       return $result;
   }
   //tb_join array('table_name'=>'ec_signup as B','condition'=>'cn=0 ,id=10', 'type'=>'left');
-  public function get_data_join($select,$where,$tb_join = array() ,$limit="",$nStart=0,$order_by=""){
+  public function get_data_join($select, $where, $tb_join = array() ,$limit="",$nStart=0,$order_by="", $filter = array()){
       $result = array();
-      $this->db->select($select);
-      $this->db->from($this->_tb_name . " as A");
+      $this->db->select($select,FALSE);
+      if(isset($filter['table_as']) && $filter['table_as']){
+        $this->db->from($this->_tb_name . " AS ".$filter['table_as']);
+      }else{
+        $this->db->from($this->_tb_name . " AS A");
+      }
       foreach ($tb_join as $key => $value) {
         $this->db->join($value['table_name'], $value['condition'], $value['type']);
       }
-      $this->db->where($where);
-      if($limit)
-        $this->db->limit($limit, $nStart);
-      if($order_by)
-        $this->db->order_by($order_by);
-      $query = $this->db->get();
-      if ($query && $query->num_rows() > 0) {
-        $result = $query->result_array();
-        $query->free_result();
+      if(is_array($where))
+          $this->db->where($where);
+        else
+          $this->db->where($where, NULL, FALSE);
+      if(isset($filter['where_in']) && $filter['where_in']){
+        if( isset($filter['where_in']['key'])){
+          $this->db->where_in($filter['where_in']['key'],$filter['where_in']['value']);
+        }else{
+          foreach ($filter['where_in'] as $key => $value) {
+            $this->db->where_in($value['key'],$value['value']);
+          }
+        }
+        
+      }
+      if(isset($filter['search_like']) && $filter['search_like']){
+          $this->db->where($filter['search_like'], NULL, FALSE);
+      }
+      /*if(isset($filter['search']) && $filter['search']){
+        //$filter['search']['keyword'],'none') ; $filter['search']['keyword'],'before'); $filter['search']['keyword'],'after')
+        if(is_array($filter['search']['keys']) ){
+          $this->db->group_start();
+          foreach ($filter['search']['keys'] as $key => $column) {
+            if($key==0){
+               $this->db->like($column, $filter['search']['keyword']);
+            }else{
+              $this->db->or_like($column, $filter['search']['keyword']);
+            }
+          }
+          $this->db->group_end();
+        }else{
+          $this->db->like($filter['search']['keys'], $filter['search']['keyword']);
+        }
+      }*/
+      if(isset($filter['group_by']) && $filter['group_by']){
+        $this->db->group_by($filter['group_by']);
+      }
+      if(isset($filter['count']) && $filter['count']){
+        $result= $this->db->count_all_results();
+      }else{
+        if($limit)
+          $this->db->limit($limit, $nStart);
+        if($order_by){
+          if(is_string($order_by)){
+            $this->db->order_by($order_by);
+          }
+          else if(is_array($order_by)  && count($order_by) > 0 ){
+              foreach ($order_by as $key => $value) {
+                $this->db->order_by($key, $value);
+              }
+          }
+          
+        }
+        if(isset($filter['compiled_select']) && $filter['compiled_select']){
+          $this->db->get();
+          return $this->db->last_query();
+        }else{
+          $query = $this->db->get();
+          if ($query && $query->num_rows() > 0) {
+            $result = $query->result_array();
+            $query->free_result();
+          }  
+        }
       }
       return $result;
-  }
+    }
   public function update_data($data = array(), $where) {
       if (count($data)) {
         foreach ($data as $key => $value) {
