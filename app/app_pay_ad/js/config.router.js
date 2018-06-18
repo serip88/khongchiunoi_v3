@@ -366,6 +366,20 @@ angular.module('app')
                   url: '/user_groups',
                   templateUrl: baseConfig.tplUrl+'/system/user_groups/system_user_groups.html'
               })
+              .state('app.statistic', {
+                  url: '/statistic',
+                  template: '<div ui-view class="fade-in-down"></div>'
+              })
+              .state('app.statistic.email', {
+                  url: '/email',
+                  templateUrl: baseConfig.tplUrl+'/statistic/email/list.html',
+                  resolve: {
+                      deps: ['uiLoad',
+                        function( uiLoad ){
+                          return uiLoad.load( [baseConfig.app+'/js/controllers/statistic/email.js'] );
+                      }]
+                  }
+              })
               //category
               .state('app.catalog', {
                   url: '/catalog',
