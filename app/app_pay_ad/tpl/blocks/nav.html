@@ -390,6 +390,28 @@
       </li>
     </ul>
   </li>
+  <li ng-class="{active:$state.includes('app.statistic')}" ng-if="options.module.statistic">
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-cog"></i>
+      <span translate="aside.nav.components.rz_statistic.STATISTIC">Statistic</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li  ui-sref-active="active"><!--class="nav-sub-header"-->
+        <a ui-sref="app.statistic.email">
+          <span translate="aside.nav.components.rz_statistic.email">Email</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="options.module.invoice">
+        <a ui-sref="app.statistic.invoice">
+          <span translate="aside.nav.components.rz_statistic.invoice">Invoice</span>
+        </a>
+      </li>
+    </ul>
+  </li>
   <li ng-class="{active:$state.includes('app.catalog')}" ng-if="options.module.catalog">
     <a href class="auto">
       <span class="pull-right text-muted">

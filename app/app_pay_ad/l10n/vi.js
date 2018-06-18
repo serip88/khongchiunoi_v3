@@ -64,6 +64,11 @@
         "VALIDATION" : "Post Validation",
         "REPORT" : "Post Report"
       },
+      "rz_statistic" : {
+        "STATISTIC" : "Thống kê",
+        "email" : "Email",
+        "invoice" : "Đơn hàng"
+      },
       "rz_system" : {
         "SYSTEM" : "Hệ Thống",
         "MEMBERS" : "Thành Viên",

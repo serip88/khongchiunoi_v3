@@ -64,6 +64,11 @@
         "VALIDATION" : "Post Validation",
         "REPORT" : "Post Report"
       },
+      "rz_statistic" : {
+        "STATISTIC" : "Statistic",
+        "email" : "Email",
+        "invoice" : "Invoice"
+      },
       "rz_system" : {
         "SYSTEM" : "System",
         "MEMBERS" : "Members",
