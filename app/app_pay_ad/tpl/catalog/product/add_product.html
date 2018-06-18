@@ -64,7 +64,7 @@
                     <option value="">Please choose</option>
                     <option ng-repeat="item in categoryList" value="{{item.id}}">{{item.name}}</option>
                 </select>-->
-                <select  class="form-control" ng-model="product.parent_id" ng-options="option as option.path_parent_name for option in categoryList track by option.id">
+                <select  class="form-control" ng-model="product.parent_selected" ng-options="option as option.path_parent_name for option in categoryList track by option.id">
                 </select>
             </div>
         </div>

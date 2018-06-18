@@ -190,6 +190,7 @@
 		        scope.categoryList = dataInit;
 		        scope.categoryList.push({id:0,path_parent_name:'[Không danh mục]'});
 		        scope.product.parent_selected = {id:item.parent_id};
+		        //scope.product.parent_id = {id:item.parent_id};
 		        scope.cancel = function(){
 		          $uibModalInstance.close();
 		        };
