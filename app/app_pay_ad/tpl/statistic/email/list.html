@@ -33,7 +33,7 @@
             <h3 class="panel-title"><i class="fa fa-list"></i> Email List</h3>
           </div>
           <div class="panel-body">
-            <form  method="post" enctype="multipart/form-data" id="form-user">
+            <form  method="post" enctype="multipart/form-data" >
               <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                   <thead>
@@ -59,7 +59,7 @@
                         <i></i></label>
                       </td>
                       <td class="text-left">{{value.id}}</td>
-                      <td class="text-left">{{value.path_parent_name}}</td>
+                      <td class="text-left">{{value.email}}</td>
                       <td class="text-right">
                         <a data-ng-click="edit(value)" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
                       </td>

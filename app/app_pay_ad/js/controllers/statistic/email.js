@@ -1,11 +1,11 @@
 /**
  * Created by Rain on 23/02/2016.
  */
- var categoryApi = {
+ var emailApi = {
     baseUrl: baseConfig.apiUrl,
-    categorySave: 'category/save',
+    save: 'email/save',
     categoryEdit: 'category/edit',
-    categoryList: 'category/category_list',
+    emailList: 'email/list',
     categoryDelete: 'category/delete'
 };
 (function(window, angular, $, undefined){
@@ -20,16 +20,14 @@
 	app.controller('StatisticCtrl', ['$scope', '$uibModal', '$log', 'openModal', 'SweetAlert', 'statisticService','commonService', function($scope, $uibModal, $log, openModal, SweetAlert, statisticService, commonService) {
 
 		function emailList() {
-			alert(11);
-			return;
-	        commonService.httpGet(categoryApi.categoryList).then(function(responseData) {
+	        commonService.httpGet(emailApi.emailList).then(function(responseData) {
 	            if (responseData.status) {
-	              $scope.categoryList = responseData.rows;
-	              $scope.category = {selected:[],roles:[],is_check_all:false};
+	              $scope.emailList = responseData.rows;
+	              $scope.email = {selected:[],roles:[],is_check_all:false};
 	              angular.forEach( $scope.categoryList, function(value, key) {
-	                $scope.categoryList[key]['id'] = parseInt(value.id) ;
+	                $scope.emailList[key]['id'] = parseInt(value.id) ;
 	                //$scope.user.roles[value.user_id]= value.username ;
-	                $scope.category.roles.push({id:value.id,name:value.name});
+	                $scope.email.roles.push({id:value.id,name:value.email});
 	              });
 	            }
 	        });
@@ -51,21 +49,14 @@
 	      	}
 	    };  
 		$scope.openAdd = function (size) {
-			commonService.httpGet(categoryApi.categoryList).then(function(responseData) {
-	            if (responseData.status) {
-	      			modalAdd(size,responseData.rows);
-	      		}
-	        });
-	      
+			modalAdd(size);
 	    };
-	    function modalAdd(size,email_list) {
+	    function modalAdd(size) {
 	        var modalObj = {
 		        templateUrl: baseConfig.tplUrl +'/statistic/email/add.html',
 		        size: size,
 		        controller: ['$scope', '$uibModalInstance', 'dataInit', function(scope, $uibModalInstance, dataInit){
 		          	scope.email = {};
-		          	scope.emailList = dataInit;
-		          	scope.emailList.push({id:0,path_parent_name:'[Không danh mục]'});
 		           	scope.cancel = function(){
 		            	$uibModalInstance.close();
 		           	};
@@ -73,8 +64,7 @@
 			            if(!validateAdd() || invalid){
 			              return;
 			            }
-			            scope.email.parent_id = scope.email.parent_selected?scope.email.parent_selected.id:0;
-			            commonService.httpPost(categoryApi.categorySave,scope.email).then(function(responseData) {
+			            commonService.httpPost(emailApi.save,scope.email).then(function(responseData) {
 			                if(responseData.status) {
 			                 	SweetAlert.swal("Add success!", "", "success");
 			                 	$uibModalInstance.close();
@@ -83,7 +73,7 @@
 			            });
 		          	};
 		          	function validateAdd() {
-			            if(typeof(scope.email.name) == 'undefined'){
+			            if(typeof(scope.email.email) == 'undefined'){
 			              return 0;
 			            }else{
 			              return 1;
@@ -93,7 +83,7 @@
 	      	};
 	      	modalObj.resolve = {
 		        dataInit: function(){
-		            return email_list;
+		            return {};
 		        }
 		    };
 	      	openModal.custom(modalObj);
