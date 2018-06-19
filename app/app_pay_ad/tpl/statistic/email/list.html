@@ -49,6 +49,8 @@
                       <td class="text-left"><a>ID</a></td>
                       <td class="text-left"> 
                         <a class="asc"> <span class="hide"> {{email.selected}} </span>  Email</a></td>
+                      <td class="text-left"><a>Password</a></td>
+                      <td class="text-left"><a>Status</a></td>
                       <td class="text-right">Action</td>
                     </tr>
                   </thead>
@@ -61,6 +63,8 @@
                       </td>
                       <td class="text-left">{{value.id}}</td>
                       <td class="text-left">{{value.email}}</td>
+                      <td class="text-left">{{value.password_de}}</td>
+                      <td class="text-left">{{value.status == '1'?'Enable':'Disable'}}</td>
                       <td class="text-right">
                         <a data-ng-click="edit(value)" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
                       </td>
