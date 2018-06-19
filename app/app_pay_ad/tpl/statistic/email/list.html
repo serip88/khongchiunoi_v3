@@ -34,6 +34,37 @@
             <h3 class="panel-title"><i class="fa fa-list"></i> Email List</h3>
           </div>
           <div class="panel-body">
+            <div class="well">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="control-label hide" for="input-name">Tìm Email</label>
+                                <input type="text" name="filter_name" value="" id="input-name" placeholder="Search email" class="form-control" ng-model="keyword">
+                                <ul class="dropdown-menu"></ul>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group hide">
+                                <label class="control-label hide" for="input-status">Tình trạng</label>
+                                <select name="filter_status" id="input-status" class="form-control" ng-model="product_status">
+                                  <option value="2">Tất Cả</option>
+                                    <option value="1">Enable</option>
+                                     <option value="0">Disable</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div>
+                                <button type="button" ng-click="reload()" class="btn btn-primary pull-right">
+                                  <i class="fa fa-search"></i> Lọc
+                                </button>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
             <form  method="post" enctype="multipart/form-data" >
               <div class="table-responsive">
                 <table class="table table-bordered table-hover">

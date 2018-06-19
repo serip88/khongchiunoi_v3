@@ -70,7 +70,8 @@ class Email extends Base_controller {
     }
 
     public function list_get(){
-    	$data = $this->email_lib->get_list();
+        $param = $this->get();
+    	$data = $this->email_lib->get_list($param);
         if($data){
             $data = $this->email_lib->list_format($data);
             $stt=TRUE;

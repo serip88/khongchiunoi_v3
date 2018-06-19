@@ -115,7 +115,8 @@ class Email_lib extends Common_lib {
 	    	return 0;
 	    }
 	}
-	function get_list(){
+	function get_list($param){
+		$param['keyword'] = $this->validate_input_text($param,'keyword');
 	    $select="*";
 	    $where = array();
 	    $data = $this->CI->email_model->get_data($select,$where);

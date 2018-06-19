@@ -20,7 +20,8 @@
 	app.controller('StatisticCtrl', ['$scope', '$uibModal', '$log', 'openModal', 'SweetAlert', 'statisticService','commonService', function($scope, $uibModal, $log, openModal, SweetAlert, statisticService, commonService) {
 
 		function emailList() {
-	        commonService.httpGet(emailApi.emailList).then(function(responseData) {
+			var params = {'keyword':$scope.keyword};
+	        commonService.httpGet(emailApi.emailList,params).then(function(responseData) {
 	            if (responseData.status) {
 	              $scope.emailList = responseData.rows;
 	              $scope.email = {selected:[],roles:[],is_check_all:false};

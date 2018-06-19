@@ -34,8 +34,12 @@ class Starter_Model extends CI_Model
       return $result;
   }
   //tb_join array('table_name'=>'ec_signup as B','condition'=>'cn=0 ,id=10', 'type'=>'left');
-  public function get_data_join($select, $where, $tb_join = array() ,$limit="",$nStart=0,$order_by="", $filter = array()){
+  //public function get_data_join($select, $where, $tb_join = array() ,$limit="",$nStart=0,$order_by="", $filter = array()){
+  public function get_data_join($select, $where, $tb_join = array(), $filter = array()){
       $result = array();
+      $filter['limit'] = isset($filter['limit']) ? $filter['limit'] : FALSE;
+      $filter['start'] = isset($filter['start']) ? $filter['start'] : 0;
+      $filter['order_by'] = isset($filter['order_by']) ? $filter['order_by'] : FALSE;
       $this->db->select($select,FALSE);
       if(isset($filter['table_as']) && $filter['table_as']){
         $this->db->from($this->_tb_name . " AS ".$filter['table_as']);
@@ -84,14 +88,14 @@ class Starter_Model extends CI_Model
       if(isset($filter['count']) && $filter['count']){
         $result= $this->db->count_all_results();
       }else{
-        if($limit)
-          $this->db->limit($limit, $nStart);
-        if($order_by){
-          if(is_string($order_by)){
-            $this->db->order_by($order_by);
+        if($filter['limit'])
+          $this->db->limit($filter['limit'], $filter['start']);
+        if($filter['order_by']){
+          if(is_string($filter['order_by'])){
+            $this->db->order_by($filter['order_by']);
           }
-          else if(is_array($order_by)  && count($order_by) > 0 ){
-              foreach ($order_by as $key => $value) {
+          else if(is_array($filter['order_by'])  && count($filter['order_by']) > 0 ){
+              foreach ($filter['order_by'] as $key => $value) {
                 $this->db->order_by($key, $value);
               }
           }

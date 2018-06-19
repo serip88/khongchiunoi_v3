@@ -61,7 +61,8 @@ class User_lib extends Common_lib {
     $tb_join = array();
     $tb_join[] = array('table_name'=>'rz_user_group as B','condition'=>"A.user_group_id =B.user_group_id", 'type'=>'left');
     $where = array("A.user_id"=>$user_id);
-    $data = $this->CI->user_model->get_data_join($select,$where,$tb_join,1);
+    $option = array('limit'=>1);
+    $data = $this->CI->user_model->get_data_join($select,$where,$tb_join,$option);
     if($data){
       return $data[0];
     }else{
@@ -73,7 +74,8 @@ class User_lib extends Common_lib {
     $tb_join = array();
     $tb_join[] = array('table_name'=>'rz_user_group as B','condition'=>"A.user_group_id =B.user_group_id", 'type'=>'left');
     $where = array("A.email"=>$user_email);
-    $data = $this->CI->user_model->get_data_join($select,$where,$tb_join,1);
+    $option = array('limit'=>1);
+    $data = $this->CI->user_model->get_data_join($select,$where,$tb_join,$option);
     if($data){
       return $data[0];
     }else{
