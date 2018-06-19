@@ -49,10 +49,12 @@ class Starter_Model extends CI_Model
       foreach ($tb_join as $key => $value) {
         $this->db->join($value['table_name'], $value['condition'], $value['type']);
       }
-      if(is_array($where))
+      if($where){
+        if(is_array($where))
           $this->db->where($where);
         else
           $this->db->where($where, NULL, FALSE);
+      }
       if(isset($filter['where_in']) && $filter['where_in']){
         if( isset($filter['where_in']['key'])){
           $this->db->where_in($filter['where_in']['key'],$filter['where_in']['value']);

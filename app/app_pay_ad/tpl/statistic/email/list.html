@@ -39,7 +39,7 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label class="control-label hide" for="input-name">Tìm Email</label>
-                                <input type="text" name="filter_name" value="" id="input-name" placeholder="Search email" class="form-control" ng-model="keyword">
+                                <input type="text" ng-keyup="$event.keyCode == 13 ? reload() : null" value="" placeholder="Search email" class="form-control" ng-model="keyword" >
                                 <ul class="dropdown-menu"></ul>
                             </div>
 

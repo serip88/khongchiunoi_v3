@@ -117,9 +117,15 @@ class Email_lib extends Common_lib {
 	}
 	function get_list($param){
 		$param['keyword'] = $this->validate_input_text($param,'keyword');
-	    $select="*";
-	    $where = array();
-	    $data = $this->CI->email_model->get_data($select,$where);
+
+		$select="A.id,A.email,A.password,A.description,A.status";
+	    $tb_join = array();
+	    $where = "";
+	    $option = array('limit'=>100);
+	    if($param['keyword']){
+	    	$where = "A.email LIKE '%".$param['keyword']."%'";
+	    }
+	    $data = $this->CI->email_model->get_data_join($select,$where,$tb_join,$option);
 	    return $data;
 	}
 	function list_format($data){
