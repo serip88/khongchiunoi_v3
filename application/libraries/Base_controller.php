@@ -155,8 +155,9 @@ class Base_controller extends REST_Controller {
             'upload/upload_img_user'=>['api'=>'upload/upload_img_user','deny_guest'=>1,'deny_user'=>0],
 
             'user/test'             =>['api'=>'user/test','deny_guest'=>1,'deny_user'=>0],
-
+            //pay project
             'email/save'          =>['api'=>'email/save','deny_guest'=>1,'deny_user'=>0],
+            'email/delete'          =>['api'=>'email/delete','deny_guest'=>1,'deny_user'=>0],
             'email/list'          =>['api'=>'email/list','deny_guest'=>1,'deny_user'=>0]
 
         );

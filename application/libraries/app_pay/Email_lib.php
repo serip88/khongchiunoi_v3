@@ -115,13 +115,13 @@ class Email_lib extends Common_lib {
 	    $data = $this->CI->email_model->get_data($select,$where);
 	    return $data;
 	}
-	function categorys_delete($category_id){
-	    if($category_id){
-	      $where = array("id"=>$category_id,'type'=>$this->_tag_type);
-	      $stt = $this->CI->email_model->delete_data($where);
-	      return $stt;
+	function delete($id){
+	    if($id){
+	      	$where = array("id"=>$id);
+	      	$stt = $this->CI->email_model->delete_data($where);
+	      	return $stt;
 	    }else
-	      return false;
+	      	return false;
 	}
 	function category_check_have_child($category_id){
 		if($category_id){

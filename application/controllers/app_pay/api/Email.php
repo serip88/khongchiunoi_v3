@@ -35,12 +35,21 @@ class Email extends Base_controller {
         $stt=FALSE;
         $msg='';
         $param = $this->email_lib->validate_save($param);
-        if($param){
-            $stt = $this->email_lib->save($param);
-            if(!$stt){
-                $msg = 'Error! Cannot save category.';
+        //B check duplicate email
+        $where = array('email'=>$param['email']);
+        $data = $this->email_model->get_record($where);
+        //E check duplicate email
+        if(!$data){
+            if($param){
+                $stt = $this->email_lib->save($param);
+                if(!$stt){
+                    $msg = 'Error! Cannot save category.';
+                }
             }
+        }else{
+            $msg = 'Error! Duplicate email.';
         }
+        
         $response = array('status' => $stt,'msg'=> $msg);
         $this->custom_response($response);
     }
@@ -75,31 +84,18 @@ class Email extends Base_controller {
     }
     public function delete_post(){
     	$params = $this->post();
-        $category_ids = isset($params['category_delete']) && $params['category_delete']?$params['category_delete']:array();
+        $ids = isset($params['email_delete']) && $params['email_delete']?$params['email_delete']:array();
         $msg = '';
         $status = false;
         $count_false = 0;
-        if(count($category_ids)){
-            foreach ($category_ids as $key => $id) {
+        if(count($ids)){
+            foreach ($ids as $key => $id) {
                 try {
-                	//check have sub category
-                	$total_sub = $this->email_lib->category_check_have_child($id);
-                    if($total_sub)
-                       $msg = 'You have delete sub category first'; 
-                    //check have products
-                    $have_product = $this->email_lib->category_check_have_product($id);
-                    if($have_product)
-                        $msg = 'This category not empty, you have move all product in it'; 
-                	if(!$total_sub && !$have_product){
-                		$stt = $this->email_lib->categorys_delete($id);
-	                    if(!$stt)
-	                        $count_false = $count_false +1;    
-                	}else{
-                        $count_false = $count_false +1;
-                    }
+                    $stt = $this->email_lib->delete($id);
+                    if(!$stt)
+                        $count_false = $count_false +1;    
                 } catch (Exception $e) {
                     $count_false = $count_false +1;
-                    //echo 'Caught exception: ',  $e->getMessage(), "\n";
                 }
             }
         } 
@@ -107,7 +103,7 @@ class Email extends Base_controller {
             $status = true;
             $msg = 'delete success';
         }else{
-            $msg = $msg? $msg.'<br/> $count_false category cannot delete': "$count_false category cannot delete";
+            $msg = $msg? $msg.'<br/> $count_false email cannot delete': "$count_false email cannot delete";
         }
         $response = array('status' => $status,'msg' => $msg);
         $this->custom_response($response);

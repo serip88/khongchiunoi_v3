@@ -6,7 +6,7 @@
     save: 'email/save',
     categoryEdit: 'category/edit',
     emailList: 'email/list',
-    categoryDelete: 'category/delete'
+    emailDelete: 'email/delete'
 };
 (function(window, angular, $, undefined){
     'use strict';
@@ -24,7 +24,7 @@
 	            if (responseData.status) {
 	              $scope.emailList = responseData.rows;
 	              $scope.email = {selected:[],roles:[],is_check_all:false};
-	              angular.forEach( $scope.categoryList, function(value, key) {
+	              angular.forEach( $scope.emailList, function(value, key) {
 	                $scope.emailList[key]['id'] = parseInt(value.id) ;
 	                //$scope.user.roles[value.user_id]= value.username ;
 	                $scope.email.roles.push({id:value.id,name:value.email});
@@ -33,7 +33,9 @@
 	        });
 	    }
 	    emailList();
-
+	    $scope.reload = function() {
+	    	emailList();
+	    }
 	    $scope.checkAll = function() {
 	    	$scope.email.selected = $scope.email.roles.map(function(item) { return item.id; });
 	    };
@@ -57,6 +59,7 @@
 		        size: size,
 		        controller: ['$scope', '$uibModalInstance', 'dataInit', function(scope, $uibModalInstance, dataInit){
 		          	scope.email = {};
+		          	scope.email.status = "1";
 		           	scope.cancel = function(){
 		            	$uibModalInstance.close();
 		           	};
@@ -69,7 +72,14 @@
 			                 	SweetAlert.swal("Add success!", "", "success");
 			                 	$uibModalInstance.close();
 			                 	emailList();
-			                }
+			                }else{
+				                SweetAlert.swal({
+				                  title: "Add Email False!",
+				                  text: responseData.msg,
+				                  type: "warning",
+				                  confirmButtonText: "Close"
+				                });
+				              }
 			            });
 		          	};
 		          	function validateAdd() {
@@ -171,13 +181,13 @@
 	    }
 	}
 	function deleteAction(){
-      	commonService.httpPost(categoryApi.categoryDelete,{'category_delete':$scope.email.selected} ).then(function(responseData) {
+      	commonService.httpPost(emailApi.emailDelete,{'email_delete':$scope.email.selected} ).then(function(responseData) {
           	if(responseData.status) {
            		SweetAlert.swal("Delete success!", "", "success");
           	}else{
 	            SweetAlert.swal({
 	              	title:  "Error",
-	              	text: typeof(responseData.msg) != 'undefined'? responseData.msg:"Have problem when delete group![CL]",
+	              	text: typeof(responseData.msg) != 'undefined'? responseData.msg:"Have problem when delete ![CL]",
 	              	type: "warning",
 	              	confirmButtonText: "Ok",
 	              	html: true

@@ -217,6 +217,49 @@ class Starter_Model extends CI_Model
   protected function check_admin($uid){
     
   }
+  function get_record($where,$option = array()){
+        $option['tb_name']  = isset($option['tb_name']) ? $option['tb_name'] : false;
+        $option['select'] = isset($option['select']) ? $option['select'] : false;
+        if($option['select']){
+          $select = $option['select'];
+        }else{
+          $select = "*";
+        }
+        $result = array();   
+        $this->db->select($select, false);
+        if(!$option['tb_name']){
+          $this->db->from($this->_tb_name);
+        }else{
+          $this->db->from($option['tb_name']);
+        }
+        $this->db->where($where);  
+        $this->db->limit(1);
+        $query = $this->db->get();
+        if ($query && $query->num_rows() > 0) {
+            $result = $query->result_array();
+            $query->free_result();
+        }
+        if($result){
+          return $result[0];
+        }else{
+          return $result;  
+        }
+        
+    }
+    function get_records($where,$option = array()){
+      $option['select'] = isset($option['select']) ? $option['select'] : FALSE;
+      if($option['select']){
+        $select = $option['select'];
+      }else{
+        $select = "*";
+      }
+      $data = $this->get_data_join($select,$where,array());
+      if($data){
+          return $data;
+      }else{
+          return false;
+      }
+    }
     
 }
 
