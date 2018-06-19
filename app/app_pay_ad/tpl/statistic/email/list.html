@@ -18,7 +18,7 @@
           <div class="pull-right"  >
               <button type="button" data-toggle="tooltip" title="" class="btn btn-default" ng-click="reload()"><i class="icon-refresh"></i></button>
               <a ng-click="openAdd('lg')" data-toggle="tooltip" title="Add Email" class="btn btn-primary" data-original-title="Add New"><i class="fa fa-plus"></i></a>
-              <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" data-ng-click="delete()" data-original-title="Delete"><i class="fa fa-trash-o"></i></button> 
+              <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" data-ng-click="delete()" ng-disabled="!email.selected.length"><i class="fa fa-trash-o"></i></button> 
               <!-- onClick="confirm('Are you sure?') ? $('#myform').submit() : false;"  -->
           </div>
           <h1 class="pull-left">Email</h1>

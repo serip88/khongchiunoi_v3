@@ -45,7 +45,8 @@ class Email_lib extends Common_lib {
 	    $required = array('email');
 	    $data['salt'] = $this->generateRandomString();
 	    $data['email'] 	= $param['email'];
-	    $data['password'] = md5($data['salt'].$param['password']);
+	    //$data['password'] = md5($data['salt'].$param['password']);
+	    $data['password'] = base64_encode($param['password']);
 	    $data['status'] 	= $param['status']; 
 	    $id = $this->CI->email_model->insert_data($data);
 	    return $id;
