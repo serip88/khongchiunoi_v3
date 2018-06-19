@@ -106,12 +106,21 @@ if (!class_exists('Common_lib')){
           $str = str_replace($val,$key,$str);
       return strtolower($str);
     }
-    function validate_input_text($param,$key){
+    function validate_input_text($param,$key,$option = array()){
+      $option['default'] = isset($option['default']) ? $option['default'] : '';
       $text = '';
       if($param){
-        $text = isset($param[$key]) && $param[$key] ? $param[$key] : '';
+        $text = isset($param[$key]) && $param[$key] ? $param[$key] : $option['default'];
       }
       return $text;
+    }
+    function validate_input_int($param,$key,$option = array()){
+      $option['default'] = isset($option['default']) ? $option['default'] : 0;
+      $int = '';
+      if($param){
+        $int = isset($param[$key]) ? (int)$param[$key] : $option['default'];
+      }
+      return $int;
     }
   }
 }

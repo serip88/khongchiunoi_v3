@@ -58,10 +58,9 @@ class Email extends Base_controller {
         $param = $this->post();
         $stt=FALSE;
         $msg='';
-        $param = $this->email_lib->validate_edit_category($param);
+        $param = $this->email_lib->validate_edit($param);
         if($param){
-        	$param = $this->email_lib->handle_save_category($param);
-            $stt = $this->email_lib->edit_category($param);
+            $stt = $this->email_lib->edit($param);
             if(!$stt){
                 $msg = 'Error! Cannot save category.';
             }
@@ -72,8 +71,10 @@ class Email extends Base_controller {
 
     public function list_get(){
     	$data = $this->email_lib->get_list();
-        if($data)
+        if($data){
+            $data = $this->email_lib->list_format($data);
             $stt=TRUE;
+        }
         else 
             $stt=FALSE;
 

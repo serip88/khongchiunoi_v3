@@ -52,16 +52,7 @@ class Email_lib extends Common_lib {
 	    return $id;
 	}
 
-	function validate_edit_category($param){
-	    $param = $this->validate_save_category($param);
-	    if($param){
-	    	$param['id'] 	= isset($param['id']) && $param['id'] ?$param['id']: 0;
-	    	if(!$param['id'])
-	    		return 0;
-	    }
-	    return $param;
-	}
-	function handle_save_category($param){
+	function handle_save($param){
 		//path_parent,level,path_parent_name
 		$param['path_parent']=0;
 		$param['path_parent_name']=$param['name'];
@@ -80,19 +71,33 @@ class Email_lib extends Common_lib {
 		}
 		return $param;
 	}
-	function edit_category($param){ 
+	function validate_edit($param){
+	    $required = array('id','email');
+	    $option = array('default'=>FALSE);
+	    $param['email'] = $this->validate_input_text($param,'email',$option);
+	    $param['password'] = $this->validate_input_text($param,'password',$option);
+	    $param['description'] = $this->validate_input_text($param,'description',$option);
+	    $param['status'] = $this->validate_input_int($param,'status',$option);
+	    foreach ($required as $key => $value) {
+	    	if(!$param[$value]){
+	    		return FALSE;
+	    	}
+	    }
+	    return $param;
+	}
+	function edit($param){ 
+	    $expected = array('email','password','description','status');
 	    $data = array();
-	    $data['name'] 	= $param['name'];
-	    $data['slug'] 		= $param['name'];
-	    $data['parent_id'] 	= $param['parent_id'];
-	    $data['description'] = $param['description'];
-	    $data['path_parent'] = $param['path_parent'];
-	    $data['path_parent_name'] = $param['path_parent_name'];
-	    $data['type'] 		= $this->_tag_type;
-	    $data['level'] 		= $param['level'];
-	    $data['orders'] 		= 0;
-	    $data['enabled'] 	= $param['status']; 
-	    if(isset($param['id']) && $param['id']){
+	    foreach ($expected as $key => $value) {
+	    	if($param[$value] !== FALSE){
+	    		if($value=='password'){
+	    			$data[$value] = base64_encode($param[$value]);
+	    		}else{
+	    			$data[$value] = $param[$value];
+	    		}
+	    	}
+	    }
+	    if($param['id']){
 	      $where = array("id"=> $param['id']);
 	      $stt = $this->CI->email_model->update_data($data,$where); 
 	      return $stt;
@@ -115,6 +120,16 @@ class Email_lib extends Common_lib {
 	    $where = array();
 	    $data = $this->CI->email_model->get_data($select,$where);
 	    return $data;
+	}
+	function list_format($data){
+		if($data){
+			foreach ($data as $key => $value) {
+				$value['password_de'] = base64_decode($value['password']) ;
+				$value['password'] = '';
+				$data[$key] = $value;
+			}
+		}
+		return $data;
 	}
 	function delete($id){
 	    if($id){

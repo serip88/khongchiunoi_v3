@@ -4,7 +4,7 @@
  var emailApi = {
     baseUrl: baseConfig.apiUrl,
     save: 'email/save',
-    categoryEdit: 'category/edit',
+    edit: 'email/edit',
     emailList: 'email/list',
     emailDelete: 'email/delete'
 };
@@ -60,6 +60,7 @@
 		        controller: ['$scope', '$uibModalInstance', 'dataInit', function(scope, $uibModalInstance, dataInit){
 		          	scope.email = {};
 		          	scope.email.status = "1";
+		          	scope.email.mode = 'add';
 		           	scope.cancel = function(){
 		            	$uibModalInstance.close();
 		           	};
@@ -99,21 +100,20 @@
 	      	openModal.custom(modalObj);
 	    }
 	    $scope.edit = function (item) {
-	      commonService.httpGet(categoryApi.categoryList).then(function(responseData) {
-	          if (responseData.status) {
-	            modalEdit('lg',responseData.rows,item);
-	          }
-	      });
+	      	// commonService.httpGet(categoryApi.categoryList).then(function(responseData) {
+	       //    	if (responseData.status) {
+	       //      	modalEdit('lg',item);
+	       //    	}
+	      	// });
+	      	modalEdit('lg',item);
 	    }
-	    function modalEdit(size,email_list,item) {
+	    function modalEdit(size,item) {
 	    var modalObj = {
 	      templateUrl: baseConfig.tplUrl +'/statistic/email/add.html',
 	      size: size,
 	      controller: ['$scope', '$uibModalInstance','dataInit', function(scope, $uibModalInstance, dataInit){
 	        scope.email = item;
-	        scope.emailList = dataInit;
-	        scope.emailList.push({id:0,path_parent_name:'[Không danh mục]'});
-	        scope.email.parent_selected = {id:item.parent_id};
+	        scope.email.mode = 'edit';
 	        scope.cancel = function(){
 	          $uibModalInstance.close();
 	        };
@@ -121,8 +121,7 @@
 	        	if(!validateAdd() || invalid){
 	              return;
 	            }
-	          	scope.email.parent_id = scope.email.parent_selected?scope.email.parent_selected.id:0;;
-	          	commonService.httpPost(categoryApi.categoryEdit,scope.email).then(function(responseData) {
+	          	commonService.httpPost(emailApi.edit,scope.email).then(function(responseData) {
 	              if (responseData.status) {
 	               SweetAlert.swal("Edit Email success!", "", "success");
 	               $uibModalInstance.close();
@@ -138,7 +137,7 @@
 	          });
 	        };
 	        function validateAdd() {
-	            if(typeof(scope.email.name) == 'undefined' ){
+	            if(typeof(scope.email.email) == 'undefined' ){
 	              return 0;
 	            }else{
 	              return 1;
@@ -148,7 +147,7 @@
 	    };
 	    modalObj.resolve = {
 	        dataInit: function(){
-	            return email_list;
+	            return {};
 	        }
 	    };
 	    openModal.custom(modalObj);
