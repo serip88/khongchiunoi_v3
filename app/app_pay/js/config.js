@@ -1,6 +1,6 @@
 // config
-var app_name = 'app_change'
-var app_name_api = 'app_change'
+var app_name = 'app_pay'
+var app_name_api = 'app_pay'
 var baseConfig = {};
     baseConfig.apiUrl = '/index.php/'+app_name_api+'/api';
     baseConfig.tplUrl = '/app/'+app_name+'/tpl';
