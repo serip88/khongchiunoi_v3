@@ -73,7 +73,12 @@
     <!-- plugins js -->
     <script src="{$config['app_url']}/themes/pay/js/plugins.js"></script>
     <!-- main js -->
-    <script src="{$config['app_url']}/themes/pay/js/main.js"></script>
+    <!-- <script src="{$config['app_url']}/themes/pay/js/main.js"></script> -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+             $.getScript("{$config['app_url']}/themes/pay/js/main.js");
+        });
+    </script>
 
     <!-- B RZ -->
 
