@@ -606,171 +606,493 @@
                         <div class="section-title mb-25">
                             <h2>Featured <span>products</span></h2>
                         </div>
-                        <div class="product-active-3">
-                            <div class="single-product-total-2">
-                                <div class="single-product-2 br-r br-b-3">
-                                    <div class="product-image-total">
-                                        <div class="product-image-2">
-                                            <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/11.jpg" alt="char" /></a>
+                        <div class="shop tab-content">
+                            <div class="tab-pane active" id="th">
+                                <div class="shop-tab-border">
+                                    <div class="single-product-2 br-r br-b-3">
+                                        <div class="product-image-total">
+                                            <div class="product-image-2">
+                                                <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/11.jpg" alt="char" /></a>
+                                            </div>
+                                            <span>New</span>
+                                            <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
                                         </div>
-                                        <span>New</span>
-                                        <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
-                                    </div>
-                                    <div class="product-content-2 text-center product-content-3">
-                                        <span>Furniture Manufacturer</span>
-                                        <h4><a href="#">Hand Carved Wood Sand Piper Glass Eyes...</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li class="new-price">$27.86</li>
-                                                <li class="old-price">$30.51</li>
-                                            </ul>
-                                        </div>
-                                        <div class="add-to-links">
-                                            <ul>
+                                        <div class="product-content-2 text-center product-content-3">
+                                            <span>Furniture Manufacturer</span>
+                                            <h4><a href="#">Hand Carved Wood Sand Piper Glass Eyes...</a></h4>
+                                            <div class="price">
+                                                <ul>
+                                                    <li class="new-price">$27.86</li>
+                                                    <li class="old-price">$30.51</li>
+                                                </ul>
+                                            </div>
+                                            <div class="add-to-links">
+                                                <ul>
                                                     <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
                                                     <li><a href="#">Add to cart</a></li>
                                                     <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
-                                            </ul>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product-2 br-r br-b-3 hidden-sm">
+                                        <div class="product-image-total">
+                                            <div class="product-image-2">
+                                                <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/12.jpg" alt="char" /></a>
+                                            </div>
+                                            <span>New</span>
+                                            <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
+                                        </div>
+                                        <div class="product-content-2 text-center product-content-3">
+                                            <span>Furniture Manufacturer</span>
+                                            <h4><a href="#">Wooden Plate Model Balsa Wood DIY House...</a></h4>
+                                            <div class="price">
+                                                <ul>
+                                                    <li class="new-price">$14.86</li>
+                                                    <li class="old-price">$16.51</li>
+                                                </ul>
+                                            </div>
+                                            <div class="add-to-links">
+                                                <ul>
+                                                    <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#">Add to cart</a></li>
+                                                    <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product-2 br-b-3">
+                                        <div class="product-image-total">
+                                            <div class="product-image-2">
+                                                <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/15.jpg" alt="char" /></a>
+                                            </div>
+                                            <span>New</span>
+                                            <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
+                                        </div>
+                                        <div class="product-content-2 text-center product-content-3">
+                                            <span>Furniture Manufacturer</span>
+                                            <h4><a href="#">New arrival home decor glazed ceramic...</a></h4>
+                                            <div class="price">
+                                                <ul>
+                                                    <li class="new-price">$30.86</li>
+                                                    <li class="old-price">$35.51</li>
+                                                </ul>
+                                            </div>
+                                            <div class="add-to-links">
+                                                <ul>
+                                                    <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#">Add to cart</a></li>
+                                                    <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product-2 br-r br-b-3">
+                                        <div class="product-image-total">
+                                            <div class="product-image-2">
+                                                <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/16.jpg" alt="char" /></a>
+                                            </div>
+                                            <span>New</span>
+                                            <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
+                                        </div>
+                                        <div class="product-content-2 text-center product-content-3">
+                                            <span>Furniture Manufacturer</span>
+                                            <h4><a href="#">Neet Hand Carved Wood Small Bird Folk Art...</a></h4>
+                                            <div class="price">
+                                                <ul>
+                                                    <li class="new-price">$27.86</li>
+                                                    <li class="old-price">$30.51</li>
+                                                </ul>
+                                            </div>
+                                            <div class="add-to-links">
+                                                <ul>
+                                                    <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#">Add to cart</a></li>
+                                                    <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product-2 br-r hidden-sm br-b-3">
+                                        <div class="product-image-total">
+                                            <div class="product-image-2">
+                                                <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/17.jpg" alt="char" /></a>
+                                            </div>
+                                            <span>New</span>
+                                            <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
+                                        </div>
+                                        <div class="product-content-2 text-center product-content-3">
+                                            <span>Furniture Manufacturer</span>
+                                            <h4><a href="#">Butterfly Mid-Century Dining Chair,...</a></h4>
+                                            <div class="price">
+                                                <ul>
+                                                    <li class="new-price">$17.86</li>
+                                                    <li class="old-price">$20.51</li>
+                                                </ul>
+                                            </div>
+                                            <div class="add-to-links">
+                                                <ul>
+                                                    <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#">Add to cart</a></li>
+                                                    <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product-2 br-b-3">
+                                        <div class="product-image-total">
+                                            <div class="product-image-2">
+                                                <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/18.jpg" alt="char" /></a>
+                                            </div>
+                                            <span>New</span>
+                                            <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
+                                        </div>
+                                        <div class="product-content-2 text-center product-content-3">
+                                            <span>Furniture Manufacturer</span>
+                                            <h4><a href="#">Ashmore Left Hand Facing Pillowback Corner...</a></h4>
+                                            <div class="price">
+                                                <ul>
+                                                    <li class="new-price">$50.86</li>
+                                                    <li class="old-price">$55.51</li>
+                                                </ul>
+                                            </div>
+                                            <div class="add-to-links">
+                                                <ul>
+                                                    <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#">Add to cart</a></li>
+                                                    <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product-2 br-r br-b-3">
+                                        <div class="product-image-total">
+                                            <div class="product-image-2">
+                                                <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/11.jpg" alt="char" /></a>
+                                            </div>
+                                            <span>New</span>
+                                            <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
+                                        </div>
+                                        <div class="product-content-2 text-center product-content-3">
+                                            <span>Furniture Manufacturer</span>
+                                            <h4><a href="#">Hand Carved Wood Sand Piper Glass Eyes...</a></h4>
+                                            <div class="price">
+                                                <ul>
+                                                    <li class="new-price">$27.86</li>
+                                                    <li class="old-price">$30.51</li>
+                                                </ul>
+                                            </div>
+                                            <div class="add-to-links">
+                                                <ul>
+                                                    <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#">Add to cart</a></li>
+                                                    <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product-2 br-r br-b-3 hidden-sm">
+                                        <div class="product-image-total">
+                                            <div class="product-image-2">
+                                                <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/12.jpg" alt="char" /></a>
+                                            </div>
+                                            <span>New</span>
+                                            <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
+                                        </div>
+                                        <div class="product-content-2 text-center product-content-3">
+                                            <span>Furniture Manufacturer</span>
+                                            <h4><a href="#">Wooden Plate Model Balsa Wood DIY House...</a></h4>
+                                            <div class="price">
+                                                <ul>
+                                                    <li class="new-price">$14.86</li>
+                                                    <li class="old-price">$16.51</li>
+                                                </ul>
+                                            </div>
+                                            <div class="add-to-links">
+                                                <ul>
+                                                    <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#">Add to cart</a></li>
+                                                    <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product-2 br-b-3">
+                                        <div class="product-image-total">
+                                            <div class="product-image-2">
+                                                <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/15.jpg" alt="char" /></a>
+                                            </div>
+                                            <span>New</span>
+                                            <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
+                                        </div>
+                                        <div class="product-content-2 text-center product-content-3">
+                                            <span>Furniture Manufacturer</span>
+                                            <h4><a href="#">New arrival home decor glazed ceramic...</a></h4>
+                                            <div class="price">
+                                                <ul>
+                                                    <li class="new-price">$30.86</li>
+                                                    <li class="old-price">$35.51</li>
+                                                </ul>
+                                            </div>
+                                            <div class="add-to-links">
+                                                <ul>
+                                                    <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#">Add to cart</a></li>
+                                                    <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product-2 br-r br-b-3">
+                                        <div class="product-image-total">
+                                            <div class="product-image-2">
+                                                <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/16.jpg" alt="char" /></a>
+                                            </div>
+                                            <span>New</span>
+                                            <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
+                                        </div>
+                                        <div class="product-content-2 text-center product-content-3">
+                                            <span>Furniture Manufacturer</span>
+                                            <h4><a href="#">Neet Hand Carved Wood Small Bird Folk Art...</a></h4>
+                                            <div class="price">
+                                                <ul>
+                                                    <li class="new-price">$27.86</li>
+                                                    <li class="old-price">$30.51</li>
+                                                </ul>
+                                            </div>
+                                            <div class="add-to-links">
+                                                <ul>
+                                                    <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#">Add to cart</a></li>
+                                                    <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product-2 br-r hidden-sm br-b-3">
+                                        <div class="product-image-total">
+                                            <div class="product-image-2">
+                                                <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/17.jpg" alt="char" /></a>
+                                            </div>
+                                            <span>New</span>
+                                            <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
+                                        </div>
+                                        <div class="product-content-2 text-center product-content-3">
+                                            <span>Furniture Manufacturer</span>
+                                            <h4><a href="#">Butterfly Mid-Century Dining Chair,...</a></h4>
+                                            <div class="price">
+                                                <ul>
+                                                    <li class="new-price">$17.86</li>
+                                                    <li class="old-price">$20.51</li>
+                                                </ul>
+                                            </div>
+                                            <div class="add-to-links">
+                                                <ul>
+                                                    <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#">Add to cart</a></li>
+                                                    <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product-2 br-b-3">
+                                        <div class="product-image-total">
+                                            <div class="product-image-2">
+                                                <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/18.jpg" alt="char" /></a>
+                                            </div>
+                                            <span>New</span>
+                                            <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
+                                        </div>
+                                        <div class="product-content-2 text-center product-content-3">
+                                            <span>Furniture Manufacturer</span>
+                                            <h4><a href="#">Ashmore Left Hand Facing Pillowback Corner...</a></h4>
+                                            <div class="price">
+                                                <ul>
+                                                    <li class="new-price">$50.86</li>
+                                                    <li class="old-price">$55.51</li>
+                                                </ul>
+                                            </div>
+                                            <div class="add-to-links">
+                                                <ul>
+                                                    <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#">Add to cart</a></li>
+                                                    <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product-2 br-r">
+                                        <div class="product-image-total">
+                                            <div class="product-image-2">
+                                                <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/16.jpg" alt="char" /></a>
+                                            </div>
+                                            <span>New</span>
+                                            <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
+                                        </div>
+                                        <div class="product-content-2 text-center product-content-3">
+                                            <span>Furniture Manufacturer</span>
+                                            <h4><a href="#">Neet Hand Carved Wood Small Bird Folk Art...</a></h4>
+                                            <div class="price">
+                                                <ul>
+                                                    <li class="new-price">$27.86</li>
+                                                    <li class="old-price">$30.51</li>
+                                                </ul>
+                                            </div>
+                                            <div class="add-to-links">
+                                                <ul>
+                                                    <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#">Add to cart</a></li>
+                                                    <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product-2 br-r hidden-sm">
+                                        <div class="product-image-total">
+                                            <div class="product-image-2">
+                                                <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/17.jpg" alt="char" /></a>
+                                            </div>
+                                            <span>New</span>
+                                            <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
+                                        </div>
+                                        <div class="product-content-2 text-center product-content-3">
+                                            <span>Furniture Manufacturer</span>
+                                            <h4><a href="#">Butterfly Mid-Century Dining Chair,...</a></h4>
+                                            <div class="price">
+                                                <ul>
+                                                    <li class="new-price">$17.86</li>
+                                                    <li class="old-price">$20.51</li>
+                                                </ul>
+                                            </div>
+                                            <div class="add-to-links">
+                                                <ul>
+                                                    <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#">Add to cart</a></li>
+                                                    <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product-2">
+                                        <div class="product-image-total">
+                                            <div class="product-image-2">
+                                                <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/18.jpg" alt="char" /></a>
+                                            </div>
+                                            <span>New</span>
+                                            <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
+                                        </div>
+                                        <div class="product-content-2 text-center product-content-3">
+                                            <span>Furniture Manufacturer</span>
+                                            <h4><a href="#">Ashmore Left Hand Facing Pillowback Corner...</a></h4>
+                                            <div class="price">
+                                                <ul>
+                                                    <li class="new-price">$50.86</li>
+                                                    <li class="old-price">$55.51</li>
+                                                </ul>
+                                            </div>
+                                            <div class="add-to-links">
+                                                <ul>
+                                                    <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#">Add to cart</a></li>
+                                                    <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="single-product-2 br-r">
+                            </div>
+                            <div class="tab-pane fade" id="list">
+                                <div class="single-product-2 single-product-4 mb-30">
                                     <div class="product-image-total">
                                         <div class="product-image-2">
-                                            <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/12.jpg" alt="char" /></a>
+                                            <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/9.jpg" alt="char" /></a>
                                         </div>
                                         <span>New</span>
                                         <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
                                     </div>
-                                    <div class="product-content-2 text-center product-content-3">
+                                    <div class="product-content-2">
                                         <span>Furniture Manufacturer</span>
                                         <h4><a href="#">Wooden Plate Model Balsa Wood DIY House...</a></h4>
+                                        <div class="rating">
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                        </div>
+                                        <p> Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit....</p>
                                         <div class="price">
                                             <ul>
                                                 <li class="new-price">$14.86</li>
                                                 <li class="old-price">$16.51</li>
                                             </ul>
                                         </div>
-                                        <div class="add-to-links">
+                                        <div class="add-to-links-2">
                                             <ul>
                                                 <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
                                                 <li><a href="#">Add to cart</a></li>
                                                 <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
                                             </ul>
                                         </div>
+                                        <div class="color-list-container">
+                                            <ul>
+                                                <li class="pink"></li>
+                                                <li class="orange"></li>
+                                                <li class="blue"></li>
+                                                <li class="yelllo"></li>
+                                            </ul>
+                                        </div>
+                                        <div class="availability">
+                                            <span> In stock</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="single-product-total-2">
-                                <div class="single-product-2 br-r br-b-3">
+                                <div class="single-product-2 single-product-4 mb-30">
                                     <div class="product-image-total">
                                         <div class="product-image-2">
-                                            <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/13.jpg" alt="char" /></a>
+                                            <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/2.jpg" alt="char" /></a>
                                         </div>
                                         <span>New</span>
                                         <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
                                     </div>
-                                    <div class="product-content-2 text-center product-content-3">
+                                    <div class="product-content-2">
                                         <span>Furniture Manufacturer</span>
-                                        <h4><a href="#">new fashion purple decorative crystal...</a></h4>
+                                        <h4><a href="#">Wooden Plate Model Balsa Wood DIY House...</a></h4>
+                                        <div class="rating">
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                        </div>
+                                        <p> Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit....</p>
                                         <div class="price">
                                             <ul>
-                                                <li class="new-price">$30.86</li>
-                                                <li class="old-price">$35.51</li>
+                                                <li class="new-price">$14.86</li>
+                                                <li class="old-price">$16.51</li>
                                             </ul>
                                         </div>
-                                        <div class="add-to-links">
+                                        <div class="add-to-links-2">
                                             <ul>
                                                 <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
                                                 <li><a href="#">Add to cart</a></li>
                                                 <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
                                             </ul>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="single-product-2 br-r">
-                                    <div class="product-image-total">
-                                        <div class="product-image-2">
-                                            <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/14.jpg" alt="char" /></a>
-                                        </div>
-                                        <span>New</span>
-                                        <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
-                                    </div>
-                                    <div class="product-content-2 text-center product-content-3">
-                                        <span>Furniture Manufacturer</span>
-                                        <h4><a href="#">Cargo Lacey 3 Seater Pillow Back Sofa</a></h4>
-                                        <div class="price">
+                                        <div class="color-list-container">
                                             <ul>
-                                                <li class="new-price">$50.86</li>
-                                                <li class="old-price">$55.51</li>
+                                                <li class="pink"></li>
+                                                <li class="orange"></li>
+                                                <li class="blue"></li>
+                                                <li class="yelllo"></li>
                                             </ul>
                                         </div>
-                                        <div class="add-to-links">
-                                            <ul>
-                                                <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
-                                                <li><a href="#">Add to cart</a></li>
-                                                <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
-                                            </ul>
+                                        <div class="availability">
+                                            <span> In stock</span>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="single-product-total-2">
-                                <div class="single-product-2 br-r br-b-3">
-                                    <div class="product-image-total">
-                                        <div class="product-image-2">
-                                            <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/15.jpg" alt="char" /></a>
-                                        </div>
-                                        <span>New</span>
-                                        <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
-                                    </div>
-                                    <div class="product-content-2 text-center product-content-3">
-                                        <span>Furniture Manufacturer</span>
-                                        <h4><a href="#">New arrival home decor glazed ceramic...</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li class="new-price">$30.86</li>
-                                                <li class="old-price">$35.51</li>
-                                            </ul>
-                                        </div>
-                                        <div class="add-to-links">
-                                            <ul>
-                                                <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
-                                                <li><a href="#">Add to cart</a></li>
-                                                <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-product-2 br-r">
-                                    <div class="product-image-total">
-                                        <div class="product-image-2">
-                                            <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/16.jpg" alt="char" /></a>
-                                        </div>
-                                        <span>New</span>
-                                        <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
-                                    </div>
-                                    <div class="product-content-2 text-center product-content-3">
-                                        <span>Furniture Manufacturer</span>
-                                        <h4><a href="#">Neet Hand Carved Wood Small Bird Folk Art...</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li class="new-price">$27.86</li>
-                                                <li class="old-price">$30.51</li>
-                                            </ul>
-                                        </div>
-                                        <div class="add-to-links">
-                                            <ul>
-                                                <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
-                                                <li><a href="#">Add to cart</a></li>
-                                                <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-product-total-2">
-                                <div class="single-product-2 br-r br-b-3">
+                                <div class="single-product-2 single-product-4 mb-30">
                                     <div class="product-image-total">
                                         <div class="product-image-2">
                                             <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/17.jpg" alt="char" /></a>
@@ -778,50 +1100,133 @@
                                         <span>New</span>
                                         <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
                                     </div>
-                                    <div class="product-content-2 text-center product-content-3">
+                                    <div class="product-content-2">
                                         <span>Furniture Manufacturer</span>
-                                        <h4><a href="#">Butterfly Mid-Century Dining Chair,...</a></h4>
+                                        <h4><a href="#">Wooden Plate Model Balsa Wood DIY House...</a></h4>
+                                        <div class="rating">
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                        </div>
+                                        <p> Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit....</p>
                                         <div class="price">
                                             <ul>
-                                                <li class="new-price">$17.86</li>
-                                                <li class="old-price">$20.51</li>
+                                                <li class="new-price">$14.86</li>
+                                                <li class="old-price">$16.51</li>
                                             </ul>
                                         </div>
-                                        <div class="add-to-links">
+                                        <div class="add-to-links-2">
                                             <ul>
                                                 <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
                                                 <li><a href="#">Add to cart</a></li>
                                                 <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
                                             </ul>
                                         </div>
+                                        <div class="color-list-container">
+                                            <ul>
+                                                <li class="pink"></li>
+                                                <li class="orange"></li>
+                                                <li class="blue"></li>
+                                                <li class="yelllo"></li>
+                                            </ul>
+                                        </div>
+                                        <div class="availability">
+                                            <span> In stock</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="single-product-2 br-r">
+                                <div class="single-product-2 single-product-4 mb-30">
                                     <div class="product-image-total">
                                         <div class="product-image-2">
-                                            <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/18.jpg" alt="char" /></a>
+                                            <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/10.jpg" alt="char" /></a>
                                         </div>
                                         <span>New</span>
                                         <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
                                     </div>
-                                    <div class="product-content-2 text-center product-content-3">
+                                    <div class="product-content-2">
                                         <span>Furniture Manufacturer</span>
-                                        <h4><a href="#">Ashmore Left Hand Facing Pillowback Corner...</a></h4>
+                                        <h4><a href="#">Wooden Plate Model Balsa Wood DIY House...</a></h4>
+                                        <div class="rating">
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                        </div>
+                                        <p> Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit....</p>
                                         <div class="price">
                                             <ul>
-                                                <li class="new-price">$50.86</li>
-                                                <li class="old-price">$55.51</li>
+                                                <li class="new-price">$14.86</li>
+                                                <li class="old-price">$16.51</li>
                                             </ul>
                                         </div>
-                                        <div class="add-to-links">
+                                        <div class="add-to-links-2">
                                             <ul>
                                                 <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
                                                 <li><a href="#">Add to cart</a></li>
                                                 <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
                                             </ul>
                                         </div>
+                                        <div class="color-list-container">
+                                            <ul>
+                                                <li class="pink"></li>
+                                                <li class="orange"></li>
+                                                <li class="blue"></li>
+                                                <li class="yelllo"></li>
+                                            </ul>
+                                        </div>
+                                        <div class="availability">
+                                            <span> In stock</span>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="single-product-2 single-product-4">
+                                    <div class="product-image-total">
+                                        <div class="product-image-2">
+                                            <a href="#"><img src="{$config['app_url']}/themes/pay/img/product/11.jpg" alt="char" /></a>
+                                        </div>
+                                        <span>New</span>
+                                        <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
+                                    </div>
+                                    <div class="product-content-2">
+                                        <span>Furniture Manufacturer</span>
+                                        <h4><a href="#">Wooden Plate Model Balsa Wood DIY House...</a></h4>
+                                        <div class="rating">
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                        </div>
+                                        <p> Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit....</p>
+                                        <div class="price">
+                                            <ul>
+                                                <li class="new-price">$14.86</li>
+                                                <li class="old-price">$16.51</li>
+                                            </ul>
+                                        </div>
+                                        <div class="add-to-links-2">
+                                            <ul>
+                                                <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
+                                                <li><a href="#">Add to cart</a></li>
+                                                <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="color-list-container">
+                                            <ul>
+                                                <li class="pink"></li>
+                                                <li class="orange"></li>
+                                                <li class="blue"></li>
+                                                <li class="yelllo"></li>
+                                            </ul>
+                                        </div>
+                                        <div class="availability">
+                                            <span> In stock</span>
+                                        </div>
+                                    </div>
+                                </div>  
                             </div>
                         </div>
                     </div>
