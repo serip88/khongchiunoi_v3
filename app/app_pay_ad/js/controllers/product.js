@@ -78,6 +78,9 @@
 	        });
 	    }
 	    productList();
+	    $scope.reload = function() {
+	    	productList();
+	    }
 		$scope.openAddProduct = function (size) {
 			commonService.httpGet(productApi.categoryList).then(function(responseData) {
 	            if (responseData.status) {

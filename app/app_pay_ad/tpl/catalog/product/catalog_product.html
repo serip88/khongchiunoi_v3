@@ -17,6 +17,7 @@
     <div class="page-header">
         <div class="container-fluid">
             <div class="pull-right">
+                <button type="button" data-toggle="tooltip" title="" class="btn btn-default" ng-click="reload()"><i class="icon-refresh"></i></button>
                 <a  data-ng-click="openAddProduct('lg')"  data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Add New"><i class="fa fa-plus"></i></a>
                 <!-- <button type="button" data-toggle="tooltip" title="" class="btn btn-default" onclick="" data-original-title="Copy"><i class="fa fa-copy"></i></button> -->
                 <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" ng-disabled="!products.selected.length" data-ng-click="deleteProduct()" data-original-title="Delete"><i class="fa fa-trash-o"></i></button>

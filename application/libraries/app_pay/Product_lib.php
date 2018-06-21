@@ -32,8 +32,8 @@ class Product_lib extends Common_lib {
       $requite = array('name');//description,status,parent_id
       $param['name']   = isset($param['name']) && $param['name'] ?$param['name']: '';
       $param['name']   = str_replace('/', '-', $param['name']);
-      $param['price']     = isset($param['price']) && $param['price'] ? str_replace('.','',$param['price']): 0;
-      $param['price']     = intval(str_replace(',','',$param['price'])) ;
+      $param['price']     = isset($param['price']) && $param['price'] ? $param['price']: 0;
+      $param['price']     = floatval($param['price']) ;
       $param['status']    = isset($param['status']) && $param['status'] ? $param['status']: 0;   
       $param['parent_id']   = isset($param['parent_id']) && $param['parent_id'] ? $param['parent_id']: 0;   
       $param['description'] = isset($param['description']) && $param['description'] ? $param['description']: '';   
@@ -130,8 +130,11 @@ class Product_lib extends Common_lib {
   function format_product_list($data){
     foreach ($data as $key => $value) {
       if($value['price']){
-        $data[$key]['price'] = number_format($value['price'] , 0, ',', '.');
-        $data[$key]['price_pure'] = (int)$value['price'];
+        // $data[$key]['price_pure'] = (int)$value['price'];
+        // $data[$key]['price'] = number_format($value['price'] , 0, ',', '.');
+        $data[$key]['price_pure'] = floatval($value['price']) ;
+        $data[$key]['price'] = floatval($value['price']) ;
+        //$data[$key]['price'] = number_format($value['price'] , 2, '.', ',');
       }
       if($value['image_path']){
         $data[$key]['image_path'] = trim($value['image_path'],".");
