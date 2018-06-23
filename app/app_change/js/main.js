@@ -1,8 +1,8 @@
 (function (window, angular, $, undefined) {
 'use strict';
   /* Controllers */
-  app.controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'commonService', '$state' , 
-    function(              $scope,   $translate,   $localStorage,   $window ,  commonService,   $state) {
+  app.controller('AppCtrl', ['$rootScope','$scope', '$translate', '$localStorage', '$window', 'commonService', '$state' , 
+    function( $rootScope, $scope,   $translate,   $localStorage,   $window ,  commonService,   $state) {
       console.log('main');
       console.log(">>>>>>>>>>>>>>>>>>>>>>> AppCtrl",$scope);
       // add 'ie' classes to html
@@ -90,23 +90,45 @@
           }
         }
       }*/
-      function stateChange(){
-        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options){
-          if(fromState.name  != toState.name){
-            if(helper.isEmpty($scope.options.user_data)){
-              if(toState.name != 'access.signin'){
-                event.preventDefault();
-                //$state.go('access.signin');
-              }
-            }else{
-              if(toState.name == 'access.signin'){
-                event.preventDefault();
-              }
+      $rootScope.$on('$stateChangeStart', function(event) {
+          alert(1);
+        });
+      // function stateChange(){
+      //   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options){
+      //     if(fromState.name  != toState.name){
+      //       if(helper.isEmpty($scope.options.user_data)){
+      //         if(toState.name != 'access.signin'){
+      //           event.preventDefault();
+      //           //$state.go('access.signin');
+      //         }
+      //       }else{
+      //         if(toState.name == 'access.signin'){
+      //           event.preventDefault();
+      //         }
+      //       }
+      //     }
+      //   })
+      // }
+      // stateChange();
+      //B custom
+      $scope.handleState = function(href, callback, params) {
+        if(href == 'app.add-post'){
+          if(!helper.isEmpty($scope.options.user_data)){
+            $scope.stateGo(href);      
+          }else{
+            if(isFunction(callback)) {
+              callback();
             }
           }
-        })
+        }
       }
-      //B custom
+      $scope.stateGo = function(href, callback, params) {
+          if(isFunction(callback)) {
+              $state.go(href, params).then(callback);
+          }else{
+              $state.go(href, params);
+          }
+      }
       $scope.logout = function() {
         commonService.httpPost('login/logout')
           .then(function(response) {
@@ -116,7 +138,7 @@
             }
           }
         );  
-      };
+      }
       $scope.getHeader = function() {
         return [baseConfig.tplUrl,'/','common/header.html'].join('');
       }

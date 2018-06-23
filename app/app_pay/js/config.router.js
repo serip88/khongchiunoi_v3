@@ -17,7 +17,7 @@ angular.module('app')
       function ($stateProvider, $urlRouterProvider, $locationProvider) {
           $locationProvider.html5Mode(true);
           $urlRouterProvider
-            .otherwise('/app');
+            .otherwise('/app/index');
           $stateProvider
             .state('app', {
                   url: '/',
@@ -28,7 +28,14 @@ angular.module('app')
                      },
                      '@app': {
                         templateUrl: baseConfig.tplUrl+'/home/content.html',
-                        //controller: 'IndexCtrl'
+                        //controller: 'HomeCtrl',
+                        resolve: {
+                          deps: ['$ocLazyLoad',
+                            function( $ocLazyLoad ){
+                              console.log('home page');
+                              return $ocLazyLoad.load([baseConfig.app+'/js/controllers/home.js']);
+                          }]
+                        }
                     }
                   },
                   resolve: {
@@ -44,6 +51,18 @@ angular.module('app')
                             //$state.go('access.signin');
                           }
                       });
+                    }]
+                  }
+              })
+              .state('app.index', {
+                  url: '/index',
+                  templateUrl: baseConfig.tplUrl+'/home/index.html',
+                  controller: 'HomeCtrl',
+                  resolve: {
+                    deps: ['$ocLazyLoad',
+                      function( $ocLazyLoad ){
+                        console.log('home page');
+                        return $ocLazyLoad.load([baseConfig.app+'/js/controllers/home.js']);
                     }]
                   }
               })

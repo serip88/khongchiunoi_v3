@@ -18,12 +18,12 @@ var postApi = {
     return postObject;
   }]);
 
-  app.controller('PostCtrl', ['$scope', '$uibModal', '$log', 'postService','commonService', 'SweetAlert', function($scope, $uibModal, $log, postService, commonService, SweetAlert) {
+  app.controller('HomeCtrl', ['$scope', '$uibModal', '$log', 'postService','commonService', 'SweetAlert', function($scope, $uibModal, $log, postService, commonService, SweetAlert) {
     $scope.form = [];
     $scope.openAdd = function (size) {
       modalAdd(size,[]);
     };
-    console.log(">>>>>>>>>>>>>>>>>>>>>>> PostCtrl",$scope.$id);
+    console.log(">>>>>>>>>>>>>>>>>>>>>>> HomeCtrl",$scope.$id);
     var appScope = commonService.getScope('AppCtrl_1');
     console.log(">>>>>>>>>>>>>>>>>>>>>>> appScope",appScope);
     appScope.app.tpl.page = 'page';

@@ -41,8 +41,8 @@
         <!-- modernizr css -->
         <script src="{$config['app_url']}/themes/pay/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
-    <body class="home-2" ui-view>
-        <h5> Loading ...</h5>
+    <body class="home-2" ui-view >
+        <p> Loading ...</p>
         
     </body>
     <!-- all js here -->
@@ -113,5 +113,6 @@
     <script src="{$config['app_url']}/js/config.router.js"></script>
     <script src="{$config['app_common_url']}/js/services/common-service.js"></script>
     <script src="{$config['app_url']}/js/main.js"></script>
+    <script src="{$config['app_url']}/js/controllers/product.js"></script>
     <!-- E RZ -->
 </html>
