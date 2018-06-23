@@ -41,7 +41,7 @@
         <!-- modernizr css -->
         <script src="{$config['app_url']}/themes/pay/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
-    <body class="home-2" ui-view >
+    <body class="home-2" ui-view="app" ng-init="customID = 'AppCtrl_1'">
         <p> Loading ...</p>
         
     </body>
@@ -113,6 +113,6 @@
     <script src="{$config['app_url']}/js/config.router.js"></script>
     <script src="{$config['app_common_url']}/js/services/common-service.js"></script>
     <script src="{$config['app_url']}/js/main.js"></script>
-    <script src="{$config['app_url']}/js/controllers/product.js"></script>
+    <script src="{$config['app_url']}/js/controllers/home.js"></script>
     <!-- E RZ -->
 </html>

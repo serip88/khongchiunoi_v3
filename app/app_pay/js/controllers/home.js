@@ -18,8 +18,9 @@ var postApi = {
     return postObject;
   }]);
 
-  app.controller('HomeCtrl', ['$scope', '$uibModal', '$log', 'postService','commonService', 'SweetAlert', function($scope, $uibModal, $log, postService, commonService, SweetAlert) {
+  app.controller('HomeCtrl', ['$scope',  '$log', 'postService','commonService', 'SweetAlert', function($scope, $log, postService, commonService, SweetAlert) {
     $scope.form = [];
+    alert(111);
     $scope.openAdd = function (size) {
       modalAdd(size,[]);
     };

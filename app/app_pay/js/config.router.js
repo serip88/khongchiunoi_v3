@@ -22,20 +22,13 @@ angular.module('app')
             .state('app', {
                   url: '/',
                   views: {
-                    '': {
+                    'app': {
                          templateUrl: baseConfig.tplUrl+'/common/app.html',
                          controller: 'AppCtrl'
                      },
-                     '@app': {
+                     'content@app': {
                         templateUrl: baseConfig.tplUrl+'/home/content.html',
-                        //controller: 'HomeCtrl',
-                        resolve: {
-                          deps: ['$ocLazyLoad',
-                            function( $ocLazyLoad ){
-                              console.log('home page');
-                              return $ocLazyLoad.load([baseConfig.app+'/js/controllers/home.js']);
-                          }]
-                        }
+                        controller: 'HomeCtrl'
                     }
                   },
                   resolve: {
@@ -54,15 +47,14 @@ angular.module('app')
                     }]
                   }
               })
-              .state('app.index', {
-                  url: '/index',
+              .state('app.product', {
+                  url: 'product.html',
                   templateUrl: baseConfig.tplUrl+'/home/index.html',
-                  controller: 'HomeCtrl',
+                  controller: 'ProductCtrl',
                   resolve: {
                     deps: ['$ocLazyLoad',
                       function( $ocLazyLoad ){
-                        console.log('home page');
-                        return $ocLazyLoad.load([baseConfig.app+'/js/controllers/home.js']);
+                        return $ocLazyLoad.load([baseConfig.app+'/js/controllers/product.js']);
                     }]
                   }
               })
