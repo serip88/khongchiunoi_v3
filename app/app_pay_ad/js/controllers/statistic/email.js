@@ -23,13 +23,13 @@
 			var params = {'keyword':$scope.keyword};
 	        commonService.httpGet(emailApi.emailList,params).then(function(responseData) {
 	            if (responseData.status) {
-	              $scope.emailList = responseData.rows;
-	              $scope.email = {selected:[],roles:[],is_check_all:false};
-	              angular.forEach( $scope.emailList, function(value, key) {
-	                $scope.emailList[key]['id'] = parseInt(value.id) ;
-	                //$scope.user.roles[value.user_id]= value.username ;
-	                $scope.email.roles.push({id:value.id,name:value.email});
-	              });
+	              		$scope.emailList = responseData.rows;
+	              		$scope.email = {selected:[],roles:[],is_check_all:false};
+	              		angular.forEach( $scope.emailList, function(value, key) {
+	                	$scope.emailList[key]['id'] = parseInt(value.id) ;
+	                	//$scope.user.roles[value.user_id]= value.username ;
+	                	$scope.email.roles.push({id:value.id,name:value.email});
+	              	});
 	            }
 	        });
 	    }

@@ -13,14 +13,13 @@ angular.module('app')
     ]
   )
   .config(
-    ['$stateProvider', '$urlRouterProvider', '$locationProvider',
-      function ($stateProvider, $urlRouterProvider, $locationProvider) {
-          $locationProvider.html5Mode(true);
+    ['$stateProvider', '$urlRouterProvider',
+      function ($stateProvider, $urlRouterProvider) {
           $urlRouterProvider
-            .otherwise('/app/index');
+            .otherwise('/app/index.html');
           $stateProvider
             .state('app', {
-                  url: '/',
+                  url: '/app',
                   views: {
                     'app': {
                          templateUrl: baseConfig.tplUrl+'/common/app.html',
@@ -47,14 +46,14 @@ angular.module('app')
                     }]
                   }
               })
-              .state('app.product', {
-                  url: 'product.html',
+              .state('app.index', {
+                  url: '/index.html',
                   templateUrl: baseConfig.tplUrl+'/home/index.html',
-                  controller: 'ProductCtrl',
+                  controller: 'HomeCtrl',
                   resolve: {
                     deps: ['$ocLazyLoad',
                       function( $ocLazyLoad ){
-                        return $ocLazyLoad.load([baseConfig.app+'/js/controllers/product.js']);
+                        return $ocLazyLoad.load([baseConfig.app+'/js/controllers/home.js']);
                     }]
                   }
               })

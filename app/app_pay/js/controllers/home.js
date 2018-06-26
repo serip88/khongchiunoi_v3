@@ -20,7 +20,6 @@ var postApi = {
 
   app.controller('HomeCtrl', ['$scope',  '$log', 'postService','commonService', 'SweetAlert', function($scope, $log, postService, commonService, SweetAlert) {
     $scope.form = [];
-    alert(111);
     $scope.openAdd = function (size) {
       modalAdd(size,[]);
     };
@@ -29,6 +28,21 @@ var postApi = {
     console.log(">>>>>>>>>>>>>>>>>>>>>>> appScope",appScope);
     appScope.app.tpl.page = 'page';
     appScope.app.tpl.sidebar = 'sidebar-none';
+    function productlList() {
+      var params = {'keyword':$scope.keyword};
+          commonService.httpGet(emailApi.emailList,params).then(function(responseData) {
+              if (responseData.status) {
+                $scope.emailList = responseData.rows;
+                $scope.email = {selected:[],roles:[],is_check_all:false};
+                angular.forEach( $scope.emailList, function(value, key) {
+                  $scope.emailList[key]['id'] = parseInt(value.id) ;
+                  //$scope.user.roles[value.user_id]= value.username ;
+                  $scope.email.roles.push({id:value.id,name:value.email});
+                });
+              }
+          });
+      }
+      emailList();
     function modalAdd(size) {
         var modalObj = {
           templateUrl: baseConfig.tplUrl +'/post/modal/add.html',
