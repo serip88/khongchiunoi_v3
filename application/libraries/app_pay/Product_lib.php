@@ -139,7 +139,7 @@ class Product_lib extends Common_lib {
       if($value['image_path']){
         $data[$key]['image_path'] = trim($value['image_path'],".");
       }
-      $data[$key]['quantity'] = 0;
+      $data[$key]['quantity'] = 1;
       $data[$key]['last_price'] = 0;
     }
     return $data;

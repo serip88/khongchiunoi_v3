@@ -154,18 +154,18 @@
                                     <div class="single-product-2 br-r br-b-3" data-ng-repeat="item in productList">
                                         <div class="product-image-total">
                                             <div class="product-image-2">
-                                                <a ><img ng-src="{{item.image_path}}" alt="char" /></a>
+                                                <a href="#"><img ng-src="{{item.image_path}}" alt="char" /></a>
                                             </div>
                                             <span class="hide">New</span>
-                                            <a data-ng-click="modalDetail(item)" style="cursor: pointer;"><i class="fa fa-search"></i></a>
+                                            <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
                                         </div>
                                         <div class="product-content-2 text-center product-content-3">
                                             <span class="hide">Furniture Manufacturer</span>
                                             <h4><a href="#">{{item.name}}</a></h4>
                                             <div class="price">
                                                 <ul>
-                                                    <li class="new-price ">${{item.price}}</li>
-                                                    <li class="old-price hide">${{item.price}}</li>
+                                                    <li class="new-price hide">$27.86</li>
+                                                    <li class="old-price">${{item.price}}</li>
                                                 </ul>
                                             </div>
                                             <div class="add-to-links">

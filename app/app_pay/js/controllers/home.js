@@ -1,9 +1,9 @@
 /**
  * Created by Rain on 23/02/2016.
  */
-var postApi = {
+var productApi = {
     baseUrl: baseConfig.apiUrl,
-    list: 'post/list',
+    list: 'product/product_list',
     save: 'post/save',
     edit: 'post/edit',
     categories: 'category/category_list'
@@ -18,31 +18,55 @@ var postApi = {
     return postObject;
   }]);
 
-  app.controller('HomeCtrl', ['$scope',  '$log', 'postService','commonService', 'SweetAlert', function($scope, $log, postService, commonService, SweetAlert) {
+  app.controller('HomeCtrl', ['$scope',  '$log', 'postService','commonService', 'SweetAlert', '$modal', function($scope, $log, postService, commonService, SweetAlert, $modal) {
     $scope.form = [];
+    $scope.product_detail = [];
     $scope.openAdd = function (size) {
       modalAdd(size,[]);
     };
     console.log(">>>>>>>>>>>>>>>>>>>>>>> HomeCtrl",$scope.$id);
     var appScope = commonService.getScope('AppCtrl_1');
     console.log(">>>>>>>>>>>>>>>>>>>>>>> appScope",appScope);
-    appScope.app.tpl.page = 'page';
-    appScope.app.tpl.sidebar = 'sidebar-none';
+    // appScope.app.tpl.page = 'page';
+    // appScope.app.tpl.sidebar = 'sidebar-none';
     function productlList() {
       var params = {'keyword':$scope.keyword};
-          commonService.httpGet(emailApi.emailList,params).then(function(responseData) {
+          commonService.httpGet(productApi.list,params).then(function(responseData) {
               if (responseData.status) {
-                $scope.emailList = responseData.rows;
-                $scope.email = {selected:[],roles:[],is_check_all:false};
-                angular.forEach( $scope.emailList, function(value, key) {
-                  $scope.emailList[key]['id'] = parseInt(value.id) ;
-                  //$scope.user.roles[value.user_id]= value.username ;
-                  $scope.email.roles.push({id:value.id,name:value.email});
-                });
+                $scope.productList = responseData.rows;
               }
           });
-      }
-      emailList();
+    }
+    productlList();
+
+    $scope.modalDetail = function(item){
+        $scope.product_detail = item;
+        var myModal = $modal({
+          scope: $scope, 
+          template:  baseConfig.tplUrl +'/home/modal/view-detail.html',
+          show: false,
+          controller: ['$scope','commonService','$timeout',function(scope, commonService, $timeout){
+              scope.ok = function(hide){
+                  productService.httpPost(productApi.productInvoice,$scope.total_cart).then(function(responseData) {
+                      if (responseData.status) {
+                       SweetAlert.swal("Thêm đơn hàng thành công!", "", "success");
+                       $scope.total_cart = [];
+                       productList();
+                       hide();
+                      }else{
+                        SweetAlert.swal({
+                          title: "Thêm đơn hàng thất bại!",
+                          text: responseData.msg,
+                          type: "warning",
+                          confirmButtonText: "Close"
+                        });
+                      }
+                });
+              };
+          }]
+        });
+        myModal.$promise.then(myModal.show);
+    }
     function modalAdd(size) {
         var modalObj = {
           templateUrl: baseConfig.tplUrl +'/post/modal/add.html',
