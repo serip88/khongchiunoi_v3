@@ -1,5 +1,5 @@
     <!-- header-area-start -->
-        <header>
+        <header data-ng-controller="headerCtrl">
             <!-- fixed-header-area-start -->
             <div class="fixed-header-area" id="sticky-header">
                 <div class="container">
@@ -289,31 +289,23 @@
                                             </form>
                                         </div>
                                     </li>
-                                    <li><a href="#"><i class="icon-heart icons"></i></a></li>
-                                    <li ><a href="#"><i class="icon-handbag icons"></i><span  class="total-cart">2</span></a>
+                                    <!-- <li><a href="#"><i class="icon-heart icons"></i></a></li> -->
+                                    <li ><a href="#"><i class="icon-handbag icons"></i><span  class="total-cart">{{cart.length}}</span></a>
                                         <div class="mini-cart-sub">
-                                            <div class="cart-product">
+                                            <div class="cart-product" data-ng-repeat="item in cart">
                                                 <div class="single-cart">
                                                     <div class="cart-img">
-                                                        <a href="#"><img ng-src="{{app.baseConfig.app}}/themes/pay/img/product/1.jpg" alt="book" /></a>
+                                                        <a href="#"><img ng-src="{{item.image_path}}" alt="{{item.name}}" /></a>
                                                     </div>
                                                     <div class="cart-info">
-                                                        <h5><a href="#">Joust Duffle Bag</a></h5>
-                                                        <p>1 x £60.00</p>
+                                                        <h5><a href="#">{{item.name}}</a></h5>
+                                                        <p>{{item.quantity}} x ${{item.price}}</p>
                                                     </div>
                                                 </div>
-                                                <div class="single-cart">
-                                                    <div class="cart-img">
-                                                        <a href="#"><img ng-src="{{app.baseConfig.app}}/themes/pay/img/product/2.jpg" alt="book" /></a>
-                                                    </div>
-                                                    <div class="cart-info">
-                                                        <h5><a href="#">Chaz Kangeroo Hoodie</a></h5>
-                                                        <p>1 x £52.00</p>
-                                                    </div>
-                                                </div>
+                                               
                                             </div>
                                             <div class="cart-totals">
-                                                <h5>Total <span>£12.00</span></h5>
+                                                <h5>Total <span>${{total_price}}</span></h5>
                                             </div>
                                             <div class="cart-bottom">
                                                 <a href="./checkout.html">Check out</a>

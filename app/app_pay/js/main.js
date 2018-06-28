@@ -158,6 +158,26 @@
       $scope.isMember = function() {
         return !helper.isEmpty($scope.options.user_data);
       }
+      $scope.cart = [];
+      $scope.total_price = 0;
+      $scope.$on('updateCart', function (event, cart) {
+          $scope.cart = cart;
+          $scope.calc_price_total();
+
+      });
+      $scope.calc_price_total = function () {
+        $scope.total_price = 0;
+        angular.forEach( $scope.cart, function(value, key) {
+              $scope.total_price += (value.price_pure * value.quantity);
+        });
+      }
+      $scope.calc_price = function (item) {
+        item.last_price = item.price_pure * item.quantity;
+        $scope.total_price = 0;
+        angular.forEach( $scope.cart, function(value, key) {
+              $scope.total_price += value.last_price;
+        });
+      }
       //E custom
   }])
   .controller('headerCtrl', ['$scope', '$translate', '$modal', '$window', 'commonService', '$state', 'SweetAlert', 

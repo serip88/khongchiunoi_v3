@@ -35,6 +35,7 @@ var productApi = {
           commonService.httpGet(productApi.list,params).then(function(responseData) {
               if (responseData.status) {
                 $scope.productList = responseData.rows;
+                console.log($scope.productList,'>>>>>>>>>>>>>>>>>> product list');
                 $scope.pagination = responseData.pagination;
               }
           });
@@ -79,13 +80,28 @@ var productApi = {
         item.in_cart = true;
         $scope.total_cart.push(item);
         SweetAlert.swal("Added to cart!", "", "success");
+        SweetAlert.swal({
+          title: "Success",
+          text: "Added to cart!",
+          type: "success",
+          showCancelButton: true,
+          cancelButtonText: "Close",
+          confirmButtonText: "Show cart"
+        }, 
+          function(isConfirm){ 
+            if (isConfirm) {
+              $scope.goToCart();  
+            }
+          }
+        );
+        $scope.$emit('updateCart', $scope.total_cart);
       }else{
         SweetAlert.swal({
           title: "Warning",
           text: "Already added to cart!",
           type: "warning",
           showCancelButton: true,
-          confirmButtonText: "Go to cart"
+          confirmButtonText: "Show cart"
         }, 
           function(isConfirm){ 
             if (isConfirm) {
@@ -96,7 +112,7 @@ var productApi = {
       }
     }
     $scope.goToCart = function () {
-      alert(33);
+      alert('go to cart');
     }
     $scope.removeCart = function (item) {
       var index = $scope.total_cart.indexOf(item);

@@ -2278,7 +2278,9 @@
           safeDigest(scope);
           var el = modalElement[0];
           requestAnimationFrame(function() {
-            el.focus();
+            if(typeof(el.focus)!='undefined'){
+              el.focus();
+            }
           });
           bodyElement.addClass(options.prefixClass + '-open');
           if (options.animation) {
