@@ -4633,3 +4633,7 @@ p.checkout-coupon input[type="submit"] {
 .social-icon ul li{
 	display:inline-block;
 }
+/* CUSTOME */
+.pagination-area .pagination-number ul li{
+	    margin: 0px 2px;
+}

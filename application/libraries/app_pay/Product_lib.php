@@ -75,14 +75,32 @@ class Product_lib extends Common_lib {
     $id = $this->CI->product_model->insert_data($data);
     return $id;
   }
-  function get_product_list(){
-      $select="product_id,name,description,image_name,image_path,price,enabled as status,parent_id";
+  function get_product_list($param){
+      $limit = isset($param['limit']) ? $param['limit'] :  9;
+      $page = isset($param['page']) ? $param['page'] :  1;
+      $start = ($page - 1) * $limit;
+      $options = array();
+      $options['limit'] = $limit;
+      $options['start'] = $start;
+      $select="A.*";
+      $tb_join = array();
       $where = array();
-      $data = $this->CI->product_model->get_data($select,$where);      
+      $data = $this->CI->product_model->get_data_join($select,$where,$tb_join,$options);
       if($data){
         $data = $this->format_product_list($data);
+        //B pagination
+        $pagination = array();
+        $options['count'] = 1;
+        $pagination['total'] = $this->CI->product_model->get_data_join($select,$where,$tb_join,$options);
+        $max_page = round($pagination['total']/ $limit);
+        $pagination['max_page'] =  $max_page ? $max_page : 1 ;
+        $pagination['current_page'] = $page;
+        $pagination['limit'] = $limit;
+        //E pagination
+        return array('data'=>$data,'pagination'=>$pagination) ;
+      }else{
+        return false;
       }
-      return $data;
   }
   function validate_edit_product($param){
       $param = $this->validate_save_product($param);

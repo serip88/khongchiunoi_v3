@@ -15,6 +15,7 @@
         //'ui.validate',
         //'checklist-model',
         'oitozero.ngSweetAlert',
+        'bw.paging',
         'oc.lazyLoad',
         'pascalprecht.translate',
         'mgcrea.ngStrap'

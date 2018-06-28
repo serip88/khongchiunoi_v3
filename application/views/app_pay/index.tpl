@@ -38,6 +38,7 @@
         <link rel="stylesheet" href="{$config['app_url']}/themes/pay/style.css">
         <!-- responsive css -->
         <link rel="stylesheet" href="{$config['app_url']}/themes/pay/css/responsive.css">
+        <link rel="stylesheet" href="{$config['app_common_url']}/vendor/sweetalert/dist/sweetalert.css">
         <!-- modernizr css -->
         <script src="{$config['app_url']}/themes/pay/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
@@ -102,9 +103,10 @@
     <script src="{$config['app_common_url']}/vendor/angular/angular-translate/storage-local.js"></script>
     <!-- E translate -->
     <!-- Sweetalert -->
-    <link rel="stylesheet" href="{$config['app_common_url']}/vendor/sweetalert/dist/sweetalert.css">
     <script src="{$config['app_common_url']}/vendor/sweetalert/dist/sweetalert.min.js"></script>
     <script src="{$config['app_common_url']}/js/directives/SweetAlert/SweetAlert.min.js"></script>
+
+    <script src="{$config['app_common_url']}/js/directives/paging.js"></script>
 
     <script src="{$config['app_common_url']}/js/helper.js"></script>
     <script src="{$config['app_url']}/js/app.js"></script>

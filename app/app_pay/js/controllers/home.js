@@ -20,6 +20,7 @@ var productApi = {
 
   app.controller('HomeCtrl', ['$scope',  '$log', 'postService','commonService', 'SweetAlert', '$modal', function($scope, $log, postService, commonService, SweetAlert, $modal) {
     $scope.form = [];
+    $scope.pagination = [];
     $scope.product_detail = [];
     $scope.openAdd = function (size) {
       modalAdd(size,[]);
@@ -29,16 +30,20 @@ var productApi = {
     console.log(">>>>>>>>>>>>>>>>>>>>>>> appScope",appScope);
     // appScope.app.tpl.page = 'page';
     // appScope.app.tpl.sidebar = 'sidebar-none';
-    function productlList() {
-      var params = {'keyword':$scope.keyword};
+    function productlList(page) {
+      var params = {'keyword':$scope.keyword,'page':page};
           commonService.httpGet(productApi.list,params).then(function(responseData) {
               if (responseData.status) {
                 $scope.productList = responseData.rows;
+                $scope.pagination = responseData.pagination;
               }
           });
     }
-    productlList();
-
+    productlList(1);
+    $scope.toPage = function(page)
+    {
+        productlList(page);
+    }
     $scope.modalDetail = function(item){
         $scope.product_detail = item;
         var myModal = $modal({
@@ -67,52 +72,48 @@ var productApi = {
         });
         myModal.$promise.then(myModal.show);
     }
-    function modalAdd(size) {
-        var modalObj = {
-          templateUrl: baseConfig.tplUrl +'/post/modal/add.html',
-          size: size,
-          controller: ['$scope', '$uibModalInstance', 'dataInit', function(scope, $uibModalInstance, dataInit){
-              scope.category = {};
-              scope.categoryList = dataInit;
-              scope.categoryList.push({id:0,path_parent_name:'[Không danh mục]'});
-              scope.cancel = function(){
-                $uibModalInstance.close();
-              };
-              scope.ok = function(invalid){
-                if(!validateAddCategory() || invalid){
-                  return;
-                }
-                scope.category.parent_id = scope.category.parent_selected?scope.category.parent_selected.id:0;
-                commonService.httpPost(postApi.save).then(function(responseData) {
-                    if(responseData.status) {
-                      SweetAlert.swal("Add success!", "", "success");
-                      $uibModalInstance.close();
-                      //list();
-                    }
-                });
-              };
-              function validateAddCategory() {
-                if(typeof(scope.category.name) == 'undefined'){
-                  return 0;
-                }else{
-                  return 1;
-                } 
-              };
-          }]
-        };
-        modalObj.resolve = {
-          dataInit: ['commonService', function(commonService){
-              return commonService.httpGet(postApi.categories).then(function(responseData) {
-                  if(responseData.status) {
-                    return responseData.rows.length?responseData.rows:[];
-                  }else{
-                    return [];
-                  }
-              });
-          }]
-      };
-      $uibModal.open(modalObj);
+    $scope.total_cart = [];
+    $scope.addToCart = function (item) {
+      var index = $scope.total_cart.indexOf(item);
+      if(index == -1){
+        item.in_cart = true;
+        $scope.total_cart.push(item);
+        SweetAlert.swal("Added to cart!", "", "success");
+      }else{
+        SweetAlert.swal({
+          title: "Warning",
+          text: "Already added to cart!",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Go to cart"
+        }, 
+          function(isConfirm){ 
+            if (isConfirm) {
+              $scope.goToCart();  
+            }
+          }
+        );
+      }
     }
+    $scope.goToCart = function () {
+      alert(33);
+    }
+    $scope.removeCart = function (item) {
+      var index = $scope.total_cart.indexOf(item);
+      if(index == -1){
+        SweetAlert.swal({
+          title: "Warning",
+          text: "Have no item in your cart!",
+          type: "warning",
+          confirmButtonText: "Close"
+        });
+      }else{
+        item.in_cart = false;
+        $scope.total_cart.splice(index, 1);
+        SweetAlert.swal("Removed!", "", "success");
+      }
+    }
+
     $scope.save = function(){
         commonService.httpPost(postApi.save,$scope.form).then(function(responseData) {
             if(responseData.status) {

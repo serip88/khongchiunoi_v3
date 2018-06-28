@@ -74,15 +74,22 @@ class Product extends Base_controller {
         $this->custom_response($response);
     }
     public function product_list_get(){
-        $data = $this->product_lib->get_product_list();
-        if($data)
+        $param = $this->get();
+        $data = array();
+        $pagination = array();
+        $res = $this->product_lib->get_product_list($param);
+        if($res){
             $stt=TRUE;
-        else 
+            $data = $res['data'];
+            $pagination = $res['pagination'];
+        }else {
             $stt=FALSE;
+        }
 
         $this->set_response([
             'status' => $stt,
-            'rows' => $data
+            'rows' => $data,
+            'pagination'=> $pagination
         ], REST_Controller::HTTP_OK);
     }
     public function edit_post(){

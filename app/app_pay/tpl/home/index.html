@@ -146,7 +146,7 @@
                     </div>
                     <div class="shop col-lg-8 col-md-8 col-sm-6 col-xs-12">
                         <div class="section-title mb-25">
-                            <h2>Featured <span>products</span></h2>
+                            <h2><span>products</span></h2>
                         </div>
                         <div class="tab-content">
                             <div class="tab-pane active" id="th">
@@ -171,7 +171,7 @@
                                             <div class="add-to-links">
                                                 <ul>
                                                     <li class="hide"><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
-                                                    <li><a href="#">Add to cart</a></li>
+                                                    <li><a style="cursor: pointer;" data-ng-click="addToCart(item)">Add to cart</a></li>
                                                     <li class="hide"><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
                                                 </ul>
                                             </div>
@@ -410,9 +410,19 @@
                         <!-- B pagination -->
                         <div class="pagination-area">
                             <div class="product-count">
-                                <p>Showing 1 - 12 of 13 items</p>
+                                <!-- <p>Showing 1 - 12 of 13 items</p> -->
                             </div>
-                            <div class="pagination-number">
+                            <div class="pagination-number" paging
+                                ul-class="a"
+                               
+                                show-prev-next="true"
+                                page="pagination.current_page" 
+                                page-size="pagination.limit" 
+                                total="pagination.total"
+                                paging-action="toPage(page)">
+                               
+                            </div>
+                            <!-- <div class="pagination-number">
                                 <ul>
                                     <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
                                     <li class="active"><a href="#">1</a></li>
@@ -420,7 +430,7 @@
                                     <li><a href="#">3</a></li>
                                     <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
                                 </ul>
-                            </div>
+                            </div> -->
                         </div>
                         <!-- E pagination -->
                     </div>
