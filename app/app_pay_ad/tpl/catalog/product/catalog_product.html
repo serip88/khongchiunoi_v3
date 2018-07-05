@@ -111,7 +111,7 @@
                             </thead>
                             <tbody>
                                 
-                                <tr ng-repeat="(key, value) in productList | filter : product_name" ng-show="product_status == 2 || product_status == value.status">
+                                <tr ng-repeat="(key, value) in productList | filter : product_name" ng-show="product_status == 2 || product_status == value.enabled">
                                     <td class="text-center"> 
                                         <label class="i-checks m-b-none" data-ng-click="myform.selected.click()">
                                         <input type="checkbox" checklist-model="products.selected" name="selected[]"  checklist-value="value.product_id">
