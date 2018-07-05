@@ -112,8 +112,36 @@ var productApi = {
       }
     }
     $scope.goToCart = function () {
-      alert('go to cart');
+      alert('go to cart1');
+      $scope.showCart();
     }
+    $scope.showCart = function () {
+        var myModal = $modal({
+          scope: $scope, 
+          template:  baseConfig.tplUrl +'/home/modal/show-cart.html',
+          show: false,
+          controller: ['$scope','commonService','$timeout',function(scope, commonService, $timeout){
+              scope.ok = function(hide){
+                  productService.httpPost(productApi.productInvoice,$scope.total_cart).then(function(responseData) {
+                      if (responseData.status) {
+                       SweetAlert.swal("Thêm đơn hàng thành công!", "", "success");
+                       $scope.total_cart = [];
+                       productList();
+                       hide();
+                      }else{
+                        SweetAlert.swal({
+                          title: "Thêm đơn hàng thất bại!",
+                          text: responseData.msg,
+                          type: "warning",
+                          confirmButtonText: "Close"
+                        });
+                      }
+                });
+              };
+          }]
+        });
+        myModal.$promise.then(myModal.show);
+      }
     $scope.removeCart = function (item) {
       var index = $scope.total_cart.indexOf(item);
       if(index == -1){
