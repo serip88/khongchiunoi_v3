@@ -112,7 +112,6 @@ var productApi = {
       }
     }
     $scope.goToCart = function () {
-      alert('go to cart1');
       $scope.showCart();
     }
     $scope.showCart = function () {
