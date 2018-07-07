@@ -153,6 +153,7 @@ var productApi = {
       }else{
         item.in_cart = false;
         $scope.total_cart.splice(index, 1);
+        $scope.$emit('updateCart', $scope.total_cart);
         SweetAlert.swal("Removed!", "", "success");
       }
     }
