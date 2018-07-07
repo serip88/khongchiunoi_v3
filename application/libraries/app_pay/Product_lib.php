@@ -34,9 +34,22 @@ class Product_lib extends Common_lib {
       $param['name']   = str_replace('/', '-', $param['name']);
       $param['price']     = isset($param['price']) && $param['price'] ? $param['price']: 0;
       $param['price']     = floatval($param['price']) ;
+      $param['price_discount']     = isset($param['price_discount']) ? $param['price_discount']: 0;
+      $param['price_discount']     = floatval($param['price_discount']) ;
       $param['status']    = isset($param['status']) && $param['status'] ? $param['status']: 0;   
       $param['parent_id']   = isset($param['parent_id']) && $param['parent_id'] ? $param['parent_id']: 0;   
       $param['description'] = isset($param['description']) && $param['description'] ? $param['description']: '';   
+      $param['date_discount'] = isset($param['date_discount']) && $param['date_discount'] ? $param['date_discount']: 0;
+      $param['hours_discount'] = isset($param['hours_discount']) && $param['hours_discount'] ? $param['hours_discount']: 0;
+      if($param['date_discount']){
+        $tmp_date = strtotime($param['date_discount']);
+        $tmp_time = strtotime($param['hours_discount']);
+        $tmp_time = date("H:i:s", $tmp_time);
+        $time_discount = strtotime($tmp_time, $tmp_date);
+      }else{
+        $time_discount = 0;
+      }
+      $param['time_discount'] = $time_discount;
       foreach ($requite as $key => $value) {
         if(!$param[$value]){
           return 0;
@@ -64,6 +77,8 @@ class Product_lib extends Common_lib {
     $data = array();
     $data['name']  = $param['name'];
     $data['price']  = $param['price'];
+    $data['price_discount']  = $param['price_discount'];
+    $data['time_discount']  = $param['time_discount'];
     $data['slug']     = $param['name'];
     $data['parent_id']  = $param['parent_id'];
     $data['description'] = $param['description'];
@@ -115,6 +130,8 @@ class Product_lib extends Common_lib {
       $data = array();
       $data['name']  = $param['name'];
       $data['price']  = $param['price'];
+      $data['price_discount']  = $param['price_discount'];
+      $data['time_discount']  = $param['time_discount'];
       $data['slug']     = $param['name'];
       $data['parent_id']  = $param['parent_id'];
       $data['description'] = $param['description'];
@@ -131,6 +148,7 @@ class Product_lib extends Common_lib {
       if(isset($param['product_id']) && $param['product_id']){
         $where = array("product_id"=> $param['product_id']);
         $stt = $this->CI->product_model->update_data($data,$where); 
+        //echo  $this->CI->product_model->db->last_query();die;
         return $stt;
       }else{
         return FALSE;
@@ -152,6 +170,7 @@ class Product_lib extends Common_lib {
         // $data[$key]['price'] = number_format($value['price'] , 0, ',', '.');
         $data[$key]['price_pure'] = floatval($value['price']) ;
         $data[$key]['price'] = floatval($value['price']) ;
+        $data[$key]['price_discount'] = floatval($value['price_discount']) ;
         //$data[$key]['price'] = number_format($value['price'] , 2, '.', ',');
       }
       if($value['image_path']){
