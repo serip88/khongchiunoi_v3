@@ -172,7 +172,7 @@
         });
       }
       $scope.calc_price = function (item) {
-        item.last_price = item.price_pure * item.quantity;
+        item.last_price = Number((item.price_pure * item.quantity).toFixed(2));
         $scope.total_price = 0;
         angular.forEach( $scope.cart, function(value, key) {
               $scope.total_price += value.last_price;
