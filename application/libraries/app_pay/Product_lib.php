@@ -34,22 +34,36 @@ class Product_lib extends Common_lib {
       $param['name']   = str_replace('/', '-', $param['name']);
       $param['price']     = isset($param['price']) && $param['price'] ? $param['price']: 0;
       $param['price']     = floatval($param['price']) ;
-      $param['price_discount']     = isset($param['price_discount']) ? $param['price_discount']: 0;
-      $param['price_discount']     = floatval($param['price_discount']) ;
       $param['status']    = isset($param['status']) && $param['status'] ? $param['status']: 0;   
       $param['parent_id']   = isset($param['parent_id']) && $param['parent_id'] ? $param['parent_id']: 0;   
       $param['description'] = isset($param['description']) && $param['description'] ? $param['description']: '';   
       $param['date_discount'] = isset($param['date_discount']) && $param['date_discount'] ? $param['date_discount']: 0;
       $param['hours_discount'] = isset($param['hours_discount']) && $param['hours_discount'] ? $param['hours_discount']: 0;
       if($param['date_discount']){
-        $tmp_date = strtotime($param['date_discount']);
-        $tmp_time = strtotime($param['hours_discount']);
+        if(strlen($param['date_discount']) == 24){
+          $tmp_date = strtotime($param['date_discount']);
+        }else{
+          $tmp_date = $param['date_discount']/1000;
+        }
+        if(strlen($param['hours_discount']) == 24){
+          $tmp_time = strtotime($param['hours_discount']);  
+        }else{
+          $tmp_time = $param['hours_discount']/1000;
+        }
         $tmp_time = date("H:i:s", $tmp_time);
         $time_discount = strtotime($tmp_time, $tmp_date);
       }else{
         $time_discount = 0;
       }
-      $param['time_discount'] = $time_discount;
+      
+      $param['price_discount']     = isset($param['price_discount']) ? $param['price_discount']: 0;
+      if($param['price_discount']){
+        $param['time_discount'] = $time_discount;  
+      }else{
+        $param['time_discount'] = 0;
+      }
+      $param['price_discount']     = floatval($param['price_discount']) ;
+
       foreach ($requite as $key => $value) {
         if(!$param[$value]){
           return 0;
@@ -178,6 +192,9 @@ class Product_lib extends Common_lib {
       }
       $data[$key]['quantity'] = 1;
       $data[$key]['last_price'] = 0;
+      $data[$key]['time_discount'] = $value['time_discount'] ? $value['time_discount']*1000: NULL ;
+      $data[$key]['date_discount'] = $data[$key]['time_discount'];
+      $data[$key]['hours_discount'] = $data[$key]['time_discount'];
     }
     return $data;
   }
