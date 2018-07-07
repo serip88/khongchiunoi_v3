@@ -84,6 +84,7 @@
   <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/directives/ui-validate.js"></script>
   <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/directives/sweet-alert.min.js"></script>
   <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/directives/SweetAlert.min.js"></script>
+  <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/directives/paging.js"></script>
   <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/directives/checklist-model.js"></script>
   <script src="<?php echo $this->config->item('base_url');?>app/app_pay_ad/js/controllers/bootstrap.js"></script>
   <!-- Lazy loading -->  

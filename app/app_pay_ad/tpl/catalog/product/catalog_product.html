@@ -24,8 +24,8 @@
             </div>
             <h1>Products</h1>
             <ul class="breadcrumb">
-                <li><a href="http://dm-opencart.localhost/admin/index.php?route=common/dashboard&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4">Home</a></li>
-                <li><a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4">Products</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
             </ul>
         </div>
     </div>
@@ -84,7 +84,7 @@
 
                     </div>
                 </div>
-                <form action="http://dm-opencart.localhost/admin/index.php?route=catalog/product/delete&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4" method="post" enctype="multipart/form-data" id="form-product">
+                <form action="#" method="post" enctype="multipart/form-data" id="form-product">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                             <thead>
@@ -143,8 +143,18 @@
                     </div>
                 </form>
                 <div class="row">
-                    <div class="col-sm-6 text-left"></div>
-                    <div class="col-sm-6 text-right">Showing 1 to 20 of 20 (1 Pages)</div>
+                    <div class="col-sm-6 text-left">
+                        Showing 1 to 20 of 20 (1 Pages)
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <div paging
+                            show-prev-next="true"
+                            page="pagination.current_page" 
+                            page-size="pagination.limit" 
+                            total="pagination.total"
+                            paging-action="toPage(page)"
+                        </div>  
+                    </div>
                 </div>
             </div>
         </div>

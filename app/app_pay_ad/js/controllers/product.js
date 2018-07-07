@@ -50,6 +50,7 @@
 	app.controller('ProductCtrl', ['$scope', '$log', 'openModal', 'SweetAlert', 'productService', 'commonService','$modal', function($scope, $log, openModal, SweetAlert, productService, commonService, $modal) {
 		$scope.total_price = 0;
 		$scope.product_status = '2';
+		$scope.pagination = [];
 		$scope.checkAll = function() {
 	    	$scope.products.selected = $scope.products.roles.map(function(item) { return item.id; });
 	    };
@@ -64,10 +65,12 @@
 	        	$scope.uncheckAll();
 	      	}
 	    }; 
-		function productList() {
-	        productService.httpGet(productApi.productList).then(function(responseData) {
+		function productList(page) {
+			var params = {'keyword':$scope.keyword,'page':page};
+	        productService.httpGet(productApi.productList, params).then(function(responseData) {
 	            if (responseData.status) {
 	              $scope.productList = responseData.rows;
+	              $scope.pagination = responseData.pagination;
 	              $scope.products = {selected:[],roles:[],is_check_all:false};
 	              angular.forEach( $scope.productList, function(value, key) {
 	                $scope.productList[key]['product_id'] = parseInt(value.product_id) ;
@@ -78,6 +81,9 @@
 	        });
 	    }
 	    productList();
+	    $scope.toPage = function(page){
+	        productList(page);
+	    }
 	    $scope.reload = function() {
 	    	productList();
 	    }
@@ -94,7 +100,7 @@
 		        templateUrl: baseConfig.tplUrl +'/catalog/product/add_product.html',
 		        size: size,
 		        controller: ['$scope','commonService', '$uibModalInstance','Upload','$timeout','dataInit', function(scope, commonService, $uibModalInstance,Upload, $timeout, dataInit){
-		          	scope.product = {status:"1"};
+		          	scope.product = {enabled:"1"};
 		          	scope.categoryList = dataInit;
 		          	scope.categoryList.push({id:0,path_parent_name:'[Không danh mục]'});
 		          	scope.product.parent_selected = {id:0};
