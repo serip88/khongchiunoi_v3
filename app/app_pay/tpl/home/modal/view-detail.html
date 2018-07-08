@@ -27,10 +27,10 @@
                                     <span class="new-price">${{product_detail.price}}</span>
                                 </div>
                                 <div class="short-description mt-20">
-                                    <p>Bacon ipsum dolor sit amet ut nostrud chuck, voluptate adipisicing veniam kielbasa fugiat ex spare ribs. Incididunt sint officia non cow, ut et. Cillum porchetta tongue occaecat laborum bacon aliquip fatback flank dolore short loin ball tip bresaola deserunt dolor. Shoulder fugiat ut in ut tail swine dolore, capicola ullamco beef occaecat meatball. Laboris turkey in et chuck deserunt ad incididunt do.</p>
+                                    <p>{{product_detail.description}}</p>
                                 </div>
                                 <form >
-                                    <input type="number" value="1" ng-model="product_detail.quantity"/>
+                                    <input type="number" data-ng-change="calc_price(product_detail)" ng-model="product_detail.quantity"/>
                                     <button data-ng-click="addToCart(product_detail)">Add to cart</button>
                                 </form>
                                 <!-- <div class="product-meta">
