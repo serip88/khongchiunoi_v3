@@ -121,7 +121,7 @@ class Product_lib extends Common_lib {
         $pagination = array();
         $options['count'] = 1;
         $pagination['total'] = $this->CI->product_model->get_data_join($select,$where,$tb_join,$options);
-        $max_page = round($pagination['total']/ $limit);
+        $max_page = ceil($pagination['total']/ $limit);
         $pagination['max_page'] =  $max_page ? $max_page : 1 ;
         $pagination['current_page'] = $page;
         $pagination['limit'] = $limit;

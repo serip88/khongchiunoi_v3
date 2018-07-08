@@ -50,7 +50,7 @@
 	app.controller('ProductCtrl', ['$scope', '$log', 'openModal', 'SweetAlert', 'productService', 'commonService','$modal', function($scope, $log, openModal, SweetAlert, productService, commonService, $modal) {
 		$scope.total_price = 0;
 		$scope.product_status = '2';
-		$scope.pagination = [];
+		$scope.pagination = {limit:10};
 		$scope.checkAll = function() {
 	    	$scope.products.selected = $scope.products.roles.map(function(item) { return item.id; });
 	    };
@@ -66,7 +66,7 @@
 	      	}
 	    }; 
 		function productList(page) {
-			var params = {'keyword':$scope.keyword,'page':page};
+			var params = {'keyword':$scope.keyword,'page':page, 'limit': $scope.pagination.limit};
 	        productService.httpGet(productApi.productList, params).then(function(responseData) {
 	            if (responseData.status) {
 	              $scope.productList = responseData.rows;
