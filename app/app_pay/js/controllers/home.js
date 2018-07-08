@@ -59,7 +59,7 @@ var productApi = {
     }
     discountList();
     function discountList() {
-      var params = {'keyword':$scope.keyword, 'page':1, 'limit': 20, 'mode': 'discount'};
+      var params = {'keyword':$scope.keyword, 'page':1, 'limit': 3, 'mode': 'discount'};
       commonService.httpGet(productApi.list,params).then(function(responseData) {
           if (responseData.status) {
             $scope.discountList = responseData.rows;
