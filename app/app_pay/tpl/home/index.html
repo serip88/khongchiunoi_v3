@@ -66,17 +66,18 @@
                             <h2>Deal of the days</h2>
                         </div>
                         <div class="product-active-2">
-                            <div class="single-product-2">
+                            
+                            <div class="single-product-2" data-ng-repeat="item in discountList">
                                 <div class="product-image-total">
                                     <div class="product-image-2">
-                                        <a href="#"><img ng-src="{{app.baseConfig.app}}/themes/pay/img/product/9.jpg" alt="char" /></a>
+                                        <a href="#"><img ng-src="{{item.image_path}}" alt="{{item.name}}" /></a>
                                     </div>
-                                    <span>New</span>
+                                    <!-- <span>New</span> -->
                                     <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
                                 </div>
                                 <div class="product-content-2 text-center">
-                                    <span>Furniture Manufacturer</span>
-                                    <h4><a href="#">Wooden Plate Model Balsa Wood DIY House...</a></h4>
+                                    <!-- <span>Furniture Manufacturer</span> -->
+                                    <h4><a href="#">{{item.name}}</a></h4>
                                     <div class="rating">
                                         <a href="#"><i class="fa fa-star"></i></a>
                                         <a href="#"><i class="fa fa-star"></i></a>
@@ -84,61 +85,23 @@
                                         <a href="#"><i class="fa fa-star"></i></a>
                                         <a href="#"><i class="fa fa-star"></i></a>
                                     </div>
-                                    <p> Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit....</p>
+                                    <p> {{item.description}}</p>
                                     <div class="price">
                                         <ul>
-                                            <li class="new-price">$14.86</li>
-                                            <li class="old-price">$16.51</li>
+                                            <li class="new-price">${{item.price}}</li>
+                                            <li class="old-price">${{item.price}}</li>
                                         </ul>
                                     </div>
                                     <div class="add-to-links">
                                         <ul>
-                                            <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
-                                            <li><a href="#">Add to cart</a></li>
-                                            <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
+                                            <!-- <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li> -->
+                                            <li><a style="cursor: pointer;" data-ng-click="addToCart(item)">Add to cart</a></li>
+                                            <!-- <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li> -->
                                         </ul>
                                     </div>
                                     <p class="txt_special">Hurry Up! Offer ends in:</p>
                                     <div class="timer">
-                                        <div data-countdown="2019/12/15"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-product-2">
-                                <div class="product-image-total">
-                                    <div class="product-image-2">
-                                        <a href="#"><img ng-src="{{app.baseConfig.app}}/themes/pay/img/product/10.jpg" alt="char" /></a>
-                                    </div>
-                                    <span>New</span>
-                                    <a href="#" data-toggle="modal" data-target="#mymodal"><i class="fa fa-search"></i></a>
-                                </div>
-                                <div class="product-content-2 text-center">
-                                    <span>Furniture Manufacturer</span>
-                                    <h4><a href="#">Quoizel Ambrose 31.5-in 3-Way Palladian...</a></h4>
-                                    <div class="rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>
-                                    <p> 100% cotton double printed dress. Black and white striped top and orange high waisted skater...</p>
-                                    <div class="price">
-                                        <ul>
-                                            <li class="new-price">$23.86</li>
-                                            <li class="old-price">$26.51</li>
-                                        </ul>
-                                    </div>
-                                    <div class="add-to-links">
-                                        <ul>
-                                            <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li>
-                                            <li><a href="#">Add to cart</a></li>
-                                            <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <p class="txt_special">Hurry Up! Offer ends in:</p>
-                                    <div class="timer">
-                                        <div data-countdown="2019/12/15"></div>
+                                        <div data-countdown="2018/07/09 12:00"></div>
                                     </div>
                                 </div>
                             </div>
