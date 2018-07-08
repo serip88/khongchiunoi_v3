@@ -307,9 +307,11 @@
                                             <div class="cart-totals">
                                                 <h5>Total <span>${{total_price}}</span></h5>
                                             </div>
-                                            <div class="cart-bottom">
-                                                <a href="./checkout.html">Check out</a>
-                                            </div>
+                                            <!-- <div class="cart-bottom">
+                                                <a href="#">Check out</a>
+                                            </div> -->
+                                            <button ng-if="cart.length" type="button" class="btn btn-primary">Check out</button>
+                                            <button ng-if="cart.length" type="button" class="btn btn-primary" data-ng-click="goToCart()">Show Cart</button>
                                         </div>
                                     </li>
                                 </ul>

@@ -121,6 +121,7 @@ class Product_lib extends Common_lib {
         $where[] = sprintf("AND A.time_discount > %s", time());
       }elseif($mode == 'all_client'){
         $where[] = sprintf("AND IF (A.price_discount > 0 , A.time_discount > %s, 1)", time());
+        //$where[] = sprintf("AND A.price_discount = 0", time());
       }
       $where = implode(" ", $where);
       $data = $this->CI->product_model->get_data_join($select,$where,$tb_join,$options);
@@ -194,6 +195,12 @@ class Product_lib extends Common_lib {
         $data[$key]['price_pure'] = floatval($value['price']) ;
         $data[$key]['price'] = floatval($value['price']) ;
         $data[$key]['price_discount'] = floatval($value['price_discount']) ;
+        if($data[$key]['price_discount']){
+          $data[$key]['price_old'] = $data[$key]['price'];
+          $data[$key]['price'] = $data[$key]['price_discount'];
+        }else{
+          $data[$key]['price_old'] = 0;
+        }
         //$data[$key]['price'] = number_format($value['price'] , 2, '.', ',');
       }
       if($value['image_path']){

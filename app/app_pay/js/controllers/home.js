@@ -38,7 +38,7 @@ var productApi = {
         options.page = 1;
       }
       if(typeof(options.limit) == 'undefined'){
-        options.limit = 9;
+        options.limit = 12;
       }
       if(typeof(options.mode) == 'undefined'){
         options.mode = 'all_client';
@@ -136,6 +136,9 @@ var productApi = {
     $scope.goToCart = function () {
       $scope.showCart();
     }
+    $scope.$on('goToCart', function (event) {
+          $scope.showCart();
+      });
     $scope.showCart = function () {
         var myModal = $modal({
           scope: $scope, 

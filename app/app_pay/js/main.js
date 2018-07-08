@@ -168,15 +168,18 @@
       $scope.calc_price_total = function () {
         $scope.total_price = 0;
         angular.forEach( $scope.cart, function(value, key) {
-              $scope.total_price += (value.price_pure * value.quantity);
+              $scope.total_price += (value.price * value.quantity);
         });
       }
       $scope.calc_price = function (item) {
-        item.last_price = Number((item.price_pure * item.quantity).toFixed(2));
+        item.last_price = Number((item.price * item.quantity).toFixed(2));
         $scope.total_price = 0;
         angular.forEach( $scope.cart, function(value, key) {
               $scope.total_price += value.last_price;
         });
+      }
+      $scope.goToCart = function () {
+        $scope.$broadcast('goToCart');
       }
       //E custom
   }])
