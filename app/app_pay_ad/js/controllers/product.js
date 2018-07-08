@@ -66,7 +66,7 @@
 	      	}
 	    }; 
 		function productList(page) {
-			var params = {'keyword':$scope.keyword,'page':page, 'limit': $scope.pagination.limit};
+			var params = {'keyword':$scope.keyword,'page':page, 'limit': $scope.pagination.limit, 'mode': 'all_admin'};
 	        productService.httpGet(productApi.productList, params).then(function(responseData) {
 	            if (responseData.status) {
 	              $scope.productList = responseData.rows;

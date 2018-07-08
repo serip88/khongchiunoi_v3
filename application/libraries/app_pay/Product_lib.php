@@ -107,13 +107,22 @@ class Product_lib extends Common_lib {
   function get_product_list($param){
       $limit = isset($param['limit']) ? $param['limit'] :  9;
       $page = isset($param['page']) ? $param['page'] :  1;
+      $mode = isset($param['mode']) ? $param['mode'] :  'all_client';
       $start = ($page - 1) * $limit;
       $options = array();
       $options['limit'] = $limit;
       $options['start'] = $start;
       $select="A.*";
       $tb_join = array();
-      $where = array();
+      //$where = array('A.enabled' => 1);
+      $where = array("A.enabled = 1 AND A.price > 0");
+      if($mode == 'discount'){
+        $where[] = "AND A.price >0";
+        $where[] = sprintf("AND A.time_discount > %s", time());
+      }elseif($mode == 'all_client'){
+        $where[] = sprintf("AND IF (A.price_discount > 0 , A.time_discount > %s, 1)", time());
+      }
+      $where = implode(" ", $where);
       $data = $this->CI->product_model->get_data_join($select,$where,$tb_join,$options);
       if($data){
         $data = $this->format_product_list($data);

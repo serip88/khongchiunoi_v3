@@ -164,8 +164,8 @@
                                             <h4><a href="#">{{item.name}}</a></h4>
                                             <div class="price">
                                                 <ul>
-                                                    <li class="new-price ">${{item.price}}</li>
-                                                    <li class="old-price hide">${{item.price}}</li>
+                                                    <li class="new-price ">${{item.price_discount ? item.price_discount : item.price}}</li>
+                                                    <li class="old-price" ng-show="item.price_discount">${{item.price}}</li>
                                                 </ul>
                                             </div>
                                             <div class="add-to-links">
@@ -419,7 +419,8 @@
                                 page="pagination.current_page" 
                                 page-size="pagination.limit" 
                                 total="pagination.total"
-                                paging-action="toPage(page)">
+                                paging-action="toPage(page)"
+                                >
                                
                             </div>
                             <!-- <div class="pagination-number">
