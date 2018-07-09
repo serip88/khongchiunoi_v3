@@ -208,6 +208,7 @@ class Product_lib extends Common_lib {
       }
       $data[$key]['quantity'] = 1;
       $data[$key]['last_price'] = $data[$key]['price'];
+      $data[$key]['time_discount_frm'] = date("Y/m/d H:i", $data[$key]['time_discount']);
       $data[$key]['time_discount'] = $value['time_discount'] ? $value['time_discount']*1000: NULL ;
       $data[$key]['date_discount'] = $data[$key]['time_discount'];
       $data[$key]['hours_discount'] = $data[$key]['time_discount'];

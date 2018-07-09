@@ -77,7 +77,9 @@
     <!-- <script src="{$config['app_url']}/themes/pay/js/main.js"></script> -->
     <script type="text/javascript">
         $(document).ready(function() {
-             $.getScript("{$config['app_url']}/themes/pay/js/main.js");
+            setTimeout(function(){
+                $.getScript("{$config['app_url']}/themes/pay/js/main.js");
+            }, 1000);
         });
     </script>
 

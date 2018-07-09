@@ -22,6 +22,7 @@ var productApi = {
     $scope.form = [];
     $scope.pagination = [];
     $scope.product_detail = [];
+    $scope.categories = commonService.sync.categories;
     $scope.openAdd = function (size) {
       modalAdd(size,[]);
     };
@@ -38,7 +39,7 @@ var productApi = {
         options.page = 1;
       }
       if(typeof(options.limit) == 'undefined'){
-        options.limit = 12;
+        options.limit = 6;
       }
       if(typeof(options.mode) == 'undefined'){
         options.mode = 'all_client';

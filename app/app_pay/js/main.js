@@ -218,7 +218,16 @@
         });
         myModal.$promise.then(myModal.show);
       }
-
+      function categories() {
+        var params = { 'limit': 7};
+        commonService.httpGet('category/category_list', params).then(function(res) {
+            if (res.status) {
+              $scope.categories = res.rows;
+              angular.copy(res.rows, commonService.sync.categories);
+            }
+        });
+      }
+      categories();
       $scope.doLogout = function(params) {
         var params = {t:'m'};
         commonService.httpPost(commonService.api.member_logout, params)

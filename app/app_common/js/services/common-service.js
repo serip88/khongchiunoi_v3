@@ -14,7 +14,7 @@ var isDefined = angular.isDefined,
 
 app.factory("commonService", ["$http", "$q", 'SweetAlert', '$translate', function ($http, $q, SweetAlert, $translate) {
     var commonObject = {};
-    commonObject.sync = {user_data:{},is_requested:0};
+    commonObject.sync = {user_data:{},is_requested:0,categories:[] };
     commonObject.options = {is_alert:false};
     commonObject.api = {
       member_login: 'access/login',

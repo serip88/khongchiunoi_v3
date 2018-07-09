@@ -22,8 +22,10 @@ if ($(this).scrollTop() > 240){
 /*----------------------------
  wow js active
 ------------------------------ */
- new WOW().init();
- 
+ //new WOW().init();
+setTimeout(function(){
+    new WOW().init();
+}, 1000);
  /*----------------------------
  nivoSlider
 ------------------------------ */	
