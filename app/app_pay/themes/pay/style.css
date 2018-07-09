@@ -4637,3 +4637,7 @@ p.checkout-coupon input[type="submit"] {
 .pagination-area .pagination-number ul li{
 	    margin: 0px 2px;
 }
+.modal-backdrop.am-fade{
+	opacity: .5;
+    filter: alpha(opacity=50);
+}
