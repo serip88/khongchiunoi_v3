@@ -170,6 +170,7 @@
         angular.forEach( $scope.cart, function(value, key) {
               $scope.total_price += (value.price * value.quantity);
         });
+        $scope.total_price = Number($scope.total_price.toFixed(2));
       }
       $scope.calc_price = function (item) {
         item.quantity = Math.ceil(Number(item.quantity));
