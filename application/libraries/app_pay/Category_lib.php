@@ -118,9 +118,15 @@ class Category_lib extends Common_lib {
 	    }
 	}
 	function get_category_list(){
-	    $select="id,parent_id,name,description,enabled as status,path_parent,level,path_parent_name";
+	    $select="A.id, A.parent_id, A.name, A.description, A.enabled as status, A.path_parent, A.level, A.path_parent_name";
+	    $select_child = ",(select count(*) 
+ 		from rz_product as B
+ 		where A.id = B.parent_id
+		) AS total_child";
+		$select = $select.$select_child;
 	    $where = array('type'=>$this->_tag_type);
-	    $data = $this->CI->tag_model->get_data($select,$where);
+	    $tb_join = array();
+	    $data = $this->CI->tag_model->get_data_join($select,$where,$tb_join);
 	    /*if($data){
 	    	$data = $this->format_path_parent($data);
 	    }*/

@@ -11,7 +11,9 @@ class Starter_Model extends CI_Model
       parent::__construct(); 
       $this->load->database();
   }
-
+  public function set_table($table){
+    $this->_tb_name = $table;
+  }
   public function insert_data($data){ 
    	$this->db->insert($this->_tb_name,$data);
    	return $this->db->insert_id();

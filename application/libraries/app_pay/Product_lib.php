@@ -112,8 +112,9 @@ class Product_lib extends Common_lib {
       $options = array();
       $options['limit'] = $limit;
       $options['start'] = $start;
-      $select="A.*";
+      $select="A.*, B.name AS cate_name";
       $tb_join = array();
+      $tb_join[] = array('table_name'=>'rz_tag as B','condition'=>"B.id =A.parent_id", 'type'=>'left');
       //$where = array('A.enabled' => 1);
       $where = array("A.enabled = 1 AND A.price > 0");
       if($mode == 'discount'){
