@@ -183,11 +183,13 @@
       $scope.goToCart = function () {
         $scope.$broadcast('goToCart');
       }
+      $scope.chooseCategory = function (cate) {
+        $scope.$broadcast('chooseCategory', cate);
+      }
       //E custom
   }])
   .controller('headerCtrl', ['$scope', '$translate', '$modal', '$window', 'commonService', '$state', 'SweetAlert', 
     function(              $scope, $translate, $modal, $window , commonService, $state, SweetAlert) {
-
       $scope.showLogin = function() {
         var myModal = $modal({
           templateUrl: baseConfig.tplUrl +'/common/blocks/login.html',

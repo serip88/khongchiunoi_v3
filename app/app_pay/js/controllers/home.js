@@ -32,19 +32,22 @@ var productApi = {
     // appScope.app.tpl.page = 'page';
     // appScope.app.tpl.sidebar = 'sidebar-none';
     function productList(options) {
-      if( typeof(options) == 'undefined' ){
+      if(!options){
         options = {};
       }
-      if(typeof(options.page) == 'undefined'){
+      if(!options.page){
         options.page = 1;
       }
-      if(typeof(options.limit) == 'undefined'){
+      if(!options.limit){
         options.limit = 6;
       }
-      if(typeof(options.mode) == 'undefined'){
+      if(!options.mode){
         options.mode = 'all_client';
       }
-      var params = {'keyword':$scope.keyword, 'page':options.page, 'limit': options.limit};
+      if(!options.category_id){
+        options.category_id = 0;
+      }
+      var params = {'keyword':$scope.keyword, 'page':options.page, 'limit': options.limit, 'category_id': options.category_id};
           commonService.httpGet(productApi.list,params).then(function(responseData) {
               if (responseData.status) {
                 $scope.productList = responseData.rows;
@@ -67,6 +70,13 @@ var productApi = {
             console.log($scope.discountList,'>>>>>>>>>>>>>>>>>> discountList list');
           }
       });
+    }
+    $scope.$on('chooseCategory', function (event, cate) {
+        $scope.chooseCategory(cate);
+    });
+    $scope.chooseCategory = function(item){
+      var options = {'page':1, 'category_id': item.id};
+      productList(options);
     }
     $scope.modalDetail = function(item){
         $scope.product_detail = item;

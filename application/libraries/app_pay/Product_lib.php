@@ -109,6 +109,8 @@ class Product_lib extends Common_lib {
       $page = isset($param['page']) ? $param['page'] :  1;
       $mode = isset($param['mode']) ? $param['mode'] :  'all_client';
       $start = ($page - 1) * $limit;
+      $category_id = isset($param['category_id']) ? $param['category_id'] :  0;
+
       $options = array();
       $options['limit'] = $limit;
       $options['start'] = $start;
@@ -123,6 +125,9 @@ class Product_lib extends Common_lib {
       }elseif($mode == 'all_client'){
         //$where[] = sprintf("AND IF (A.price_discount > 0 , A.time_discount > %s, 1)", time());
         $where[] = sprintf("AND A.price_discount = 0", time());
+      }
+      if($category_id){
+        $where[] = "AND A.parent_id = $category_id";
       }
       $where = implode(" ", $where);
       $data = $this->CI->product_model->get_data_join($select,$where,$tb_join,$options);
