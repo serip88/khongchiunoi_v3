@@ -128,7 +128,7 @@
                                     </td>
                                     
                                     <td class="text-right"> {{value.price}}</td>
-                                    <td class="text-right"> <span class="label label-success">{{value.cate_name ? value.cate_name : 'No Category'}}</span>
+                                    <td class="text-right"> <span class="label" ng-class="{'label-success ': value.cate_name, 'label-warning ': !value.cate_name}">{{value.cate_name ? value.cate_name : 'No Category'}}</span>
                                     </td>
                                     <!-- <td class="text-left">
                                         <div>
