@@ -17,7 +17,16 @@ var helper = (function () {
 			  if (hasOwnProperty.call(obj, key)) return false;
 			}
 			return true;
-        }
+        },
+	    scrollTo: function(idElement, deviation){
+	    	deviation = deviation ? deviation : 0;
+        	$( "#"+idElement ).focus();
+        	$('html, body').animate({scrollTop: $( "#"+idElement ).offset().top + deviation}, 'slow');
+        	/*var top = $("#odometer").offset().top;
+        	$('html, body').animate({
+        		 scrollTop: top
+        		}, 'slow');*/
+	    }
     }        
 
 }());

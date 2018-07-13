@@ -198,6 +198,7 @@ class Product_lib extends Common_lib {
       if($value['price']){
         // $data[$key]['price_pure'] = (int)$value['price'];
         // $data[$key]['price'] = number_format($value['price'] , 0, ',', '.');
+        $data[$key]['description_format'] = nl2br($value['description']) ;
         $data[$key]['price_pure'] = floatval($value['price']) ;
         $data[$key]['price'] = floatval($value['price']) ;
         $data[$key]['price_discount'] = floatval($value['price_discount']) ;

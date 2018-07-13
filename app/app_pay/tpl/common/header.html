@@ -8,7 +8,7 @@
                             <div class="main-menu">
                                 <nav>
                                     <ul>
-                                        <li ng-repeat="item in categories"><a href="#">{{item.name}}</a></li>
+                                        <li ng-repeat="item in categories" data-ng-click="chooseCategory(item)"><a style="cursor: pointer;">{{item.name}}</a></li>
                                         <li><a href="#">Blog</a></li>
                                         <li><a href="#">About us</a></li>
                                     </ul>
@@ -17,6 +17,7 @@
                         </div>
                     </div>
                 </div>
+                <div ui-butterbar></div>
             </div>
             <!-- fixed-header-area-end -->
             <!-- header-top-start -->
@@ -86,7 +87,7 @@
                             <div class="main-menu">
                                 <nav>
                                     <ul>
-                                        <li ng-repeat="item in categories" data-ng-click="chooseCategory(item)"><a href="#">{{item.name}}</a></li>
+                                        <li ng-repeat="item in categories" data-ng-click="chooseCategory(item)"><a style="cursor: pointer;">{{item.name}}</a></li>
                                         <li><a href="#">Blog</a></li>
                                         <li><a href="#">About us</a></li>
                                     </ul>

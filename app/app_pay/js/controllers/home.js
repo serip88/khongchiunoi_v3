@@ -23,6 +23,7 @@ var productApi = {
     $scope.pagination = [];
     $scope.product_detail = [];
     $scope.categories = commonService.sync.categories;
+    $scope.page = {category:'PRODUCTS'};
     $scope.openAdd = function (size) {
       modalAdd(size,[]);
     };
@@ -51,8 +52,9 @@ var productApi = {
           commonService.httpGet(productApi.list,params).then(function(responseData) {
               if (responseData.status) {
                 $scope.productList = responseData.rows;
-                console.log($scope.productList,'>>>>>>>>>>>>>>>>>> product list');
                 $scope.pagination = responseData.pagination;
+              }else{
+                $scope.productList = [];
               }
           });
     }
@@ -77,6 +79,8 @@ var productApi = {
     $scope.chooseCategory = function(item){
       var options = {'page':1, 'category_id': item.id};
       productList(options);
+      helper.scrollTo('th', -170);
+      $scope.page.category = item.name;
     }
     $scope.modalDetail = function(item){
         $scope.product_detail = item;
@@ -148,8 +152,9 @@ var productApi = {
       $scope.showCart();
     }
     $scope.$on('goToCart', function (event) {
-          $scope.showCart();
-      });
+        $scope.showCart();
+    });
+
     $scope.showCart = function () {
         var myModal = $modal({
           scope: $scope, 

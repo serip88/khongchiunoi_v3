@@ -79,7 +79,7 @@
         $(document).ready(function() {
             setTimeout(function(){
                 $.getScript("{$config['app_url']}/themes/pay/js/main.js");
-            }, 1000);
+            }, 2000);
         });
     </script>
 
@@ -93,6 +93,8 @@
     <script src="{$config['app_common_url']}/vendor/angular/angular-strap/angular-strap.docs.tpl.js" ></script>
     <!-- Cookies -->
     <script src="{$config['app_common_url']}/vendor/angular/angular-cookies/angular-cookies-1.5.7.js"></script>
+
+    <script src="{$config['app_common_url']}/vendor/angular/angular-sanitize/angular-sanitize-1.5.7.js"></script>
     <!-- Router -->
     <script src="{$config['app_common_url']}/vendor/angular/angular-ui-router/angular-ui-router.js"></script>
     <script src="{$config['app_common_url']}/vendor/angular/ngstorage/ngStorage.js"></script>
@@ -107,7 +109,6 @@
     <!-- Sweetalert -->
     <script src="{$config['app_common_url']}/vendor/sweetalert/dist/sweetalert.min.js"></script>
     <script src="{$config['app_common_url']}/js/directives/SweetAlert/SweetAlert.min.js"></script>
-
     <script src="{$config['app_common_url']}/js/directives/paging.js"></script>
 
     <script src="{$config['app_common_url']}/js/helper.js"></script>
@@ -115,6 +116,9 @@
     <script src="{$config['app_url']}/js/config.js"></script>
     <script src="{$config['app_url']}/js/config.lazyload.js"></script>
     <script src="{$config['app_url']}/js/config.router.js"></script>
+
+    <script src="{$config['app_common_url']}/js/directives/ui-butterbar.js"></script>
+
     <script src="{$config['app_common_url']}/js/services/common-service.js"></script>
     <script src="{$config['app_url']}/js/main.js"></script>
     <script src="{$config['app_url']}/js/controllers/home.js"></script>

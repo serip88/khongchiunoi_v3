@@ -27,7 +27,7 @@
                                     <span class="new-price">${{product_detail.price}}</span>
                                 </div>
                                 <div class="short-description mt-20">
-                                    <p>{{product_detail.description}}</p>
+                                    <p ng-bind-html="product_detail.description_format"></p>
                                 </div>
                                 <form >
                                     <input type="number" data-ng-change="calc_price(product_detail)" ng-model="product_detail.quantity"/>

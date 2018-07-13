@@ -5,7 +5,7 @@
         //'ngAnimate',
         'ngCookies',
         //'ngResource',
-        //'ngSanitize',
+        'ngSanitize',
         //'ngTouch',
         'ngStorage',
         'ui.router',

@@ -111,6 +111,9 @@
       // }
       // stateChange();
       //B custom
+       $scope.trustHtml = function (html) {
+          return $sce.trustAsHtml(html.toString());
+      };
       $scope.handleState = function(href, callback, params) {
         if(href == 'app.add-post'){
           if(!helper.isEmpty($scope.options.user_data)){
@@ -174,11 +177,15 @@
       }
       $scope.calc_price = function (item) {
         item.quantity = Math.ceil(Number(item.quantity));
+        if(item.quantity <= 0){
+          item.quantity = 1;
+        }
         item.last_price = Number((item.price * item.quantity).toFixed(2));
         $scope.total_price = 0;
         angular.forEach( $scope.cart, function(value, key) {
               $scope.total_price += value.last_price;
         });
+        $scope.total_price = Number($scope.total_price.toFixed(2));
       }
       $scope.goToCart = function () {
         $scope.$broadcast('goToCart');
