@@ -111,6 +111,7 @@ class Product_lib extends Common_lib {
       $param['keyword'] = isset($param['keyword']) ? $param['keyword'] :  false;
       $start = ($page - 1) * $limit;
       $category_id = isset($param['category_id']) ? (int)$param['category_id'] :  0;
+      $param['status'] = isset($param['status']) ? (int)$param['status'] :  2;
 
       $options = array();
       $options['limit'] = $limit;
@@ -133,6 +134,9 @@ class Product_lib extends Common_lib {
       }
       if($category_id != false && $category_id != -1){
         $where[] = "AND A.parent_id = $category_id";
+      }
+      if($param['status'] != 2){
+        $where[] = "AND A.enabled = ".$param['status']; 
       }
       $where = implode(" ", $where);
       $data = $this->CI->product_model->get_data_join($select,$where,$tb_join,$options);

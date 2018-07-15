@@ -50,7 +50,8 @@
 	app.controller('ProductCtrl', ['$scope', '$log', 'openModal', 'SweetAlert', 'productService', 'commonService','$modal', function($scope, $log, openModal, SweetAlert, productService, commonService, $modal) {
 		$scope.total_price = 0;
 		$scope.product_status = '2';
-		$scope.pagination = {limit:10};
+		$scope.pagination = {limit:10, current_page:1, total:0, max_page:1};
+		$scope.category_selected = {id:-1, name: 'All Category'};
 		$scope.checkAll = function() {
 	    	$scope.products.selected = $scope.products.roles.map(function(item) { return item.id; });
 	    };
@@ -66,7 +67,7 @@
 	      	}
 	    }; 
 		function productList(page) {
-			var params = {'keyword':$scope.product_name,'page':page, 'limit': $scope.pagination.limit, 'mode': 'all_admin', 'parent_id': $scope.category_id};
+			var params = {'keyword':$scope.product_name,'page':page, 'limit': $scope.pagination.limit, 'mode': 'all_admin','status': $scope.product_status, 'category_id': $scope.category_selected.id};
 	        productService.httpGet(productApi.productList, params).then(function(responseData) {
 	            if (responseData.status) {
 	              $scope.productList = responseData.rows;
@@ -77,6 +78,9 @@
 	                //$scope.user.roles[value.user_id]= value.username ;
 	                $scope.products.roles.push({id:value.product_id,name:value.title});
 	              });
+	            }else{
+	            	$scope.productList = [];
+	            	$scope.pagination = {limit:10, current_page:1, total:0, max_page:1};
 	            }
 	        });
 	    }
@@ -85,6 +89,7 @@
 	    	commonService.httpGet(productApi.categoryList).then(function(responseData) {
 	            if (responseData.status) {
 	      			$scope.categoryList = responseData.rows;
+	      			$scope.categoryList.push({id:-1, name: 'All category'});
 	      		}
 	        });
 	    }
