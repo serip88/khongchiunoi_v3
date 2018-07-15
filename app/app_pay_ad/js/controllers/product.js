@@ -66,7 +66,7 @@
 	      	}
 	    }; 
 		function productList(page) {
-			var params = {'keyword':$scope.keyword,'page':page, 'limit': $scope.pagination.limit, 'mode': 'all_admin'};
+			var params = {'keyword':$scope.product_name,'page':page, 'limit': $scope.pagination.limit, 'mode': 'all_admin', 'parent_id': $scope.category_id};
 	        productService.httpGet(productApi.productList, params).then(function(responseData) {
 	            if (responseData.status) {
 	              $scope.productList = responseData.rows;
@@ -80,6 +80,15 @@
 	            }
 	        });
 	    }
+	    $scope.categoryList = {};
+	    function categoryList() {
+	    	commonService.httpGet(productApi.categoryList).then(function(responseData) {
+	            if (responseData.status) {
+	      			$scope.categoryList = responseData.rows;
+	      		}
+	        });
+	    }
+	    categoryList();
 	    productList();
 	    $scope.toPage = function(page){
 	        productList(page);

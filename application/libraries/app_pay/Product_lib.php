@@ -108,8 +108,9 @@ class Product_lib extends Common_lib {
       $limit = isset($param['limit']) ? $param['limit'] :  9;
       $page = isset($param['page']) ? $param['page'] :  1;
       $mode = isset($param['mode']) ? $param['mode'] :  'all_client';
+      $param['keyword'] = isset($param['keyword']) ? $param['keyword'] :  false;
       $start = ($page - 1) * $limit;
-      $category_id = isset($param['category_id']) ? $param['category_id'] :  0;
+      $category_id = isset($param['category_id']) ? (int)$param['category_id'] :  0;
 
       $options = array();
       $options['limit'] = $limit;
@@ -118,15 +119,19 @@ class Product_lib extends Common_lib {
       $tb_join = array();
       $tb_join[] = array('table_name'=>'rz_tag as B','condition'=>"B.id =A.parent_id", 'type'=>'left');
       //$where = array('A.enabled' => 1);
-      $where = array("A.enabled = 1 AND A.price > 0");
+      $where = array("A.price > 0");
       if($mode == 'discount'){
         $where[] = "AND A.price >0";
         $where[] = sprintf("AND A.time_discount > %s", time());
       }elseif($mode == 'all_client'){
+        $where[] = "AND A.enabled = 1";
         //$where[] = sprintf("AND IF (A.price_discount > 0 , A.time_discount > %s, 1)", time());
         $where[] = sprintf("AND A.price_discount = 0", time());
       }
-      if($category_id){
+      if($param['keyword']){
+        $where[] = "AND A.name LIKE '%".$param['keyword']."%'"; 
+      }
+      if($category_id != false && $category_id != -1){
         $where[] = "AND A.parent_id = $category_id";
       }
       $where = implode(" ", $where);

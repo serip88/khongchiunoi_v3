@@ -45,7 +45,7 @@
                             </div>
 
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             
                             <div class="form-group">
                                 <label class="control-label hide" for="input-status">Tình trạng</label>
@@ -56,11 +56,18 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-sm-4">
-                            <div class="form-group hide">
-                                <label class="control-label hide" for="input-price">Giá</label>
-                                <input type="text" name="filter_price" value=""  id="input-price" placeholder="Giá" class="form-control">
+                         <div class="col-sm-3">
+                            
+                            <div class="form-group">
+                                <label class="control-label hide" for="input-status">Category</label>
+                                <select class="form-control" ng-model="category_id"
+                                ng-options="item as item.name for item in categoryList track by item.id">
+                                  
+                                </select>
                             </div>
+                        </div>
+                        <div class="col-sm-2">
+                            
                             <div>
                                <!--  <a class="">
                                     Giỏ hàng
@@ -76,7 +83,7 @@
                                         Tạo đơn hàng
                                     </span>
                                 </a> -->
-                                <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> Lọc
+                                <button type="button" id="button-filter" class="btn btn-primary pull-right" ng-click="reload()"><i class="fa fa-search"></i> Lọc
                                 </button>
                             </div>
                             
@@ -111,7 +118,7 @@
                             </thead>
                             <tbody>
                                 
-                                <tr ng-repeat="(key, value) in productList | filter : product_name" ng-show="product_status == 2 || product_status == value.enabled">
+                                <tr ng-repeat="(key, value) in productList">
                                     <td class="text-center"> 
                                         <label class="i-checks m-b-none" data-ng-click="myform.selected.click()">
                                         <input type="checkbox" checklist-model="products.selected" name="selected[]"  checklist-value="value.product_id">

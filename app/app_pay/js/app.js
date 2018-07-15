@@ -5,6 +5,7 @@
         //'ngAnimate',
         'ngCookies',
         //'ngResource',
+        //ng-bind-html
         'ngSanitize',
         //'ngTouch',
         'ngStorage',

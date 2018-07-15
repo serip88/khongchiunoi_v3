@@ -23,7 +23,7 @@ var productApi = {
     $scope.pagination = [];
     $scope.product_detail = [];
     $scope.categories = commonService.sync.categories;
-    $scope.page = {category:'PRODUCTS'};
+    $scope.page = {category:'PRODUCTS', category_id: -1};
     $scope.openAdd = function (size) {
       modalAdd(size,[]);
     };
@@ -46,15 +46,16 @@ var productApi = {
         options.mode = 'all_client';
       }
       if(!options.category_id){
-        options.category_id = 0;
+        options.category_id = -1;
       }
-      var params = {'keyword':$scope.keyword, 'page':options.page, 'limit': options.limit, 'category_id': options.category_id};
+      var params = {'keyword':$scope.keyword, 'page':options.page, 'limit': options.limit, 'category_id': $scope.page.category_id};
           commonService.httpGet(productApi.list,params).then(function(responseData) {
               if (responseData.status) {
                 $scope.productList = responseData.rows;
                 $scope.pagination = responseData.pagination;
               }else{
                 $scope.productList = [];
+                $scope.pagination = [];
               }
           });
     }
@@ -77,10 +78,18 @@ var productApi = {
         $scope.chooseCategory(cate);
     });
     $scope.chooseCategory = function(item){
-      var options = {'page':1, 'category_id': item.id};
+      var options = {'page':1};
+      $scope.page.category_id = item.id;
       productList(options);
       helper.scrollTo('th', -170);
       $scope.page.category = item.name;
+    }
+    $scope.setCategory = function(category_id){
+      var options = {'page':1};
+      $scope.page.category_id = category_id;
+      productList(options);
+      helper.scrollTo('th', -170);
+      $scope.page.category = 'Products';
     }
     $scope.modalDetail = function(item){
         $scope.product_detail = item;
