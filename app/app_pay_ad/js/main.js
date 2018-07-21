@@ -6,12 +6,14 @@
     commonObject.sync = {user_data:{},is_requested:0,module:{}};
     commonObject.httpGet = function (path, params, block) {
         if(typeof block == 'undefined'){
+            angular.element('.butterbar').removeClass('hide').addClass('active');
             block = true;
         }
         var deferred = $q.defer();
         $http.get([baseConfig.apiUrl, path].join('/'), {block: block, params: params})
             .success(function (data) {
                 deferred.resolve(data);
+                angular.element('.butterbar').addClass('hide').removeClass('active');
             }).error(function (data) {
                 deferred.resolve(data);
                 SweetAlert.swal({
@@ -20,6 +22,7 @@
                     type: "warning",
                     confirmButtonText: "Ok"
                 });
+                angular.element('.butterbar').addClass('hide').removeClass('active');
             });
         return deferred.promise;
     }
@@ -28,10 +31,12 @@
         var deferred = $q.defer();
         if(typeof block == 'undefined'){
             block = httpBlockConfig;
+            angular.element('.butterbar').removeClass('hide').addClass('active');
         }
         $http.post([baseConfig.apiUrl, path].join('/'), params, block)
             .success(function (data) {
                 deferred.resolve(data);
+                angular.element('.butterbar').addClass('hide').removeClass('active');
             }).error(function (data) {
                 deferred.resolve(data);
                 SweetAlert.swal({
@@ -40,6 +45,7 @@
                     type: "warning",
                     confirmButtonText: "Ok"
                 });
+                angular.element('.butterbar').addClass('hide').removeClass('active');
             });
         return deferred.promise;
     }

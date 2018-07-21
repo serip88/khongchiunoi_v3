@@ -74,17 +74,20 @@ app.factory("commonService", ["$http", "$q", 'SweetAlert', '$translate', functio
     }
     commonObject.httpGet = function (path, params, block) {
         if(typeof block == 'undefined'){
+            angular.element('.butterbar').removeClass('hide').addClass('active');
             block = true;
         }
         var deferred = $q.defer();
         $http.get([baseConfig.apiUrl, path].join('/'), {block: block, params: params})
             .success(function (data) {
                 deferred.resolve(data);
+                angular.element('.butterbar').removeClass('active').addClass('hide');
             }).error(function (data) {
                 deferred.resolve(data);
                 if(commonObject.options.is_alert){
                     commonObject.alert(data.msg,'w');
                 }
+                angular.element('.butterbar').removeClass('active').addClass('hide');
             });
         return deferred.promise;
     }
@@ -93,15 +96,18 @@ app.factory("commonService", ["$http", "$q", 'SweetAlert', '$translate', functio
         var deferred = $q.defer();
         if(typeof block == 'undefined'){
             block = httpBlockConfig;
+            angular.element('.butterbar').removeClass('hide').addClass('active');
         }
         $http.post([baseConfig.apiUrl, path].join('/'), params, block)
             .success(function (data) {
                 deferred.resolve(data);
+                angular.element('.butterbar').removeClass('active').addClass('hide');
             }).error(function (data) {
                 deferred.resolve(data);
                 if(commonObject.options.is_alert){
                     commonObject.alert(data.msg,'w');
                 }  
+                angular.element('.butterbar').removeClass('active').addClass('hide');
             });
         return deferred.promise;
     }

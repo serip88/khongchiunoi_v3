@@ -141,7 +141,7 @@ class Base_controller extends REST_Controller {
             'user_group/delete'     =>['api'=>'user_group/delete','deny_guest'=>1,'deny_user'=>0],
             'category/save'         =>['api'=>'category/save','deny_guest'=>1,'deny_user'=>0],
             'category/edit'         =>['api'=>'category/edit','deny_guest'=>1,'deny_user'=>0],
-            'category/category_list'=>['api'=>'category/category_list','deny_guest'=>1,'deny_user'=>0],
+            'category/category_list'=>['api'=>'category/category_list','deny_guest'=>0,'deny_user'=>0],
             'category/delete'       =>['api'=>'category/delete','deny_guest'=>1,'deny_user'=>0],
 
             'product/save'          =>['api'=>'product/save','deny_guest'=>1,'deny_user'=>0],
