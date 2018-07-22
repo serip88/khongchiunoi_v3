@@ -17,7 +17,7 @@ if ($(this).scrollTop() > 240){
 /*----------------------------
  jQuery MeanMenu
 ------------------------------ */
-	jQuery('#mobile-menu-active').meanmenu();	
+jQuery('#mobile-menu-active').meanmenu();	
 	
 /*----------------------------
  wow js active
