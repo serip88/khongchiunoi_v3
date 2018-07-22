@@ -1,161 +1,126 @@
-<!DOCTYPE html>
-<html lang="en" data-ng-app="app">
-
+<!doctype html>
+<html class="no-js" lang="" data-ng-app="app">
+    
+<!-- Mirrored from d29u17ylf1ylz9.cloudfront.net/estore/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jun 2018 16:28:39 GMT -->
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Tôi giải trí</title>
-    <base href="/">
-    <style type="text/css">
-        img.wp-smiley,
-        img.emoji {
-            display: inline !important;
-            border: none !important;
-            box-shadow: none !important;
-            height: 1em !important;
-            width: 1em !important;
-            margin: 0 .07em !important;
-            vertical-align: -0.1em !important;
-            background: none !important;
-            padding: 0 !important;
-        }
-    </style>
-    <link rel='stylesheet' id='wsl-widget-css' href="{$config['app_url']}/css/style.css" type='text/css' media='all' />
-    <link rel='stylesheet' id='blt-bootstrap-css' href="{$config['app_common_url']}/css/bootstrap.css" type='text/css' media='all' />
-    <link rel='stylesheet' id='blt-style-css' href="{$config['app_url']}/css/theme/style.css" type='text/css' media='all' />
-    <link rel='stylesheet' id='blt-fontawesome-css' href="{$config['app_url']}/css/font-awesome.min.css?ver=2.31" type='text/css' media='all' />
-    <link rel='stylesheet' id='acfgfs-enqueue-fonts-css' href='http://fonts.googleapis.com/css?family=Open+Sans%3A400%2Citalic%2C600%2C700%2C800%7COpen+Sans%3A400%2Citalic%2C600%2C700%2C800&#038;subset&#038;ver=4.5.2' type='text/css' media='all' />
-    <script type='text/javascript' src="{$config['app_common_url']}/lib/jquery/jquery.js"></script>
-    <script type='text/javascript' src="{$config['app_common_url']}/lib/jquery/jquery-migrate.min.js"></script>
+        
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Estore Multipurpose eCommerce Template</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="{$config['app_common_url']}/vendor/angular/angular-1.5.7.js"></script>
-    <link rel="stylesheet" href="{$config['app_common_url']}/vendor/angular/angular-strap/libs.min.css">
-    <script src="{$config['app_common_url']}/vendor/angular/angular-strap/angular-strap.js" ></script>
-    <script src="{$config['app_common_url']}/vendor/angular/angular-strap/angular-strap.tpl.js"></script>
-    <script src="{$config['app_common_url']}/vendor/angular/angular-strap/angular-strap.docs.tpl.js" ></script>
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.png">
+
+        <!-- all css here -->
+        <!-- bootstrap v3.3.6 css -->
+        <link rel="stylesheet" href="<?php echo config_item('app_url');?>/themes/pay/css/bootstrap.min.css">
+        <!-- animate css -->
+        <link rel="stylesheet" href="<?php echo config_item('app_url');?>/themes/pay/css/animate.css">
+        <!-- jquery-ui.min css -->
+        <link rel="stylesheet" href="<?php echo config_item('app_url');?>/themes/pay/css/jquery-ui.min.css">
+        <!-- meanmenu css -->
+        <link rel="stylesheet" href="<?php echo config_item('app_url');?>/themes/pay/css/meanmenu.min.css">
+        <!-- owl.carousel css -->
+        <link rel="stylesheet" href="<?php echo config_item('app_url');?>/themes/pay/css/owl.carousel.css">
+        <!-- font-awesome css -->
+        <link rel="stylesheet" href="<?php echo config_item('app_url');?>/themes/pay/css/font-awesome.min.css">
+        <!-- simple-line-icons css -->
+        <link rel="stylesheet" href="<?php echo config_item('app_url');?>/themes/pay/css/simple-line-icons.css">
+        <!-- nivo-slider.css -->
+        <link rel="stylesheet" href="<?php echo config_item('app_url');?>/themes/pay/css/nivo-slider.css">
+        <!-- chosen.min.css -->
+        <link rel="stylesheet" href="<?php echo config_item('app_url');?>/themes/pay/css/chosen.min.css">
+        <!-- flexslider.css -->
+        <link rel="stylesheet" href="<?php echo config_item('app_url');?>/themes/pay/css/flexslider.css">
+        <!-- style css -->
+        <link rel="stylesheet" href="<?php echo config_item('app_url');?>/themes/pay/style.css">
+        <!-- responsive css -->
+        <link rel="stylesheet" href="<?php echo config_item('app_url');?>/themes/pay/css/responsive.css">
+        <link rel="stylesheet" href="<?php echo config_item('app_common_url');?>/vendor/sweetalert/dist/sweetalert.css">
+        <!-- modernizr css -->
+        <script src="<?php echo config_item('app_url');?>/themes/pay/js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body class="home-2" ui-view="app" ng-init="customID = 'AppCtrl_1'">
+        <p> Loading ...</p>
+        
+    </body>
+    <!-- all js here -->
+    <!-- jquery latest version -->
+    <script src="<?php echo config_item('app_url');?>/themes/pay/js/vendor/jquery-1.12.0.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="<?php echo config_item('app_url');?>/themes/pay/js/bootstrap.min.js"></script>
+    <!-- owl.carousel js -->
+    <script src="<?php echo config_item('app_url');?>/themes/pay/js/owl.carousel.min.js"></script>
+    <!-- meanmenu js -->
+    <script src="<?php echo config_item('app_url');?>/themes/pay/js/jquery.meanmenu.js"></script>
+    <!-- jquery-ui js -->
+    <script src="<?php echo config_item('app_url');?>/themes/pay/js/jquery-ui.min.js"></script>
+    <!-- wow js -->
+    <script src="<?php echo config_item('app_url');?>/themes/pay/js/wow.min.js"></script>
+    <!-- jquery.nivo.slider.js -->
+    <script src="<?php echo config_item('app_url');?>/themes/pay/js/jquery.nivo.slider.js"></script>
+    <!-- chosen.jquery.min.js -->
+    <script src="<?php echo config_item('app_url');?>/themes/pay/js/chosen.jquery.min.js"></script>
+    <!-- jquery.countdown.min.js -->
+    <script src="<?php echo config_item('app_url');?>/themes/pay/js/jquery.countdown.min.js"></script>
+    <!-- jquery.flexslider.js -->
+    <script src="<?php echo config_item('app_url');?>/themes/pay/js/jquery.flexslider.js"></script>
+    <!-- jquery.counterup.min.js -->
+    <script src="<?php echo config_item('app_url');?>/themes/pay/js/jquery.counterup.min.js"></script>
+    <!-- waypoints.min.js -->
+    <script src="<?php echo config_item('app_url');?>/themes/pay/js/waypoints.min.js"></script>
+    <!-- plugins js -->
+    <script src="<?php echo config_item('app_url');?>/themes/pay/js/plugins.js"></script>
+    <!-- main js -->
+    <!-- <script src="<?php echo config_item('app_url');?>/themes/pay/js/main.js"></script> -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            setTimeout(function(){
+                $.getScript("<?php echo config_item('app_url');?>/themes/pay/js/main.js");
+            }, 2000);
+        });
+    </script>
+
+    <!-- B RZ -->
+
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-1.5.7.js"></script>
+    <!-- Angular-strap -->
+    <link rel="stylesheet" href="<?php echo config_item('app_common_url');?>/vendor/angular/angular-strap/libs.min.css">
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-strap/angular-strap.js" ></script>
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-strap/angular-strap.tpl.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-strap/angular-strap.docs.tpl.js" ></script>
     <!-- Cookies -->
-    <script src="{$config['app_common_url']}/vendor/angular/angular-cookies/angular-cookies-1.5.7.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-cookies/angular-cookies-1.5.7.js"></script>
+
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-sanitize/angular-sanitize-1.5.7.js"></script>
     <!-- Router -->
-    <script src="{$config['app_common_url']}/vendor/angular/angular-ui-router/angular-ui-router.js"></script> 
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-ui-router/angular-ui-router.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/ngstorage/ngStorage.js"></script>
     <!-- Lazyload -->
-    <script src="{$config['app_common_url']}/vendor/angular/oclazyload/ocLazyLoad.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/oclazyload/ocLazyLoad.js"></script>
     <!-- B translate -->
-    <script src="{$config['app_common_url']}/vendor/angular/angular-translate/angular-translate.js"></script>
-    <script src="{$config['app_common_url']}/vendor/angular/angular-translate/loader-static-files.js"></script>
-    <script src="{$config['app_common_url']}/vendor/angular/angular-translate/storage-cookie.js"></script>
-    <script src="{$config['app_common_url']}/vendor/angular/angular-translate/storage-local.js"></script>
-    <!-- B translate -->
-    <!-- <script src="{$config['app_common_url']}/vendor/angular/angular-bootstrap/ui-bootstrap-tpls-1.3.3.js"></script> -->
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-translate/angular-translate.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-translate/loader-static-files.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-translate/storage-cookie.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-translate/storage-local.js"></script>
+    <!-- E translate -->
+    <!-- Sweetalert -->
+    <script src="<?php echo config_item('app_common_url');?>/vendor/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/js/directives/SweetAlert/SweetAlert.min.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/js/directives/paging.js"></script>
 
-    <script src="{$config['app_common_url']}/js/helper.js"></script>
-    <script src="{$config['app_url']}/js/app.js"></script>
-    <script src="{$config['app_url']}/js/config.js"></script>
-    <script src="{$config['app_url']}/js/config.lazyload.js"></script>
-    <script src="{$config['app_url']}/js/config.router.js"></script>
-    <script src="{$config['app_url']}/js/main.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/js/helper.js"></script>
+    <script src="<?php echo config_item('app_url');?>/js/app.js"></script>
+    <script src="<?php echo config_item('app_url');?>/js/config.js"></script>
+    <script src="<?php echo config_item('app_url');?>/js/config.lazyload.js"></script>
+    <script src="<?php echo config_item('app_url');?>/js/config.router.js"></script>
 
-    <meta name="generator" content="Renza.CMS" />
-    {literal}
-    <style type="text/css">
-        .blt-sidebar-sticky {
-            display: none
-        }
-    </style>
-    {/literal}
-    <style type="text/css">
-        body {
-            /* image */
-            background-color: #f4f4f4;
+    <script src="<?php echo config_item('app_common_url');?>/js/directives/ui-butterbar.js"></script>
 
-            font-family: Open Sans;
-        }
-        h1,
-        h2,
-        h3,
-        h4,
-        h5 {
-            font-family: Open Sans;
-        }
-        .wpcf7-submit,
-        .btn-theme {
-            background: #4cc2bf;
-        }
-        .wpcf7-submit,
-        .btn-theme:hover {
-            background: #38aeab;
-        }
-        .blt_mailchimp .input-group .btn {
-            border-left-color: #38aeab;
-        }
-        a{
-            color: #4cc2bf;
-        }
-        .blu-post-tags a:hover,
-        a.label-blt:hover {
-            border-color: #38aeab;
-            color: #38aeab;
-        }
-        a:focus,
-        a:hover,
-        a.label:focus,
-        a.label:hover,
-        .primary-menu .nav a:hover,
-        .widget_calendar table tbody td a:hover {
-            color: #38aeab;
-        }
-        ::-moz-selection {
-            background-color: #4cc2bf;
-            color: #FFF;
-        }
-        ::selection {
-            background-color: #4cc2bf;
-            color: #FFF;
-        }
-        .pagination .page-numbers.current {
-            background-color: #4cc2bf;
-            border-color: #38aeab;
-        }
-        .blu-post-pagination>a:hover,
-        .blu-post-pagination>span {
-            background-color: #4cc2bf;
-            border-color: #4cc2bf;
-        }
-        .select2-container-active .select2-choice,
-        .select2-container-active .select2-choices,
-        .select2-drop-active,
-        .select2-search {
-            border-color: #38aeab;
-        }
-
-        .select2-results .select2-highlighted {
-            background-color: #38aeab;
-        }
-
-        @media (min-width: 1100px) {
-            #site-content {
-                width: 1050px;
-            }
-            #site-content-column {
-                width: 690px;
-            }
-            .spot_below_menu,
-            .container {
-                width: 1050px;
-            }
-        }
-
-        .post-status {
-            background-color: #4cc2bf;
-        }
-
-        .new-post-list>.list-group>.blt-add-new-image:hover {
-            background-color: #4cc2bf;
-        }
-    </style>
-</head>
-
-<body class="home blog infinite-scroll sidebar-right fixed-header post-layout-normal" ui-view>
-   
-</body>
-
+    <script src="<?php echo config_item('app_common_url');?>/js/services/common-service.js"></script>
+    <script src="<?php echo config_item('app_url');?>/js/main.js"></script>
+    <script src="<?php echo config_item('app_url');?>/js/controllers/home.js"></script>
+    <!-- E RZ -->
 </html>
