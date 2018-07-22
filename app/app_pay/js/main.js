@@ -197,6 +197,10 @@
   }])
   .controller('headerCtrl', ['$scope', '$translate', '$modal', '$window', 'commonService', '$state', 'SweetAlert', 
     function(              $scope, $translate, $modal, $window , commonService, $state, SweetAlert) {
+      $scope.mobile_menu = {open:1};
+      $scope.toggle_m_menu = function() {
+        $scope.mobile_menu.open = !$scope.mobile_menu.open;
+      }
       $scope.showLogin = function() {
         var myModal = $modal({
           templateUrl: baseConfig.tplUrl +'/common/blocks/login.html',

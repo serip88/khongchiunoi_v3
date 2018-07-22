@@ -142,7 +142,27 @@
             <!-- header-mid-area-end -->
             <!-- mobile-menu-area-start -->
             <div class="mobile-menu-area hidden-md hidden-lg">
-                <div class="container">
+                <div class="container mean-container">
+                    <div class="mean-bar"><a href="#nav" class="meanmenu-reveal" 
+                        ng-class="[{meanclose: mobile_menu.open}]"
+                    style="right: 0px; left: auto; text-align: center; text-indent: 0px; font-size: 18px;">
+                    <div ng-class="[{hide: mobile_menu.open}]" ng-click="toggle_m_menu()">X</div>
+                    <div ng-class="[{hide: !mobile_menu.open}]" ng-click="toggle_m_menu()"> 
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </a><nav class="mean-nav">
+                        <ul id="nav" class="" ng-class="[{hide: mobile_menu.open}]">
+                            <li ng-repeat="item in categories" data-ng-click="chooseCategory(item)"><a style="cursor: pointer;">{{item.name}}</a></li>
+                            <li><a href="#">blog</a>
+                                
+                            </li>
+                            <li><a href="#">About us</a></li>
+                        </ul>
+                    </nav></div>
+                </div>
+                <!-- <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="mobile-menu">
@@ -158,7 +178,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <!-- mobile-menu-area-end -->
         </header>
