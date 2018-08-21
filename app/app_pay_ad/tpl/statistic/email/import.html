@@ -1,0 +1,36 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" data-ng-click="cancel()">&times;</button>
+    <h4 class="modal-title smaller" translate="common.import_data">Import Data</h4>
+</div>
+<div class="modal-body">
+   
+    <div class="form-group">
+    	<label translate="common.choose_file_import">Choose a xls file to import data</label>
+        <!-- <div> <label class="ace-file-input">     	
+        	<input name="input_file" type="file" id="input_file" ng-han-scope-storage="checkUploadXlsFile" onchange="$(this).callData2Scope('checkUploadXlsFile', this.files)">     	
+        	<span class="ace-file-container selected" data-title="{{::lang.asset_select_file}}" style="right: 0;"><span class="ace-file-name" data-title="{{frmXlsUpload.title_file}}">     			<i style="" class="ace-icon fa fa-file-excel-o"></i>     		</span>     	</span>     </label> 
+        </div> -->
+        <div> 
+            <button class="btn"   
+            data-ng-class="{'btn-info': import.is_valid == 1, 'btn-success': import.is_valid == 2, 'btn-danger': import.is_valid == 3}"
+            type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept=".xls,.xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"  ngf-max-size="10MB" >
+                <i class="glyphicon glyphicon-upload" style="position: inherit;font-size: 42px;color: #fff"></i>
+               <img ngf-src="!f.$error && f" style="width:100%" >
+               <img ng-src="{{newuser.image_path}}" class="img-responsive" ng-if="!f">
+            </button>
+            <div class="row"><br></div>
+            <div class="alert alert-danger" data-ng-if="import.is_valid == 3 && import.msg">
+              {{import.msg}}
+            </div>
+            <div class="alert alert-success" data-ng-if="import.is_valid == 2 && import.msg">
+              {{import.msg}}
+            </div>
+            <img ng-src="{{app.baseConfig.home}}img/preload.gif" ng-if="import.f_loading">
+        </div>
+    </div>
+</div>
+<div class="modal-footer center">
+	<button class="btn btn-sm btn-info no-border" ng-click="ok()" ng-disabled="import.is_valid != 2"><i class="ace-icon fa fa-check"></i>OK</button>
+	<button class="btn btn-sm no-border" ng-click="cancel()"><i class="ace-icon fa fa-remove"></i>Cancel</button>
+	<button class="btn btn-sm btn-white no-border hide" data-ng-click="exportDemoXlsEquip(dataCategory.kind)"><i class="ace-icon fa fa-remove"></i>Demo File</button>
+</div>

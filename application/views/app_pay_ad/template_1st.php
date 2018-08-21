@@ -68,7 +68,7 @@
   <script src="<?php echo $this->config->item('base_url');?>app/app_pay_ad/js/config.router.js"></script>
   <script src="<?php echo $this->config->item('base_url');?>app/app_pay_ad/js/main.js"></script>
   <script src="<?php echo $this->config->item('base_url');?>app/app_pay_ad/js/services/ui-load.js"></script>
-  <script src="<?php echo $this->config->item('base_url');?>app/app_pay_ad/js/services/common-service.js"></script>
+  <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/services/common-service.js"></script>
   <script src="<?php echo $this->config->item('base_url');?>app/app_pay_ad/js/services/open-modal.js"></script>
   <script src="<?php echo $this->config->item('base_url');?>app/app_pay_ad/js/filters/fromNow.js"></script>
   <script src="<?php echo $this->config->item('base_url');?>app/app_common/js/directives/setnganimate.js"></script>

@@ -159,7 +159,9 @@ class Base_controller extends REST_Controller {
             'email/save'          =>['api'=>'email/save','deny_guest'=>1,'deny_user'=>0],
             'email/edit'          =>['api'=>'email/edit','deny_guest'=>1,'deny_user'=>0],
             'email/delete'          =>['api'=>'email/delete','deny_guest'=>1,'deny_user'=>0],
-            'email/list'          =>['api'=>'email/list','deny_guest'=>1,'deny_user'=>0]
+            'email/list'          =>['api'=>'email/list','deny_guest'=>1,'deny_user'=>0],
+            'email/import'         =>['api'=>'email/import','deny_guest'=>1,'deny_user'=>0],
+            'upload/upload_file'     =>['api'=>'upload/upload_file','deny_guest'=>1,'deny_user'=>0]
 
         );
         return $api;

@@ -118,5 +118,48 @@ class Upload extends Base_controller {
         return $stt;
     }
 
+    public function upload_file_post(){
+        $msg = '';
+        $status = false;
+        $answer = array();
+        $tempPath = $_FILES[ 'file' ][ 'tmp_name' ];
+        $file_is_valid =  $this->sup_check_file_import($_FILES[ 'file' ]['name']);
+        if(!$file_is_valid)
+            $msg = 'invalid file';
+        if( !empty($_FILES) && $file_is_valid ) {
+            try {
+                $year_month = $this->get_tmp_year_month_path();
+                $this->check_and_create_tmp_child($year_month); //make sure folder is available
+                $session_id = session_id();
+                $tmp_folder = $this->dir_path_tmp."/".$year_month;
+                $file_name = $this->upload_lib->validate_file_in_path($tmp_folder, $session_id."_".$_FILES[ 'file' ][ 'name' ]);
+                $uploadPath = $tmp_folder . '/' . $file_name;
+                move_uploaded_file( $tempPath, FCPATH.$uploadPath );
+                $answer = array( 'name'=>$file_name,'path'=>$uploadPath );
+                //$json = json_encode( $answer );
+                $msg = 'File transfer completed';
+                $status = true;
+            } catch (Exception $e) {
+                echo 'Caught exception: ',  $e->getMessage();
+            }
+        }
+        $response = array_merge(array('status' => $status,'msg' => $msg),$answer) ;
+        //return $response;
+        $this->custom_response($response);
+    }
+    public function sup_check_file_import($tmp_name){
+        $stt = false;
+        $valid_ext = array('xls','xlsx');
+        if($tmp_name){
+            $type = $ext = false;
+            $tmp_name = explode(".", $tmp_name);
+            $ext = end($tmp_name);
+            if(in_array($ext, $valid_ext)){
+                $stt = true;
+            }
+        }
+        return $stt;
+    }
+
     
 }

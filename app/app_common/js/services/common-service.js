@@ -14,7 +14,7 @@ var isDefined = angular.isDefined,
 
 app.factory("commonService", ["$http", "$q", 'SweetAlert', '$translate', function ($http, $q, SweetAlert, $translate) {
     var commonObject = {};
-    commonObject.sync = {user_data:{},is_requested:0,categories:[] };
+    commonObject.sync = {user_data:{},is_requested:0,categories:[], module:{} };
     commonObject.options = {is_alert:false};
     commonObject.api = {
       member_login: 'access/login',
@@ -127,6 +127,19 @@ app.factory("commonService", ["$http", "$q", 'SweetAlert', '$translate', functio
             var type = false; var ext = false;
             var mine = file.type.split('/');
             if(mine[0]=='image' && valid_ext.indexOf(mine[1]) != -1 ){
+                stt = true;
+            }
+        }
+        return stt;
+    }
+
+    commonObject.sup_check_file_import = function (file) {
+        var stt = false;
+        var valid_ext = ['xls','xlsx'];
+        if(file){
+            var type = false; var ext = false;
+            var mine = file.name.split('.');
+            if(valid_ext.indexOf(mine[mine.length - 1]) != -1 ){
                 stt = true;
             }
         }

@@ -1,5 +1,14 @@
 {
-
+"common" : {
+    "import_data" : "Import data",
+    "choose_file_import" : "Choose a xls file to import data",
+    "import_xls" : "Import xls",
+    "WARNING" : {
+      "warning" : "Warning",
+      "file_invalid" : "File Invalid",
+      "file_valid" : "File valid"
+    }
+  },
 "header" : {
   "navbar" : {
     "UPLOAD" : "Upload",

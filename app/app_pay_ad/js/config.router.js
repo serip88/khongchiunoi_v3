@@ -374,10 +374,22 @@ angular.module('app')
                   url: '/email',
                   templateUrl: baseConfig.tplUrl+'/statistic/email/list.html',
                   resolve: {
-                      deps: ['uiLoad',
-                        function( uiLoad ){
-                          return uiLoad.load( [baseConfig.app+'/js/controllers/statistic/email.js'] );
-                      }]
+                      // deps: ['uiLoad',
+                      //   function( uiLoad ){
+                      //     return uiLoad.load( [baseConfig.app+'/js/controllers/statistic/email.js'] );
+                      // }]
+                    deps: ['$ocLazyLoad',
+                      function( $ocLazyLoad ){
+                        return $ocLazyLoad.load(['ngFileUpload','angularFileUpload']).then(
+                          function(){
+                            return $ocLazyLoad.load( [
+                              baseConfig.app+'/js/controllers/statistic/email.js',
+                              baseConfig.app+'/js/controllers/upload.js',
+                              baseConfig.app+'/js/controllers/file-upload.js'
+                            ]);
+                          }
+                        )
+                    }]
                   }
               })
               //category

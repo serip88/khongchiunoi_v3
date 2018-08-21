@@ -16,7 +16,10 @@
       <div class="page-header">
         <div class="container-fluid">
           <div class="pull-right"  >
-              <button type="button" data-toggle="tooltip" title="" class="btn btn-default" ng-click="reload()"><i class="icon-refresh"></i></button>
+              <button type="button" data-toggle="tooltip" title="Reload" class="btn btn-default" ng-click="reload()"><i class="icon-refresh"></i></button>
+              <button type="button" data-toggle="tooltip" title="Import" class="btn btn-default" ng-click="handleImportXls()">
+                <i class="glyphicon glyphicon-import"></i>
+              </button>
               <a ng-click="openAdd('lg')" data-toggle="tooltip" title="Add Email" class="btn btn-primary" data-original-title="Add New"><i class="fa fa-plus"></i></a>
               <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" data-ng-click="delete()" ng-disabled="!email.selected.length"><i class="fa fa-trash-o"></i></button> 
               <!-- onClick="confirm('Are you sure?') ? $('#myform').submit() : false;"  -->

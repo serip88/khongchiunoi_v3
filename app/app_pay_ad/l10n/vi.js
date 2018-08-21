@@ -1,5 +1,14 @@
 {
-
+"common" : {
+    "import_data" : "Import dữ liệu",
+    "choose_file_import" : "Chọn file xls để import dữ liệu",
+    "import_xls" : "Import xls",
+    "WARNING" : {
+      "warning" : "Cảnh báo",
+      "file_invalid" : "File không hợp lệ",
+      "file_valid" : "File hợp lệ"
+    }
+  },
 "header" : {
   "navbar" : {
     "UPLOAD" : "Upload",
