@@ -234,7 +234,11 @@ var productApi = {
     }
     //list();
   }]);
-
+  app.controller('CheckoutCtrl', ['$scope', '$uibModal', 'postService', function($scope, $uibModal, postService) {
+   
+    alert('checkout');
+  
+  }]);
   app.controller('PostValidCtrl', ['$scope', '$uibModal', 'postService', function($scope, $uibModal, postService) {
    
     

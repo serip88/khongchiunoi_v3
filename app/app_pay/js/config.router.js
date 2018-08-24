@@ -69,15 +69,15 @@ angular.module('app')
                     }]
                   }
               })
-              .state('app.dashboard-v2', {
-                  url: '/dashboard-v2',
-                  templateUrl: 'tpl/app_dashboard_v2.html',
-                  resolve: {
-                    deps: ['$ocLazyLoad',
-                      function( $ocLazyLoad ){
-                        return $ocLazyLoad.load(['js/controllers/chart.js']);
-                    }]
-                  }
+              .state('app.checkout', {
+                  url: '/checkout',
+                  templateUrl: baseConfig.tplUrl+'/page/checkout.html'
+                  // ,resolve: {
+                  //   deps: ['$ocLazyLoad',
+                  //     function( $ocLazyLoad ){
+                  //       return $ocLazyLoad.load(['js/controllers/chart.js']);
+                  //   }]
+                  // }
               })
               .state('app.ui', {
                   url: '/ui',

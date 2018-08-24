@@ -1,8 +1,8 @@
 (function (window, angular, $, undefined) {
 'use strict';
   /* Controllers */
-  app.controller('AppCtrl', ['$rootScope','$scope', '$translate', '$localStorage', '$window', 'commonService', '$state' , 
-    function( $rootScope, $scope,   $translate,   $localStorage,   $window ,  commonService,   $state) {
+  app.controller('AppCtrl', ['$rootScope','$scope', '$translate', '$localStorage', '$window', 'commonService', '$state' ,'$timeout', 
+    function( $rootScope, $scope,   $translate,   $localStorage,   $window ,  commonService,   $state, $timeout) {
       console.log('main');
       console.log(">>>>>>>>>>>>>>>>>>>>>>> AppCtrl",$scope);
       // add 'ie' classes to html
@@ -91,7 +91,7 @@
         }
       }*/
       $rootScope.$on('$stateChangeStart', function(event) {
-          alert(1);
+          // alert('stateChange');
         });
       // function stateChange(){
       //   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options){
@@ -125,9 +125,17 @@
           }
         }
       }
-      $scope.stateGo = function(href, callback, params) {
+      $scope.stateGo = function(href, callback, params, params_fnc) {
           if(isFunction(callback)) {
+            if ( typeof(params_fnc) == 'undefined' ) {
               $state.go(href, params).then(callback);
+            }else{
+              $state.go(href, params).then(function(){
+                  $timeout(function () {
+                    callback(params_fnc);
+                 }, 100, false);
+                });
+            }
           }else{
               $state.go(href, params);
           }

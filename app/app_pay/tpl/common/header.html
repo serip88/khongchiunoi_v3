@@ -9,7 +9,7 @@
                             <div class="main-menu">
                                 <nav>
                                     <ul>
-                                        <li ng-repeat="item in categories" data-ng-click="chooseCategory(item)"><a style="cursor: pointer;">{{item.name}}</a></li>
+                                        <li ng-repeat="item in categories" data-ng-click="stateGo('app.index',chooseCategory,{}, item)"><a style="cursor: pointer;">{{item.name}}</a></li>
                                         <li><a href="#">Blog</a></li>
                                         <li><a href="#">About us</a></li>
                                     </ul>
@@ -88,7 +88,7 @@
                             <div class="main-menu">
                                 <nav>
                                     <ul>
-                                        <li ng-repeat="item in categories" data-ng-click="chooseCategory(item)"><a style="cursor: pointer;">{{item.name}}</a></li>
+                                        <li ng-repeat="item in categories" data-ng-click="stateGo('app.index',chooseCategory, {}, item )"><a style="cursor: pointer;">{{item.name}}</a></li>
                                         <li><a href="#">Blog</a></li>
                                         <li><a href="#">About us</a></li>
                                     </ul>
@@ -154,7 +154,7 @@
                     </div>
                 </a><nav class="mean-nav">
                         <ul id="nav" class="" ng-class="[{hide: mobile_menu.open}]">
-                            <li ng-repeat="item in categories" data-ng-click="chooseCategory(item)"><a style="cursor: pointer;">{{item.name}}</a></li>
+                            <li ng-repeat="item in categories" data-ng-click="stateGo('app.index',chooseCategory, {}, item )"><a style="cursor: pointer;">{{item.name}}</a></li>
                             <li><a href="#">blog</a>
                                 
                             </li>
