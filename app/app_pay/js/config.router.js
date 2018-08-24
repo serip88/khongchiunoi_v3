@@ -24,11 +24,12 @@ angular.module('app')
                     'app': {
                          templateUrl: baseConfig.tplUrl+'/common/app.html',
                          controller: 'AppCtrl'
-                     },
-                     'content@app': {
-                        templateUrl: baseConfig.tplUrl+'/home/content.html',
-                        controller: 'HomeCtrl'
-                    }
+                     }
+                    //  ,
+                    //  'content@app': {
+                    //     templateUrl: baseConfig.tplUrl+'/home/content.html',
+                    //     controller: 'HomeCtrl'
+                    // }
                   },
                   resolve: {
                       initData:  ['$http', 'commonService','$state', function($http,commonService,$state){
@@ -57,6 +58,18 @@ angular.module('app')
                     }]
                   }
               })
+              .state('app.checkout', {
+                  url: '/checkout.html',
+                  templateUrl: baseConfig.tplUrl+'/page/checkout.html',
+                  controller: 'CheckoutCtrl'
+                  // ,
+                  // resolve: {
+                  //   deps: ['$ocLazyLoad',
+                  //     function( $ocLazyLoad ){
+                  //       return $ocLazyLoad.load([baseConfig.app+'/js/controllers/checkout.js']);
+                  //   }]
+                  // }
+              })
               .state('app.add-post', {
                   url: 'add-post.html',
                   templateUrl: baseConfig.tplUrl+'/post/add-post.html',
@@ -69,16 +82,7 @@ angular.module('app')
                     }]
                   }
               })
-              .state('app.checkout', {
-                  url: '/checkout',
-                  templateUrl: baseConfig.tplUrl+'/page/checkout.html'
-                  // ,resolve: {
-                  //   deps: ['$ocLazyLoad',
-                  //     function( $ocLazyLoad ){
-                  //       return $ocLazyLoad.load(['js/controllers/chart.js']);
-                  //   }]
-                  // }
-              })
+
               .state('app.ui', {
                   url: '/ui',
                   template: '<div ui-view class="fade-in-up"></div>'

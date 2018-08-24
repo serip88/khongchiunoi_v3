@@ -234,17 +234,17 @@ var productApi = {
     }
     //list();
   }]);
-  app.controller('CheckoutCtrl', ['$scope', '$uibModal', 'postService', function($scope, $uibModal, postService) {
+  // app.controller('CheckoutCtrl', ['$scope',  'postService', function($scope, postService) {
    
-    alert('checkout');
+  //   alert('checkout');
   
-  }]);
-  app.controller('PostValidCtrl', ['$scope', '$uibModal', 'postService', function($scope, $uibModal, postService) {
+  // }]);
+  app.controller('PostValidCtrl', ['$scope',  'postService', function($scope, postService) {
    
     
   
   }]);
-  app.controller('PostReportCtrl', ['$scope', '$uibModal', 'postService', function($scope, $uibModal, postService) {
+  app.controller('PostReportCtrl', ['$scope',  'postService', function($scope,  postService) {
    
     
   
