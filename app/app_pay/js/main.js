@@ -1,3 +1,7 @@
+var productApi = {
+    baseUrl: baseConfig.apiUrl,
+    productInvoice: 'product/invoice'
+  };
 (function (window, angular, $, undefined) {
 'use strict';
   /* Controllers */
@@ -357,9 +361,46 @@
         }
       });
   }]);
-app.controller('CheckoutCtrl', ['$scope', function($scope) {
+app.controller('CheckoutCtrl', ['$scope', '$state', 'SweetAlert', function($scope, $state, SweetAlert) {
    
-  
+  console.log($scope.cart, '>>>>>>>>>>>>>>>>>>>>>>');
+  if(!$scope.cart.length){
+    SweetAlert.swal({
+      title: "Warning",
+      text: "Cart empty, please go to shop!",
+      type: "warning",
+      confirmButtonText: "Ok"
+    }, 
+      function(isConfirm){ 
+        if (isConfirm) {
+          $state.go('app.index');
+        }
+      }
+    );
+  }
+  $scope.makeInvoice = function () {
+    var params = {};
+    params.cart = $scope.cart;
+    console.log('makeInvoice >>>>>>>>>>>>>');
+    return;
+    params.checkout = $scope.checkout;
+    commonService.httpPost(productApi.productInvoice,params).then(function(responseData) {
+          if (responseData.status) {
+           SweetAlert.swal("Thêm đơn hàng thành công!", "", "success");
+           $scope.total_cart = [];
+           productList();
+           hide();
+          }else{
+            SweetAlert.swal({
+              title: "Thêm đơn hàng thất bại!",
+              text: responseData.msg,
+              type: "warning",
+              confirmButtonText: "Close"
+            });
+          }
+    });
 
+  }
+  
 }]);
 })(window, window.angular, window.jQuery);

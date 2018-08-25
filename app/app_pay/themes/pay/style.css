@@ -4796,3 +4796,11 @@ p.checkout-coupon input[type="submit"] {
     background-color: #7266ba;
   }
 }
+
+
+/*CUSTOMIZE CSS*/
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
