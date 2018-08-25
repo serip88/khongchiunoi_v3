@@ -69,6 +69,9 @@
                                     </td>
                                     <td class="text-left"> <a class="asc">Hóa đơn ngày </a>
                                     </td>
+                                    <td class="text-right" style="width: 20%;"> <a >send email</a>
+                                        <td class="text-right" style="width: 20%;"> <a >Shop email</a>
+                                    </td>
                                     <td class="text-right" style="width: 20%;"> <a >Số tiền</a>
                                     </td>
                                     <!-- <td class="text-right"> <a href="http://dm-opencart.localhost/admin/index.php?route=catalog/product&amp;token=uZjtoy6xZkuycXl16LqlMbbCre2vKmt4&amp;sort=p.quantity&amp;order=DESC">Quantity</a>
@@ -92,8 +95,9 @@
                                     <td class="text-left">
                                         {{value.created_date}}
                                     </td>
-                                    
-                                    <td class="text-right"> {{value.amount}} VNĐ</td>
+                                    <td class="text-right"> guest_email@gmail.com</td>
+                                    <td class="text-right"> shop_email_received@gmail.com</td>
+                                    <td class="text-right"> {{value.amount}} USD</td>
                                     <!-- <td class="text-right"> <span class="label label-success">1000</span>
                                     </td> -->
                                     <!-- <td class="text-left">
@@ -105,8 +109,8 @@
                                     <td class="text-right"><a data-ng-click="productEdit(value)" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a></td> -->
                                 </tr>
                                 <tr>
-                                  <td colspan="2" class="text-right no-border"><strong>Tổng tiền</strong></td>
-                                  <td><strong>{{total_invoice}} VNĐ</strong></td>
+                                  <td colspan="4" class="text-right no-border"><strong>Tổng tiền</strong></td>
+                                  <td><strong>{{total_invoice}} USD</strong></td>
                                 </tr>
                             </tbody>
                         </table>
