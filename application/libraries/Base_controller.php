@@ -149,7 +149,7 @@ class Base_controller extends REST_Controller {
             'product/delete'        =>['api'=>'product/delete','deny_guest'=>1,'deny_user'=>0],
             'product/product_list'  =>['api'=>'product/product_list','deny_guest'=>0,'deny_user'=>0],
             'product/invoice_list'  =>['api'=>'product/invoice_list','deny_guest'=>1,'deny_user'=>0],
-            'product/invoice'       =>['api'=>'product/invoice','deny_guest'=>1,'deny_user'=>0],
+            'product/invoice'       =>['api'=>'product/invoice','deny_guest'=>0,'deny_user'=>0],
             'product/invoice_delete'=>['api'=>'product/invoice_delete','deny_guest'=>1,'deny_user'=>0],
 
             'upload/upload_img_user'=>['api'=>'upload/upload_img_user','deny_guest'=>1,'deny_user'=>0],

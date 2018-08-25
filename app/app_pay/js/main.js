@@ -385,7 +385,7 @@ app.controller('CheckoutCtrl', ['$scope', '$state', 'SweetAlert', 'commonService
     params.checkout = $scope.checkout;
     commonService.httpPost(productApi.productInvoice, params).then(function(responseData) {
           if (responseData.status) {
-           SweetAlert.swal("Success!", "we will check your invoid ID and confirm you soon.", "success");
+           SweetAlert.swal("Success!", "We will check your invoid ID and confirm you soon. Thanks", "success");
            $scope.cart = [];
            $scope.total_price = 0;
            //productList();
