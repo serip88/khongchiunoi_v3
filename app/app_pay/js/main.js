@@ -359,7 +359,7 @@
   }]);
 app.controller('CheckoutCtrl', ['$scope', function($scope) {
    
-  alert('checkout');
+  
 
 }]);
 })(window, window.angular, window.jQuery);

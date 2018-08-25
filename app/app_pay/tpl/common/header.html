@@ -128,7 +128,7 @@
                                             <!-- <div class="cart-bottom">
                                                 <a href="#">Check out</a>
                                             </div> -->
-                                            <button ng-if="cart.length" type="button" class="btn btn-primary">Check out</button>
+                                            <button ng-if="cart.length" type="button" class="btn btn-primary" ng-click="stateGo('app.checkout')">Check out</button>
                                             <button ng-if="cart.length" type="button" class="btn btn-primary" data-ng-click="goToCart()">Show Cart</button>
                                         </div>
                                     </li>

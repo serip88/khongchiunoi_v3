@@ -125,7 +125,7 @@ var productApi = {
       if(index == -1){
         item.in_cart = true;
         $scope.total_cart.push(item);
-        SweetAlert.swal("Added to cart!", "", "success");
+        //SweetAlert.swal("Added to cart!", "", "success");
         SweetAlert.swal({
           title: "Success",
           text: "Added to cart!",
@@ -140,6 +140,10 @@ var productApi = {
             }
           }
         );
+        // setTimeout(function(){
+        //   SweetAlert.close();
+        // }, 1000);
+        
         $scope.$emit('updateCart', $scope.total_cart);
       }else{
         SweetAlert.swal({
