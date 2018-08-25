@@ -361,7 +361,7 @@ var productApi = {
         }
       });
   }]);
-app.controller('CheckoutCtrl', ['$scope', '$state', 'SweetAlert', function($scope, $state, SweetAlert) {
+app.controller('CheckoutCtrl', ['$scope', '$state', 'SweetAlert', 'commonService', function($scope, $state, SweetAlert, commonService) {
    
   console.log($scope.cart, '>>>>>>>>>>>>>>>>>>>>>>');
   if(!$scope.cart.length){
@@ -380,19 +380,19 @@ app.controller('CheckoutCtrl', ['$scope', '$state', 'SweetAlert', function($scop
   }
   $scope.makeInvoice = function () {
     var params = {};
-    params.cart = $scope.cart;
     console.log('makeInvoice >>>>>>>>>>>>>');
-    return;
+    params.cart = $scope.cart;
     params.checkout = $scope.checkout;
-    commonService.httpPost(productApi.productInvoice,params).then(function(responseData) {
+    commonService.httpPost(productApi.productInvoice, params).then(function(responseData) {
           if (responseData.status) {
-           SweetAlert.swal("Thêm đơn hàng thành công!", "", "success");
-           $scope.total_cart = [];
-           productList();
-           hide();
+           SweetAlert.swal("Success!", "we will check your invoid ID and confirm you soon.", "success");
+           $scope.cart = [];
+           $scope.total_price = 0;
+           //productList();
+           $scope.checkout = {};
           }else{
             SweetAlert.swal({
-              title: "Thêm đơn hàng thất bại!",
+              title: "False!",
               text: responseData.msg,
               type: "warning",
               confirmButtonText: "Close"

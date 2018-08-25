@@ -6,7 +6,8 @@ var productApi = {
     list: 'product/product_list',
     save: 'post/save',
     edit: 'post/edit',
-    categories: 'category/category_list'
+    categories: 'category/category_list',
+    productInvoice: 'product/invoice'
   };
 
 (function(window, angular, $, undefined){

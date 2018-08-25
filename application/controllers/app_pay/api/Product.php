@@ -177,7 +177,8 @@ class Product extends Base_controller {
         $this->custom_response($response);
     }
     public function invoice_post(){
-        $param = $this->post();
+        $params = $this->post();
+        $param = $params['cart'];
         $stt = FALSE;
         $msg ='';
         $amount = $this->product_lib->validate_save_product_invoice($param);
@@ -189,7 +190,7 @@ class Product extends Base_controller {
                 $msg = 'Error! Cannot save invoice.';
             }
         }else{
-            $msg = 'Có lỗi: vui lòng kiểm tra lại thông số, số lượng, giá'; 
+            $msg = 'Error: Please check quantity'; 
         }
         $response = array('status' => $stt,'msg'=> $msg);
         $this->custom_response($response);

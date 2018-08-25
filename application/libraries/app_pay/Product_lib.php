@@ -254,7 +254,7 @@ class Product_lib extends Common_lib {
         if($param[$key]['quantity'] <= 0){
           return 0;
         }else{
-          $amount += $value['quantity'] * $value['price_pure'];
+          $amount += $value['quantity'] * $value['price'];
         }
       }
     }else{
@@ -274,7 +274,7 @@ class Product_lib extends Common_lib {
       $requite = array('invoice_id','product_id','price','quantity','last_price');//description,status,parent_id
       $param['invoice_id']   = isset($param['invoice_id']) && $param['invoice_id'] ? $param['invoice_id']: 0;
       $param['product_id']   = isset($param['product_id']) && $param['product_id'] ? $param['product_id']: 0;
-      $param['price']   = isset($param['price_pure']) && $param['price_pure'] ? $param['price_pure']: 0;
+      $param['price']   = isset($param['price']) && $param['price'] ? $param['price']: 0;
       $param['quantity']   = isset($param['quantity']) && $param['quantity'] ? $param['quantity']: 0;
       $param['last_price']   = isset($param['last_price']) && $param['last_price'] ? $param['last_price']: 0;
       $param['product_name']   = isset($param['name']) && $param['name'] ? $param['name']: '';
