@@ -432,6 +432,7 @@ app.controller('CheckoutCtrl', ['$scope', '$state', 'SweetAlert', 'commonService
                   $scope.cart = [];
                   $scope.total_price = 0;
                   init_checkout();
+                  $state.go('app.index');
                 }
               }
             );

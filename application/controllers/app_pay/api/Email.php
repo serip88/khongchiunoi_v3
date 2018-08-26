@@ -279,13 +279,15 @@ class Email extends Base_controller {
     public function shop_email_get(){
         $stt = FALSE;
         $session_id = session_id();
-        $email =  $this->email_lib->get_email_by_session($session_id);
+        $email =  $this->email_lib->get_email_by_session($session_id);  
         if(!$email){
             //Get from available email
             $email =  $this->email_lib->email_from_list_available($session_id);
             if($email){
                $stt = TRUE; 
             }
+        }else{
+            $stt = TRUE;
         }
         $response = array('status' => $stt, 'msg'=> '', 'rows' => $email);
         $this->custom_response($response);
