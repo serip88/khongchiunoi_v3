@@ -361,9 +361,18 @@ var productApi = {
         }
       });
   }]);
-app.controller('CheckoutCtrl', ['$scope', '$state', 'SweetAlert', 'commonService', function($scope, $state, SweetAlert, commonService) {
+app.controller('CheckoutCtrl', ['$scope', '$state', 'SweetAlert', 'commonService', 'checkoutData', function($scope, $state, SweetAlert, commonService, checkoutData) {
    
   console.log($scope.cart, '>>>>>>>>>>>>>>>>>>>>>>');
+  console.log(checkoutData, ' checkoutData>>>>>>>>>>>>>>>>>>>>>>');
+  init_checkout();
+  function init_checkout(){
+    $scope.checkout = {};
+    if(checkoutData.data.status){
+      $scope.checkout.to_email = checkoutData.data.rows;  
+    }
+  }
+  console.log($scope.checkout, 'check out >>>>>>>>>>>>>>>>>.');
   if(!$scope.cart.length){
     SweetAlert.swal({
       title: "Warning",
@@ -409,11 +418,11 @@ app.controller('CheckoutCtrl', ['$scope', '$state', 'SweetAlert', 'commonService
     }
     commonService.httpPost(productApi.productInvoice, params).then(function(responseData) {
           if (responseData.status) {
-           SweetAlert.swal("Success!", "We will check your invoid ID and confirm you soon. Thanks", "success");
-           $scope.cart = [];
-           $scope.total_price = 0;
-           //productList();
-           //$scope.checkout = {};
+            SweetAlert.swal("Success!", "We will check your invoid ID and confirm you soon. Thanks", "success");
+            $scope.cart = [];
+            $scope.total_price = 0;
+            //productList();
+            init_checkout();
           }else{
             SweetAlert.swal({
               title: "False!",

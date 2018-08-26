@@ -61,7 +61,24 @@ angular.module('app')
               .state('app.checkout', {
                   url: '/checkout.html',
                   templateUrl: baseConfig.tplUrl+'/page/checkout.html',
-                  controller: 'CheckoutCtrl'
+                  controller: 'CheckoutCtrl',
+                  resolve: {
+                    checkoutData:  ['$http', 'commonService','$state', function($http,commonService,$state){
+                        //$http returns a promise for the url data
+                        return $http({method: 'GET', url: [baseConfig.apiUrl, 'email/shop_email'].join('/'), params: {} })
+                        .success(function (res) {
+                          console.log(res, 'res >>>>>>>>>>>>>>>>>>');
+                          if(res){
+                            return res;
+                            // angular.copy(data.user_data, commonService.sync.user_data);
+                            // angular.copy(data.module, commonService.sync.module);
+                          }else{
+                            return false;
+                            console.log('Cannot get email >>>>>>>>>>>>>>>>>>');
+                          }
+                      });
+                    }]
+                  }
                   // ,
                   // resolve: {
                   //   deps: ['$ocLazyLoad',

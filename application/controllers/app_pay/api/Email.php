@@ -76,6 +76,7 @@ class Email extends Base_controller {
 
     public function list_get(){
         $param = $this->get();
+        $param['limit'] = 100;
     	$data = $this->email_lib->get_list($param);
         if($data){
             $data = $this->email_lib->list_format($data);
@@ -274,5 +275,19 @@ class Email extends Base_controller {
             }
         }
         return $sheets;
+    }
+    public function shop_email_get(){
+        $stt = FALSE;
+        $session_id = session_id();
+        $email =  $this->email_lib->get_email_by_session($session_id);
+        if(!$email){
+            //Get from available email
+            $email =  $this->email_lib->email_from_list_available($session_id);
+            if($email){
+               $stt = TRUE; 
+            }
+        }
+        $response = array('status' => $stt, 'msg'=> '', 'rows' => $email);
+        $this->custom_response($response);
     }
 }

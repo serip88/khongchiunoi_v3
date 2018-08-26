@@ -117,11 +117,12 @@ class Email_lib extends Common_lib {
 	}
 	function get_list($param){
 		$param['keyword'] = $this->validate_input_text($param,'keyword');
+		$param['limit'] = $this->validate_input_int($param,'limit');
 
-		$select="A.id,A.email,A.password,A.description,A.status";
+		$select="A.*";
 	    $tb_join = array();
 	    $where = "";
-	    $option = array('limit'=>100);
+	    $option = array('limit'=>$param['limit']);
 	    if($param['keyword']){
 	    	$where = "A.email LIKE '%".$param['keyword']."%'";
 	    }
@@ -168,7 +169,32 @@ class Email_lib extends Common_lib {
 		}
 		return 0;
 	}
+	function get_email_by_session($session_id){
+		$select="A.*";
+		$options = array();
+      	$options['limit'] = 1;
+      	$options['start'] = 0;
+		$tb_join = array();
+      	//$tb_join[] = array('table_name'=>'rz_tag as B','condition'=>"B.id =A.parent_id", 'type'=>'left');
+      	$where = array("A.session_id"=>$session_id);
+      	$data = $this->CI->email_model->get_data_join($select,$where,$tb_join,$options);
+      	if($data){
+      		return $data[0];
+      	}else{
+      		return false;
+      	}
 
+	}
+	function email_from_list_available($session_id){
+		$param = array('limit'=>2);
+		$email = '';
+		$data = $this->get_list($param);
+		if($data){
+			$email = $data[0]['email'];
+			$data_email = $data[0];
+		}
+		return $email;
+	}
 	//SUPPORT FUNCTION
 	//$data :is array
 	/*function format_path_parent($data){
