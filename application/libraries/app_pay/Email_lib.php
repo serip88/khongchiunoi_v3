@@ -179,6 +179,12 @@ class Email_lib extends Common_lib {
       	$where = array("A.session_id"=>$session_id);
       	$data = $this->CI->email_model->get_data_join($select,$where,$tb_join,$options);
       	if($data){
+      		//B set session_id to email
+			$data_email = $data[0];
+			$data_email['session_update'] = time();
+			$where = array("email"=> $data_email['email']);
+     		$stt = $this->CI->email_model->update_data($data_email,$where); 
+     		//E set session_id to email
       		return $data[0];
       	}else{
       		return false;
@@ -188,12 +194,27 @@ class Email_lib extends Common_lib {
 	function email_from_list_available($session_id){
 		$param = array('limit'=>2);
 		$email = '';
-		$data = $this->get_list($param);
+		$data = $this->get_email_no_session();
 		if($data){
 			$email = $data[0]['email'];
+			//B set session_id to email
 			$data_email = $data[0];
+			$data_email['session_id'] = $session_id;
+			$data_email['session_update'] = time();
+			$where = array("email"=> $email);
+     		$stt = $this->CI->email_model->update_data($data_email,$where); 
+     		//E set session_id to email
 		}
 		return $email;
+	}
+	function get_email_no_session(){
+		$select="A.*";
+	    $tb_join = array();
+	    $session_time = time() - (12*60*60);
+	    $where = sprintf("session_id = '' OR session_update < %s", $session_time);
+	    $option = array('limit'=>1);
+	    $data = $this->CI->email_model->get_data_join($select,$where,$tb_join,$option);
+	    return $data;
 	}
 	//SUPPORT FUNCTION
 	//$data :is array

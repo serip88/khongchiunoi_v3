@@ -186,6 +186,7 @@ class Product extends Base_controller {
         if($amount){
             $id = $stt = $this->product_lib->save_product_invoice($amount);
             if($id){
+                $this->product_lib->email_paid_update($checkout['to_email'], $amount);
                 $checkout['invoice_id'] = $id;
                 $this->handle_invoice_info($checkout);
                 $this->handle_invoice_detail($id,$param);

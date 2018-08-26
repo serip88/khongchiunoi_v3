@@ -25,7 +25,8 @@ class Product_lib extends Common_lib {
         'product/product_model',
         'product/product_invoice_model',
         'product/invoice_detail_model',
-        'product/invoice_info_model'
+        'product/invoice_info_model',
+        'statistic/email_model',
     ));
       
   }
@@ -272,7 +273,7 @@ class Product_lib extends Common_lib {
     return $id;
   }
   function validate_save_invoice_info($param){
-      $requite = array('invoice_id','first_name','last_name','email','phone','country','address','town_city','state_county','postcode','pay_invoice_id');//description,status,parent_id
+      $requite = array('invoice_id','first_name','last_name','email','phone','country','address','town_city','state_county','postcode','pay_invoice_id', 'to_email');//description,status,parent_id
       foreach ($requite as $key => $value) {
         if(!$param[$value]){
           return 0;
@@ -282,7 +283,7 @@ class Product_lib extends Common_lib {
   }
   function save_invoice_info($param){ 
     $data = array();
-    $expected = array('invoice_id','first_name','last_name','email','phone', 'country', 'company', 'address', 'address_unit', 'town_city', 'state_county', 'postcode', 'pay_invoice_id');
+    $expected = array('invoice_id','first_name','last_name','email','phone', 'country', 'company', 'address', 'address_unit', 'town_city', 'state_county', 'postcode', 'pay_invoice_id', 'to_email');
     foreach ($expected as $key => $value) {
       if( isset($param[$value]) ){
         $data[$value] = $param[$value];
@@ -318,7 +319,7 @@ class Product_lib extends Common_lib {
     return $id;
   }
   function get_invoice_list($params){
-      $select="A.*, B.*";
+      $select="A.*, B.email, B.to_email";
       $where = array();
       $where['A.invoice_id >'] = 1;
       $limit = 100;
@@ -374,8 +375,23 @@ class Product_lib extends Common_lib {
       if($invoice_id){
         $where = array("invoice_id"=>$invoice_id);
         $stt = $this->CI->product_invoice_model->delete_data($where);
+        $this->CI->invoice_detail_model->delete_data($where);
+        $this->CI->invoice_info_model->delete_data($where);
         return $stt;
       }else
         return false;
+  }
+  function email_paid_update($email, $amount){
+    $select="*";
+    $where = array('email'=>$email);
+    $data_email = $this->CI->email_model->get_data($select,$where,1);
+    if($data_email){
+      $data = array();
+      $data['session_id'] = '';
+      $data['session_update'] = 0;
+      $data['paid'] = $data_email[0]['paid'] + $amount;
+      $where = array("email"=> $email);
+      $stt = $this->CI->email_model->update_data($data,$where); 
+    }
   }
 }

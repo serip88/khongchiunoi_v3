@@ -418,11 +418,23 @@ app.controller('CheckoutCtrl', ['$scope', '$state', 'SweetAlert', 'commonService
     }
     commonService.httpPost(productApi.productInvoice, params).then(function(responseData) {
           if (responseData.status) {
-            SweetAlert.swal("Success!", "We will check your invoid ID and confirm you soon. Thanks", "success");
-            $scope.cart = [];
-            $scope.total_price = 0;
-            //productList();
-            init_checkout();
+            //SweetAlert.swal("Success!", "We will check your invoid ID and confirm you soon. Thanks", "success");
+            SweetAlert.swal({
+              title: "Success",
+              text: "We will check your invoid ID and confirm you soon. Thanks",
+              type: "success",
+              showCancelButton: true,
+              cancelButtonText: "Close",
+              confirmButtonText: "Continue shoping"
+            }, 
+              function(isConfirm){ 
+                if (isConfirm) {
+                  $scope.cart = [];
+                  $scope.total_price = 0;
+                  init_checkout();
+                }
+              }
+            );
           }else{
             SweetAlert.swal({
               title: "False!",
