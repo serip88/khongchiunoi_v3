@@ -204,7 +204,16 @@ class Product_lib extends Common_lib {
         return false;
   }
   //SUPPORT FUNCTION
+  
   function format_product_list($data){
+    $max_char = 0;
+    //$this->rz_debug($data);die;
+    // foreach ($data as $key => $value) {
+    //   $tmp_length = strlen($value['name']);
+    //   if($max_char < $tmp_length){
+    //     $max_char = $tmp_length;
+    //   }
+    // }
     foreach ($data as $key => $value) {
       if($value['price']){
         // $data[$key]['price_pure'] = (int)$value['price'];
@@ -230,6 +239,11 @@ class Product_lib extends Common_lib {
       $data[$key]['time_discount'] = $value['time_discount'] ? $value['time_discount']*1000: NULL ;
       $data[$key]['date_discount'] = $data[$key]['time_discount'];
       $data[$key]['hours_discount'] = $data[$key]['time_discount'];
+      // $tmp_length = strlen($value['name']);
+      // $more_length = $max_char - $tmp_length;
+      // if($more_length){
+      //   $data[$key]['name'] .= str_repeat("\x20", $more_length); 
+      // }
     }
     return $data;
   }
