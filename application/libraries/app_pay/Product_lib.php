@@ -318,6 +318,32 @@ class Product_lib extends Common_lib {
     return $id;
   }
   function get_invoice_list($params){
+      $select="A.*, B.*";
+      $where = array();
+      $where['A.invoice_id >'] = 1;
+      $limit = 100;
+      $start = 0;
+      $tmp_sort = "A.invoice_id DESC";
+      $filter = array();
+      $filter['order_by'] = $tmp_sort;
+      $filter['limit'] = 100;
+      if(isset($params['start_date']) && isset($params['end_date'])){
+        $params['start_date'] = $params['start_date']/1000;
+        $params['end_date'] = $params['end_date']/1000;
+        $end_date = date("Y-m-d", $params['end_date']);
+        $params['end_date'] = strtotime($end_date.' 23:59:59');
+        $where['A.created_date >='] = $params['start_date'];
+        $where['A.created_date <='] = $params['end_date'];
+      }
+      $tb_join = array();
+      $tb_join[] = array('table_name'=>'rz_product_invoice_info as B','condition'=>"A.invoice_id = B.invoice_id", 'type'=>'left'); 
+      $data = $this->CI->product_invoice_model->get_data_join($select,$where,$tb_join,$filter);
+      if($data){
+        $data = $this->format_invoice_list($data);
+      }
+      return $data;
+  }
+  function get_invoice_list_v1($params){
       $select="*";
       $where = array();
       if(isset($params['start_date']) && isset($params['end_date'])){
@@ -338,6 +364,7 @@ class Product_lib extends Common_lib {
     $total = 0;
     foreach ($data as $key => $value) {
       $data[$key]['created_date'] = date ( "d-m-Y H:i", $value['created_date'] );
+      $data[$key]['send_email'] = $value['email'];
       $total += $value['amount'];
     }
     $total = number_format($total , 0, ',', '.');
