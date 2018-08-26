@@ -179,12 +179,15 @@ class Product extends Base_controller {
     public function invoice_post(){
         $params = $this->post();
         $param = $params['cart'];
+        $checkout = $params['checkout'];
         $stt = FALSE;
         $msg ='';
         $amount = $this->product_lib->validate_save_product_invoice($param);
         if($amount){
             $id = $stt = $this->product_lib->save_product_invoice($amount);
             if($id){
+                $checkout['invoice_id'] = $id;
+                $this->handle_invoice_info($checkout);
                 $this->handle_invoice_detail($id,$param);
             }else{
                 $msg = 'Error! Cannot save invoice.';
@@ -194,6 +197,18 @@ class Product extends Base_controller {
         }
         $response = array('status' => $stt,'msg'=> $msg);
         $this->custom_response($response);
+    }
+    public function handle_invoice_info($params){
+        if($params){
+            $params = $this->product_lib->validate_save_invoice_info($params);
+            if($params){
+                $stt = $this->product_lib->save_invoice_info($params);
+            }else{
+                $msg = 'Error! Wrong data.';
+            }
+        }else{
+            return 0;
+        }
     }
     public function handle_invoice_detail($invoice_id,$products){
         if($products){

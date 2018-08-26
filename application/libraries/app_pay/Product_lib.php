@@ -24,7 +24,8 @@ class Product_lib extends Common_lib {
     $this->CI->load->model(array(
         'product/product_model',
         'product/product_invoice_model',
-        'product/invoice_detail_model'
+        'product/invoice_detail_model',
+        'product/invoice_info_model'
     ));
       
   }
@@ -268,6 +269,26 @@ class Product_lib extends Common_lib {
     $data['amount'] = $amount;
     $data['memo']  = ''; 
     $id = $this->CI->product_invoice_model->insert_data($data);
+    return $id;
+  }
+  function validate_save_invoice_info($param){
+      $requite = array('invoice_id','first_name','last_name','email','phone','country','address','town_city','state_county','postcode','pay_invoice_id');//description,status,parent_id
+      foreach ($requite as $key => $value) {
+        if(!$param[$value]){
+          return 0;
+        }
+      }
+      return $param;
+  }
+  function save_invoice_info($param){ 
+    $data = array();
+    $expected = array('invoice_id','first_name','last_name','email','phone', 'country', 'company', 'address', 'address_unit', 'town_city', 'state_county', 'postcode', 'pay_invoice_id');
+    foreach ($expected as $key => $value) {
+      if( isset($param[$value]) ){
+        $data[$value] = $param[$value];
+      }
+    }
+    $id = $this->CI->invoice_info_model->insert_data($data);
     return $id;
   }
   function validate_save_invoice_detail($param){

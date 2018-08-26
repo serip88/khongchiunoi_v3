@@ -327,13 +327,13 @@
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
 										<div class="checkout-form-list">
 											<label>First Name <span class="required">*</span></label>										
-											<input type="text" placeholder="" data-ng-model="checkout.name">
+											<input type="text" placeholder="" data-ng-model="checkout.first_name">
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="checkout-form-list">
 											<label>Last Name <span class="required">*</span></label>										
-											<input type="text" placeholder="" data-ng-model="checkout.lastname">
+											<input type="text" placeholder="" data-ng-model="checkout.last_name">
 										</div>
 									</div>
 									<div class="col-lg-12">
@@ -456,12 +456,12 @@
 													</div>
 													<div id="collapseThree" class="panel-collapse " role="tabpanel" aria-labelledby="headingThree">
 													  <div class="panel-body">
-															<p>Pay via PayPal: make transaction to account random_email_shop@gmail.com</p>
+															<p>Pay via PayPal: make transaction to account <b>random_email_shop@gmail.com</b></p>
 													  </div>
 													  <div class="col-lg-12 nopadding">
 														<div class="checkout-form-list">
-															<label>Your Invoid ID <span class="required">*</span></label>
-															<input type="text" data-ng-model="checkout.invoid_id" placeholder="Ex: your_account_ZZZZF2FFEEBCFF27438E900704B*******" class="ng-pristine ng-valid ng-empty ng-touched">
+															<label>Your Invoice ID <span class="required">*</span></label>
+															<input type="text" data-ng-model="checkout.pay_invoice_id" placeholder="Ex: your_account_ZZZZF2FFEEBCFF27438E900704B*******" class="ng-pristine ng-valid ng-empty ng-touched">
 														</div>
 													</div>
 													</div>

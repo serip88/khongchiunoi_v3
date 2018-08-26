@@ -378,18 +378,42 @@ app.controller('CheckoutCtrl', ['$scope', '$state', 'SweetAlert', 'commonService
       }
     );
   }
+  function valid_invoid(){
+    var required = ['first_name','last_name','email','phone','country','address','town_city','state_county','postcode','pay_invoice_id'];
+    var stt = true;
+    if($scope.checkout){
+      forEach(required, function (value, key) {
+        if( typeof($scope.checkout[value]) == 'undefined' || !$scope.checkout[value] ){
+          stt = false;
+        }
+      });
+    }else{
+      stt = false;
+    }
+    return stt;
+  }
   $scope.makeInvoice = function () {
     var params = {};
     console.log('makeInvoice >>>>>>>>>>>>>');
     params.cart = $scope.cart;
     params.checkout = $scope.checkout;
+    var info_valid = valid_invoid();
+    if(!info_valid){
+      SweetAlert.swal({
+        title: "Warning!",
+        text: 'Please fill out all required * fields',
+        type: "warning",
+        confirmButtonText: "Close"
+      });
+      return false;
+    }
     commonService.httpPost(productApi.productInvoice, params).then(function(responseData) {
           if (responseData.status) {
            SweetAlert.swal("Success!", "We will check your invoid ID and confirm you soon. Thanks", "success");
            $scope.cart = [];
            $scope.total_price = 0;
            //productList();
-           $scope.checkout = {};
+           //$scope.checkout = {};
           }else{
             SweetAlert.swal({
               title: "False!",
