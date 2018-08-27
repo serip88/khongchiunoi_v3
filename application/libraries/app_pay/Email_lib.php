@@ -176,7 +176,7 @@ class Email_lib extends Common_lib {
       	$options['start'] = 0;
 		$tb_join = array();
       	//$tb_join[] = array('table_name'=>'rz_tag as B','condition'=>"B.id =A.parent_id", 'type'=>'left');
-      	$where = array('A.status'=>1,"A.session_id"=>$session_id, "A.paid<"=>50);
+      	$where = array('A.status'=>1,"A.session_id"=>$session_id, "A.paid<"=>100);
       	$data = $this->CI->email_model->get_data_join($select,$where,$tb_join,$options);
       	if($data){
       		//B set session_id to email
@@ -211,7 +211,7 @@ class Email_lib extends Common_lib {
 		$select="A.*";
 	    $tb_join = array();
 	    $session_time = time() - (12*60*60);
-	    $where = sprintf("A.status = 1 AND session_id = '' AND A.paid < 50", $session_time);
+	    $where = sprintf("A.status = 1 AND session_id = '' AND A.paid < 100", $session_time);
 	    $option = array('limit'=>1);
 	    $data = $this->CI->email_model->get_data_join($select,$where,$tb_join,$option);
 	    return $data;
