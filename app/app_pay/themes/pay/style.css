@@ -1934,7 +1934,8 @@ a#scrollUp:hover{
 	border-right:1px solid #ebebeb;
 }
 .br-b-3{
-	border-bottom:1px solid #ebebeb;
+	/*border-bottom:1px solid #ebebeb;*/
+	border-top: 1px solid #ebebeb;
 }
 .home-2 .product-active-2.owl-carousel.owl-theme:hover .owl-controls .owl-nav div {
   left: -8px;
