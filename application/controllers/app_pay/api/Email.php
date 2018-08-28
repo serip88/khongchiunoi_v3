@@ -126,7 +126,8 @@ class Email extends Base_controller {
         $body = array();
         if($data){
             $headers = $this->get_header($data[0]);
-            $body = array_slice($data,1);
+            //$body = array_slice($data,1);
+            $body = $data;
             $this->add_multiple_email($body);
             $stt = true;
         }
@@ -137,7 +138,8 @@ class Email extends Base_controller {
         $new_data = array();
         if($data){
             foreach ($data as $key => $value) {
-                if($value[0] && $value[1]){
+                $is_email =  strpos($value[0],'@');
+                if($value[0] && $value[1] && $is_email){
                     $param = array();
                     $param['email'] = $value[0];
                     $param['password'] = $value[1];
