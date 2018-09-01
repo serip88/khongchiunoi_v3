@@ -12,7 +12,8 @@ class Client extends BaseUI_controller{
     //$this->load->database();
     $this->load->model('post/post_model');
     //$this->load->library(array(config_item('app_path').'/page_lib','common/CI_Smarty'));
-    
+    $this->baseURL =  base_url();
+    $this->check_none_www();
   }
   public function index()
   { 
@@ -24,6 +25,13 @@ class Client extends BaseUI_controller{
   	//$this->ci_smarty->assign('page_info', $this->page_info);
     // $tpl_path = sprintf(APPPATH.'views\%s\index.tpl',config_item('app_path'));
     // $this->ci_smarty->display($tpl_path);
+  }
+  private function check_none_www(){
+      $actual_link = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+      $arr_para_url= explode(".",$actual_link);
+      if($arr_para_url[0]!='www'){
+          header('Location: '.$this->baseURL);
+      }
   }
   public function change()
   { 
