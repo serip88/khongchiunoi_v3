@@ -36,7 +36,7 @@ class Product_lib extends Common_lib {
       $param['name']   = str_replace('/', '-', $param['name']);
       $param['price']     = isset($param['price']) && $param['price'] ? $param['price']: 0;
       $param['price']     = floatval($param['price']) ;
-      $param['status']    = isset($param['status']) && $param['status'] ? $param['status']: 0;   
+      $param['enabled']    = isset($param['enabled']) && $param['enabled'] ? $param['enabled']: 0;   
       $param['parent_id']   = isset($param['parent_id']) && $param['parent_id'] ? $param['parent_id']: 0;   
       $param['description'] = isset($param['description']) && $param['description'] ? $param['description']: '';   
       $param['date_discount'] = isset($param['date_discount']) && $param['date_discount'] ? $param['date_discount']: 0;
@@ -102,7 +102,7 @@ class Product_lib extends Common_lib {
     $data['level']    = 0;
     $data['orders']    = 0;
     $data['posted_date'] = time();
-    $data['enabled']  = $param['status']; 
+    $data['enabled']  = $param['enabled']; 
     $id = $this->CI->product_model->insert_data($data);
     return $id;
   }

@@ -99,7 +99,7 @@
 	        productList(page);
 	    }
 	    $scope.reload = function() {
-	    	productList();
+	    	productList($scope.pagination.current_page);
 	    }
 		$scope.openAddProduct = function (size) {
 			commonService.httpGet(productApi.categoryList).then(function(responseData) {
@@ -130,7 +130,7 @@
 			                if(responseData.status) {
 			                 	SweetAlert.swal("Add product success!", "", "success");
 			                 	$uibModalInstance.close();
-			                 	productList();
+			                 	productList($scope.pagination.current_page);
 			                }
 			            });
 		          	};
@@ -227,7 +227,7 @@
 		              if (responseData.status) {
 		               SweetAlert.swal("Edit Product success!", "", "success");
 		               $uibModalInstance.close();
-		               productList();
+		               productList($scope.pagination.current_page);
 		              }else{
 		                SweetAlert.swal({
 		                  title: "Edit Product False!",
