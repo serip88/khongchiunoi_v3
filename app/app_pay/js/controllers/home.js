@@ -121,7 +121,7 @@ var productApi = {
         myModal.$promise.then(myModal.show);
     }
     $scope.total_cart = [];
-    $scope.addToCart = function (item) {
+    $scope.addToCart = function (item, callback) {
       var index = $scope.total_cart.indexOf(item);
       if(index == -1){
         item.in_cart = true;
@@ -137,7 +137,10 @@ var productApi = {
         }, 
           function(isConfirm){ 
             if (isConfirm) {
-              $scope.goToCart();  
+              $scope.goToCart();
+              if(isFunction(callback)) {
+                callback();
+              }
             }
           }
         );

@@ -134,7 +134,10 @@
                                         {{value.name}}
                                     </td>
                                     
-                                    <td class="text-right"> {{value.price}}</td>
+                                    <td class="text-right"> 
+                                        <div style="/*font-weight: 700;*/     color: blue;" > ${{value.price}}</div>
+                                        <div style="text-decoration: line-through" ng-show="value.price_discount"> ${{value.price_pure}}</div>
+                                    </td>
                                     <td class="text-right"> <span class="label" ng-class="{'label-success ': value.cate_name, 'label-warning ': !value.cate_name}">{{value.cate_name ? value.cate_name : 'No Category'}}</span>
                                     </td>
                                     <!-- <td class="text-left">
