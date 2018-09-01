@@ -41,6 +41,16 @@
         <link rel="stylesheet" href="<?php echo config_item('app_common_url');?>/vendor/sweetalert/dist/sweetalert.css">
         <!-- modernizr css -->
         <script src="<?php echo config_item('app_url');?>/themes/pay/js/vendor/modernizr-2.8.3.min.js"></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125031865-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-125031865-1');
+        </script>
+
     </head>
     <body class="home-2" ui-view="app" ng-init="customID = 'AppCtrl_1'">
         <p> Loading ...</p>

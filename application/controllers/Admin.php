@@ -10,7 +10,7 @@ class Admin extends CI_Controller {
   {
       parent::__construct();
       //$this->load->helper('url');
-      //$this->check_none_www();
+      $this->check_none_www();
   }
   public function index(){
     //$this->load->view('tpl/header',$data);
