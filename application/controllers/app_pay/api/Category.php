@@ -63,7 +63,8 @@ class Category extends Base_controller {
     }
 
     public function category_list_get(){
-    	$data = $this->category_lib->get_category_list();
+        $param = $this->get();
+    	$data = $this->category_lib->get_category_list($param);
         if($data)
             $stt=TRUE;
         else 

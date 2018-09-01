@@ -86,7 +86,7 @@
 	    }
 	    $scope.categoryList = {};
 	    function categoryList() {
-	    	commonService.httpGet(productApi.categoryList).then(function(responseData) {
+	    	commonService.httpGet(productApi.categoryList,{mode:'admin'}).then(function(responseData) {
 	            if (responseData.status) {
 	      			$scope.categoryList = responseData.rows;
 	      			$scope.categoryList.push({id:-1, name: 'All category'});
@@ -197,7 +197,7 @@
 	    }
 
 	    $scope.productEdit = function (item) {
-	      	commonService.httpGet(productApi.categoryList).then(function(responseData) {
+	      	commonService.httpGet(productApi.categoryList, {mode:'admin'}).then(function(responseData) {
 	          	if (responseData.status) {
 	            	modalEditProduct('lg',responseData.rows,item);
 	          	}

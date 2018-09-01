@@ -117,7 +117,8 @@ class Category_lib extends Common_lib {
 	    	return 0;
 	    }
 	}
-	function get_category_list(){
+	function get_category_list($param){
+		$param['mode'] = isset($param['mode']) ? $param['mode'] : 'client'; 
 	    $select="A.id, A.parent_id, A.name, A.description, A.enabled as status, A.path_parent, A.level, A.path_parent_name";
 	    $select_child = ",(select count(*) 
  		from rz_product as B
@@ -125,6 +126,9 @@ class Category_lib extends Common_lib {
 		) AS total_child";
 		$select = $select.$select_child;
 	    $where = array('type'=>$this->_tag_type);
+	    if($param['mode'] == 'client'){
+	    	$where['enabled'] = 1;
+	    }
 	    $tb_join = array();
 	    $data = $this->CI->tag_model->get_data_join($select,$where,$tb_join);
 	    /*if($data){

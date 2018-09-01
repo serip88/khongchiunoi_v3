@@ -47,7 +47,7 @@
 	app.controller('CategoryCtrl', ['$scope', '$uibModal', '$log', 'openModal', 'SweetAlert', 'categoryService', function($scope, $uibModal, $log, openModal, SweetAlert, categoryService) {
 
 		function categoryList() {
-	        categoryService.httpGet(categoryApi.categoryList).then(function(responseData) {
+	        categoryService.httpGet(categoryApi.categoryList, {mode:'admin'}).then(function(responseData) {
 	            if (responseData.status) {
 	              $scope.categoryList = responseData.rows;
 	              $scope.category = {selected:[],roles:[],is_check_all:false};
