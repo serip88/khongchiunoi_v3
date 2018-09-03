@@ -144,11 +144,13 @@ class Product_lib extends Common_lib {
       $tb_join = array();
       $tb_join[] = array('table_name'=>'rz_tag as B','condition'=>"B.id =A.parent_id", 'type'=>'left');
       //$where = array('A.enabled' => 1);
-      $where = array("A.price > 0");
+      $where = array();
       if($mode == 'discount'){
-        $where[] = "AND A.price >0";
-        $where[] = sprintf("AND A.time_discount > %s", time());
+        $where[] = "A.price >0";
+        $where[] = "AND A.enabled = 1";
+        $where[] = sprintf("AND A.price_discount > %s", 0);
       }elseif($mode == 'all_client'){
+        $where[] = "A.price >0";
         $where[] = "AND A.enabled = 1";
         //$where[] = sprintf("AND IF (A.price_discount > 0 , A.time_discount > %s, 1)", time());
         $where[] = sprintf("AND A.price_discount = 0", time());
@@ -227,7 +229,21 @@ class Product_lib extends Common_lib {
         return false;
   }
   //SUPPORT FUNCTION
-  
+  function get_type_discount($value){
+    $now = time();
+    $type_discount = FALSE;
+    if(!$value['end_discount']){
+      $value['end_discount'] = $value['time_discount'];
+    }
+    if( $now < $value['time_discount'] && $now < $value['end_discount']){
+      $type_discount = 'future';
+    }elseif (  $value['time_discount'] < $now && $now < $value['end_discount']) {
+      $type_discount = 'in_time';
+    }elseif ($now > $value['end_discount'] && $now > $value['time_discount']) {
+      $type_discount = 'pass';
+    }
+    return $type_discount;
+  }
   function format_product_list($data){
     $max_char = 0;
     //$this->rz_debug($data);die;
@@ -237,12 +253,14 @@ class Product_lib extends Common_lib {
     //     $max_char = $tmp_length;
     //   }
     // }
-    $current_time = date("Y/m/d H:i", time() );
+    $time = time();
+    $current_time = date("Y/m/d H:i", $time );
     foreach ($data as $key => $value) {
+      $data[$key]['type_discount'] = $this->get_type_discount($value);
+      $data[$key]['description_format'] = nl2br($value['description']) ;
       if($value['price']){
         // $data[$key]['price_pure'] = (int)$value['price'];
         // $data[$key]['price'] = number_format($value['price'] , 0, ',', '.');
-        $data[$key]['description_format'] = nl2br($value['description']) ;
         $data[$key]['price_pure'] = floatval($value['price']) ;
         $data[$key]['price'] = floatval($value['price']) ;
         $data[$key]['price_discount'] = floatval($value['price_discount']) ;

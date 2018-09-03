@@ -67,13 +67,15 @@ var productApi = {
     }
     discountList();
     function discountList() {
-      var params = {'keyword':$scope.keyword, 'page':1, 'limit': 3, 'mode': 'discount'};
+      var params = {'keyword':$scope.keyword, 'page':1, 'limit': 5, 'mode': 'discount'};
       commonService.httpGet(productApi.list,params).then(function(responseData) {
           if (responseData.status) {
             angular.forEach( $scope.discountList = responseData.rows, function(value, key) {
               //var time_discount_client_frm = new Date(value.time_discount);
               var time_discount_client_frm = moment(value.time_discount);
-              value.time_discount_client_frm = time_discount_client_frm.format("YYYY/MM/DD HH:ss");
+              value.time_discount_client_frm = time_discount_client_frm.format("YYYY/MM/DD HH:mm:ss");
+              var end_discount_client_frm = moment(value.end_discount);
+              value.end_discount_client_frm = end_discount_client_frm.format("YYYY/MM/DD HH:mm:ss");
             });
             
             console.log($scope.discountList,'>>>>>>>>>>>>>>>>>> discountList list');

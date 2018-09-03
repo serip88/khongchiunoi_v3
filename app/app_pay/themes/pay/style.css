@@ -1271,7 +1271,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 	text-decoration: line-through;
 }
 .product-content-2 .add-to-links {
-	margin-top: 35px;
+	margin-top: 15px;
 	position: relative;
 	text-align: center;
 }
@@ -1342,8 +1342,9 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 .product-content-2 p.txt_special{
 	color: #434343;
 	font-size: 14px;
-	margin-bottom: 20px;
-	padding: 25px 0;
+	/*margin-bottom: 20px;*/
+	/*padding: 25px 0;*/
+	padding: 10px 0;
 }
 .single-product-2 {
   position: relative;

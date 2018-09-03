@@ -90,14 +90,19 @@
                                     <div class="add-to-links">
                                         <ul>
                                             <!-- <li><a href="#" class="heart"><i class="fa fa-heart-o"></i></a></li> -->
-                                            <li><a style="cursor: pointer;" data-ng-click="addToCart(item)">Add to cart</a></li>
+                                            <li><a style="cursor: pointer;" data-ng-click="addToCart(item)" 
+                                                class="btn btn-primary" ng-class="{'disabled': item.type_discount == 'future' || item.type_discount == 'pass' ||  !item.type_discount }">
+                                            Add to cart</a></li>
                                             <!-- <li><a href="#" class="refresh"><i class="fa fa-refresh"></i></a></li> -->
                                         </ul>
                                     </div>
-                                    <p class="txt_special">Hurry Up! Offer ends in:</p>
+                                    <p class="txt_special" ng-show="item.type_discount == 'future'" style="color: #171bc3">Offer will start in:</p>
+                                    <p class="txt_special" ng-show="item.type_discount == 'in_time'" style="color: #e41010">Hurry Up! Offer ends in:</p>
+                                    <p class="txt_special" ng-show="item.type_discount == 'pass'">Oop! Offer was ended, better luck next time:</p>
                                     <div class="timer">
                                         <!-- <div data-countdown="2018/07/10 12:00"></div> -->
-                                        <div data-countdown="{{item.time_discount_client_frm}}"></div>
+                                        <div ng-if="item.type_discount == 'future'" data-countdown="{{item.time_discount_client_frm}}"></div>
+                                        <div ng-if="item.type_discount == 'in_time' || item.type_discount == 'pass'" data-countdown="{{item.end_discount_client_frm}}"></div>
                                     </div>
                                 </div>
                             </div>
