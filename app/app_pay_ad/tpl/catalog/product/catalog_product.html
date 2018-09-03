@@ -101,6 +101,7 @@
                                         <input type="checkbox" onClick="$('input[name*=\'selected\']').prop('checked', this.checked);" data-ng-click="isCheckAll();">
                                         <i></i></label>
                                     </td>
+                                    <td class="text-left"> <a  class="asc">STT</a>
                                     <td class="text-center"> <span class="hide"> {{products.selected}} </span>  Hình ảnh</td>
                                     <td class="text-left"> <a  class="asc">Tên sản phẩm</a>
                                     </td>
@@ -124,6 +125,9 @@
                                         <input type="checkbox" checklist-model="products.selected" name="selected[]"  checklist-value="value.product_id">
                                         <i></i></label>
                                     </td>
+                                    <td class="text-left">
+                                        {{key+1}}
+                                    </td>
                                     <td class="text-center"> <img data-ng-src="{{value.image_path}}" alt="{{value.name}}" class="img-thumbnail">
                                     </td>
                                     <td class="text-left">
@@ -138,14 +142,18 @@
                                         <div style="/*font-weight: 700;*/     color: blue;" > ${{value.price}}</div>
                                         <div style="text-decoration: line-through" ng-show="value.price_discount"> ${{value.price_pure}}</div>
                                     </td>
-                                    <td class="text-right"> <span class="label" ng-class="{'label-success ': value.cate_name, 'label-warning ': !value.cate_name}">{{value.cate_name ? value.cate_name : 'No Category'}}</span>
+                                    <td class="text-right"> 
+                                        <span class="label" ng-class="{'label-success ': value.cate_name, 'label-warning ': !value.cate_name}">{{value.cate_name ? value.cate_name : 'No Category'}}</span>
                                     </td>
                                     <!-- <td class="text-left">
                                         <div>
                                           <input ui-jq="TouchSpin" type="number" value="0" class="form-control" data-min='0' data-max="100" data-verticalbuttons="true" data-verticalupclass="fa fa-caret-up"  data-verticaldownclass="fa fa-caret-down">
                                         </div>
                                     </td> -->
-                                    <td class="text-left">{{value.enabled == '1'?'Enable':'Disable'}}</td>
+                                    <td class="text-left">
+                                         <span class="label" ng-class="{'label-success': value.enabled == '1', 'label-warning': value.enabled == '0' }">
+                                        {{value.enabled == '1'?'Enable':'Disable'}}</span>
+                                    </td>
                                     <td class="text-right"><a data-ng-click="productEdit(value)" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a></td>
                                 </tr>
                             </tbody>
