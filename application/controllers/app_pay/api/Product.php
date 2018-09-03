@@ -74,6 +74,7 @@ class Product extends Base_controller {
         $this->custom_response($response);
     }
     public function product_list_get(){
+        //echo date_default_timezone_get();die;
         $param = $this->get();
         $data = array();
         $pagination = array();

@@ -94,7 +94,7 @@
     </script>
 
     <!-- B RZ -->
-
+    <script src="<?php echo config_item('app_common_url');?>/vendor/libs/moment.min.js" ></script>
     <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-1.5.7.js"></script>
     <!-- Angular-strap -->
     <link rel="stylesheet" href="<?php echo config_item('app_common_url');?>/vendor/angular/angular-strap/libs.min.css">

@@ -84,12 +84,23 @@
             <label class="col-sm-2 control-label" for="input-category">Thời gian giảm giá</label>
             <div class="form-inline">
               <div class="col-sm-10">
+                <div class="row col-sm-12">
                   <div class="form-group" style="margin: 0;">
-                    <input type="text"  class="form-control" ng-model="product.date_discount" data-date-format="yyyy-MM-dd"  data-autoclose="1" placeholder="Date" bs-datepicker>
+                    <input type="text"  class="form-control" ng-model="product.date_discount" data-date-format="yyyy-MM-dd"  data-autoclose="1" placeholder="Start Date" bs-datepicker>
                   </div>
                   <div class="form-group" style="margin: 0;">
-                    <input type="text" class="form-control" ng-model="product.hours_discount" data-time-format="HH:mm:ss" data-autoclose="1" placeholder="Time" bs-timepicker>
+                    <input type="text" class="form-control" ng-model="product.hours_discount" data-time-format="HH:mm:ss" data-autoclose="1" placeholder="Start Time" bs-timepicker>
                   </div>
+                </div>
+                  <hr>
+                  <div class="row col-sm-12">
+                  <div class="form-group" style="margin: 0;">
+                    <input type="text"  class="form-control" ng-model="product.end_discount" data-date-format="yyyy-MM-dd"  data-autoclose="1" placeholder="End Date" bs-datepicker>
+                  </div>
+                  <div class="form-group" style="margin: 0;">
+                    <input type="text" class="form-control" ng-model="product.end_hours_discount" data-time-format="HH:mm:ss" data-autoclose="1" placeholder="End Time" bs-timepicker>
+                  </div>
+                </div>
               </div>
             </div>  
         </div>

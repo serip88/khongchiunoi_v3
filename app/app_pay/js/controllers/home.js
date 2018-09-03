@@ -70,7 +70,12 @@ var productApi = {
       var params = {'keyword':$scope.keyword, 'page':1, 'limit': 3, 'mode': 'discount'};
       commonService.httpGet(productApi.list,params).then(function(responseData) {
           if (responseData.status) {
-            $scope.discountList = responseData.rows;
+            angular.forEach( $scope.discountList = responseData.rows, function(value, key) {
+              //var time_discount_client_frm = new Date(value.time_discount);
+              var time_discount_client_frm = moment(value.time_discount);
+              value.time_discount_client_frm = time_discount_client_frm.format("YYYY/MM/DD HH:ss");
+            });
+            
             console.log($scope.discountList,'>>>>>>>>>>>>>>>>>> discountList list');
           }
       });

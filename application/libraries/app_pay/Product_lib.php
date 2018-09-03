@@ -41,6 +41,8 @@ class Product_lib extends Common_lib {
       $param['description'] = isset($param['description']) && $param['description'] ? $param['description']: '';   
       $param['date_discount'] = isset($param['date_discount']) && $param['date_discount'] ? $param['date_discount']: 0;
       $param['hours_discount'] = isset($param['hours_discount']) && $param['hours_discount'] ? $param['hours_discount']: 0;
+      $param['end_discount'] = isset($param['end_discount']) && $param['end_discount'] ? $param['end_discount']: 0;
+      $param['end_hours_discount'] = isset($param['end_hours_discount']) && $param['end_hours_discount'] ? $param['end_hours_discount']: 0;
       if($param['date_discount']){
         if(strlen($param['date_discount']) == 24){
           $tmp_date = strtotime($param['date_discount']);
@@ -57,12 +59,31 @@ class Product_lib extends Common_lib {
       }else{
         $time_discount = 0;
       }
+
+      if($param['end_discount']){
+         if(strlen($param['end_discount']) == 24){
+          $tmp_date = strtotime($param['end_discount']);
+        }else{
+          $tmp_date = $param['end_discount']/1000;
+        }
+        if(strlen($param['end_hours_discount']) == 24){
+          $tmp_time = strtotime($param['end_hours_discount']);  
+        }else{
+          $tmp_time = $param['end_hours_discount']/1000;
+        }
+        $tmp_time = date("H:i:s", $tmp_time);
+        $end_discount = strtotime($tmp_time, $tmp_date);
+      }else{
+        $end_discount = 0;
+      }
       
       $param['price_discount']     = isset($param['price_discount']) ? $param['price_discount']: 0;
       if($param['price_discount']){
         $param['time_discount'] = $time_discount;  
+        $param['end_discount'] = $end_discount;  
       }else{
         $param['time_discount'] = 0;
+        $param['end_discount'] = 0;
       }
       $param['price_discount']     = floatval($param['price_discount']) ;
 
@@ -95,6 +116,7 @@ class Product_lib extends Common_lib {
     $data['price']  = $param['price'];
     $data['price_discount']  = $param['price_discount'];
     $data['time_discount']  = $param['time_discount'];
+    $data['end_discount']  = $param['end_discount'];
     $data['slug']     = $param['name'];
     $data['parent_id']  = $param['parent_id'];
     $data['description'] = $param['description'];
@@ -173,6 +195,7 @@ class Product_lib extends Common_lib {
       $data['price']  = $param['price'];
       $data['price_discount']  = $param['price_discount'];
       $data['time_discount']  = $param['time_discount'];
+      $data['end_discount']  = $param['end_discount'];
       $data['slug']     = $param['name'];
       $data['parent_id']  = $param['parent_id'];
       $data['description'] = $param['description'];
@@ -214,6 +237,7 @@ class Product_lib extends Common_lib {
     //     $max_char = $tmp_length;
     //   }
     // }
+    $current_time = date("Y/m/d H:i", time() );
     foreach ($data as $key => $value) {
       if($value['price']){
         // $data[$key]['price_pure'] = (int)$value['price'];
@@ -236,9 +260,17 @@ class Product_lib extends Common_lib {
       $data[$key]['quantity'] = 1;
       $data[$key]['last_price'] = $data[$key]['price'];
       $data[$key]['time_discount_frm'] = date("Y/m/d H:i", $data[$key]['time_discount']);
+      $data[$key]['current_time'] = $current_time;
       $data[$key]['time_discount'] = $value['time_discount'] ? $value['time_discount']*1000: NULL ;
       $data[$key]['date_discount'] = $data[$key]['time_discount'];
       $data[$key]['hours_discount'] = $data[$key]['time_discount'];
+      if(!$value['end_discount']){
+        $value['end_discount'] = strtotime('1 hour', $value['time_discount']);
+        
+      }
+      $value['end_discount'] = $value['end_discount'] * 1000;
+      $data[$key]['end_discount'] = $value['end_discount'];
+      $data[$key]['end_hours_discount'] = $value['end_discount'];
       // $tmp_length = strlen($value['name']);
       // $more_length = $max_char - $tmp_length;
       // if($more_length){
