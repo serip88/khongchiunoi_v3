@@ -1218,7 +1218,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 	background: #3d75b9 none repeat scroll 0 0;
 }
 .product-content-2 {
-  padding: 40px 21px 70px;
+  padding: 5px 21px 70px;
 }
 .product-content-2 > span{
 	color: #434343;
@@ -1241,7 +1241,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 	text-transform: capitalize;
 }
 .product-content-2 .rating{
-	 margin-top: 25px;
+	 margin-top: 5px;
 	 margin-bottom: 5px;
 }
 .product-content-2 .rating a{
@@ -1252,7 +1252,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 	font-size: 13px;
 	line-height: 25px;
 	margin: 0;
-	padding: 35px 0;
+	padding: 10px 0;
 	font-weight:600;
 }
 .product-content-2 .price ul li{

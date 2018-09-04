@@ -153,7 +153,7 @@ class Product_lib extends Common_lib {
         $where[] = "A.price >0";
         $where[] = "AND A.enabled = 1";
         //$where[] = sprintf("AND IF (A.price_discount > 0 , A.time_discount > %s, 1)", time());
-        $where[] = sprintf("AND A.price_discount = 0", time());
+        //$where[] = sprintf("AND A.price_discount = 0", time());
       }
       if($param['keyword']){
         $where[] = "AND A.name LIKE '%".$param['keyword']."%'"; 
@@ -167,7 +167,7 @@ class Product_lib extends Common_lib {
       $where = implode(" ", $where);
       $data = $this->CI->product_model->get_data_join($select,$where,$tb_join,$options);
       if($data){
-        $data = $this->format_product_list($data);
+        $data = $this->format_product_list($data, $mode);
         //B pagination
         $pagination = array();
         $options['count'] = 1;
@@ -244,7 +244,7 @@ class Product_lib extends Common_lib {
     }
     return $type_discount;
   }
-  function format_product_list($data){
+  function format_product_list($data, $mode){
     $max_char = 0;
     //$this->rz_debug($data);die;
     // foreach ($data as $key => $value) {
@@ -264,7 +264,7 @@ class Product_lib extends Common_lib {
         $data[$key]['price_pure'] = floatval($value['price']) ;
         $data[$key]['price'] = floatval($value['price']) ;
         $data[$key]['price_discount'] = floatval($value['price_discount']) ;
-        if($data[$key]['price_discount']){
+        if($data[$key]['price_discount'] && $mode == 'discount'){
           $data[$key]['price_old'] = $data[$key]['price'];
           $data[$key]['price'] = $data[$key]['price_discount'];
         }else{
