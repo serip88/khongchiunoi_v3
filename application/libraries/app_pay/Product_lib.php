@@ -147,24 +147,24 @@ class Product_lib extends Common_lib {
       $where = array();
       if($mode == 'discount'){
         $where[] = "A.price >0";
-        $where[] = "AND A.enabled = 1";
+        $where[] = "A.enabled = 1";
         $where[] = sprintf("AND A.price_discount > %s", 0);
       }elseif($mode == 'all_client'){
         $where[] = "A.price >0";
-        $where[] = "AND A.enabled = 1";
+        $where[] = "A.enabled = 1";
         //$where[] = sprintf("AND IF (A.price_discount > 0 , A.time_discount > %s, 1)", time());
         //$where[] = sprintf("AND A.price_discount = 0", time());
       }
       if($param['keyword']){
-        $where[] = "AND A.name LIKE '%".$param['keyword']."%'"; 
+        $where[] = "A.name LIKE '%".$param['keyword']."%'"; 
       }
       if($category_id != false && $category_id != -1){
-        $where[] = "AND A.parent_id = $category_id";
+        $where[] = "A.parent_id = $category_id";
       }
       if($param['status'] != 2){
-        $where[] = "AND A.enabled = ".$param['status']; 
+        $where[] = "A.enabled = ".$param['status']; 
       }
-      $where = implode(" ", $where);
+      $where = implode(" AND ", $where);
       $data = $this->CI->product_model->get_data_join($select,$where,$tb_join,$options);
       if($data){
         $data = $this->format_product_list($data, $mode);
