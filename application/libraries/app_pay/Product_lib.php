@@ -148,7 +148,7 @@ class Product_lib extends Common_lib {
       if($mode == 'discount'){
         $where[] = "A.price >0";
         $where[] = "A.enabled = 1";
-        $where[] = sprintf("AND A.price_discount > %s", 0);
+        $where[] = sprintf("A.price_discount > %s", 0);
       }elseif($mode == 'all_client'){
         $where[] = "A.price >0";
         $where[] = "A.enabled = 1";

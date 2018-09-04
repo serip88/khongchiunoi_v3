@@ -80,7 +80,7 @@
                                         <a href="#"><i class="fa fa-star"></i></a>
                                         <a href="#"><i class="fa fa-star"></i></a>
                                     </div>
-                                    <p> {{item.description}}</p>
+                                    <p ng-bind-html="item.description_format" style="display: block;max-height: 200px; overflow: hidden;"> {{item.description}}</p>
                                     <div class="price">
                                         <ul>
                                             <li class="new-price">${{item.price}}</li>
