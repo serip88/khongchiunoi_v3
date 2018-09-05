@@ -4527,7 +4527,8 @@ p.checkout-coupon input[type="submit"] {
   border-radius: 0;
 }
 #mymodal .modal-dialog {
-  width: 870px;
+  /*width: 870px;*/
+  width: 96%;
 }
 .modal-header {
   border: medium none;

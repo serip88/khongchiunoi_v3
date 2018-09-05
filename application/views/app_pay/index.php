@@ -37,7 +37,7 @@
         <!-- style css -->
         <link rel="stylesheet" href="<?php echo config_item('app_url');?>/themes/pay/style.css">
         <!-- responsive css -->
-        <link rel="stylesheet" href="<?php echo config_item('app_url');?>/themes/pay/css/responsive.css">
+        <!-- <link rel="stylesheet" href="<?php echo config_item('app_url');?>/themes/pay/css/responsive.css"> -->
         <link rel="stylesheet" href="<?php echo config_item('app_common_url');?>/vendor/sweetalert/dist/sweetalert.css">
         <!-- modernizr css -->
         <script src="<?php echo config_item('app_url');?>/themes/pay/js/vendor/modernizr-2.8.3.min.js"></script>
