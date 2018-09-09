@@ -265,10 +265,11 @@ class Product_lib extends Common_lib {
         $data[$key]['price_pure'] = floatval($value['price']) ;
         $data[$key]['price'] = floatval($value['price']) ;
         $data[$key]['price_discount'] = floatval($value['price_discount']) ;
-        if($data[$key]['price_discount'] ){
+        if($data[$key]['price_discount'] && $mode == 'discount'){
           $data[$key]['price_old'] = $data[$key]['price'];
           $data[$key]['price'] = $data[$key]['price_discount'];
         }else{
+          $data[$key]['price_discount'] = 0;
           $data[$key]['price_old'] = $data[$key]['price'];
           $data[$key]['price'] = ($data[$key]['price']/100) * $normal_discount;
           $data[$key]['price'] = $this->format_float($data[$key]['price']) ;
