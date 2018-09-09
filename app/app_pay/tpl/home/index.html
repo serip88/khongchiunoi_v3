@@ -130,8 +130,8 @@
                                             <h4><a style="cursor: pointer;" data-ng-click="modalDetail(item)">{{item.name}}</a></h4>
                                             <div class="price">
                                                 <ul>
-                                                    <li class="new-price" style="color: red" data-ng-show="item.price_discount" >${{item.price}}</li>
-                                                    <li class="new-price" data-ng-show="!item.price_discount">${{item.price}}</li>
+                                                    <li class="new-price" style="color: red" data-ng-show="item.is_discount" >${{item.price}}</li>
+                                                    <li class="new-price" data-ng-show="!item.is_discount">${{item.price}}</li>
                                                     <li class="old-price" ng-show="item.price_old">${{item.price_old}}</li>
                                                 </ul>
                                             </div>
