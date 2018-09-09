@@ -83,7 +83,7 @@
                                     <p ng-bind-html="item.description_format" style="display: block;max-height: 200px; overflow: hidden;"> {{item.description}}</p>
                                     <div class="price">
                                         <ul>
-                                            <li class="new-price">${{item.price}}</li>
+                                            <li class="new-price" style="color: red">${{item.price}}</li>
                                             <li class="old-price" ng-show="item.price_old">${{item.price_old}}</li>
                                         </ul>
                                     </div>
@@ -130,7 +130,8 @@
                                             <h4><a style="cursor: pointer;" data-ng-click="modalDetail(item)">{{item.name}}</a></h4>
                                             <div class="price">
                                                 <ul>
-                                                    <li class="new-price ">${{item.price}}</li>
+                                                    <li class="new-price" style="color: red" data-ng-show="item.price_discount" >${{item.price}}</li>
+                                                    <li class="new-price" data-ng-show="!item.price_discount">${{item.price}}</li>
                                                     <li class="old-price" ng-show="item.price_old">${{item.price_old}}</li>
                                                 </ul>
                                             </div>
