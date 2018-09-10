@@ -74,8 +74,12 @@ class Product extends Base_controller {
         $this->custom_response($response);
     }
     public function product_list_get(){
-        //echo date_default_timezone_get();die;
         $param = $this->get();
+        //B handle traffic
+        $ip = $this->input->ip_address();
+        $param['ip'] = $ip;
+        $this->product_lib->handle_traffic($param);
+        //E handle traffic
         $data = array();
         $pagination = array();
         $res = $this->product_lib->get_product_list($param);

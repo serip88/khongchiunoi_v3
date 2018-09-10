@@ -27,6 +27,7 @@ class Product_lib extends Common_lib {
         'product/invoice_detail_model',
         'product/invoice_info_model',
         'statistic/email_model',
+        'option/traffic_model',
     ));
       
   }
@@ -245,7 +246,7 @@ class Product_lib extends Common_lib {
     return $type_discount;
   }
   function format_product_list($data, $mode){
-    $normal_discount = 70;
+    $normal_discount = 90;
     $max_char = 0;
     //$this->rz_debug($data);die;
     // foreach ($data as $key => $value) {
@@ -465,5 +466,21 @@ class Product_lib extends Common_lib {
       $where = array("email"=> $email);
       $stt = $this->CI->email_model->update_data($data,$where); 
     }
+  }
+
+  function handle_traffic($params){
+    $where = array('session_id'=>session_id(), 'ip'=>$params['ip']);
+    $traffic = $this->CI->traffic_model->get_record($where); 
+
+    if($traffic){
+      $where = array('id'=>$traffic['id']);
+      $data = array('updated_date'=>time());
+      $stt = $this->CI->traffic_model->update_data($data,$where); 
+    }else{
+      $data = $where;
+      $data['created_date']    = time();
+      $stt = $this->CI->traffic_model->insert_data($data);
+    }
+
   }
 }
