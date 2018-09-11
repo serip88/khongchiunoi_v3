@@ -1,12 +1,12 @@
     <!-- footer-area-start -->
-        <footer>
+        <footer data-ng-controller="headerCtrl">
             <!-- footer-top-area-start -->
             <div class="footer-top-area ptb-60">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-20 mt-20">
                             <div class="single-footer">
-                                <div class="footer-title">
+                                <!-- <div class="footer-title">
                                     <h4>About Us</h4>
                                 </div>
                                 <div class="footer-address">
@@ -14,7 +14,7 @@
                                     <p><span>Phone : </span> (800) 123 456 789</p>
                                     <p><span>Fax : </span> (800) 123 456 789</p>
                                     <p><span>Email : </span> demo@posthemes.com</p>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-20 mt-20">
@@ -58,12 +58,10 @@
                                 </div>
                                 <div class="footer-menu">
                                     <ul>
-                                        <li><a href="#">Living Room</a></li>
-                                        <li><a href="#">Bedroom</a></li>
-                                        <li><a href="#">Kitchen & Dining</a></li>
-                                        <li><a href="#">Office</a></li>
-                                        <li><a href="#">Bathroom</a></li>
-                                        <li><a href="#">Lighting</a></li>
+                                        <li ng-repeat="item in categories" data-ng-click="stateGo('app.index',chooseCategory,{}, item)">
+                                            <a style="cursor: pointer;" >{{item.name}}</a>
+                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -73,7 +71,7 @@
             </div>
             <!-- footer-top-area-end -->
             <!-- footer-mid-area-start -->
-            <div class="footer-mid-area ">
+            <!-- <div class="footer-mid-area ">
                 <div class="container">
                     <div class="row br-b ptb-40">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -88,13 +86,13 @@
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <!-- <div class="payment-img text-right">
+                            <div class="payment-img text-right">
                                 <a href="#"><img ng-src="{{app.baseConfig.app}}/themes/pay/img/banner/22.png" alt="payment" /></a>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- footer-mid-area-end -->
             <!-- footer-bottom-area-start -->
             <div class="footer-bottom-area ptb-20">
@@ -102,7 +100,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="copyright-area">
-                                <p>Copyright <i class="icon-copyright"></i><a href="#">Renza</a> All Rights Reserved</p>
+                                <p>Copyright <i class="icon-copyright"></i><a >applesupercheap.com</a> </p>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

@@ -10,7 +10,7 @@
                         <div class="col-lg-12">
                             <div class="slider-text" >
                                 <h1 class="wow bounceInDown" data-wow-delay=".5s">Apple supper cheap Sale off</h1>
-                                <h2 class="wow bounceInDown" data-wow-delay=".8s">-45% every Friday </h2>
+                                <h2 class="wow bounceInDown" data-wow-delay=".8s">-35% on Friday </h2>
                                 <p class="wow bounceInDown" data-wow-delay="1.1s">apply for iphone products, limit number <br /> 
                                 Don't miss the boat.</p>
                                 <!-- <a href="#" class="wow bounceInDown" data-wow-delay="1.4s">Shop now</a> -->
@@ -25,7 +25,7 @@
                         <div class="col-lg-12">
                             <div class="slider-text text-center">
                                 <h1 class="wow bounceInDown" data-wow-delay=".5s">Apple supper cheap Sale off</h1>
-                                <h2 class="wow bounceInDown" data-wow-delay=".8s">-45% every Saturday </h2>
+                                <h2 class="wow bounceInDown" data-wow-delay=".8s">-35% on Saturday </h2>
                                 <p class="wow bounceInDown" data-wow-delay="1.1s">apply for watch products, limit number  <br /> 
                                 Don't miss the boat.</p>
                                 <!-- <a href="#" class="wow bounceInDown" data-wow-delay="1.4s">Shop now</a> -->
@@ -65,10 +65,10 @@
                             <div class="single-product-2" data-ng-repeat="item in discountList">
                                 <div class="product-image-total">
                                     <div class="product-image-2">
-                                        <a href="#"><img ng-src="{{item.image_path}}" alt="{{item.name}}" /></a>
+                                        <a><img ng-src="{{item.image_path}}" alt="{{item.name}}" /></a>
                                     </div>
                                     <!-- <span>New</span> -->
-                                    <a data-ng-click="modalDetail(item)" style="cursor: pointer;"><i class="fa fa-search"></i></a>
+                                    <a data-ng-click="modalDetail(item)" ng-class="{'disabled': item.type_discount == 'future' || item.type_discount == 'pass' ||  !item.type_discount }" class="btn btn-primary" style="cursor: pointer;"><i class="fa fa-search"></i></a>
                                 </div>
                                 <div class="product-content-2 text-center">
                                     <!-- <span>Furniture Manufacturer</span> -->
