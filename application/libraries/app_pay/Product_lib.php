@@ -471,10 +471,9 @@ class Product_lib extends Common_lib {
   function handle_traffic($params){
     $where = array('session_id'=>session_id(), 'ip'=>$params['ip']);
     $traffic = $this->CI->traffic_model->get_record($where); 
-
     if($traffic){
       $where = array('id'=>$traffic['id']);
-      $data = array('updated_date'=>time());
+      $data = array('updated_date'=>time(), 'counter'=>$traffic['counter']+1);
       $stt = $this->CI->traffic_model->update_data($data,$where); 
     }else{
       $data = $where;
