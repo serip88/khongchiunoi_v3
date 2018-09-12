@@ -246,7 +246,7 @@ class Product_lib extends Common_lib {
     return $type_discount;
   }
   function format_product_list($data, $mode){
-    $normal_discount = 90;
+    $normal_discount = 75;
     $max_char = 0;
     //$this->rz_debug($data);die;
     // foreach ($data as $key => $value) {

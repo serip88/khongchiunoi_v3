@@ -1,7 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="" data-ng-app="app">
-    
-<!-- Mirrored from d29u17ylf1ylz9.cloudfront.net/estore/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jun 2018 16:28:39 GMT -->
+   
 <head>
         
         <meta charset="utf-8">

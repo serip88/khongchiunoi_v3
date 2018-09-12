@@ -144,6 +144,11 @@ var productApi = {
               $state.go(href, params);
           }
       }
+      $scope.reload = function() {
+          $state.go('app.index').then(function(){
+            location.reload();
+          });
+      }
       $scope.logout = function() {
         commonService.httpPost('login/logout')
           .then(function(response) {
