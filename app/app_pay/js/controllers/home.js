@@ -1,6 +1,4 @@
-/**
- * Created by Rain on 23/02/2016.
- */
+
 var productApi = {
     baseUrl: baseConfig.apiUrl,
     list: 'product/product_list',
@@ -41,7 +39,7 @@ var productApi = {
         options.page = 1;
       }
       if(!options.limit){
-        options.limit = 6;
+        options.limit = 12;
       }
       if(!options.mode){
         options.mode = 'all_client';
@@ -67,7 +65,7 @@ var productApi = {
     }
     discountList();
     function discountList() {
-      var params = {'keyword':$scope.keyword, 'page':1, 'limit': 5, 'mode': 'discount'};
+      var params = {'keyword':$scope.keyword, 'page':1, 'limit': 20, 'mode': 'discount'};
       commonService.httpGet(productApi.list,params).then(function(responseData) {
           if (responseData.status) {
             angular.forEach( $scope.discountList = responseData.rows, function(value, key) {
