@@ -39,7 +39,7 @@ var productApi = {
         options.page = 1;
       }
       if(!options.limit){
-        options.limit = 12;
+        options.limit = 18;
       }
       if(!options.mode){
         options.mode = 'all_client';

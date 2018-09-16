@@ -25,7 +25,7 @@ if ($(this).scrollTop() > 240){
  //new WOW().init();
 setTimeout(function(){
     new WOW().init();
-}, 2000);
+}, 4000);
  /*----------------------------
  nivoSlider
 ------------------------------ */	
