@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="app">
+<html lang="vi" data-ng-app="app">
 
 <head>
     <meta charset="UTF-8" />
@@ -20,39 +20,48 @@
             padding: 0 !important;
         }
     </style>
-    <link rel='stylesheet' id='wsl-widget-css' href="{$config['app_url']}/css/style.css" type='text/css' media='all' />
-    <link rel='stylesheet' id='blt-bootstrap-css' href="{$config['app_common_url']}/css/bootstrap.css" type='text/css' media='all' />
-    <link rel='stylesheet' id='blt-style-css' href="{$config['app_url']}/css/theme/style.css" type='text/css' media='all' />
-    <link rel='stylesheet' id='blt-fontawesome-css' href="{$config['app_url']}/css/font-awesome.min.css?ver=2.31" type='text/css' media='all' />
-    <link rel='stylesheet' id='acfgfs-enqueue-fonts-css' href='http://fonts.googleapis.com/css?family=Open+Sans%3A400%2Citalic%2C600%2C700%2C800%7COpen+Sans%3A400%2Citalic%2C600%2C700%2C800&#038;subset&#038;ver=4.5.2' type='text/css' media='all' />
-    <script type='text/javascript' src="{$config['app_common_url']}/lib/jquery/jquery.js"></script>
-    <script type='text/javascript' src="{$config['app_common_url']}/lib/jquery/jquery-migrate.min.js"></script>
+    <link rel='stylesheet' id='blt-bootstrap-css' href="<?php echo config_item('app_common_url');?>/vendor/bootstrap/css/bootstrap.css" type='text/css' media='all' />
+    <link rel='stylesheet' href="<?php echo config_item('app_url');?>/css/bootstrap.min.css" type='text/css' media='all' />
+    <!-- <link rel='stylesheet'  href="<?php echo config_item('app_url');?>/css/style.css" type='text/css' media='all' /> -->
+    <link rel='stylesheet'  href="<?php echo config_item('app_url');?>/themes/first/css/style.css" type='text/css' media='all' />
+    <link rel='stylesheet' id='blt-style-css' href="<?php echo config_item('app_url');?>/themes/first/css/custom.css" type='text/css' media='all' />
+    
+    <link rel='stylesheet'  href="<?php echo config_item('app_url');?>/css/font-awesome.min.css?ver=2.31" type='text/css' media='all' />
+    <link rel='stylesheet'  href='http://fonts.googleapis.com/css?family=Open+Sans%3A400%2Citalic%2C600%2C700%2C800%7COpen+Sans%3A400%2Citalic%2C600%2C700%2C800&#038;subset&#038;ver=4.5.2' type='text/css' media='all' />
+    <script type='text/javascript' src="<?php echo config_item('app_common_url');?>/lib/jquery/jquery.js"></script>
+    <script type='text/javascript' src="<?php echo config_item('app_common_url');?>/lib/jquery/jquery-migrate.min.js"></script>
 
-    <script src="{$config['app_common_url']}/vendor/angular/angular-1.5.7.js"></script>
-    <link rel="stylesheet" href="{$config['app_common_url']}/vendor/angular/angular-strap/libs.min.css">
-    <script src="{$config['app_common_url']}/vendor/angular/angular-strap/angular-strap.js" ></script>
-    <script src="{$config['app_common_url']}/vendor/angular/angular-strap/angular-strap.tpl.js"></script>
-    <script src="{$config['app_common_url']}/vendor/angular/angular-strap/angular-strap.docs.tpl.js" ></script>
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-1.5.7.js"></script>
+    <link rel="stylesheet" href="<?php echo config_item('app_common_url');?>/vendor/angular/angular-strap/libs.min.css">
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-strap/angular-strap.js" ></script>
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-strap/angular-strap.tpl.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-strap/angular-strap.docs.tpl.js" ></script>
     <!-- Cookies -->
-    <script src="{$config['app_common_url']}/vendor/angular/angular-cookies/angular-cookies-1.5.7.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-cookies/angular-cookies-1.5.7.js"></script>
     <!-- Router -->
-    <script src="{$config['app_common_url']}/vendor/angular/angular-ui-router/angular-ui-router.js"></script> 
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-ui-router/angular-ui-router.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/ngstorage/ngStorage.js"></script>
     <!-- Lazyload -->
-    <script src="{$config['app_common_url']}/vendor/angular/oclazyload/ocLazyLoad.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/oclazyload/ocLazyLoad.js"></script>
     <!-- B translate -->
-    <script src="{$config['app_common_url']}/vendor/angular/angular-translate/angular-translate.js"></script>
-    <script src="{$config['app_common_url']}/vendor/angular/angular-translate/loader-static-files.js"></script>
-    <script src="{$config['app_common_url']}/vendor/angular/angular-translate/storage-cookie.js"></script>
-    <script src="{$config['app_common_url']}/vendor/angular/angular-translate/storage-local.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-translate/angular-translate.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-translate/loader-static-files.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-translate/storage-cookie.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-translate/storage-local.js"></script>
+    <link rel="stylesheet" href="<?php echo config_item('app_common_url');?>/vendor/sweetalert/dist/sweetalert.css">
+    <script src="<?php echo config_item('app_common_url');?>/vendor/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/js/directives/SweetAlert/SweetAlert.min.js"></script>
     <!-- B translate -->
-    <!-- <script src="{$config['app_common_url']}/vendor/angular/angular-bootstrap/ui-bootstrap-tpls-1.3.3.js"></script> -->
+    <script src="<?php echo config_item('app_common_url');?>/vendor/angular/angular-bootstrap/ui-bootstrap-tpls-1.3.3.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <script src="{$config['app_common_url']}/js/helper.js"></script>
-    <script src="{$config['app_url']}/js/app.js"></script>
-    <script src="{$config['app_url']}/js/config.js"></script>
-    <script src="{$config['app_url']}/js/config.lazyload.js"></script>
-    <script src="{$config['app_url']}/js/config.router.js"></script>
-    <script src="{$config['app_url']}/js/main.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/js/helper.js"></script>
+    <script src="<?php echo config_item('app_url');?>/js/app.js"></script>
+    <script src="<?php echo config_item('app_url');?>/js/config.js"></script>
+    <script src="<?php echo config_item('app_url');?>/js/config.lazyload.js"></script>
+    <script src="<?php echo config_item('app_url');?>/js/config.router.js"></script>
+    <script src="<?php echo config_item('app_common_url');?>/js/services/common-service.js"></script>
+    <script src="<?php echo config_item('app_url');?>/js/main.js"></script>
 
     <meta name="generator" content="Renza.CMS" />
     {literal}
@@ -154,7 +163,7 @@
     </style>
 </head>
 
-<body class="home blog infinite-scroll sidebar-right fixed-header post-layout-normal" ui-view>
+<body class="blog infinite-scroll fixed-header post-layout-normal" {literal} data-ng-class="[app.tpl.page,app.tpl.sidebar]" {/literal} ui-view ng-init="customID = 'AppCtrl_1'">
    
 </body>
 

@@ -13,7 +13,7 @@ class Client extends BaseUI_controller{
     $this->load->model('post/post_model');
     //$this->load->library(array(config_item('app_path').'/page_lib','common/CI_Smarty'));
     $this->baseURL =  base_url();
-    $this->check_none_www();
+    //$this->check_none_www();
   }
   public function index()
   { 
